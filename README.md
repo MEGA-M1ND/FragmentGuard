@@ -119,13 +119,20 @@ both modes are in [`examples/first_run/`](examples/first_run/).
   fields, malformed identifiers, duplicate IDs, repeated resources, invalid
   audiences, and ticks that do not increase are all rejected. Stream IDs must look
   like `streamNN`, so a stream ID cannot carry a label.
+- `schema.py` also derives **input bindings**. Each read is bound to the earlier
+  event in the same workspace that actually wrote that resource. Bindings are
+  causal and label-free, and every view receives the same bindings for the events
+  it selects.
 - `correlation.py` handles selection. Starting from the publication, it follows
-  each input to its latest earlier producer, then that producer's inputs, under a
+  each input's binding to its producer, then that producer's bindings, under a
   budget of 3 selected events and a horizon of 100 ticks. Branches are explored
   depth-first in input order. Missing or truncated links stay missing.
-- `monitor.py` is the checker. It replays the selected events and returns `alert`,
-  `clear`, or `insufficient_evidence`, with the evidence IDs and an explanation.
-  Unknown ancestry never returns `clear`.
+- `monitor.py` is the checker. It replays the selected events and resolves every
+  read through its binding. If a read's producer is not in the view, that input
+  is unresolved: the checker never falls back to an older write with the same
+  name. It returns `alert`, `clear`, or `insufficient_evidence`, with the
+  evidence IDs, the unresolved inputs, and an explanation. Unresolved ancestry
+  never returns `clear`.
 - `pipeline.py` builds the four views and sends each one to the same checker with
   the same policy.
 - `scout.py` stores records as Inspect AI `InfoEvent`s with
@@ -136,8 +143,16 @@ The core (`schema`, `correlation`, `monitor`, `pipeline`) does not import Scout.
 
 ## What works
 
-- Strict input contract, causal lineage selection, and the deterministic checker,
-  with 39 offline tests: the nine tests from the prototype plus 30 new ones.
+- Strict input contract, binding-based lineage selection, and the deterministic
+  checker. This is covered by offline tests:
+  - the nine tests from the prototype;
+  - integrity tests;
+  - a stale-write regression suite with controls;
+  - property tests over every sub-view of 400 generated streams.
+- Any view, including the per-agent and fixed-window baselines, returns either
+  the full-context verdict or `insufficient_evidence`; this is tested in general,
+  not only on the fixtures. The precise claim and its scope are in
+  [`docs/assumptions.md`](docs/assumptions.md#what-is-demonstrated-vs-fixture-specific).
 - A round trip through the Scout transcript database, and the decorated scanner
   in direct mode.
 - Scout's real scheduled scan, with recorded results. It completed here (see
@@ -156,9 +171,13 @@ The core (`schema`, `correlation`, `monitor`, `pipeline`) does not import Scout.
   and it is not tested here.
 - The checker assumes transformations keep restricted status. It has no concept
   of redaction, declassification, or intent.
-- Views that are not causally closed, such as per-agent, can replay a write that
-  a later write has replaced. A unit test documents that this produces a wrong
-  `clear`.
+- Bindings are derived from the complete ordered log. If a real log dropped a
+  write, a derived binding would point to an older write. Logs with missing
+  events need version bindings recorded at the source, which is a schema change
+  that has not been made.
+- Up to commit `4461cf9`, before bindings, a read could resolve to an older selected write when
+  its actual producer was omitted. That gave wrong `clear` and `alert` results
+  outside the fixtures. This is fixed; see `docs/dev_log.md`.
 - The bounded views share a maximum event budget, not equal cost. Correlation can
   examine more records than it selects, and both counts are reported. Tokens and
   latency are not measured.

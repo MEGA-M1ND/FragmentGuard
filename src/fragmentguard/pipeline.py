@@ -1,6 +1,8 @@
 """Common evaluation logic: build each evidence view and feed it to the same checker.
 
 At each publication only past and current events of that workspace are used.
+Every view receives the same causal input bindings for the events it selects
+(see ``schema.input_bindings``); views differ only in which events they select.
 Evaluator labels are never read here.
 """
 
@@ -13,7 +15,10 @@ from typing import Any
 
 from .correlation import DEFAULT_BUDGET, DEFAULT_HORIZON, correlate_selection
 from .monitor import check
-from .schema import Event, SchemaError, check_catalog_roots_immutable, parse_streams, validate_policy
+from .schema import (
+    Bindings, Event, SchemaError, check_catalog_roots_immutable, input_bindings, parse_streams,
+    validate_policy,
+)
 
 METHODS = ("per_agent", "fixed_window", "correlated", "full_context_reference")
 
@@ -37,11 +42,13 @@ class PipelineConfig:
         return hashlib.sha256(canonical.encode()).hexdigest()
 
 
-def select_views(history: list[Event], config: PipelineConfig) -> dict[str, tuple[list[Event], int]]:
+def select_views(
+    history: list[Event], config: PipelineConfig, bindings: Bindings
+) -> dict[str, tuple[list[Event], int]]:
     """Return each view's selected events and the number of history records examined."""
     publication = history[-1]
     budget = config.budget
-    correlated = correlate_selection(history, budget, config.horizon)
+    correlated = correlate_selection(history, budget, config.horizon, bindings)
     return {
         "per_agent": ([e for e in history if e.agent_id == publication.agent_id][-budget:], len(history)),
         "fixed_window": (history[-budget:], min(budget, len(history))),
@@ -57,14 +64,15 @@ def evaluate_stream(
     config = PipelineConfig(budget, horizon)
     policy = validate_policy(policy)
     check_catalog_roots_immutable(events, policy)
+    bindings = input_bindings(events)  # Each binding looks only backwards: causal.
     publications = []
     for index, event in enumerate(events):
         if event.operation != "publish":
             continue
         history = events[: index + 1]
         methods = {}
-        for name, (view, examined) in select_views(history, config).items():
-            methods[name] = {**check(view, policy), "records_examined": examined}
+        for name, (view, examined) in select_views(history, config, bindings).items():
+            methods[name] = {**check(view, policy, bindings), "records_examined": examined}
         publications.append({
             "publication_id": event.event_id,
             "publishing_agent": event.agent_id,

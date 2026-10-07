@@ -34,7 +34,8 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(
             evidence,
             [[r["stream_id"], r["publication_id"], r["method"], r["status"], str(r["selected_event_count"]),
-              str(r["records_examined"]), ", ".join(r["evidence_ids"])] for r in rows],
+              str(r["records_examined"]), ", ".join(r["evidence_ids"]),
+              reporting.format_unresolved(r["unresolved_inputs"])] for r in rows],
         )
         outcomes = markdown_table(self.markdown, "Outcomes")
         by_key = {(r["stream_id"], r["method"]): r for r in rows}

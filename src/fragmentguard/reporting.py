@@ -88,6 +88,7 @@ def outcome_rows(stream_results: dict[str, list[dict[str, Any]]]) -> list[dict[s
                     "evidence_ids": result["evidence_ids"],
                     "selected_event_count": result["events_reviewed"],
                     "records_examined": result["records_examined"],
+                    "unresolved_inputs": result["unresolved_inputs"],
                     "explanation": result["explanation"],
                 })
     return rows
@@ -149,11 +150,20 @@ def build_report(
         "evaluation": evaluation if complete else None,
         "measurement_notes": {
             "selected_event_count": "Measured: events passed to the checker for that view.",
-            "records_examined": "Measured: distinct history records the selector looked at; not time or tokens.",
+            "records_examined": (
+                "Measured: distinct records the selector dereferenced (publication plus bound producers "
+                "looked up). Deriving input bindings is one shared pass over the log and is not counted. "
+                "Not time or tokens."
+            ),
             "event_budget": "Design: the three bounded views share a maximum budget, not equal cost.",
             "tokens_and_latency": "Not measured; the checker is deterministic and uses no model.",
         },
     }
+
+
+def format_unresolved(items: list[dict[str, Any]]) -> str:
+    """``resource<-producer`` for an omitted producer, ``resource<-none`` if never produced."""
+    return ", ".join(f"{item['resource']}<-{item['bound_producer'] or 'none'}" for item in items) or "-"
 
 
 def _cell(row: dict[str, Any] | None) -> str:
@@ -210,12 +220,18 @@ def render_markdown(report: dict[str, Any], expected: dict[str, str] | None = No
         lines.append(f"| {METHOD_TITLES[method]} | {counts['alert']} | {counts['clear']} | "
                      f"{counts['insufficient_evidence']} |")
 
-    lines += ["", "## Evidence", "", "| Stream | Publication | Method | Status | Selected | Examined | Evidence IDs |",
-              "| --- | --- | --- | --- | --- | --- | --- |"]
+    lines += [
+        "", "## Evidence", "",
+        "`Unresolved` lists inputs whose bound producer is not in the view (`resource<-producer`) or",
+        "that no earlier event wrote and the catalog does not classify (`resource<-none`).", "",
+        "| Stream | Publication | Method | Status | Selected | Examined | Evidence IDs | Unresolved |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+    ]
     for row in report["rows"]:
         lines.append(
             f"| {row['stream_id']} | {row['publication_id']} | {row['method']} | {row['status']} | "
-            f"{row['selected_event_count']} | {row['records_examined']} | {', '.join(row['evidence_ids'])} |"
+            f"{row['selected_event_count']} | {row['records_examined']} | {', '.join(row['evidence_ids'])} | "
+            f"{format_unresolved(row['unresolved_inputs'])} |"
         )
 
     evaluation = report["evaluation"]

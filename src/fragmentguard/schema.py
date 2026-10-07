@@ -136,6 +136,29 @@ def validate_policy(policy: Any) -> dict[str, str]:
     return dict(policy)
 
 
+# event_id -> {input resource -> producing event_id, or None if nothing in the
+# workspace wrote it before this event}.
+Bindings = dict[str, dict[str, str | None]]
+
+
+def input_bindings(events: list[Event]) -> Bindings:
+    """Bind each input to the write it actually read: the latest earlier producer.
+
+    This is observation metadata, equivalent to a logger recording which version
+    of a resource each read saw. It is causal (a binding depends only on earlier
+    events in the same workspace), label-free (producer IDs only, never
+    classifications), and derived once from the complete ordered workspace log,
+    so every evidence view receives the same bindings for the events it selects.
+    """
+    latest: dict[str, str] = {}
+    bindings: Bindings = {}
+    for event in events:
+        bindings[event.event_id] = {resource: latest.get(resource) for resource in event.inputs}
+        for resource in event.outputs:
+            latest[resource] = event.event_id
+    return bindings
+
+
 def check_catalog_roots_immutable(events: list[Event], policy: dict[str, str]) -> None:
     for event in events:
         written = sorted(set(event.outputs) & set(policy))
