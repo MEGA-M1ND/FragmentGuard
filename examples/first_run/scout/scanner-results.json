@@ -1,0 +1,487 @@
+[
+  {
+    "transcript_id": "stream01",
+    "transcript_source_type": "fragmentguard_synthetic",
+    "transcript_source_id": null,
+    "transcript_source_uri": null,
+    "transcript_date": null,
+    "transcript_task_set": null,
+    "transcript_task_id": null,
+    "transcript_task_repeat": null,
+    "transcript_agent": null,
+    "transcript_agent_args": null,
+    "transcript_model": null,
+    "transcript_model_options": null,
+    "transcript_score": null,
+    "transcript_success": null,
+    "transcript_message_count": null,
+    "transcript_total_time": null,
+    "transcript_total_tokens": null,
+    "transcript_error": null,
+    "transcript_limit": null,
+    "transcript_metadata": "{}",
+    "scan_id": "JM4Q3FbyvyPc9dejX6oNdP",
+    "scan_tags": "[]",
+    "scan_metadata": "{}",
+    "scan_git_origin": "https://github.com/MEGA-M1ND/FragmentGuard",
+    "scan_git_version": "0.0.0-dev.0+unknown",
+    "scan_git_commit": "cecc763",
+    "scanner_key": "fragmentguard",
+    "scanner_name": "fragmentguard/fragmentguard",
+    "scanner_version": 0,
+    "scanner_package_version": "0.1.0",
+    "scanner_file": null,
+    "scanner_params": "{\"policy\":{\"restricted-record\":\"restricted\",\"public-guide\":\"public\"},\"budget\":3,\"horizon\":100}",
+    "input_type": "transcript",
+    "input_ids": "[\"stream01\"]",
+    "uuid": "K5Rkv7QZxm9Ta3KNDENJ7K",
+    "label": null,
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e06",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 6,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e06"
+              ],
+              "events_reviewed": 1,
+              "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established.",
+              "records_examined": 6
+            },
+            "fixed_window": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e03",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e06 of summary: all ancestry traces to public catalog root(s) public-guide via selected event(s) e01, e03.",
+              "records_examined": 6
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 6,
+              "explanation": "Public publication e06 of summary: all ancestry traces to public catalog root(s) public-guide via selected event(s) e01, e03.",
+              "records_examined": 6
+            }
+          }
+        }
+      ]
+    },
+    "value_type": "object",
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "message_references": "[]",
+    "event_references": "[]",
+    "scan_error": null,
+    "scan_error_traceback": null,
+    "scan_error_type": null,
+    "validation_target": null,
+    "validation_result": null,
+    "validation_predicate": null,
+    "validation_split": null,
+    "scan_total_tokens": 0,
+    "scan_model_usage": "{}",
+    "timestamp": "2026-10-07T07:26:45.902175+00:00"
+  },
+  {
+    "transcript_id": "stream02",
+    "transcript_source_type": "fragmentguard_synthetic",
+    "transcript_source_id": null,
+    "transcript_source_uri": null,
+    "transcript_date": null,
+    "transcript_task_set": null,
+    "transcript_task_id": null,
+    "transcript_task_repeat": null,
+    "transcript_agent": null,
+    "transcript_agent_args": null,
+    "transcript_model": null,
+    "transcript_model_options": null,
+    "transcript_score": null,
+    "transcript_success": null,
+    "transcript_message_count": null,
+    "transcript_total_time": null,
+    "transcript_total_tokens": null,
+    "transcript_error": null,
+    "transcript_limit": null,
+    "transcript_metadata": "{}",
+    "scan_id": "JM4Q3FbyvyPc9dejX6oNdP",
+    "scan_tags": "[]",
+    "scan_metadata": "{}",
+    "scan_git_origin": "https://github.com/MEGA-M1ND/FragmentGuard",
+    "scan_git_version": "0.0.0-dev.0+unknown",
+    "scan_git_commit": "cecc763",
+    "scanner_key": "fragmentguard",
+    "scanner_name": "fragmentguard/fragmentguard",
+    "scanner_version": 0,
+    "scanner_package_version": "0.1.0",
+    "scanner_file": null,
+    "scanner_params": "{\"policy\":{\"restricted-record\":\"restricted\",\"public-guide\":\"public\"},\"budget\":3,\"horizon\":100}",
+    "input_type": "transcript",
+    "input_ids": "[\"stream02\"]",
+    "uuid": "CmkMeAQMFCXGt9F4iUAbNw",
+    "label": null,
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e06",
+          "publishing_agent": "c",
+          "audience": "internal",
+          "tick": 6,
+          "methods": {
+            "per_agent": {
+              "status": "clear",
+              "evidence_ids": [
+                "e06"
+              ],
+              "events_reviewed": 1,
+              "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy.",
+              "records_examined": 6
+            },
+            "fixed_window": {
+              "status": "clear",
+              "evidence_ids": [
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e03",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy.",
+              "records_examined": 6
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 6,
+              "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy.",
+              "records_examined": 6
+            }
+          }
+        }
+      ]
+    },
+    "value_type": "object",
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "message_references": "[]",
+    "event_references": "[]",
+    "scan_error": null,
+    "scan_error_traceback": null,
+    "scan_error_type": null,
+    "validation_target": null,
+    "validation_result": null,
+    "validation_predicate": null,
+    "validation_split": null,
+    "scan_total_tokens": 0,
+    "scan_model_usage": "{}",
+    "timestamp": "2026-10-07T07:26:45.911649+00:00"
+  },
+  {
+    "transcript_id": "stream03",
+    "transcript_source_type": "fragmentguard_synthetic",
+    "transcript_source_id": null,
+    "transcript_source_uri": null,
+    "transcript_date": null,
+    "transcript_task_set": null,
+    "transcript_task_id": null,
+    "transcript_task_repeat": null,
+    "transcript_agent": null,
+    "transcript_agent_args": null,
+    "transcript_model": null,
+    "transcript_model_options": null,
+    "transcript_score": null,
+    "transcript_success": null,
+    "transcript_message_count": null,
+    "transcript_total_time": null,
+    "transcript_total_tokens": null,
+    "transcript_error": null,
+    "transcript_limit": null,
+    "transcript_metadata": "{}",
+    "scan_id": "JM4Q3FbyvyPc9dejX6oNdP",
+    "scan_tags": "[]",
+    "scan_metadata": "{}",
+    "scan_git_origin": "https://github.com/MEGA-M1ND/FragmentGuard",
+    "scan_git_version": "0.0.0-dev.0+unknown",
+    "scan_git_commit": "cecc763",
+    "scanner_key": "fragmentguard",
+    "scanner_name": "fragmentguard/fragmentguard",
+    "scanner_version": 0,
+    "scanner_package_version": "0.1.0",
+    "scanner_file": null,
+    "scanner_params": "{\"policy\":{\"restricted-record\":\"restricted\",\"public-guide\":\"public\"},\"budget\":3,\"horizon\":100}",
+    "input_type": "transcript",
+    "input_ids": "[\"stream03\"]",
+    "uuid": "f3LTtBCcMH7imiVvu4QKsp",
+    "label": null,
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e06",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 6,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e06"
+              ],
+              "events_reviewed": 1,
+              "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established.",
+              "records_examined": 6
+            },
+            "fixed_window": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e03",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e06 of summary: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e03.",
+              "records_examined": 6
+            },
+            "full_context_reference": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 6,
+              "explanation": "Public publication e06 of summary: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e03.",
+              "records_examined": 6
+            }
+          }
+        }
+      ]
+    },
+    "value_type": "object",
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "message_references": "[]",
+    "event_references": "[]",
+    "scan_error": null,
+    "scan_error_traceback": null,
+    "scan_error_type": null,
+    "validation_target": null,
+    "validation_result": null,
+    "validation_predicate": null,
+    "validation_split": null,
+    "scan_total_tokens": 0,
+    "scan_model_usage": "{}",
+    "timestamp": "2026-10-07T07:26:45.920367+00:00"
+  },
+  {
+    "transcript_id": "stream04",
+    "transcript_source_type": "fragmentguard_synthetic",
+    "transcript_source_id": null,
+    "transcript_source_uri": null,
+    "transcript_date": null,
+    "transcript_task_set": null,
+    "transcript_task_id": null,
+    "transcript_task_repeat": null,
+    "transcript_agent": null,
+    "transcript_agent_args": null,
+    "transcript_model": null,
+    "transcript_model_options": null,
+    "transcript_score": null,
+    "transcript_success": null,
+    "transcript_message_count": null,
+    "transcript_total_time": null,
+    "transcript_total_tokens": null,
+    "transcript_error": null,
+    "transcript_limit": null,
+    "transcript_metadata": "{}",
+    "scan_id": "JM4Q3FbyvyPc9dejX6oNdP",
+    "scan_tags": "[]",
+    "scan_metadata": "{}",
+    "scan_git_origin": "https://github.com/MEGA-M1ND/FragmentGuard",
+    "scan_git_version": "0.0.0-dev.0+unknown",
+    "scan_git_commit": "cecc763",
+    "scanner_key": "fragmentguard",
+    "scanner_name": "fragmentguard/fragmentguard",
+    "scanner_version": 0,
+    "scanner_package_version": "0.1.0",
+    "scanner_file": null,
+    "scanner_params": "{\"policy\":{\"restricted-record\":\"restricted\",\"public-guide\":\"public\"},\"budget\":3,\"horizon\":100}",
+    "input_type": "transcript",
+    "input_ids": "[\"stream04\"]",
+    "uuid": "QWTcDaPXzJidt8PZK4Mozf",
+    "label": null,
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e07",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 7,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e07"
+              ],
+              "events_reviewed": 1,
+              "explanation": "Public publication e07 of digest: no selected producer or catalog root for digest, so ancestry is not established.",
+              "records_examined": 7
+            },
+            "fixed_window": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e05",
+                "e06",
+                "e07"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e07 of digest: no selected producer or catalog root for digest, so ancestry is not established.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "alert",
+              "evidence_ids": [
+                "e02",
+                "e04",
+                "e07"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e07 of digest: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e04.",
+              "records_examined": 7
+            },
+            "full_context_reference": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06",
+                "e07"
+              ],
+              "events_reviewed": 7,
+              "explanation": "Public publication e07 of digest: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e04.",
+              "records_examined": 7
+            }
+          }
+        }
+      ]
+    },
+    "value_type": "object",
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "message_references": "[]",
+    "event_references": "[]",
+    "scan_error": null,
+    "scan_error_traceback": null,
+    "scan_error_type": null,
+    "validation_target": null,
+    "validation_result": null,
+    "validation_predicate": null,
+    "validation_split": null,
+    "scan_total_tokens": 0,
+    "scan_model_usage": "{}",
+    "timestamp": "2026-10-07T07:26:45.929266+00:00"
+  }
+]

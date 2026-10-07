@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "purpose": "Integration smoke test on four hand-designed synthetic streams; not a paper replication, a benchmark, or evidence of real-world detection performance.",
+  "run_status": "complete",
+  "execution_mode": "direct",
+  "path_completed": "direct: Scout transcript database round trip, then direct invocation of the decorated scanner (Scout scheduler and recorder skipped; no model created)",
+  "blocker": null,
+  "config": {
+    "methods": [
+      "per_agent",
+      "fixed_window",
+      "correlated",
+      "full_context_reference"
+    ],
+    "budget": 3,
+    "horizon": 100
+  },
+  "label_boundary": "Scanner input contained only neutral stream IDs and label-free event records. Evaluator expectations were read from ground_truth.json only after scanner results had been produced, and appear only in the 'evaluation' section.",
+  "rows": [
+    {
+      "stream_id": "stream01",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "per_agent",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e06"
+      ],
+      "selected_event_count": 1,
+      "records_examined": 6,
+      "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established."
+    },
+    {
+      "stream_id": "stream01",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "fixed_window",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e04",
+        "e05",
+        "e06"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 3,
+      "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established."
+    },
+    {
+      "stream_id": "stream01",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "correlated",
+      "status": "clear",
+      "evidence_ids": [
+        "e01",
+        "e03",
+        "e06"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 6,
+      "explanation": "Public publication e06 of summary: all ancestry traces to public catalog root(s) public-guide via selected event(s) e01, e03."
+    },
+    {
+      "stream_id": "stream01",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "full_context_reference",
+      "status": "clear",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e03",
+        "e04",
+        "e05",
+        "e06"
+      ],
+      "selected_event_count": 6,
+      "records_examined": 6,
+      "explanation": "Public publication e06 of summary: all ancestry traces to public catalog root(s) public-guide via selected event(s) e01, e03."
+    },
+    {
+      "stream_id": "stream02",
+      "publication_id": "e06",
+      "audience": "internal",
+      "method": "per_agent",
+      "status": "clear",
+      "evidence_ids": [
+        "e06"
+      ],
+      "selected_event_count": 1,
+      "records_examined": 6,
+      "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy."
+    },
+    {
+      "stream_id": "stream02",
+      "publication_id": "e06",
+      "audience": "internal",
+      "method": "fixed_window",
+      "status": "clear",
+      "evidence_ids": [
+        "e04",
+        "e05",
+        "e06"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 3,
+      "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy."
+    },
+    {
+      "stream_id": "stream02",
+      "publication_id": "e06",
+      "audience": "internal",
+      "method": "correlated",
+      "status": "clear",
+      "evidence_ids": [
+        "e01",
+        "e03",
+        "e06"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 6,
+      "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy."
+    },
+    {
+      "stream_id": "stream02",
+      "publication_id": "e06",
+      "audience": "internal",
+      "method": "full_context_reference",
+      "status": "clear",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e03",
+        "e04",
+        "e05",
+        "e06"
+      ],
+      "selected_event_count": 6,
+      "records_examined": 6,
+      "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy."
+    },
+    {
+      "stream_id": "stream03",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "per_agent",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e06"
+      ],
+      "selected_event_count": 1,
+      "records_examined": 6,
+      "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established."
+    },
+    {
+      "stream_id": "stream03",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "fixed_window",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e04",
+        "e05",
+        "e06"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 3,
+      "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established."
+    },
+    {
+      "stream_id": "stream03",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "correlated",
+      "status": "alert",
+      "evidence_ids": [
+        "e01",
+        "e03",
+        "e06"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 6,
+      "explanation": "Public publication e06 of summary: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e03."
+    },
+    {
+      "stream_id": "stream03",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "full_context_reference",
+      "status": "alert",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e03",
+        "e04",
+        "e05",
+        "e06"
+      ],
+      "selected_event_count": 6,
+      "records_examined": 6,
+      "explanation": "Public publication e06 of summary: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e03."
+    },
+    {
+      "stream_id": "stream04",
+      "publication_id": "e07",
+      "audience": "public",
+      "method": "per_agent",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e07"
+      ],
+      "selected_event_count": 1,
+      "records_examined": 7,
+      "explanation": "Public publication e07 of digest: no selected producer or catalog root for digest, so ancestry is not established."
+    },
+    {
+      "stream_id": "stream04",
+      "publication_id": "e07",
+      "audience": "public",
+      "method": "fixed_window",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e05",
+        "e06",
+        "e07"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 3,
+      "explanation": "Public publication e07 of digest: no selected producer or catalog root for digest, so ancestry is not established."
+    },
+    {
+      "stream_id": "stream04",
+      "publication_id": "e07",
+      "audience": "public",
+      "method": "correlated",
+      "status": "alert",
+      "evidence_ids": [
+        "e02",
+        "e04",
+        "e07"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 7,
+      "explanation": "Public publication e07 of digest: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e04."
+    },
+    {
+      "stream_id": "stream04",
+      "publication_id": "e07",
+      "audience": "public",
+      "method": "full_context_reference",
+      "status": "alert",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e03",
+        "e04",
+        "e05",
+        "e06",
+        "e07"
+      ],
+      "selected_event_count": 7,
+      "records_examined": 7,
+      "explanation": "Public publication e07 of digest: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e04."
+    }
+  ],
+  "status_counts": {
+    "per_agent": {
+      "alert": 0,
+      "clear": 1,
+      "insufficient_evidence": 3
+    },
+    "fixed_window": {
+      "alert": 0,
+      "clear": 1,
+      "insufficient_evidence": 3
+    },
+    "correlated": {
+      "alert": 2,
+      "clear": 2,
+      "insufficient_evidence": 0
+    },
+    "full_context_reference": {
+      "alert": 2,
+      "clear": 2,
+      "insufficient_evidence": 0
+    }
+  },
+  "evaluation": {
+    "methods_checked": [
+      "correlated",
+      "full_context_reference"
+    ],
+    "checks": [
+      {
+        "stream_id": "stream01",
+        "publication_id": "e06",
+        "method": "correlated",
+        "expected": "clear",
+        "observed": "clear",
+        "match": true
+      },
+      {
+        "stream_id": "stream01",
+        "publication_id": "e06",
+        "method": "full_context_reference",
+        "expected": "clear",
+        "observed": "clear",
+        "match": true
+      },
+      {
+        "stream_id": "stream02",
+        "publication_id": "e06",
+        "method": "correlated",
+        "expected": "clear",
+        "observed": "clear",
+        "match": true
+      },
+      {
+        "stream_id": "stream02",
+        "publication_id": "e06",
+        "method": "full_context_reference",
+        "expected": "clear",
+        "observed": "clear",
+        "match": true
+      },
+      {
+        "stream_id": "stream03",
+        "publication_id": "e06",
+        "method": "correlated",
+        "expected": "alert",
+        "observed": "alert",
+        "match": true
+      },
+      {
+        "stream_id": "stream03",
+        "publication_id": "e06",
+        "method": "full_context_reference",
+        "expected": "alert",
+        "observed": "alert",
+        "match": true
+      },
+      {
+        "stream_id": "stream04",
+        "publication_id": "e07",
+        "method": "correlated",
+        "expected": "alert",
+        "observed": "alert",
+        "match": true
+      },
+      {
+        "stream_id": "stream04",
+        "publication_id": "e07",
+        "method": "full_context_reference",
+        "expected": "alert",
+        "observed": "alert",
+        "match": true
+      }
+    ],
+    "problems": [],
+    "all_match": true,
+    "note": "Expectations were written alongside the checker; agreement verifies wiring, not generalisation."
+  },
+  "measurement_notes": {
+    "selected_event_count": "Measured: events passed to the checker for that view.",
+    "records_examined": "Measured: distinct history records the selector looked at; not time or tokens.",
+    "event_budget": "Design: the three bounded views share a maximum budget, not equal cost.",
+    "tokens_and_latency": "Not measured; the checker is deterministic and uses no model."
+  }
+}

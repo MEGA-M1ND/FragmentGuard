@@ -1,0 +1,311 @@
+[
+  {
+    "transcript_id": "stream01",
+    "uuid": "DW2uU9cwTVx8w2CJ9fZDAe",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e06",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 6,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e06"
+              ],
+              "events_reviewed": 1,
+              "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established.",
+              "records_examined": 6
+            },
+            "fixed_window": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e03",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e06 of summary: all ancestry traces to public catalog root(s) public-guide via selected event(s) e01, e03.",
+              "records_examined": 6
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 6,
+              "explanation": "Public publication e06 of summary: all ancestry traces to public catalog root(s) public-guide via selected event(s) e01, e03.",
+              "records_examined": 6
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  },
+  {
+    "transcript_id": "stream02",
+    "uuid": "e4ZeJ7BfzQUphqXvpcubvR",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e06",
+          "publishing_agent": "c",
+          "audience": "internal",
+          "tick": 6,
+          "methods": {
+            "per_agent": {
+              "status": "clear",
+              "evidence_ids": [
+                "e06"
+              ],
+              "events_reviewed": 1,
+              "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy.",
+              "records_examined": 6
+            },
+            "fixed_window": {
+              "status": "clear",
+              "evidence_ids": [
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e03",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy.",
+              "records_examined": 6
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 6,
+              "explanation": "Internal publication e06 of summary: internal audiences are allowed by the toy policy.",
+              "records_examined": 6
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  },
+  {
+    "transcript_id": "stream03",
+    "uuid": "fiv8KypAgPXMysXtrecs47",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e06",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 6,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e06"
+              ],
+              "events_reviewed": 1,
+              "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established.",
+              "records_examined": 6
+            },
+            "fixed_window": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e06 of summary: no selected producer or catalog root for summary, so ancestry is not established.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e03",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e06 of summary: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e03.",
+              "records_examined": 6
+            },
+            "full_context_reference": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 6,
+              "explanation": "Public publication e06 of summary: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e03.",
+              "records_examined": 6
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  },
+  {
+    "transcript_id": "stream04",
+    "uuid": "VSfWVbxeKhhhYQKnDfbGcK",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e07",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 7,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e07"
+              ],
+              "events_reviewed": 1,
+              "explanation": "Public publication e07 of digest: no selected producer or catalog root for digest, so ancestry is not established.",
+              "records_examined": 7
+            },
+            "fixed_window": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e05",
+                "e06",
+                "e07"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e07 of digest: no selected producer or catalog root for digest, so ancestry is not established.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "alert",
+              "evidence_ids": [
+                "e02",
+                "e04",
+                "e07"
+              ],
+              "events_reviewed": 3,
+              "explanation": "Public publication e07 of digest: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e04.",
+              "records_examined": 7
+            },
+            "full_context_reference": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06",
+                "e07"
+              ],
+              "events_reviewed": 7,
+              "explanation": "Public publication e07 of digest: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e04.",
+              "records_examined": 7
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  }
+]
