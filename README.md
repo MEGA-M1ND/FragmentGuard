@@ -179,7 +179,8 @@ The core (`schema`, `correlation`, `monitor`, `pipeline`) does not import Scout.
 - Bindings are derived from the complete ordered log. If a real log dropped a
   write, a derived binding would point to an older write. Logs with missing
   events need version bindings recorded at the source, which is a schema change
-  that has not been made.
+  that has not been made. The next experiment therefore uses complete logs only.
+  Missing-log robustness is deferred (see `docs/next_experiment.md`).
 - Up to commit `4461cf9`, before bindings, a read could resolve to an older selected write when
   its actual producer was omitted. That gave wrong `clear` and `alert` results
   outside the fixtures. This is fixed; see `docs/dev_log.md`.

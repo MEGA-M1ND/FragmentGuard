@@ -46,7 +46,9 @@ general from those that hold only for the four fixtures.
    would bind the read to an older write: the same stale-write failure, moved
    one layer down. Data with missing events needs bindings recorded at the
    source, such as version IDs carried in the records. That would be a schema
-   change. It is not implemented, and the fixtures do not need it.
+   change. It is not implemented, and the fixtures do not need it. For this
+   reason the next experiment (`docs/next_experiment.md`) uses complete,
+   ordered logs only. Dropped-event cases wait for source-recorded version IDs.
 
 ## Selection
 

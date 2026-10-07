@@ -100,3 +100,20 @@ Short factual entries. These are engineering notes, not research results.
   sub-views; the fixed checker on none.
 - **Remaining.** Bindings are derived from the log, so a log missing a write
   still yields a stale binding (see `docs/assumptions.md` §6).
+
+## 2026-10-07: next-experiment plan corrected
+
+- The previous plan proposed cases with dropped producer events. Bindings are
+  derived from the log, so deleting a write would silently bind the read to an
+  older write and recreate the stale-write problem during binding construction.
+  (Pointed out in review after PR #1.)
+- The plan now requires complete, ordered logs. Missing evidence is created
+  only by the views (budget, horizon, branch priority).
+- Missing-log robustness moves to a later experiment that needs version IDs
+  recorded at the source.
+- The dataset is now 12 cases written as 6 matched benign/restricted pairs, by
+  an author who has not inspected the selector. The pairs vary branching,
+  overwrites, interleaving, and timing.
+- The commit, budget, horizon, branch priority, gate, and input and label
+  hashes are frozen before labels are opened. Each mode is run once, and every
+  disagreement is inspected, including cases where a baseline wins.
