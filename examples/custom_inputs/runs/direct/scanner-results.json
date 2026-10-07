@@ -1,0 +1,441 @@
+[
+  {
+    "transcript_id": "stream11",
+    "uuid": "FaFh7zSLZm729Ls4f5brTo",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e04",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 4,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04"
+              ],
+              "events_reviewed": 1,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                },
+                {
+                  "resource": "snapshot",
+                  "bound_producer": "e02"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence); snapshot (its producer e02 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "fixed_window": {
+              "status": "alert",
+              "evidence_ids": [
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e01"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e03. Also unresolved: scratch (its producer e01 is not in the selected evidence).",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "full_context_reference": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 4,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e02, e03.",
+              "records_examined": 4
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  },
+  {
+    "transcript_id": "stream12",
+    "uuid": "RaSX9Mui8PbqQPWJhnAejc",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e04",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 4,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04"
+              ],
+              "events_reviewed": 1,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                },
+                {
+                  "resource": "snapshot",
+                  "bound_producer": "e02"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence); snapshot (its producer e02 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "fixed_window": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e01"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e01 is not in the selected evidence).",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 4,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e04 of scratch, snapshot: all ancestry traces to public catalog root(s) public-guide via selected event(s) e01, e02, e03.",
+              "records_examined": 4
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  },
+  {
+    "transcript_id": "stream13",
+    "uuid": "ThK2LtVpAmz7eSbJq7GcGL",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e03",
+          "publishing_agent": "a",
+          "audience": "public",
+          "tick": 3,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e01",
+                "e03"
+              ],
+              "events_reviewed": 2,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e02"
+                }
+              ],
+              "explanation": "Public publication e03 of scratch: ancestry not established for scratch (its producer e02 is not in the selected evidence).",
+              "records_examined": 3
+            },
+            "fixed_window": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e03 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e02.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "clear",
+              "evidence_ids": [
+                "e02",
+                "e03"
+              ],
+              "events_reviewed": 2,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e03 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e02.",
+              "records_examined": 2
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e03 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e02.",
+              "records_examined": 3
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  },
+  {
+    "transcript_id": "stream14",
+    "uuid": "HPmBDt8kBAowSmWKtghx3D",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e04",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 4,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04"
+              ],
+              "events_reviewed": 1,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                },
+                {
+                  "resource": "snapshot",
+                  "bound_producer": "e02"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence); snapshot (its producer e02 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "fixed_window": {
+              "status": "alert",
+              "evidence_ids": [
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e01"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e03. Also unresolved: scratch (its producer e01 is not in the selected evidence).",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "full_context_reference": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 4,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e02, e03.",
+              "records_examined": 4
+            }
+          }
+        },
+        {
+          "publication_id": "e06",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 6,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04",
+                "e06"
+              ],
+              "events_reviewed": 2,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e05"
+                }
+              ],
+              "explanation": "Public publication e06 of scratch: ancestry not established for scratch (its producer e05 is not in the selected evidence).",
+              "records_examined": 6
+            },
+            "fixed_window": {
+              "status": "clear",
+              "evidence_ids": [
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e06 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e05.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "clear",
+              "evidence_ids": [
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 2,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e06 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e05.",
+              "records_examined": 2
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 6,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e06 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e05.",
+              "records_examined": 6
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  }
+]

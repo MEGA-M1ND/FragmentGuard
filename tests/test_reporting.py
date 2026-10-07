@@ -1,5 +1,6 @@
 """Report integrity: JSON/Markdown agreement, incomplete runs, and the label boundary."""
 
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -8,6 +9,8 @@ import fragmentguard
 from fragmentguard import cli, reporting
 from fragmentguard.pipeline import METHODS, PipelineConfig, evaluate_streams
 from fragmentguard.schema import load_policy, load_streams
+
+EXAMPLE = Path(__file__).resolve().parent.parent / "examples" / "custom_inputs"
 
 
 def markdown_table(text: str, heading: str) -> list[list[str]]:
@@ -34,18 +37,19 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(
             evidence,
             [[r["stream_id"], r["publication_id"], r["method"], r["status"], str(r["selected_event_count"]),
-              str(r["records_examined"]), ", ".join(r["evidence_ids"])] for r in rows],
+              str(r["records_examined"]), ", ".join(r["evidence_ids"]),
+              reporting.format_unresolved(r["unresolved_inputs"])] for r in rows],
         )
         outcomes = markdown_table(self.markdown, "Outcomes")
         by_key = {(r["stream_id"], r["method"]): r for r in rows}
         for cells in outcomes:
             stream_id = cells[0]
             self.assertEqual(cells[2], self.expected[stream_id])
-            for method, cell in zip(METHODS, cells[3:]):
+            for method, cell in zip(METHODS, cells[3:], strict=True):
                 row = by_key[(stream_id, method)]
                 self.assertEqual(cell, f"{row['status']} ({row['selected_event_count']})")
         counts = markdown_table(self.markdown, "Status counts")
-        for method, cells in zip(METHODS, counts):
+        for method, cells in zip(METHODS, counts, strict=True):
             self.assertEqual([int(c) for c in cells[1:]],
                              list(self.report["status_counts"][method].values()))
 
@@ -61,6 +65,40 @@ class ReportTests(unittest.TestCase):
         wrong = dict(self.expected, stream01="alert")
         self.assertFalse(reporting.evaluate(self.results, wrong)["all_match"])
         self.assertFalse(reporting.evaluate(self.results, {"stream01": "clear"})["all_match"])
+
+    def test_per_publication_labels_and_gating(self):
+        streams = json.loads((EXAMPLE / "streams.json").read_text())
+        results = evaluate_streams(streams, load_policy(EXAMPLE / "policy.json"))
+        labels = reporting.load_ground_truth(EXAMPLE / "labels.json")
+        full_only = reporting.evaluate(results, labels, ("full_context_reference",))
+        self.assertTrue(full_only["all_match"])
+        self.assertEqual(len(full_only["checks"]), 5 * len(METHODS))  # every method is reported
+        correlated = reporting.evaluate(results, labels, ("correlated",))
+        self.assertFalse(correlated["all_match"])
+        self.assertEqual(correlated["per_method"]["correlated"],
+                         {"match": 2, "insufficient_evidence": 3, "contradicts_label": 0})
+        self.assertTrue(reporting.evaluate(results, labels, ())["all_match"])
+        wrong_publication = dict(labels, stream14={"e04": "alert"})
+        self.assertTrue(reporting.evaluate(results, wrong_publication, ())["problems"])
+
+    def test_invalid_labels_are_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            for bad in ({}, {"expected": {}}, {"expected": {"stream01": "maybe"}},
+                        {"expected": {"stream01": {}}}, {"expected": {"stream01": {"e01": "ok"}}}):
+                path = Path(directory) / "labels.json"
+                path.write_text(json.dumps(bad))
+                with self.assertRaises(ValueError, msg=repr(bad)):
+                    reporting.load_ground_truth(path)
+
+    def test_unlabelled_report_says_so(self):
+        report = reporting.build_report(
+            mode="direct", complete=True, path_completed="test", config=PipelineConfig().to_dict(),
+            stream_results=self.results, evaluation=None,
+        )
+        markdown = reporting.render_markdown(report)
+        self.assertIn("No evaluator labels were supplied", markdown)
+        self.assertIn("no labels supplied", markdown)
+        self.assertEqual(report["evaluation_note"], "No evaluator labels supplied.")
 
     def test_incomplete_run_reports_no_outcomes(self):
         report = reporting.build_report(

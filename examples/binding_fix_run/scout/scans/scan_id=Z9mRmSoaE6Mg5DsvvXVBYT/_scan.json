@@ -1,0 +1,53 @@
+{
+  "scan_id": "Z9mRmSoaE6Mg5DsvvXVBYT",
+  "scan_name": "FragmentGuard",
+  "timestamp": "2026-10-07T09:14:45.578211+00:00",
+  "model": {
+    "model": "mockllm/model",
+    "config": {
+      "max_connections": 25
+    },
+    "args": {}
+  },
+  "revision": {
+    "type": "git",
+    "origin": "https://github.com/MEGA-M1ND/FragmentGuard",
+    "version": "0.0.0-dev.0+unknown",
+    "commit": "b28e7fe"
+  },
+  "packages": {
+    "inspect_ai": "0.3.277",
+    "inspect_scout": "0.5.4"
+  },
+  "options": {
+    "max_transcripts": 25,
+    "max_processes": 1
+  },
+  "transcripts": {
+    "type": "database",
+    "location": "runs/fix-bundled-scout/transcripts",
+    "filter": [],
+    "transcript_ids": {
+      "stream01": "transcripts_20261007T091444_5b402dab.parquet",
+      "stream02": "transcripts_20261007T091444_5b402dab.parquet",
+      "stream03": "transcripts_20261007T091444_5b402dab.parquet",
+      "stream04": "transcripts_20261007T091444_5b402dab.parquet"
+    },
+    "count": 0
+  },
+  "scanners": {
+    "fragmentguard": {
+      "name": "fragmentguard/fragmentguard",
+      "version": 0,
+      "package_version": "0.1.0",
+      "params": {
+        "policy": {
+          "restricted-record": "restricted",
+          "public-guide": "public"
+        },
+        "budget": 3,
+        "horizon": 100
+      }
+    }
+  }
+}

@@ -70,3 +70,26 @@ scheduled modes produced identical outcomes. Artifacts are in
 - Inspect Scout's documentation site and arXiv were blocked by this
   container's egress proxy. The API was checked against the installed package
   instead.
+
+## Re-run after the stale-write fix (same day)
+
+From commit `b28e7fe` (clean tree), Python 3.12.3, same pins plus the dev tools
+`ruff==0.16.10` and `build==1.6.1`:
+
+```bash
+.venv/bin/ruff check src tests                                  # all checks passed
+.venv/bin/python -m unittest discover -s tests                  # 58 tests, OK
+.venv/bin/fragmentguard demo --mode direct --output runs/fix-bundled-direct   # exit 0
+.venv/bin/fragmentguard demo --mode scout  --output runs/fix-bundled-scout    # exit 0
+.venv/bin/fragmentguard demo --mode direct --output runs/fix-custom-direct \
+  --streams examples/custom_inputs/streams.json --policy examples/custom_inputs/policy.json \
+  --labels examples/custom_inputs/labels.json --gate full_context_reference      # exit 0
+.venv/bin/fragmentguard demo --mode scout --output runs/fix-custom-scout ...      # same flags, exit 0
+```
+
+- The bundled-fixture verdicts are unchanged (`examples/binding_fix_run/`).
+- On the regression streams, no view contradicts full context any more
+  (`examples/custom_inputs/runs/`).
+- Each scheduled scan recorded 0 tokens.
+- A wheel built with `python -m build` was installed into a clean venv and run
+  from an unrelated directory (exit 0).

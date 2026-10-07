@@ -1,44 +1,89 @@
 name: ci
 
+# Offline throughout: no secrets, GPUs, real agents, or paid models.
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  PYTHON_VERSION: "3.12"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
 jobs:
-  offline-checks:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install the pinned linter
+        run: python -m pip install "$(grep '^ruff==' requirements.lock.txt)"
+      - name: Ruff
+        run: ruff check src tests
+      - name: Byte-compile
+        run: python -m compileall -q src tests
+
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-
+          python-version: ${{ env.PYTHON_VERSION }}
       - name: Install locked dependencies and the package
         run: |
-          python -m pip install --upgrade pip
           python -m pip install -r requirements.lock.txt
           python -m pip install --no-deps -e '.[dev]'
-
-      # Everything below runs offline: no secrets, GPUs, real agents, or paid models.
-      - name: Unit and Scout integration tests
+      # Includes the stale-write regression suite, generated-stream properties,
+      # Scout round trip and direct/scheduled agreement, and byte preservation.
+      - name: Unit, property, preservation, and Scout integration tests
         run: python -m unittest discover -s tests -v
 
+  smoke:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install locked dependencies and the package
+        run: |
+          python -m pip install -r requirements.lock.txt
+          python -m pip install --no-deps -e '.[dev]'
       # Run from outside the checkout to confirm the installed command works there.
-      - name: Direct-mode demo
+      - name: Bundled fixtures, direct mode
         working-directory: ${{ runner.temp }}
-        run: fragmentguard demo --mode direct --output fg-runs/ci-direct
-
+        run: fragmentguard demo --mode direct --output fg-runs/bundled-direct
       # The real scheduled scan. A failure here fails CI; it is not masked by direct mode.
-      - name: Scheduled Scout smoke run
+      - name: Bundled fixtures, scheduled Scout scan
         working-directory: ${{ runner.temp }}
-        run: fragmentguard demo --mode scout --output fg-runs/ci-scout
-
+        run: fragmentguard demo --mode scout --output fg-runs/bundled-scout
+      - name: Custom inputs, both modes
+        working-directory: ${{ runner.temp }}
+        env:
+          EXAMPLE: ${{ github.workspace }}/examples/custom_inputs
+        run: |
+          for mode in direct scout; do
+            fragmentguard demo --mode "$mode" --output "fg-runs/custom-$mode" \
+              --streams "$EXAMPLE/streams.json" --policy "$EXAMPLE/policy.json" \
+              --labels "$EXAMPLE/labels.json" --budget 3 --horizon 100 \
+              --gate full_context_reference
+          done
       - name: Preserve run artifacts (including failures)
         if: always()
         uses: actions/upload-artifact@v4
@@ -47,3 +92,34 @@ jobs:
           path: ${{ runner.temp }}/fg-runs
           if-no-files-found: warn
           retention-days: 14
+
+  package:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Build sdist and wheel
+        run: |
+          python -m pip install "$(grep '^build==' requirements.lock.txt)"
+          python -m build --outdir dist
+          (cd dist && sha256sum * > SHA256SUMS)
+      # Install the built wheel (not the checkout) into a clean environment and
+      # run both modes from an unrelated directory, so packaged fixtures are used.
+      - name: Smoke-test the built wheel
+        run: |
+          python -m venv "$RUNNER_TEMP/wheel-env"
+          "$RUNNER_TEMP/wheel-env/bin/python" -m pip install -r requirements.lock.txt
+          "$RUNNER_TEMP/wheel-env/bin/python" -m pip install --no-deps dist/*.whl
+          cd "$RUNNER_TEMP"
+          "$RUNNER_TEMP/wheel-env/bin/fragmentguard" demo --mode direct --output wheel-runs/direct
+          "$RUNNER_TEMP/wheel-env/bin/fragmentguard" demo --mode scout --output wheel-runs/scout
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: error
+          retention-days: 30

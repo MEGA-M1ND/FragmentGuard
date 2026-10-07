@@ -1,0 +1,625 @@
+{
+  "schema_version": 1,
+  "purpose": "Integration smoke test on four hand-designed synthetic streams; not a paper replication, a benchmark, or evidence of real-world detection performance.",
+  "run_status": "complete",
+  "execution_mode": "direct",
+  "path_completed": "direct: Scout transcript database round trip, then direct invocation of the decorated scanner (Scout scheduler and recorder skipped; no model created)",
+  "blocker": null,
+  "config": {
+    "methods": [
+      "per_agent",
+      "fixed_window",
+      "correlated",
+      "full_context_reference"
+    ],
+    "budget": 3,
+    "horizon": 100
+  },
+  "label_boundary": "Scanner input contained only neutral stream IDs and label-free event records. Evaluator labels (if any) were read from their file only after scanner results had been produced, and appear only in the 'evaluation' section.",
+  "rows": [
+    {
+      "stream_id": "stream11",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "per_agent",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e04"
+      ],
+      "selected_event_count": 1,
+      "records_examined": 4,
+      "unresolved_inputs": [
+        {
+          "resource": "scratch",
+          "bound_producer": "e03"
+        },
+        {
+          "resource": "snapshot",
+          "bound_producer": "e02"
+        }
+      ],
+      "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence); snapshot (its producer e02 is not in the selected evidence)."
+    },
+    {
+      "stream_id": "stream11",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "fixed_window",
+      "status": "alert",
+      "evidence_ids": [
+        "e02",
+        "e03",
+        "e04"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 3,
+      "unresolved_inputs": [
+        {
+          "resource": "scratch",
+          "bound_producer": "e01"
+        }
+      ],
+      "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e03. Also unresolved: scratch (its producer e01 is not in the selected evidence)."
+    },
+    {
+      "stream_id": "stream11",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "correlated",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e04"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 4,
+      "unresolved_inputs": [
+        {
+          "resource": "scratch",
+          "bound_producer": "e03"
+        }
+      ],
+      "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence)."
+    },
+    {
+      "stream_id": "stream11",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "full_context_reference",
+      "status": "alert",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e03",
+        "e04"
+      ],
+      "selected_event_count": 4,
+      "records_examined": 4,
+      "unresolved_inputs": [],
+      "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e02, e03."
+    },
+    {
+      "stream_id": "stream12",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "per_agent",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e04"
+      ],
+      "selected_event_count": 1,
+      "records_examined": 4,
+      "unresolved_inputs": [
+        {
+          "resource": "scratch",
+          "bound_producer": "e03"
+        },
+        {
+          "resource": "snapshot",
+          "bound_producer": "e02"
+        }
+      ],
+      "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence); snapshot (its producer e02 is not in the selected evidence)."
+    },
+    {
+      "stream_id": "stream12",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "fixed_window",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e02",
+        "e03",
+        "e04"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 3,
+      "unresolved_inputs": [
+        {
+          "resource": "scratch",
+          "bound_producer": "e01"
+        }
+      ],
+      "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e01 is not in the selected evidence)."
+    },
+    {
+      "stream_id": "stream12",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "correlated",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e04"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 4,
+      "unresolved_inputs": [
+        {
+          "resource": "scratch",
+          "bound_producer": "e03"
+        }
+      ],
+      "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence)."
+    },
+    {
+      "stream_id": "stream12",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "full_context_reference",
+      "status": "clear",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e03",
+        "e04"
+      ],
+      "selected_event_count": 4,
+      "records_examined": 4,
+      "unresolved_inputs": [],
+      "explanation": "Public publication e04 of scratch, snapshot: all ancestry traces to public catalog root(s) public-guide via selected event(s) e01, e02, e03."
+    },
+    {
+      "stream_id": "stream13",
+      "publication_id": "e03",
+      "audience": "public",
+      "method": "per_agent",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e01",
+        "e03"
+      ],
+      "selected_event_count": 2,
+      "records_examined": 3,
+      "unresolved_inputs": [
+        {
+          "resource": "scratch",
+          "bound_producer": "e02"
+        }
+      ],
+      "explanation": "Public publication e03 of scratch: ancestry not established for scratch (its producer e02 is not in the selected evidence)."
+    },
+    {
+      "stream_id": "stream13",
+      "publication_id": "e03",
+      "audience": "public",
+      "method": "fixed_window",
+      "status": "clear",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e03"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 3,
+      "unresolved_inputs": [],
+      "explanation": "Public publication e03 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e02."
+    },
+    {
+      "stream_id": "stream13",
+      "publication_id": "e03",
+      "audience": "public",
+      "method": "correlated",
+      "status": "clear",
+      "evidence_ids": [
+        "e02",
+        "e03"
+      ],
+      "selected_event_count": 2,
+      "records_examined": 2,
+      "unresolved_inputs": [],
+      "explanation": "Public publication e03 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e02."
+    },
+    {
+      "stream_id": "stream13",
+      "publication_id": "e03",
+      "audience": "public",
+      "method": "full_context_reference",
+      "status": "clear",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e03"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 3,
+      "unresolved_inputs": [],
+      "explanation": "Public publication e03 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e02."
+    },
+    {
+      "stream_id": "stream14",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "per_agent",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e04"
+      ],
+      "selected_event_count": 1,
+      "records_examined": 4,
+      "unresolved_inputs": [
+        {
+          "resource": "scratch",
+          "bound_producer": "e03"
+        },
+        {
+          "resource": "snapshot",
+          "bound_producer": "e02"
+        }
+      ],
+      "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence); snapshot (its producer e02 is not in the selected evidence)."
+    },
+    {
+      "stream_id": "stream14",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "fixed_window",
+      "status": "alert",
+      "evidence_ids": [
+        "e02",
+        "e03",
+        "e04"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 3,
+      "unresolved_inputs": [
+        {
+          "resource": "scratch",
+          "bound_producer": "e01"
+        }
+      ],
+      "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e03. Also unresolved: scratch (its producer e01 is not in the selected evidence)."
+    },
+    {
+      "stream_id": "stream14",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "correlated",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e04"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 4,
+      "unresolved_inputs": [
+        {
+          "resource": "scratch",
+          "bound_producer": "e03"
+        }
+      ],
+      "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence)."
+    },
+    {
+      "stream_id": "stream14",
+      "publication_id": "e04",
+      "audience": "public",
+      "method": "full_context_reference",
+      "status": "alert",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e03",
+        "e04"
+      ],
+      "selected_event_count": 4,
+      "records_examined": 4,
+      "unresolved_inputs": [],
+      "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e02, e03."
+    },
+    {
+      "stream_id": "stream14",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "per_agent",
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e04",
+        "e06"
+      ],
+      "selected_event_count": 2,
+      "records_examined": 6,
+      "unresolved_inputs": [
+        {
+          "resource": "scratch",
+          "bound_producer": "e05"
+        }
+      ],
+      "explanation": "Public publication e06 of scratch: ancestry not established for scratch (its producer e05 is not in the selected evidence)."
+    },
+    {
+      "stream_id": "stream14",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "fixed_window",
+      "status": "clear",
+      "evidence_ids": [
+        "e04",
+        "e05",
+        "e06"
+      ],
+      "selected_event_count": 3,
+      "records_examined": 3,
+      "unresolved_inputs": [],
+      "explanation": "Public publication e06 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e05."
+    },
+    {
+      "stream_id": "stream14",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "correlated",
+      "status": "clear",
+      "evidence_ids": [
+        "e05",
+        "e06"
+      ],
+      "selected_event_count": 2,
+      "records_examined": 2,
+      "unresolved_inputs": [],
+      "explanation": "Public publication e06 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e05."
+    },
+    {
+      "stream_id": "stream14",
+      "publication_id": "e06",
+      "audience": "public",
+      "method": "full_context_reference",
+      "status": "clear",
+      "evidence_ids": [
+        "e01",
+        "e02",
+        "e03",
+        "e04",
+        "e05",
+        "e06"
+      ],
+      "selected_event_count": 6,
+      "records_examined": 6,
+      "unresolved_inputs": [],
+      "explanation": "Public publication e06 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e05."
+    }
+  ],
+  "status_counts": {
+    "per_agent": {
+      "alert": 0,
+      "clear": 0,
+      "insufficient_evidence": 5
+    },
+    "fixed_window": {
+      "alert": 2,
+      "clear": 2,
+      "insufficient_evidence": 1
+    },
+    "correlated": {
+      "alert": 0,
+      "clear": 2,
+      "insufficient_evidence": 3
+    },
+    "full_context_reference": {
+      "alert": 2,
+      "clear": 3,
+      "insufficient_evidence": 0
+    }
+  },
+  "evaluation": {
+    "methods_checked": [
+      "full_context_reference"
+    ],
+    "checks": [
+      {
+        "stream_id": "stream11",
+        "publication_id": "e04",
+        "method": "per_agent",
+        "expected": "alert",
+        "observed": "insufficient_evidence",
+        "match": false
+      },
+      {
+        "stream_id": "stream11",
+        "publication_id": "e04",
+        "method": "fixed_window",
+        "expected": "alert",
+        "observed": "alert",
+        "match": true
+      },
+      {
+        "stream_id": "stream11",
+        "publication_id": "e04",
+        "method": "correlated",
+        "expected": "alert",
+        "observed": "insufficient_evidence",
+        "match": false
+      },
+      {
+        "stream_id": "stream11",
+        "publication_id": "e04",
+        "method": "full_context_reference",
+        "expected": "alert",
+        "observed": "alert",
+        "match": true
+      },
+      {
+        "stream_id": "stream12",
+        "publication_id": "e04",
+        "method": "per_agent",
+        "expected": "clear",
+        "observed": "insufficient_evidence",
+        "match": false
+      },
+      {
+        "stream_id": "stream12",
+        "publication_id": "e04",
+        "method": "fixed_window",
+        "expected": "clear",
+        "observed": "insufficient_evidence",
+        "match": false
+      },
+      {
+        "stream_id": "stream12",
+        "publication_id": "e04",
+        "method": "correlated",
+        "expected": "clear",
+        "observed": "insufficient_evidence",
+        "match": false
+      },
+      {
+        "stream_id": "stream12",
+        "publication_id": "e04",
+        "method": "full_context_reference",
+        "expected": "clear",
+        "observed": "clear",
+        "match": true
+      },
+      {
+        "stream_id": "stream13",
+        "publication_id": "e03",
+        "method": "per_agent",
+        "expected": "clear",
+        "observed": "insufficient_evidence",
+        "match": false
+      },
+      {
+        "stream_id": "stream13",
+        "publication_id": "e03",
+        "method": "fixed_window",
+        "expected": "clear",
+        "observed": "clear",
+        "match": true
+      },
+      {
+        "stream_id": "stream13",
+        "publication_id": "e03",
+        "method": "correlated",
+        "expected": "clear",
+        "observed": "clear",
+        "match": true
+      },
+      {
+        "stream_id": "stream13",
+        "publication_id": "e03",
+        "method": "full_context_reference",
+        "expected": "clear",
+        "observed": "clear",
+        "match": true
+      },
+      {
+        "stream_id": "stream14",
+        "publication_id": "e04",
+        "method": "per_agent",
+        "expected": "alert",
+        "observed": "insufficient_evidence",
+        "match": false
+      },
+      {
+        "stream_id": "stream14",
+        "publication_id": "e04",
+        "method": "fixed_window",
+        "expected": "alert",
+        "observed": "alert",
+        "match": true
+      },
+      {
+        "stream_id": "stream14",
+        "publication_id": "e04",
+        "method": "correlated",
+        "expected": "alert",
+        "observed": "insufficient_evidence",
+        "match": false
+      },
+      {
+        "stream_id": "stream14",
+        "publication_id": "e04",
+        "method": "full_context_reference",
+        "expected": "alert",
+        "observed": "alert",
+        "match": true
+      },
+      {
+        "stream_id": "stream14",
+        "publication_id": "e06",
+        "method": "per_agent",
+        "expected": "clear",
+        "observed": "insufficient_evidence",
+        "match": false
+      },
+      {
+        "stream_id": "stream14",
+        "publication_id": "e06",
+        "method": "fixed_window",
+        "expected": "clear",
+        "observed": "clear",
+        "match": true
+      },
+      {
+        "stream_id": "stream14",
+        "publication_id": "e06",
+        "method": "correlated",
+        "expected": "clear",
+        "observed": "clear",
+        "match": true
+      },
+      {
+        "stream_id": "stream14",
+        "publication_id": "e06",
+        "method": "full_context_reference",
+        "expected": "clear",
+        "observed": "clear",
+        "match": true
+      }
+    ],
+    "per_method": {
+      "per_agent": {
+        "match": 0,
+        "insufficient_evidence": 5,
+        "contradicts_label": 0
+      },
+      "fixed_window": {
+        "match": 4,
+        "insufficient_evidence": 1,
+        "contradicts_label": 0
+      },
+      "correlated": {
+        "match": 2,
+        "insufficient_evidence": 3,
+        "contradicts_label": 0
+      },
+      "full_context_reference": {
+        "match": 5,
+        "insufficient_evidence": 0,
+        "contradicts_label": 0
+      }
+    },
+    "problems": [],
+    "all_match": true,
+    "note": "Labels and cases were written by the same people who wrote the checker unless stated otherwise; agreement verifies wiring, not generalisation."
+  },
+  "evaluation_note": null,
+  "measurement_notes": {
+    "selected_event_count": "Measured: events passed to the checker for that view.",
+    "records_examined": "Measured: distinct records the selector dereferenced (publication plus bound producers looked up). Deriving input bindings is one shared pass over the log and is not counted. Not time or tokens.",
+    "event_budget": "Design: the three bounded views share a maximum budget, not equal cost.",
+    "tokens_and_latency": "Not measured; the checker is deterministic and uses no model."
+  }
+}

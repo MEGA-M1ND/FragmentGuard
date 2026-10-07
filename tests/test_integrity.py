@@ -7,7 +7,8 @@ from fragmentguard.correlation import correlate, correlate_selection
 from fragmentguard.monitor import check
 from fragmentguard.pipeline import METHODS, evaluate_stream, evaluate_streams
 from fragmentguard.schema import (
-    Event, SchemaError, load_policy, load_streams, parse_events, parse_stream, validate_policy,
+    Event, SchemaError, input_bindings, load_policy, load_streams, parse_events, parse_stream,
+    validate_policy,
 )
 
 POLICY = {"restricted-record": "restricted", "public-guide": "public"}
@@ -156,9 +157,9 @@ class SelectionAndCheckerTests(unittest.TestCase):
         self.assertEqual(statuses(events, budget=3)["correlated"], "insufficient_evidence")
         self.assertEqual(statuses(events, budget=4)["correlated"], "alert")
 
-    def test_bounded_correlation_never_contradicts_full_context(self):
-        # Truncation may lose evidence, but a correlated verdict is either the
-        # full-context verdict or insufficient_evidence, for every budget/horizon.
+    def test_bounded_correlation_never_contradicts_full_context_on_fixtures(self):
+        # Fixture-specific check. The general property, for arbitrary views of
+        # arbitrary streams, is exercised in test_properties.py.
         for stream_id, events in self.streams.items():
             for budget in range(1, len(events) + 1):
                 for horizon in range(0, 8):
@@ -174,29 +175,39 @@ class SelectionAndCheckerTests(unittest.TestCase):
     def test_selection_reports_examined_records_separately(self):
         selection = correlate_selection(self.streams["stream04"])
         self.assertEqual([e.event_id for e in selection.events], ["e02", "e04", "e07"])
-        self.assertEqual(selection.records_examined, 7)
+        # The publication plus the two bound producers it dereferenced (e04, e02).
+        self.assertEqual(selection.records_examined, 3)
 
-    def test_per_agent_view_can_be_misled_by_unseen_overwrite(self):
-        # Characterisation of a known baseline limitation (docs/assumptions.md):
-        # a view that is not causally closed can replay a stale write.
+    def test_per_agent_view_does_not_replay_unseen_overwrite(self):
+        # Before input bindings this view replayed the stale e01 write and returned
+        # clear. The publication's input is bound to e02, which the view omits.
         events = [
             ev("e01", 1, "a", "read", ["public-guide"], ["summary"]),
             ev("e02", 2, "b", "read", ["restricted-record"], ["summary"]),
             ev("e03", 3, "a", "publish", ["summary"], audience="public"),
         ]
         result = statuses(events)
-        self.assertEqual(result["per_agent"], "clear")
+        self.assertEqual(result["per_agent"], "insufficient_evidence")
         self.assertEqual(result["correlated"], "alert")
         self.assertEqual(result["full_context_reference"], "alert")
 
     def test_checker_rejects_invalid_evidence_instead_of_scoring_it(self):
-        with self.assertRaises(SchemaError):
-            check([], POLICY)
-        with self.assertRaises(SchemaError):
-            check([ev("e01", 1, "a", "note")], POLICY)
+        note = ev("e01", 1, "a", "note")
         publication = ev("e02", 2, "a", "publish", ["x"], audience="public")
+        bindings = input_bindings([note, publication])
         with self.assertRaises(SchemaError):
-            check([publication, ev("e01", 1, "a", "note"), publication], POLICY)
+            check([], POLICY, bindings)
+        with self.assertRaises(SchemaError):
+            check([note], POLICY, bindings)
+        with self.assertRaises(SchemaError):
+            check([publication, note, publication], POLICY, bindings)
+        with self.assertRaises(SchemaError):
+            check([publication], POLICY, {})  # missing bindings
+        with self.assertRaises(SchemaError):
+            check([publication], POLICY, {"e02": {}})  # bindings must cover inputs
+        writer = ev("e01", 1, "a", "read", ["public-guide"], ["y"])
+        with self.assertRaises(SchemaError):  # bound to an event that did not write x
+            check([writer, publication], POLICY, {"e01": {"public-guide": None}, "e02": {"x": "e01"}})
 
     def test_results_explain_with_selected_records(self):
         result = evaluate_stream(self.streams["stream03"], POLICY)[0]["methods"]["correlated"]

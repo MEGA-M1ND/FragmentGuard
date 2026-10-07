@@ -28,7 +28,7 @@ class ScoutIntegrationTests(unittest.TestCase):
     def test_database_round_trip_preserves_payloads_and_ids(self):
         transcripts = asyncio.run(scout.read_database(self.database))
         self.assertEqual([t.transcript_id for t in transcripts], [s["stream_id"] for s in self.streams])
-        for transcript, stream in zip(transcripts, self.streams):
+        for transcript, stream in zip(transcripts, self.streams, strict=True):
             self.assertEqual(transcript.source_type, scout.SOURCE_TYPE)
             self.assertFalse(transcript.metadata)
             self.assertTrue(all(isinstance(e, InfoEvent) for e in transcript.events))
@@ -89,6 +89,48 @@ class ScoutIntegrationTests(unittest.TestCase):
             self.assertEqual(reporting.sha256_file(output / relative), digest, relative)
         self.assertIn("report.md", manifest["artifacts"])
         self.assertIn("scanner-results.json", manifest["artifacts"])
+
+    def test_cli_custom_inputs_run_through_both_modes(self):
+        example = Path(__file__).resolve().parent.parent / "examples" / "custom_inputs"
+        common = ["--streams", str(example / "streams.json"), "--policy", str(example / "policy.json"),
+                  "--budget", "3", "--horizon", "100"]
+        outcomes = {}
+        for mode in ("direct", "scout"):
+            output = self.root / f"custom-{mode}"
+            with contextlib.redirect_stdout(io.StringIO()):
+                code = cli.main(["demo", "--mode", mode, "--output", str(output), *common,
+                                 "--labels", str(example / "labels.json"), "--gate", "full_context_reference"])
+            self.assertEqual(code, cli.EXIT_OK, mode)
+            report = json.loads((output / "report.json").read_text())
+            manifest = json.loads((output / "manifest.json").read_text())
+            self.assertEqual(report["run_status"], "complete")
+            self.assertEqual(manifest["inputs"]["streams"]["sha256"],
+                             reporting.sha256_file(example / "streams.json"))
+            outcomes[mode] = [(r["stream_id"], r["publication_id"], r["method"], r["status"])
+                              for r in report["rows"]]
+        self.assertEqual(outcomes["direct"], outcomes["scout"])
+
+        gated = self.root / "custom-gated"
+        with contextlib.redirect_stdout(io.StringIO()):
+            code = cli.main(["demo", "--mode", "direct", "--output", str(gated), *common,
+                             "--labels", str(example / "labels.json"), "--gate", "correlated"])
+        self.assertEqual(code, cli.EXIT_MISMATCH)  # insufficient_evidence is not a match
+
+        unlabelled = self.root / "custom-unlabelled"
+        with contextlib.redirect_stdout(io.StringIO()):
+            code = cli.main(["demo", "--mode", "direct", "--output", str(unlabelled), *common])
+        self.assertEqual(code, cli.EXIT_OK)
+        report = json.loads((unlabelled / "report.json").read_text())
+        self.assertIsNone(report["evaluation"])
+        manifest = json.loads((unlabelled / "manifest.json").read_text())
+        self.assertIsNone(manifest["inputs"]["labels (evaluator-only, read after scanning)"])
+
+    def test_cli_rejects_missing_labels_before_scanning(self):
+        output = self.root / "never-created"
+        with self.assertRaises(SystemExit):
+            cli.main(["demo", "--mode", "direct", "--output", str(output),
+                      "--labels", str(self.root / "missing.json")])
+        self.assertFalse(output.exists())
 
 
 if __name__ == "__main__":

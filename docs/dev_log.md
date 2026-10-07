@@ -56,9 +56,47 @@ Short factual entries. These are engineering notes, not research results.
 - Branch priority is depth-first in input order. A breadth-first or
   restricted-first policy would change which evidence gets truncated, but it
   must be frozen before any labelled evaluation.
-- The per-agent and fixed-window baselines can replay writes that later writes
-  replaced (see `docs/assumptions.md` §10). A future baseline could flag
-  resources whose producer it did not see.
-- Correlation re-scans history for each lookup. That costs O(n) per input, which
-  is fine at this scale. An index of the latest writer would help larger streams.
-  Measure before optimising.
+- ~~The per-agent and fixed-window baselines can replay writes that later writes
+  replaced.~~ Addressed by input bindings (see the entry below).
+- ~~Correlation re-scans history for each lookup.~~ Correlation now follows
+  precomputed bindings: one O(n) pass per stream, then direct lookups.
+
+## 2026-10-07: stale-write bug in correlated selection (fixed)
+
+- **Bug.** The checker resolved a read by resource name to the latest *selected*
+  write. When the view omitted a read's actual producer but contained an older
+  write of the same name, the read silently used the older write. Reproduction
+  (budget 3, horizon 100):
+  - e01 read public-guide→scratch
+  - e02 transform scratch→snapshot
+  - e03 read restricted-record→scratch
+  - e04 publish [snapshot, scratch] public
+
+  Correlation selected e01/e02/e04 and returned `clear`; full context returned
+  `alert`. The same mechanism produced a per-agent false `alert` when a stale
+  restricted write was in view and the public overwrite was not.
+- **Why the fixtures missed it.** None of the four fixtures overwrites a resource
+  after it has been read. The old "never contradicts full context" test ran only
+  on those fixtures.
+- **Process.** The regression tests and controls were committed first and failed
+  (4 of 7) before the fix (commit `bc8598f`).
+- **Fix.** `schema.input_bindings` binds each read to its actual producer: the
+  latest earlier write in the workspace. Correlation follows bindings, and the
+  checker resolves every read through its binding. An omitted producer leaves
+  the input unresolved.
+  - Bindings are causal and label-free.
+  - They are given identically to all four views; only event selection differs.
+  - Results now include `unresolved_inputs`.
+  - Outcomes on the bundled fixtures are unchanged.
+- **Behaviour changes beyond the regression.**
+  - The per-agent stale-write characterisation test (previously a wrong `clear`)
+    now expects `insufficient_evidence`.
+  - `records_examined` for the correlated view now counts records the selector
+    dereferenced, not records scanned while searching for producers. The shared
+    binding pass is not counted. For stream04 this is 3, previously 7.
+- **Evidence the class of bug is closed.** A property test checks that every
+  sub-view of 400 generated streams returns either the full-context verdict or
+  `insufficient_evidence`. The pre-fix checker breaks this on 71 of 7,366
+  sub-views; the fixed checker on none.
+- **Remaining.** Bindings are derived from the log, so a log missing a write
+  still yields a stale binding (see `docs/assumptions.md` §6).

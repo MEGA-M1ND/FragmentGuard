@@ -98,7 +98,7 @@ def parse_events(records: Any) -> list[Event]:
     events = [Event.from_dict(record) for record in records]
     if len({event.event_id for event in events}) != len(events):
         raise SchemaError("Event IDs must be unique within a stream")
-    if any(left.tick >= right.tick for left, right in zip(events, events[1:])):
+    if any(left.tick >= right.tick for left, right in zip(events, events[1:], strict=False)):
         raise SchemaError("Events must have strictly increasing ticks")
     return events
 
@@ -134,6 +134,29 @@ def validate_policy(policy: Any) -> dict[str, str]:
         if classification not in CLASSIFICATIONS:
             raise SchemaError("Policy classifications must be public or restricted")
     return dict(policy)
+
+
+# event_id -> {input resource -> producing event_id, or None if nothing in the
+# workspace wrote it before this event}.
+Bindings = dict[str, dict[str, str | None]]
+
+
+def input_bindings(events: list[Event]) -> Bindings:
+    """Bind each input to the write it actually read: the latest earlier producer.
+
+    This is observation metadata, equivalent to a logger recording which version
+    of a resource each read saw. It is causal (a binding depends only on earlier
+    events in the same workspace), label-free (producer IDs only, never
+    classifications), and derived once from the complete ordered workspace log,
+    so every evidence view receives the same bindings for the events it selects.
+    """
+    latest: dict[str, str] = {}
+    bindings: Bindings = {}
+    for event in events:
+        bindings[event.event_id] = {resource: latest.get(resource) for resource in event.inputs}
+        for resource in event.outputs:
+            latest[resource] = event.event_id
+    return bindings
 
 
 def check_catalog_roots_immutable(events: list[Event], policy: dict[str, str]) -> None:
