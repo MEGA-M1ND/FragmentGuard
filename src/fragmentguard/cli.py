@@ -26,7 +26,7 @@ from pathlib import Path
 from typing import Any
 
 from . import reporting
-from .pipeline import METHODS, PipelineConfig, evaluate_streams
+from .pipeline import DEFAULT_CONFIG, METHODS, PipelineConfig, evaluate_streams
 from .schema import FIXTURE_DIR, load_policy, load_streams
 
 EXIT_OK, EXIT_MISMATCH, EXIT_INCOMPLETE = 0, 1, 3
@@ -50,7 +50,7 @@ def _input_record(path: Path | None, bundled: str) -> dict[str, str]:
 def run_demo(
     mode: str, output: Path, max_processes: int = 1, *, streams_path: Path | None = None,
     policy_path: Path | None = None, labels_path: Path | None = None,
-    config: PipelineConfig = PipelineConfig(),
+    config: PipelineConfig = DEFAULT_CONFIG,
     gate_methods: tuple[str, ...] = reporting.EVALUATED_METHODS,
 ) -> int:
     if output.exists():

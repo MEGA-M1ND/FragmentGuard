@@ -14,8 +14,8 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Tests use the standard-library unittest runner; no extra tools are required.
-dev = []
+# Tests use the standard-library unittest runner; dev adds the pinned linter and builder.
+dev = ["ruff==0.16.10", "build==1.6.1"]
 
 [project.scripts]
 fragmentguard = "fragmentguard.cli:main"
@@ -25,3 +25,11 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 fragmentguard = ["fixtures/*.json"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+# Pyflakes, pycodestyle, and bugbear: correctness-focused, no style churn.
+select = ["F", "E", "W", "B"]

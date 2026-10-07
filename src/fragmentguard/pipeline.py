@@ -83,8 +83,11 @@ def evaluate_stream(
     return publications
 
 
+DEFAULT_CONFIG = PipelineConfig()
+
+
 def evaluate_streams(
-    streams: list[dict[str, Any]], policy: dict[str, str], config: PipelineConfig = PipelineConfig()
+    streams: list[dict[str, Any]], policy: dict[str, str], config: PipelineConfig = DEFAULT_CONFIG
 ) -> dict[str, list[dict[str, Any]]]:
     """Evaluate each workspace independently; resource state never crosses streams."""
     return {

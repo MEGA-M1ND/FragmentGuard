@@ -28,7 +28,7 @@ class ScoutIntegrationTests(unittest.TestCase):
     def test_database_round_trip_preserves_payloads_and_ids(self):
         transcripts = asyncio.run(scout.read_database(self.database))
         self.assertEqual([t.transcript_id for t in transcripts], [s["stream_id"] for s in self.streams])
-        for transcript, stream in zip(transcripts, self.streams):
+        for transcript, stream in zip(transcripts, self.streams, strict=True):
             self.assertEqual(transcript.source_type, scout.SOURCE_TYPE)
             self.assertFalse(transcript.metadata)
             self.assertTrue(all(isinstance(e, InfoEvent) for e in transcript.events))

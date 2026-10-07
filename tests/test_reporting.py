@@ -45,11 +45,11 @@ class ReportTests(unittest.TestCase):
         for cells in outcomes:
             stream_id = cells[0]
             self.assertEqual(cells[2], self.expected[stream_id])
-            for method, cell in zip(METHODS, cells[3:]):
+            for method, cell in zip(METHODS, cells[3:], strict=True):
                 row = by_key[(stream_id, method)]
                 self.assertEqual(cell, f"{row['status']} ({row['selected_event_count']})")
         counts = markdown_table(self.markdown, "Status counts")
-        for method, cells in zip(METHODS, counts):
+        for method, cells in zip(METHODS, counts, strict=True):
             self.assertEqual([int(c) for c in cells[1:]],
                              list(self.report["status_counts"][method].values()))
 

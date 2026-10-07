@@ -69,7 +69,7 @@ def _validate(selected: list[Event], bindings: Bindings) -> None:
         raise SchemaError("A check requires evidence ending at a publication")
     if selected[-1].operation != "publish":
         raise SchemaError("The check must end at a publication")
-    if any(left.tick >= right.tick for left, right in zip(selected, selected[1:])):
+    if any(left.tick >= right.tick for left, right in zip(selected, selected[1:], strict=False)):
         raise SchemaError("Selected evidence must be in strictly increasing tick order")
     by_id = {event.event_id: event for event in selected}
     for event in selected:

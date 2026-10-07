@@ -98,7 +98,7 @@ def parse_events(records: Any) -> list[Event]:
     events = [Event.from_dict(record) for record in records]
     if len({event.event_id for event in events}) != len(events):
         raise SchemaError("Event IDs must be unique within a stream")
-    if any(left.tick >= right.tick for left, right in zip(events, events[1:])):
+    if any(left.tick >= right.tick for left, right in zip(events, events[1:], strict=False)):
         raise SchemaError("Events must have strictly increasing ticks")
     return events
 
