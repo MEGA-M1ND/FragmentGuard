@@ -1,5 +1,9 @@
 # First run: reviewed example artifacts
 
+> These runs predate the stale-write fix (`e34344e`). Their verdicts on the
+> bundled fixtures are unchanged by it; see `../binding_fix_run/`. The artifacts
+> below are kept exactly as produced.
+
 These two runs were produced on 7 October 2026 from commit
 `cecc763b451b6a7d4843e420426cf402e38314c2` with a clean tree
 (`git_dirty: false`). The commands were the documented ones, run from the

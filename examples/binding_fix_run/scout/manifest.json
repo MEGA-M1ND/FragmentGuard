@@ -1,0 +1,120 @@
+{
+  "run_id": "fix-bundled-scout",
+  "started_at_utc": "2026-10-07T09:14:42.035832+00:00",
+  "completed_at_utc": "2026-10-07T09:14:46.802869+00:00",
+  "execution_mode": "scout",
+  "completion": {
+    "status": "complete",
+    "path_completed": "scout: Scout scheduled scan with the mock model setting and Scout's recorder",
+    "blocker": null,
+    "scheduled_scan": {
+      "complete": true,
+      "location": "scans/scan_id=Z9mRmSoaE6Mg5DsvvXVBYT",
+      "errors": [],
+      "checks": {
+        "status_complete": true,
+        "no_errors": true,
+        "scanner_in_summary": true,
+        "all_transcripts_scanned": true,
+        "all_results_recorded": true,
+        "zero_model_tokens": true,
+        "no_model_usage": true
+      },
+      "summary": {
+        "complete": true,
+        "scanners": {
+          "fragmentguard": {
+            "scans": 4,
+            "results": 4,
+            "errors": 0,
+            "validation": null,
+            "metrics": null,
+            "tokens": 0,
+            "model_usage": {}
+          }
+        }
+      }
+    },
+    "evaluator_gate_methods": [
+      "correlated",
+      "full_context_reference"
+    ],
+    "evaluator_check_all_match": true
+  },
+  "model_generation": {
+    "invoked": false,
+    "basis": "measured: Scout summary reported 0 tokens and empty model_usage"
+  },
+  "inputs": {
+    "streams": {
+      "source": "bundled:streams.json",
+      "sha256": "d85b3e341f078f73b5ad80b1d17c15164cb6e59bc7b90e0b7e73d709c6ac2520"
+    },
+    "policy": {
+      "source": "bundled:policy.json",
+      "sha256": "882c757afd574c7933f9a489886380c6f436e52677cc8d3bd571f2edfd0f34eb"
+    },
+    "labels (evaluator-only, read after scanning)": {
+      "source": "bundled:ground_truth.json",
+      "sha256": "0837ca672ac64148ef1d27ef0abd15c02fb6ecdbec6fc773189c385f6f5429e2"
+    }
+  },
+  "config": {
+    "methods": [
+      "per_agent",
+      "fixed_window",
+      "correlated",
+      "full_context_reference"
+    ],
+    "budget": 3,
+    "horizon": 100,
+    "sha256": "1379a9f21ea12d1c2e54f9212eb3eeb229d6d132e2eb0bb15194a1d657749bf4",
+    "max_processes": 1
+  },
+  "source": {
+    "package_sha256": "b12a8118917767298d0d5b95e96f6c350055d09872e43ac15dc97ca8c95ecfb8",
+    "files": {
+      "__init__.py": "8b5115c1f72d27fb8761b71066ea77eb3ea6fab60c2e39f4f0f974431b8fd26b",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "cli.py": "e01f2727064494f81f87ebeaa84f1d10c57353fd0813d7089869612116d557d8",
+      "correlation.py": "8c0a0c4821f5ad34e0e07e86c46a1e694cce2af2a24afd33fa5257a71d686b64",
+      "fixtures/ground_truth.json": "0837ca672ac64148ef1d27ef0abd15c02fb6ecdbec6fc773189c385f6f5429e2",
+      "fixtures/policy.json": "882c757afd574c7933f9a489886380c6f436e52677cc8d3bd571f2edfd0f34eb",
+      "fixtures/streams.json": "d85b3e341f078f73b5ad80b1d17c15164cb6e59bc7b90e0b7e73d709c6ac2520",
+      "monitor.py": "64e0925907a17a65433b96fea6d883deaf00c6d1787f6441d52cd44519287e1c",
+      "pipeline.py": "1e4b0d604a3115b80729d063e6918cf69ed17e9b6e9bc168b8a03d81ba0ff773",
+      "reporting.py": "858931e0673c10b1ed1729951d5f96f340fa59addd9cbad9dfb9dbb045084485",
+      "schema.py": "927a1586f8d479647e10914ff9d1b3f24fbe28d45cc04262595744877f51ac08",
+      "scout.py": "4d6779b69731757d1489c0bbdcbaf1caddca1beca1dce9758f1e309f435d43ad"
+    },
+    "git_commit": "b28e7fe226da0d3feccbd07903a73a24c9b9b0e6",
+    "git_dirty": false
+  },
+  "environment": {
+    "python": "3.12.3",
+    "implementation": "CPython",
+    "platform": "Linux-6.18.44-fc-v77-x86_64-with-glibc2.39",
+    "packages": {
+      "fragmentguard": "0.1.0",
+      "inspect-ai": "0.3.277",
+      "inspect-scout": "0.5.4",
+      "pandas": "3.0.6",
+      "pyarrow": "25.0.1",
+      "duckdb": "1.5.6",
+      "pydantic": "2.13.5"
+    }
+  },
+  "artifacts": {
+    "report.json": "9822277cc73d1e6c7fcec011cb36cf411ef385e757db16eef83dc45ce475317f",
+    "report.md": "b0a1ed79e65ce95205bc18e90b86423f4f063f47000e66be31afb8d7f51ef3e1",
+    "scanner-results.json": "51e8ce4f715157d8680c461a7ebd33df6afe6bcddf0d22d9996c00476e45497c",
+    "scans/scan_id=Z9mRmSoaE6Mg5DsvvXVBYT/_errors.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scans/scan_id=Z9mRmSoaE6Mg5DsvvXVBYT/_scan.json": "b542e196df628602e93dedc95dacd6d6b9409c31508317e6f76917cac4086f6f",
+    "scans/scan_id=Z9mRmSoaE6Mg5DsvvXVBYT/_summary.json": "69910289fbdd7d474b3c41461b19c88f24da8c478b757f705556ec732443eda1",
+    "scans/scan_id=Z9mRmSoaE6Mg5DsvvXVBYT/fragmentguard.parquet": "519e72ffa6021e1065642311650e15b05237ad00782b92701fdb3ec6863d3a3b",
+    "scheduled-attempt.json": "0729340f8fd76101af35b1eb485f43643c106545430f9ed82f69e8cbbeb4dea3",
+    "transcripts/_index/_manifest_20261007T091444_VeuqDw2n.idx": "551203fb9a07d7ed8f183cbf83bfdcad3c440c410ee780d7ac6fe0715d4e1043",
+    "transcripts/transcripts_20261007T091444_5b402dab.parquet": "a8d03cda235440e6b95fda7ce7df0f3463103a8a571ab69237a288102a0f40dc"
+  },
+  "integrity_note": "Hashes establish file identity, not authenticity against a malicious logger. Scout recorder files may contain absolute paths written by Scout itself."
+}

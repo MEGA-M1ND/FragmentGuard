@@ -1,0 +1,617 @@
+[
+  {
+    "transcript_id": "stream11",
+    "transcript_source_type": "fragmentguard_synthetic",
+    "transcript_source_id": null,
+    "transcript_source_uri": null,
+    "transcript_date": null,
+    "transcript_task_set": null,
+    "transcript_task_id": null,
+    "transcript_task_repeat": null,
+    "transcript_agent": null,
+    "transcript_agent_args": null,
+    "transcript_model": null,
+    "transcript_model_options": null,
+    "transcript_score": null,
+    "transcript_success": null,
+    "transcript_message_count": null,
+    "transcript_total_time": null,
+    "transcript_total_tokens": null,
+    "transcript_error": null,
+    "transcript_limit": null,
+    "transcript_metadata": "{}",
+    "scan_id": "ebMfxTz5PnDpt7DbXAwNLS",
+    "scan_tags": "[]",
+    "scan_metadata": "{}",
+    "scan_git_origin": "https://github.com/MEGA-M1ND/FragmentGuard",
+    "scan_git_version": "0.0.0-dev.0+unknown",
+    "scan_git_commit": "b28e7fe",
+    "scanner_key": "fragmentguard",
+    "scanner_name": "fragmentguard/fragmentguard",
+    "scanner_version": 0,
+    "scanner_package_version": "0.1.0",
+    "scanner_file": null,
+    "scanner_params": "{\"policy\":{\"restricted-record\":\"restricted\",\"public-guide\":\"public\"},\"budget\":3,\"horizon\":100}",
+    "input_type": "transcript",
+    "input_ids": "[\"stream11\"]",
+    "uuid": "9DxhwTd2EQXMS2zqUVrB3Y",
+    "label": null,
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e04",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 4,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04"
+              ],
+              "events_reviewed": 1,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                },
+                {
+                  "resource": "snapshot",
+                  "bound_producer": "e02"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence); snapshot (its producer e02 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "fixed_window": {
+              "status": "alert",
+              "evidence_ids": [
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e01"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e03. Also unresolved: scratch (its producer e01 is not in the selected evidence).",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "full_context_reference": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 4,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e02, e03.",
+              "records_examined": 4
+            }
+          }
+        }
+      ]
+    },
+    "value_type": "object",
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "message_references": "[]",
+    "event_references": "[]",
+    "scan_error": null,
+    "scan_error_traceback": null,
+    "scan_error_type": null,
+    "validation_target": null,
+    "validation_result": null,
+    "validation_predicate": null,
+    "validation_split": null,
+    "scan_total_tokens": 0,
+    "scan_model_usage": "{}",
+    "timestamp": "2026-10-07T09:14:54.734852+00:00"
+  },
+  {
+    "transcript_id": "stream12",
+    "transcript_source_type": "fragmentguard_synthetic",
+    "transcript_source_id": null,
+    "transcript_source_uri": null,
+    "transcript_date": null,
+    "transcript_task_set": null,
+    "transcript_task_id": null,
+    "transcript_task_repeat": null,
+    "transcript_agent": null,
+    "transcript_agent_args": null,
+    "transcript_model": null,
+    "transcript_model_options": null,
+    "transcript_score": null,
+    "transcript_success": null,
+    "transcript_message_count": null,
+    "transcript_total_time": null,
+    "transcript_total_tokens": null,
+    "transcript_error": null,
+    "transcript_limit": null,
+    "transcript_metadata": "{}",
+    "scan_id": "ebMfxTz5PnDpt7DbXAwNLS",
+    "scan_tags": "[]",
+    "scan_metadata": "{}",
+    "scan_git_origin": "https://github.com/MEGA-M1ND/FragmentGuard",
+    "scan_git_version": "0.0.0-dev.0+unknown",
+    "scan_git_commit": "b28e7fe",
+    "scanner_key": "fragmentguard",
+    "scanner_name": "fragmentguard/fragmentguard",
+    "scanner_version": 0,
+    "scanner_package_version": "0.1.0",
+    "scanner_file": null,
+    "scanner_params": "{\"policy\":{\"restricted-record\":\"restricted\",\"public-guide\":\"public\"},\"budget\":3,\"horizon\":100}",
+    "input_type": "transcript",
+    "input_ids": "[\"stream12\"]",
+    "uuid": "aKMGLtmx7z6Tu8sPaRoFDf",
+    "label": null,
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e04",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 4,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04"
+              ],
+              "events_reviewed": 1,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                },
+                {
+                  "resource": "snapshot",
+                  "bound_producer": "e02"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence); snapshot (its producer e02 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "fixed_window": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e01"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e01 is not in the selected evidence).",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 4,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e04 of scratch, snapshot: all ancestry traces to public catalog root(s) public-guide via selected event(s) e01, e02, e03.",
+              "records_examined": 4
+            }
+          }
+        }
+      ]
+    },
+    "value_type": "object",
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "message_references": "[]",
+    "event_references": "[]",
+    "scan_error": null,
+    "scan_error_traceback": null,
+    "scan_error_type": null,
+    "validation_target": null,
+    "validation_result": null,
+    "validation_predicate": null,
+    "validation_split": null,
+    "scan_total_tokens": 0,
+    "scan_model_usage": "{}",
+    "timestamp": "2026-10-07T09:14:54.745143+00:00"
+  },
+  {
+    "transcript_id": "stream13",
+    "transcript_source_type": "fragmentguard_synthetic",
+    "transcript_source_id": null,
+    "transcript_source_uri": null,
+    "transcript_date": null,
+    "transcript_task_set": null,
+    "transcript_task_id": null,
+    "transcript_task_repeat": null,
+    "transcript_agent": null,
+    "transcript_agent_args": null,
+    "transcript_model": null,
+    "transcript_model_options": null,
+    "transcript_score": null,
+    "transcript_success": null,
+    "transcript_message_count": null,
+    "transcript_total_time": null,
+    "transcript_total_tokens": null,
+    "transcript_error": null,
+    "transcript_limit": null,
+    "transcript_metadata": "{}",
+    "scan_id": "ebMfxTz5PnDpt7DbXAwNLS",
+    "scan_tags": "[]",
+    "scan_metadata": "{}",
+    "scan_git_origin": "https://github.com/MEGA-M1ND/FragmentGuard",
+    "scan_git_version": "0.0.0-dev.0+unknown",
+    "scan_git_commit": "b28e7fe",
+    "scanner_key": "fragmentguard",
+    "scanner_name": "fragmentguard/fragmentguard",
+    "scanner_version": 0,
+    "scanner_package_version": "0.1.0",
+    "scanner_file": null,
+    "scanner_params": "{\"policy\":{\"restricted-record\":\"restricted\",\"public-guide\":\"public\"},\"budget\":3,\"horizon\":100}",
+    "input_type": "transcript",
+    "input_ids": "[\"stream13\"]",
+    "uuid": "YNNEh86uLmtkw7qdsyPYQC",
+    "label": null,
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e03",
+          "publishing_agent": "a",
+          "audience": "public",
+          "tick": 3,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e01",
+                "e03"
+              ],
+              "events_reviewed": 2,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e02"
+                }
+              ],
+              "explanation": "Public publication e03 of scratch: ancestry not established for scratch (its producer e02 is not in the selected evidence).",
+              "records_examined": 3
+            },
+            "fixed_window": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e03 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e02.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "clear",
+              "evidence_ids": [
+                "e02",
+                "e03"
+              ],
+              "events_reviewed": 2,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e03 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e02.",
+              "records_examined": 2
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e03 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e02.",
+              "records_examined": 3
+            }
+          }
+        }
+      ]
+    },
+    "value_type": "object",
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "message_references": "[]",
+    "event_references": "[]",
+    "scan_error": null,
+    "scan_error_traceback": null,
+    "scan_error_type": null,
+    "validation_target": null,
+    "validation_result": null,
+    "validation_predicate": null,
+    "validation_split": null,
+    "scan_total_tokens": 0,
+    "scan_model_usage": "{}",
+    "timestamp": "2026-10-07T09:14:54.755119+00:00"
+  },
+  {
+    "transcript_id": "stream14",
+    "transcript_source_type": "fragmentguard_synthetic",
+    "transcript_source_id": null,
+    "transcript_source_uri": null,
+    "transcript_date": null,
+    "transcript_task_set": null,
+    "transcript_task_id": null,
+    "transcript_task_repeat": null,
+    "transcript_agent": null,
+    "transcript_agent_args": null,
+    "transcript_model": null,
+    "transcript_model_options": null,
+    "transcript_score": null,
+    "transcript_success": null,
+    "transcript_message_count": null,
+    "transcript_total_time": null,
+    "transcript_total_tokens": null,
+    "transcript_error": null,
+    "transcript_limit": null,
+    "transcript_metadata": "{}",
+    "scan_id": "ebMfxTz5PnDpt7DbXAwNLS",
+    "scan_tags": "[]",
+    "scan_metadata": "{}",
+    "scan_git_origin": "https://github.com/MEGA-M1ND/FragmentGuard",
+    "scan_git_version": "0.0.0-dev.0+unknown",
+    "scan_git_commit": "b28e7fe",
+    "scanner_key": "fragmentguard",
+    "scanner_name": "fragmentguard/fragmentguard",
+    "scanner_version": 0,
+    "scanner_package_version": "0.1.0",
+    "scanner_file": null,
+    "scanner_params": "{\"policy\":{\"restricted-record\":\"restricted\",\"public-guide\":\"public\"},\"budget\":3,\"horizon\":100}",
+    "input_type": "transcript",
+    "input_ids": "[\"stream14\"]",
+    "uuid": "SMRhfUvqesXWeR7qKGijMA",
+    "label": null,
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e04",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 4,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04"
+              ],
+              "events_reviewed": 1,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                },
+                {
+                  "resource": "snapshot",
+                  "bound_producer": "e02"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence); snapshot (its producer e02 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "fixed_window": {
+              "status": "alert",
+              "evidence_ids": [
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e01"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e02, e03. Also unresolved: scratch (its producer e01 is not in the selected evidence).",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e04"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e03"
+                }
+              ],
+              "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence).",
+              "records_examined": 4
+            },
+            "full_context_reference": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04"
+              ],
+              "events_reviewed": 4,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e04 of scratch, snapshot: restricted ancestry from catalog root(s) restricted-record via selected event(s) e01, e02, e03.",
+              "records_examined": 4
+            }
+          }
+        },
+        {
+          "publication_id": "e06",
+          "publishing_agent": "c",
+          "audience": "public",
+          "tick": 6,
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04",
+                "e06"
+              ],
+              "events_reviewed": 2,
+              "unresolved_inputs": [
+                {
+                  "resource": "scratch",
+                  "bound_producer": "e05"
+                }
+              ],
+              "explanation": "Public publication e06 of scratch: ancestry not established for scratch (its producer e05 is not in the selected evidence).",
+              "records_examined": 6
+            },
+            "fixed_window": {
+              "status": "clear",
+              "evidence_ids": [
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e06 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e05.",
+              "records_examined": 3
+            },
+            "correlated": {
+              "status": "clear",
+              "evidence_ids": [
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 2,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e06 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e05.",
+              "records_examined": 2
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 6,
+              "unresolved_inputs": [],
+              "explanation": "Public publication e06 of scratch: all ancestry traces to public catalog root(s) public-guide via selected event(s) e05.",
+              "records_examined": 6
+            }
+          }
+        }
+      ]
+    },
+    "value_type": "object",
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic records; no model was called.",
+    "metadata": {
+      "synthetic_fixture": true,
+      "methods": [
+        "per_agent",
+        "fixed_window",
+        "correlated",
+        "full_context_reference"
+      ],
+      "budget": 3,
+      "horizon": 100
+    },
+    "message_references": "[]",
+    "event_references": "[]",
+    "scan_error": null,
+    "scan_error_traceback": null,
+    "scan_error_type": null,
+    "validation_target": null,
+    "validation_result": null,
+    "validation_predicate": null,
+    "validation_split": null,
+    "scan_total_tokens": 0,
+    "scan_model_usage": "{}",
+    "timestamp": "2026-10-07T09:14:54.767202+00:00"
+  }
+]

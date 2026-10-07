@@ -1,0 +1,28 @@
+{
+  "complete": true,
+  "location": "scans/scan_id=ebMfxTz5PnDpt7DbXAwNLS",
+  "errors": [],
+  "checks": {
+    "status_complete": true,
+    "no_errors": true,
+    "scanner_in_summary": true,
+    "all_transcripts_scanned": true,
+    "all_results_recorded": true,
+    "zero_model_tokens": true,
+    "no_model_usage": true
+  },
+  "summary": {
+    "complete": true,
+    "scanners": {
+      "fragmentguard": {
+        "scans": 4,
+        "results": 4,
+        "errors": 0,
+        "validation": null,
+        "metrics": null,
+        "tokens": 0,
+        "model_usage": {}
+      }
+    }
+  }
+}
