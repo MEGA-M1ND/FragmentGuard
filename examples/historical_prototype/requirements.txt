@@ -1,0 +1,2 @@
+inspect-ai==0.3.277
+inspect-scout==0.5.4

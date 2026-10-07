@@ -1,0 +1,4 @@
+{
+  "description": "Evaluator-only intended toy-policy outcomes, never passed to the scanner. These are hand-designed cases, not independent benchmark samples.",
+  "expected": {"stream01": "clear", "stream02": "clear", "stream03": "alert", "stream04": "alert"}
+}

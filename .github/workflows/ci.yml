@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install locked dependencies and the package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.lock.txt
+          python -m pip install --no-deps -e '.[dev]'
+
+      # Everything below runs offline: no secrets, GPUs, real agents, or paid models.
+      - name: Unit and Scout integration tests
+        run: python -m unittest discover -s tests -v
+
+      # Run from outside the checkout to confirm the installed command works there.
+      - name: Direct-mode demo
+        working-directory: ${{ runner.temp }}
+        run: fragmentguard demo --mode direct --output fg-runs/ci-direct
+
+      # The real scheduled scan. A failure here fails CI; it is not masked by direct mode.
+      - name: Scheduled Scout smoke run
+        working-directory: ${{ runner.temp }}
+        run: fragmentguard demo --mode scout --output fg-runs/ci-scout
+
+      - name: Preserve run artifacts (including failures)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fragmentguard-runs
+          path: ${{ runner.temp }}/fg-runs
+          if-no-files-found: warn
+          retention-days: 14

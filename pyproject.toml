@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fragmentguard"
+version = "0.1.0"
+description = "Offline prototype: resource-lineage evidence selection across synthetic agent trajectories, with an Inspect Scout adapter."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "inspect-ai==0.3.277",
+    "inspect-scout==0.5.4",
+]
+
+[project.optional-dependencies]
+# Tests use the standard-library unittest runner; no extra tools are required.
+dev = []
+
+[project.scripts]
+fragmentguard = "fragmentguard.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+fragmentguard = ["fixtures/*.json"]

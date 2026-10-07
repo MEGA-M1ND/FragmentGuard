@@ -1,0 +1,35 @@
+[
+  {"stream_id":"stream01","events":[
+    {"event_id":"e01","tick":1,"agent_id":"a","operation":"read","inputs":["public-guide"],"outputs":["draft"],"audience":null},
+    {"event_id":"e02","tick":2,"agent_id":"d","operation":"note","inputs":[],"outputs":[],"audience":null},
+    {"event_id":"e03","tick":3,"agent_id":"b","operation":"transform","inputs":["draft"],"outputs":["summary"],"audience":null},
+    {"event_id":"e04","tick":4,"agent_id":"d","operation":"read","inputs":["public-guide"],"outputs":["notes"],"audience":null},
+    {"event_id":"e05","tick":5,"agent_id":"d","operation":"transform","inputs":["notes"],"outputs":["index"],"audience":null},
+    {"event_id":"e06","tick":6,"agent_id":"c","operation":"publish","inputs":["summary"],"outputs":[],"audience":"public"}
+  ]},
+  {"stream_id":"stream02","events":[
+    {"event_id":"e01","tick":1,"agent_id":"a","operation":"read","inputs":["restricted-record"],"outputs":["draft"],"audience":null},
+    {"event_id":"e02","tick":2,"agent_id":"d","operation":"note","inputs":[],"outputs":[],"audience":null},
+    {"event_id":"e03","tick":3,"agent_id":"b","operation":"transform","inputs":["draft"],"outputs":["summary"],"audience":null},
+    {"event_id":"e04","tick":4,"agent_id":"d","operation":"read","inputs":["public-guide"],"outputs":["notes"],"audience":null},
+    {"event_id":"e05","tick":5,"agent_id":"d","operation":"transform","inputs":["notes"],"outputs":["index"],"audience":null},
+    {"event_id":"e06","tick":6,"agent_id":"c","operation":"publish","inputs":["summary"],"outputs":[],"audience":"internal"}
+  ]},
+  {"stream_id":"stream03","events":[
+    {"event_id":"e01","tick":1,"agent_id":"a","operation":"read","inputs":["restricted-record"],"outputs":["draft"],"audience":null},
+    {"event_id":"e02","tick":2,"agent_id":"d","operation":"note","inputs":[],"outputs":[],"audience":null},
+    {"event_id":"e03","tick":3,"agent_id":"b","operation":"transform","inputs":["draft"],"outputs":["summary"],"audience":null},
+    {"event_id":"e04","tick":4,"agent_id":"d","operation":"read","inputs":["public-guide"],"outputs":["notes"],"audience":null},
+    {"event_id":"e05","tick":5,"agent_id":"d","operation":"transform","inputs":["notes"],"outputs":["index"],"audience":null},
+    {"event_id":"e06","tick":6,"agent_id":"c","operation":"publish","inputs":["summary"],"outputs":[],"audience":"public"}
+  ]},
+  {"stream_id":"stream04","events":[
+    {"event_id":"e01","tick":1,"agent_id":"d","operation":"read","inputs":["public-guide"],"outputs":["notes"],"audience":null},
+    {"event_id":"e02","tick":2,"agent_id":"b","operation":"read","inputs":["restricted-record"],"outputs":["working-copy"],"audience":null},
+    {"event_id":"e03","tick":3,"agent_id":"d","operation":"transform","inputs":["notes"],"outputs":["index"],"audience":null},
+    {"event_id":"e04","tick":4,"agent_id":"a","operation":"transform","inputs":["working-copy"],"outputs":["digest"],"audience":null},
+    {"event_id":"e05","tick":5,"agent_id":"d","operation":"note","inputs":[],"outputs":[],"audience":null},
+    {"event_id":"e06","tick":6,"agent_id":"d","operation":"note","inputs":[],"outputs":[],"audience":null},
+    {"event_id":"e07","tick":7,"agent_id":"c","operation":"publish","inputs":["digest"],"outputs":[],"audience":"public"}
+  ]}
+]

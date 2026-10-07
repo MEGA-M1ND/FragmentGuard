@@ -1,0 +1,46 @@
+{
+  "scan_id": "3UGNqh2n3ppqUyHmAK2iuY",
+  "scan_name": "fragmentguard",
+  "timestamp": "2026-10-07T10:02:11.361090+03:00",
+  "model": {
+    "model": "mockllm/model",
+    "config": {
+      "max_connections": 25
+    },
+    "args": {}
+  },
+  "packages": {
+    "inspect_ai": "0.3.277",
+    "inspect_scout": "0.5.4"
+  },
+  "options": {
+    "max_transcripts": 25,
+    "max_processes": 1
+  },
+  "transcripts": {
+    "type": "database",
+    "location": "/workspace/scratch/727f3acccd87/fragmentguard/runs/first-run/transcripts",
+    "filter": [],
+    "transcript_ids": {
+      "stream01": "transcripts_20261007T070210_db798faa.parquet",
+      "stream02": "transcripts_20261007T070210_db798faa.parquet",
+      "stream03": "transcripts_20261007T070210_db798faa.parquet",
+      "stream04": "transcripts_20261007T070210_db798faa.parquet"
+    },
+    "count": 0
+  },
+  "scanners": {
+    "fragmentguard": {
+      "name": "fragmentguard",
+      "version": 0,
+      "file": "fragmentguard/scout.py",
+      "params": {
+        "policy": {
+          "restricted-record": "restricted",
+          "public-guide": "public"
+        },
+        "budget": 3
+      }
+    }
+  }
+}

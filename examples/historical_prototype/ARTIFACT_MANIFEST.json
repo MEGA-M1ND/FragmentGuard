@@ -1,0 +1,39 @@
+{
+  "description": "Source, fixtures, successful direct scanner results, and two interrupted scheduler attempts.",
+  "files": {
+    ".gitignore": "472f568478bff9056ec56b5c5e8a7ca3d280c651d527321e1eb80892801164be",
+    "FIRST_RUN.md": "bd0a9ad238ac5043b57095b9a2fd9e07f5094cf4802613b22e50c1d6b1ebed45",
+    "NEXT_EXPERIMENT.md": "0caaabcc6e899f1b1303aed76b359ebfc035cae62ac259c687afabb8661eaec6",
+    "README.md": "043bbdf85f777c56e368e7bf3f0a367df3d909b6ea9f202e3793788210ced743",
+    "fixtures/ground_truth.json": "0837ca672ac64148ef1d27ef0abd15c02fb6ecdbec6fc773189c385f6f5429e2",
+    "fixtures/policy.json": "882c757afd574c7933f9a489886380c6f436e52677cc8d3bd571f2edfd0f34eb",
+    "fixtures/streams.json": "d85b3e341f078f73b5ad80b1d17c15164cb6e59bc7b90e0b7e73d709c6ac2520",
+    "fragmentguard/__init__.py": "737ceade5c3ec0e975f107b9432fd11309d861da42ce562d5c0d30a9fa5de693",
+    "fragmentguard/core.py": "687d801b3c8c8cf25a31b844883746581173deb303f75af66506385116b74d7d",
+    "fragmentguard/run.py": "f4be1cb1a7e7cd6cc19f28f048bfde346c5a266423f8ebb6113d0c260b95685c",
+    "fragmentguard/scout.py": "bb2060837dbff29fd9ffe955b2c292050b11fe70ce508e437f535dce4c6c4f7a",
+    "requirements.lock.txt": "573bc343937b3ac2094584b04ace3514a717e3effd8a80979924fda81f749d6a",
+    "requirements.txt": "1810e0095a36c157a8d93e6fb8db544ec26264fb7ed5f92f9b0dbae0f0436072",
+    "runs/direct-first-run/report.json": "171b6928d9714c902d76078043fab42b9d67c02f9e38c56109eff871d36656ca",
+    "runs/direct-first-run/scanner-results.json": "95d7ca9fc19bda74a2cde07d30996ca03e5c20e94da367e3e9d6b6587d8fd2d5",
+    "runs/direct-first-run/transcripts/_index/_manifest_20261007T070409_EgReCSzh.idx": "b77821d3a453c4becc54ee444799647758e06344d259cac44c463e328281f4ed",
+    "runs/direct-first-run/transcripts/transcripts_20261007T070409_ab3ab902.parquet": "d9fcbb5f8062f034c177dcc34471649b89ce144dc431a62c0395106530c5ad9b",
+    "runs/first-run/scans/scan_id=3UGNqh2n3ppqUyHmAK2iuY/_errors.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/first-run/scans/scan_id=3UGNqh2n3ppqUyHmAK2iuY/_scan.json": "99790033b0222a501557b8796e74df7b704f0c43aef864a15fdf007d1e95b99a",
+    "runs/first-run/scans/scan_id=3UGNqh2n3ppqUyHmAK2iuY/_summary.json": "48dd385cc6c77544db8f316b6afcc6b2d436e56120947c7c38c932bcd40fade8",
+    "runs/first-run/transcripts/_index/_manifest_20261007T070210_BrZqxVV3.idx": "cc6759c0301bc549233cab3d33bf593885d9b50783523ec69b05e74c86d77f9d",
+    "runs/first-run/transcripts/transcripts_20261007T070210_db798faa.parquet": "7b85b120ce633c77cf44939c4b970e0edd203f0af09b6d6ce19c37270c36ca41",
+    "runs/scout-two-workers/scans/scan_id=KNuu4JrQYDMKg4BHsLFx9t/_errors.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/scout-two-workers/scans/scan_id=KNuu4JrQYDMKg4BHsLFx9t/_scan.json": "1827e97212ba149e13ace9a115a1c4f9b0519807510cb86723c9f5a880071327",
+    "runs/scout-two-workers/scans/scan_id=KNuu4JrQYDMKg4BHsLFx9t/_summary.json": "48dd385cc6c77544db8f316b6afcc6b2d436e56120947c7c38c932bcd40fade8",
+    "runs/scout-two-workers/transcripts/_index/_manifest_20261007T070250_5sNEDFvD.idx": "a9583ed3d4d752b5e4ca0399c8716e19488b7b8544475ad5620b53062e6ed044",
+    "runs/scout-two-workers/transcripts/transcripts_20261007T070250_6b954ed2.parquet": "0bd6a285bb1403ce965bd3f4f631a9f223211ed37337c76b5681ae90139c16ca",
+    "tests/test_core.py": "5811277a2325437b92e4a38cb59e9f16047991f84c5445c07d4887b8d0fb75f2"
+  },
+  "verification": {
+    "unit_tests_passed": 9,
+    "synthetic_streams_processed": 4,
+    "full_scout_scan_complete": false,
+    "model_api_calls": 0
+  }
+}

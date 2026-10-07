@@ -1,0 +1,255 @@
+[
+  {
+    "transcript_id": "stream01",
+    "uuid": "mWf269N6FVsCbH7enWn8vA",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e06",
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e06"
+              ],
+              "events_reviewed": 1,
+              "reason": "The selected records do not establish the publication's ancestry."
+            },
+            "fixed_window": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "reason": "The selected records do not establish the publication's ancestry."
+            },
+            "correlated": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e03",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "reason": "The available evidence satisfies the toy publication policy."
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 6,
+              "reason": "The available evidence satisfies the toy publication policy."
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic events; no model was called.",
+    "metadata": {
+      "fixture_only": true,
+      "event_budget": 3
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  },
+  {
+    "transcript_id": "stream02",
+    "uuid": "hCCsx8hsGZ4DsyUZSzBaHF",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e06",
+          "methods": {
+            "per_agent": {
+              "status": "clear",
+              "evidence_ids": [
+                "e06"
+              ],
+              "events_reviewed": 1,
+              "reason": "The available evidence satisfies the toy publication policy."
+            },
+            "fixed_window": {
+              "status": "clear",
+              "evidence_ids": [
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "reason": "The available evidence satisfies the toy publication policy."
+            },
+            "correlated": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e03",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "reason": "The available evidence satisfies the toy publication policy."
+            },
+            "full_context_reference": {
+              "status": "clear",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 6,
+              "reason": "The available evidence satisfies the toy publication policy."
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic events; no model was called.",
+    "metadata": {
+      "fixture_only": true,
+      "event_budget": 3
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  },
+  {
+    "transcript_id": "stream03",
+    "uuid": "eY5TDiwDFJw7qL7UJQbWAk",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e06",
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e06"
+              ],
+              "events_reviewed": 1,
+              "reason": "The selected records do not establish the publication's ancestry."
+            },
+            "fixed_window": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "reason": "The selected records do not establish the publication's ancestry."
+            },
+            "correlated": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e03",
+                "e06"
+              ],
+              "events_reviewed": 3,
+              "reason": "Restricted ancestry reaches a public publication under the toy policy."
+            },
+            "full_context_reference": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06"
+              ],
+              "events_reviewed": 6,
+              "reason": "Restricted ancestry reaches a public publication under the toy policy."
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic events; no model was called.",
+    "metadata": {
+      "fixture_only": true,
+      "event_budget": 3
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  },
+  {
+    "transcript_id": "stream04",
+    "uuid": "5sSPswpgYjwRRhvtSPjWjU",
+    "value": {
+      "publications": [
+        {
+          "publication_id": "e07",
+          "methods": {
+            "per_agent": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e07"
+              ],
+              "events_reviewed": 1,
+              "reason": "The selected records do not establish the publication's ancestry."
+            },
+            "fixed_window": {
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "e05",
+                "e06",
+                "e07"
+              ],
+              "events_reviewed": 3,
+              "reason": "The selected records do not establish the publication's ancestry."
+            },
+            "correlated": {
+              "status": "alert",
+              "evidence_ids": [
+                "e02",
+                "e04",
+                "e07"
+              ],
+              "events_reviewed": 3,
+              "reason": "Restricted ancestry reaches a public publication under the toy policy."
+            },
+            "full_context_reference": {
+              "status": "alert",
+              "evidence_ids": [
+                "e01",
+                "e02",
+                "e03",
+                "e04",
+                "e05",
+                "e06",
+                "e07"
+              ],
+              "events_reviewed": 7,
+              "reason": "Restricted ancestry reaches a public publication under the toy policy."
+            }
+          }
+        }
+      ]
+    },
+    "answer": null,
+    "explanation": "Deterministic provenance checks on synthetic events; no model was called.",
+    "metadata": {
+      "fixture_only": true,
+      "event_budget": 3
+    },
+    "references": [],
+    "label": null,
+    "type": null
+  }
+]
