@@ -1,0 +1,27 @@
+[
+  {"stream_id": "stream11", "events": [
+    {"event_id": "e01", "tick": 1, "agent_id": "a", "operation": "read", "inputs": ["public-guide"], "outputs": ["scratch"], "audience": null},
+    {"event_id": "e02", "tick": 2, "agent_id": "a", "operation": "transform", "inputs": ["scratch"], "outputs": ["snapshot"], "audience": null},
+    {"event_id": "e03", "tick": 3, "agent_id": "b", "operation": "read", "inputs": ["restricted-record"], "outputs": ["scratch"], "audience": null},
+    {"event_id": "e04", "tick": 4, "agent_id": "c", "operation": "publish", "inputs": ["snapshot", "scratch"], "outputs": [], "audience": "public"}
+  ]},
+  {"stream_id": "stream12", "events": [
+    {"event_id": "e01", "tick": 1, "agent_id": "a", "operation": "read", "inputs": ["public-guide"], "outputs": ["scratch"], "audience": null},
+    {"event_id": "e02", "tick": 2, "agent_id": "a", "operation": "transform", "inputs": ["scratch"], "outputs": ["snapshot"], "audience": null},
+    {"event_id": "e03", "tick": 3, "agent_id": "b", "operation": "read", "inputs": ["public-guide"], "outputs": ["scratch"], "audience": null},
+    {"event_id": "e04", "tick": 4, "agent_id": "c", "operation": "publish", "inputs": ["snapshot", "scratch"], "outputs": [], "audience": "public"}
+  ]},
+  {"stream_id": "stream13", "events": [
+    {"event_id": "e01", "tick": 1, "agent_id": "a", "operation": "read", "inputs": ["restricted-record"], "outputs": ["scratch"], "audience": null},
+    {"event_id": "e02", "tick": 2, "agent_id": "b", "operation": "read", "inputs": ["public-guide"], "outputs": ["scratch"], "audience": null},
+    {"event_id": "e03", "tick": 3, "agent_id": "a", "operation": "publish", "inputs": ["scratch"], "outputs": [], "audience": "public"}
+  ]},
+  {"stream_id": "stream14", "events": [
+    {"event_id": "e01", "tick": 1, "agent_id": "a", "operation": "read", "inputs": ["public-guide"], "outputs": ["scratch"], "audience": null},
+    {"event_id": "e02", "tick": 2, "agent_id": "a", "operation": "transform", "inputs": ["scratch"], "outputs": ["snapshot"], "audience": null},
+    {"event_id": "e03", "tick": 3, "agent_id": "b", "operation": "read", "inputs": ["restricted-record"], "outputs": ["scratch"], "audience": null},
+    {"event_id": "e04", "tick": 4, "agent_id": "c", "operation": "publish", "inputs": ["snapshot", "scratch"], "outputs": [], "audience": "public"},
+    {"event_id": "e05", "tick": 5, "agent_id": "a", "operation": "read", "inputs": ["public-guide"], "outputs": ["scratch"], "audience": null},
+    {"event_id": "e06", "tick": 6, "agent_id": "c", "operation": "publish", "inputs": ["scratch"], "outputs": [], "audience": "public"}
+  ]}
+]

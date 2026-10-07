@@ -1,0 +1,9 @@
+{
+  "description": "Evaluator-only labels for the custom-input example. Written by the same author as the checker; these are regression cases, not a benchmark.",
+  "expected": {
+    "stream11": "alert",
+    "stream12": "clear",
+    "stream13": "clear",
+    "stream14": {"e04": "alert", "e06": "clear"}
+  }
+}

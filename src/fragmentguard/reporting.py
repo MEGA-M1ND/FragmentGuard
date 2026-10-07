@@ -25,7 +25,7 @@ PURPOSE = (
 )
 LABEL_BOUNDARY = (
     "Scanner input contained only neutral stream IDs and label-free event records. "
-    "Evaluator expectations were read from ground_truth.json only after scanner "
+    "Evaluator labels (if any) were read from their file only after scanner "
     "results had been produced, and appear only in the 'evaluation' section."
 )
 EVALUATED_METHODS = ("correlated", "full_context_reference")
@@ -51,13 +51,32 @@ def write_json(path: Path, data: Any) -> None:
     path.write_text(json.dumps(data, indent=2, sort_keys=False) + "\n", encoding="utf-8")
 
 
-def load_ground_truth(path: Path | None = None) -> dict[str, str]:
-    """Evaluator-only expectations. Call only after scanner outputs exist."""
+Labels = dict[str, Any]  # stream_id -> verdict, or stream_id -> {publication_id -> verdict}
+
+
+def load_ground_truth(path: Path | None = None) -> Labels:
+    """Evaluator-only expectations. Call only after scanner outputs exist.
+
+    Format: ``{"expected": {"stream01": "clear", "stream05": {"e04": "alert"}}}``.
+    A bare verdict applies to a stream with exactly one publication; a mapping
+    gives a verdict per publication ID.
+    """
     raw = read_json(path if path is not None else FIXTURE_DIR / "ground_truth.json")
     expected = raw.get("expected") if isinstance(raw, dict) else None
-    if not isinstance(expected, dict) or any(value not in VERDICTS for value in expected.values()):
-        raise ValueError("ground_truth.json must map stream IDs to verdicts under 'expected'")
+    if not isinstance(expected, dict) or not expected:
+        raise ValueError("Evaluator labels must map stream IDs to verdicts under 'expected'")
+    for stream_id, value in expected.items():
+        verdicts = value.values() if isinstance(value, dict) else [value]
+        if (isinstance(value, dict) and not value) or any(v not in VERDICTS for v in verdicts):
+            raise ValueError(f"Invalid evaluator label for {stream_id}: {value!r}")
     return expected
+
+
+def expectation(labels: Labels | None, stream_id: str, publication_id: str, single: bool) -> str | None:
+    value = (labels or {}).get(stream_id)
+    if isinstance(value, dict):
+        return value.get(publication_id)
+    return value if single else None
 
 
 def stream_results_from_rows(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
@@ -101,32 +120,71 @@ def status_counts(rows: list[dict[str, Any]]) -> dict[str, dict[str, int]]:
     return counts
 
 
-def evaluate(stream_results: dict[str, list[dict[str, Any]]], truth: dict[str, str]) -> dict[str, Any]:
-    """Compare correlated and full-context outcomes with evaluator expectations."""
+def evaluate(
+    stream_results: dict[str, list[dict[str, Any]]], labels: Labels,
+    gate_methods: tuple[str, ...] = EVALUATED_METHODS,
+) -> dict[str, Any]:
+    """Compare every method's outcome with evaluator labels.
+
+    All four methods are reported; only ``gate_methods`` decide ``all_match``
+    (and the CLI exit code). ``insufficient_evidence`` against an expected
+    verdict is counted separately from a contradicting verdict.
+    """
     checks, problems = [], []
-    if set(truth) != set(stream_results):
-        problems.append("Evaluator streams and scanned streams differ")
+    if set(labels) != set(stream_results):
+        problems.append(
+            f"Labelled streams {sorted(labels)} differ from scanned streams {sorted(stream_results)}"
+        )
     for stream_id, publications in stream_results.items():
-        if len(publications) != 1:
-            problems.append(f"{stream_id}: expected exactly one publication, found {len(publications)}")
+        value = labels.get(stream_id)
+        if value is None:
             continue
-        publication = publications[0]
-        for method in EVALUATED_METHODS:
-            observed = publication["methods"][method]["status"]
-            checks.append({
-                "stream_id": stream_id,
-                "publication_id": publication["publication_id"],
-                "method": method,
-                "expected": truth.get(stream_id),
-                "observed": observed,
-                "match": observed == truth.get(stream_id),
-            })
+        if isinstance(value, dict):
+            found = {publication["publication_id"] for publication in publications}
+            if set(value) != found:
+                problems.append(f"{stream_id}: labelled publications {sorted(value)} != {sorted(found)}")
+        elif len(publications) != 1:
+            problems.append(f"{stream_id}: a bare label needs exactly one publication, found {len(publications)}")
+            continue
+        for publication in publications:
+            expected = expectation(labels, stream_id, publication["publication_id"], single=True)
+            if expected is None:
+                continue
+            for method in METHODS:
+                observed = publication["methods"][method]["status"]
+                checks.append({
+                    "stream_id": stream_id,
+                    "publication_id": publication["publication_id"],
+                    "method": method,
+                    "expected": expected,
+                    "observed": observed,
+                    "match": observed == expected,
+                })
+    per_method = {
+        method: {
+            "match": sum(c["match"] for c in checks if c["method"] == method),
+            "insufficient_evidence": sum(
+                not c["match"] and c["observed"] == "insufficient_evidence"
+                for c in checks if c["method"] == method
+            ),
+            "contradicts_label": sum(
+                not c["match"] and c["observed"] != "insufficient_evidence"
+                for c in checks if c["method"] == method
+            ),
+        }
+        for method in METHODS
+    }
+    gated = [c for c in checks if c["method"] in gate_methods]
     return {
-        "methods_checked": list(EVALUATED_METHODS),
+        "methods_checked": list(gate_methods),
         "checks": checks,
+        "per_method": per_method,
         "problems": problems,
-        "all_match": not problems and bool(checks) and all(check["match"] for check in checks),
-        "note": "Expectations were written alongside the checker; agreement verifies wiring, not generalisation.",
+        "all_match": not problems and (not gate_methods or bool(gated)) and all(c["match"] for c in gated),
+        "note": (
+            "Labels and cases were written by the same people who wrote the checker unless stated "
+            "otherwise; agreement verifies wiring, not generalisation."
+        ),
     }
 
 
@@ -148,6 +206,7 @@ def build_report(
         "rows": rows,
         "status_counts": status_counts(rows) if complete else None,
         "evaluation": evaluation if complete else None,
+        "evaluation_note": None if evaluation is not None or not complete else "No evaluator labels supplied.",
         "measurement_notes": {
             "selected_event_count": "Measured: events passed to the checker for that view.",
             "records_examined": (
@@ -172,7 +231,7 @@ def _cell(row: dict[str, Any] | None) -> str:
     return f"{row['status']} ({row['selected_event_count']})"
 
 
-def render_markdown(report: dict[str, Any], expected: dict[str, str] | None = None) -> str:
+def render_markdown(report: dict[str, Any], expected: Labels | None = None) -> str:
     lines = [
         "# FragmentGuard run report",
         "",
@@ -198,6 +257,7 @@ def render_markdown(report: dict[str, Any], expected: dict[str, str] | None = No
 
     by_key = {(r["stream_id"], r["publication_id"], r["method"]): r for r in report["rows"]}
     publications = sorted({(r["stream_id"], r["publication_id"]) for r in report["rows"]})
+    per_stream = {stream: sum(1 for s, _ in publications if s == stream) for stream, _ in publications}
     header = ["Stream", "Publication", "Evaluator expectation"] + [METHOD_TITLES[m] for m in METHODS]
     lines += [
         "## Outcomes",
@@ -209,7 +269,8 @@ def render_markdown(report: dict[str, Any], expected: dict[str, str] | None = No
         "|" + " --- |" * len(header),
     ]
     for stream_id, publication_id in publications:
-        cells = [stream_id, publication_id, (expected or {}).get(stream_id, "not loaded")]
+        label = expectation(expected, stream_id, publication_id, per_stream[stream_id] == 1)
+        cells = [stream_id, publication_id, label or ("not labelled" if expected else "no labels supplied")]
         cells += [_cell(by_key.get((stream_id, publication_id, method))) for method in METHODS]
         lines.append("| " + " | ".join(cells) + " |")
 
@@ -235,14 +296,25 @@ def render_markdown(report: dict[str, Any], expected: dict[str, str] | None = No
         )
 
     evaluation = report["evaluation"]
-    verdict = "all expectations matched" if evaluation["all_match"] else "MISMATCH — see report.json"
+    lines += ["", "## Evaluator check", ""]
+    if evaluation is None:
+        lines += ["No evaluator labels were supplied, so no outcome was compared with a label.", ""]
+    else:
+        gate = ", ".join(evaluation["methods_checked"]) or "none"
+        verdict = "all matched" if evaluation["all_match"] else "MISMATCH, see report.json"
+        lines += [
+            f"Gated methods ({gate}): **{verdict}**. {evaluation['note']}",
+            "",
+            "| Method | match | insufficient_evidence | contradicts label |",
+            "| --- | --- | --- | --- |",
+        ]
+        for method in METHODS:
+            counts = evaluation["per_method"][method]
+            lines.append(f"| {METHOD_TITLES[method]} | {counts['match']} | "
+                         f"{counts['insufficient_evidence']} | {counts['contradicts_label']} |")
+        lines += [f"- Problem: {problem}" for problem in evaluation["problems"]]
+        lines.append("")
     lines += [
-        "",
-        "## Evaluator check",
-        "",
-        f"Methods checked against evaluator-only expectations: {', '.join(evaluation['methods_checked'])}: "
-        f"**{verdict}**. {evaluation['note']}",
-        "",
         "## Label boundary",
         "",
         report["label_boundary"],

@@ -54,15 +54,20 @@ python -m pip install --no-deps -e '.[dev]'
 
 | Command | What it does |
 | --- | --- |
-| `fragmentguard demo --mode direct --output DIR` | Writes the four fixture streams to Scout's transcript database, reads them back through Scout's public API, and calls the decorated scanner directly. Scout's scheduler and recorder are skipped, and no model is created. |
+| `fragmentguard demo --mode direct --output DIR` | Writes the streams to Scout's transcript database, reads them back through Scout's public API, and calls the decorated scanner directly. Scout's scheduler and recorder are skipped, and no model is created. |
 | `fragmentguard demo --mode scout --output DIR` | Runs Scout's real scheduled `scan()` over the stored transcripts with the `mockllm/model` setting. Before reading results, it checks completion, errors, scan counts, and that zero tokens were used. If the scan fails, the run is reported as incomplete. It never falls back to direct mode. |
 | `fragmentguard replay [--streams F] [--policy F] [--budget N] [--horizon N]` | Runs the core pipeline only (no Scout, no labels) on a streams file and prints JSON. Use it to author new cases. |
+
+Both `demo` modes use the bundled fixtures by default. They also accept
+`--streams`, `--policy`, `--labels` (evaluator-only, read after scanning),
+`--budget`, `--horizon`, and `--gate`. The gate chooses which methods' label
+agreement sets the exit code. See [`docs/custom_inputs.md`](docs/custom_inputs.md).
 
 `demo` refuses to write into an existing directory, so earlier runs are never
 overwritten. Exit codes:
 
-- `0`: the run completed and the evaluator check matched.
-- `1`: the run completed, but an expectation did not match.
+- `0`: the run completed, and the gated methods matched (or no labels were given).
+- `1`: the run completed, but a gated method did not match its label.
 - `3`: the selected path did not complete. The artifacts and the blocker are
   still written.
 
