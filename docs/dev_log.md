@@ -223,3 +223,18 @@ Short factual entries. These are engineering notes, not research results.
   `live-dev02/` after checking that no credential value or key-like string
   appears in them. Command output: `examples/agent_pilot/live-dev-commands.txt`.
   These are development runs, not pilot evidence.
+
+## 2026-10-12: pilot limits proposed from the live development runs
+
+- `experiments/agent_pilot/live/pilot.limits.json`, committed with
+  `live_enabled: false`; not frozen, not run. Same model and prices as the dev
+  runs.
+- Sized from what dev01/dev02 used and from the scripted pilot plans:
+  6 tool calls and 7 requests per agent (the longest scripted plan needs 4 and
+  5), 2,048 output tokens (observed maximum 103), 12,000 context bytes (observed
+  2,675; the longest plan projects to about 5.8 KB live), 252 total requests.
+- Pessimistic maximum for twelve episodes, computed with the pilot-freeze logic:
+  $0.963648 (the dev files' per-agent, output and context limits would have allowed $2.087424). Proposed cap $1.00,
+  not authorized. Expected spend is about $0.01, a projection only.
+- Added a test that the committed file is refused and that a live freeze of an
+  enabled copy accepts it at that maximum.

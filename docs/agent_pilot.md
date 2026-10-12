@@ -8,11 +8,11 @@ per-agent or recent-window views leave out?
 
 | Stage | Status |
 | --- | --- |
-| Environment, recorder, normalization, CLI, ledger evaluator, analysis | Implemented and tested offline (84 tests in the full suite) |
+| Environment, recorder, normalization, CLI, ledger evaluator, analysis | Implemented and tested offline (85 tests in the full suite) |
 | Two development episodes, scripted | Complete, bindings agree with the ledger |
 | Two development episodes, live (Claude Haiku 5.5) | **Run once each**: both complete, bindings agree with the ledger, $0.0012641 accounted in total |
 | Twelve-scenario pilot | **Scripted rehearsal only**: frozen, run once, replayed in both modes, analyzed |
-| Live pilot | **Not run**: to be configured from the live development runs; no cap authorized |
+| Live pilot | **Not run**: limits proposed in `experiments/agent_pilot/live/pilot.limits.json` (`live_enabled: false`); proposed cap $1.00, not authorized |
 
 The two live development episodes are engineering checks, not pilot evidence:
 they show that a live model can drive the tools and that recording, ledger,
@@ -447,6 +447,46 @@ What the runs showed:
 These two runs check tool execution, recording and accounting on one model.
 They do not show how agents behave on the pilot scenarios.
 
+## Pilot limits (proposed from the development runs, not authorized)
+
+`experiments/agent_pilot/live/pilot.limits.json` configures the twelve-scenario
+pilot on the same model and prices (re-checked 2026-10-12T09:30:31Z). It is
+committed with `live_enabled: false`, so it authorizes nothing. It has not been
+frozen or run.
+
+| Limit | dev runs | Observed in dev01/dev02 | Pilot | Reasoning |
+| --- | --- | --- | --- | --- |
+| `max_tool_calls_per_agent` | 6 | 1 | 6 | The longest scripted pilot plan needs 4 (sc04/sc09 processor). 6 leaves room for 2 refused or repeated calls. |
+| `max_requests_per_agent` | 8 | 2 (one call per turn, then a reply) | 7 | Enough for all 6 tool calls one per turn, plus the final reply. The longest scripted plan needs 5. |
+| `max_output_tokens` | 4,096 | 103 (no thinking) | 2,048 | About 20× the observed maximum. Adaptive thinking did not engage on the dev tasks but may on multi-step ones. A truncated turn ends as `output_limit` and is not retried, so this errs on the high side. |
+| `max_context_bytes` | 24,000 | 2,675 | 12,000 | The longest scripted request is 4,164 bytes. Live turns add about 350–390 bytes per prior assistant turn, so it projects to about 5.8 KB live. 12,000 is about 2× that. |
+| `max_total_requests` | 24 | 6 per episode | 252 | 12 episodes × 3 agents × 7. |
+| `request_overhead_tokens` | 2,000 | (input tokens were 41–65% of bytes) | 2,000 | Unchanged. |
+
+**Pessimistic maximum (pilot-freeze logic, `Budget.pessimistic_run_max_usd`):**
+
+- One request costs at most (12,000 + 2,000) × $0.10/M × 2 + 2,048 × $0.50/M =
+  $0.003824.
+- Twelve episodes allow 252 requests, so the maximum is **$0.963648**. Including
+  the two development episodes it is the same, because `max_total_requests`
+  caps it at 252. With the dev files' per-agent, output and context limits
+  (288 requests), twelve episodes would have allowed $2.087424.
+- **Proposed cap: `max_spend_usd` $1.00** for the single `pilot-run`
+  invocation. `pilot-freeze` refuses a cap below the pessimistic maximum, so
+  $1.00 is the smallest whole-dollar cap the freeze accepts with these limits.
+- **Expected spend is about $0.01.** The scripted pilot plans make 84 requests
+  in total, and the dev requests cost about $0.0001 each. This is a projection,
+  not a measurement.
+- A test (`test_committed_pilot_limits_authorize_nothing_and_fit_their_proposed_cap`)
+  checks that the committed file is refused as is and that a live freeze of an
+  enabled copy accepts it at $0.963648.
+
+**Risk of tighter limits.** An agent that hits the context, request, tool-call
+or output limit is stopped and the episode recorded as incomplete, never
+retried. The limits above are set from two one-step episodes, so a live agent
+that thinks at length or loops on errors could still hit them. That would show
+up as an incomplete episode, not as overspending.
+
 ## Scripted rehearsal results (engineering check only)
 
 The rehearsal was frozen at code `08410f65a81aced5a2e8c67dbf78b65575571aa4`
@@ -502,8 +542,9 @@ counts describe the design; they are not rates.
 ## Recommended next experiment
 
 **Run this frozen pilot live, once.** dev01 and dev02 have run live and were
-inspected (above). What remains is to write and authorize the pilot's
-limits file, then `pilot-freeze --backend live`,
+inspected (above). What remains is to authorize the proposed pilot cap
+($1.00), set `live_enabled` in `experiments/agent_pilot/live/pilot.limits.json`,
+then `pilot-freeze --backend live`,
 `pilot-run`, the two label-free replays, and `pilot-analyze`. The scripted rehearsal cannot say whether real agents produce
 the designed structures, so no selection change (for example breadth-first
 priority) should be tuned or run until live traces exist. If live traces then

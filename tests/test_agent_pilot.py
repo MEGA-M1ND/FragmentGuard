@@ -288,6 +288,18 @@ class LiveLimitTests(TempDirTest):
             pilot.freeze(EXPERIMENT / "pilot_config.json", self.tmp / "frz2", "live", limits, require_clean=False)
         self.assertFalse((self.tmp / "frz2").exists())
 
+    def test_committed_pilot_limits_authorize_nothing_and_fit_their_proposed_cap(self):
+        committed = EXPERIMENT / "live" / "pilot.limits.json"
+        with self.assertRaises(LiveNotAuthorized):
+            LiveLimits.load(committed)  # Proposed only: live_enabled stays false until authorized.
+        enabled = self.tmp / "limits.json"
+        enabled.write_text(json.dumps({**json.loads(committed.read_text()), "live_enabled": True}))
+        record = pilot.freeze(EXPERIMENT / "pilot_config.json", self.tmp / "frz", "live", enabled, require_clean=False)
+        limits = record["generation"]["limits"]
+        self.assertEqual(limits["max_total_requests"], 12 * 3 * limits["max_requests_per_agent"])
+        self.assertAlmostEqual(record["generation"]["pessimistic_max_usd"], 0.963648)
+        self.assertLessEqual(record["generation"]["pessimistic_max_usd"], limits["max_spend_usd"])
+
 
 class CostAccountingTests(TempDirTest):
     """Inspect's ModelUsage: output_tokens is the total (reasoning included); input_tokens
