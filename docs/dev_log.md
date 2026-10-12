@@ -180,3 +180,10 @@ Short factual entries. These are engineering notes, not research results.
   is $6.958 and its cap $7.00; together they need at most $14.00 of
   authorization. Added `agent-run --preflight-only`, which checks a
   configuration without any model call.
+- Development model switched to Claude Haiku 5.5 (`anthropic/claude-haiku-5-5`,
+  $0.10 / $0.50 per MTok up to 100,000 tokens), at the reviewer's suggestion:
+  the first live runs test tool execution and logging, not capability. The
+  limits are unchanged. Each run has a ceiling of $0.17395 and a cap of $0.25;
+  together the runs need at most $0.50 of authorization. `agent-run` now
+  writes `artifact_check` (recorded operations vs ledger versions and actual
+  files, plus stray outputs) and a `usage` summary to `inspection.json`.

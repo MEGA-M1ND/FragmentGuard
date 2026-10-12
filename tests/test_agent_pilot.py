@@ -21,7 +21,7 @@ from fragmentguard.agentpilot import pilot
 from fragmentguard.agentpilot.backends import (
     Budget, LimitReached, LiveBackend, LiveLimits, LiveNotAuthorized, ScriptedBackend,
 )
-from fragmentguard.agentpilot.episode import ScenarioError, run_episode, validate_scenario
+from fragmentguard.agentpilot.episode import ScenarioError, run_episode, validate_scenario, verify_artifacts
 from fragmentguard.agentpilot.ledger_labels import label_publication
 from fragmentguard.agentpilot.normalize import check_bindings
 from fragmentguard.agentpilot.workspace import EpisodeAborted, Recorder, Workspace
@@ -83,6 +83,24 @@ class RecorderAndWorkspaceTests(TempDirTest):
                 self.assertEqual(entry["produced_by_seq"], record["seq"])
                 self.assertEqual(entry["inputs"], [i["version_id"] for i in record["inputs"]])
         self.assertEqual({r["actor_kind"] for r in records}, {"scripted_backend", "scripted_background"})
+
+    def test_agent_run_inspection_verifies_artifacts_and_reports_usage(self):
+        out = self.tmp / "cli-dev01"
+        with contextlib.redirect_stdout(io.StringIO()) as printed:
+            code = cli.main(["agent-run", "--backend", "scripted", "--output", str(out),
+                             "--scenario", str(EXPERIMENT / "scenarios" / "dev01.json")])
+        self.assertEqual(code, 0)
+        inspection = json.loads((out / "inspection.json").read_text())
+        self.assertEqual(inspection["artifact_check"], {"ok": True, "successful_operations_checked": 3,
+                                                        "problems": []})
+        self.assertEqual(inspection["usage"]["model_requests"], 0)
+        self.assertIn("artifact check: ok", printed.getvalue())
+        published = next((out / "workspace" / "public_outputs").iterdir())
+        published.write_text("tampered")
+        (out / "workspace" / "internal_outputs" / "stray.json").write_text("{}")
+        problems = verify_artifacts(out)["problems"]
+        self.assertTrue(any("does not match the recorded hash" in p for p in problems))
+        self.assertTrue(any("unrecorded destination file" in p for p in problems))
 
     def test_normalized_bindings_agree_with_ledger_and_tampering_is_detected(self):
         self.episode("sc08")

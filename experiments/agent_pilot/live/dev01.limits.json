@@ -1,10 +1,10 @@
 {
   "live_enabled": false,
-  "model": "anthropic/claude-opus-5-5",
-  "max_spend_usd": 7.0,
-  "input_usd_per_million_tokens": 4.0,
-  "output_usd_per_million_tokens": 20.0,
-  "pricing_source": "https://platform.claude.com/docs/en/about-claude/pricing (Claude Opus 5.5: base input $4 / MTok, output $20 / MTok; cache writes $5 (5m) and $8 (1h) / MTok; global routing, no inference_geo)",
+  "model": "anthropic/claude-haiku-5-5",
+  "max_spend_usd": 0.25,
+  "input_usd_per_million_tokens": 0.1,
+  "output_usd_per_million_tokens": 0.5,
+  "pricing_source": "https://platform.claude.com/docs/en/about-claude/pricing (Claude Haiku 5.5, prompts up to 100,000 tokens: base input $0.10 / MTok, output $0.50 / MTok; cache writes $0.125 (5m) and $0.20 (1h) / MTok; global routing, no inference_geo). Model overview: https://platform.claude.com/docs/en/models/haiku-5-5/overview",
   "pricing_retrieved_utc": "2026-10-12T08:05:02Z",
   "max_output_tokens": 4096,
   "max_requests_per_agent": 8,
@@ -16,5 +16,5 @@
   "seed": null,
   "timeout_seconds": 120,
   "max_input_price_multiplier": 2.0,
-  "notes": "Live development run of dev01 only (one agent-run invocation). NOT AUTHORIZED: set live_enabled to true to authorize this single command's cap. Temperature and seed are null because Claude Opus 5.5 rejects sampling parameters; prompt caching is disabled by the backend."
+  "notes": "Live development run of dev01 only (one agent-run invocation). NOT AUTHORIZED: set live_enabled to true to authorize this single command's $0.25 cap. Call, context, output and reservation limits are unchanged from the earlier Opus preparation. max_context_bytes 24000 plus 2000 overhead keeps every request far below the 100,000-token price tier. Temperature and seed are null (Haiku 5.5 rejects non-default sampling values); prompt caching is disabled by the backend."
 }

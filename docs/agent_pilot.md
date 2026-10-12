@@ -292,61 +292,78 @@ output tokens, from
 
 ## Live preflight: dev01 and dev02 only (prepared, not run)
 
-Each development episode is one `agent-run` invocation with its own limits file
-and its own cap:
+These first live runs check tool execution and logging, not model capability.
+They therefore use **Claude Haiku 5.5**. Each development episode is one
+`agent-run` invocation, with its own limits file and its own cap:
 
 | | dev01 | dev02 |
 | --- | --- | --- |
 | Limits file | `experiments/agent_pilot/live/dev01.limits.json` | `experiments/agent_pilot/live/dev02.limits.json` |
-| Model | `anthropic/claude-opus-5-5` | `anthropic/claude-opus-5-5` |
+| Model | `anthropic/claude-haiku-5-5` | `anthropic/claude-haiku-5-5` |
 | Credential variable | `ANTHROPIC_API_KEY` | `ANTHROPIC_API_KEY` |
-| Prices | $4 / $20 per MTok (official, retrieved 2026-10-12T08:05:02Z) | same |
-| Pessimistic maximum | $6.958 | $6.958 |
-| Cap (`max_spend_usd`) | $7.00 | $7.00 |
+| Prices | $0.10 / $0.50 per MTok for prompts up to 100,000 tokens (official pricing page, retrieved 2026-10-12T08:05:02Z) | same |
+| Worst-case reservation per request | $0.007248 | $0.007248 |
+| Pessimistic maximum (24 requests) | $0.17395 | $0.17395 |
+| Cap (`max_spend_usd`) | $0.25 | $0.25 |
 
-**Combined maximum authorization for the two development runs: $14.00**
-($7.00 + $7.00). Each cap applies only to its own command.
+**Combined maximum authorization for the two development runs: $0.50**
+($0.25 + $0.25). The combined calculated ceiling is $0.348. These figures are
+ceilings under the configured limits, not measured spending.
 
 Both files are committed with `live_enabled: false`, so they authorize nothing.
-Model choice: `claude-opus-5-5` is the current default Claude model. Any other
-model needs its own limits files and prices.
 
-- **Sampling settings:** `temperature` and `seed` are null, because Claude
-  Opus 5.5 rejects sampling parameters.
-- **Thinking:** thinking is always on for this model and counts toward
-  `max_output_tokens`. A thinking-heavy turn that hits 4,096 tokens is recorded
-  as `output_limit`.
+- **Limits:** the request, tool-call, context, output and reservation limits are
+  those set for the earlier Opus preparation, which had a ceiling of $6.958 per
+  run at $4 / $20.
+- **Price tier:** `max_context_bytes` (24,000) plus overhead (2,000) bounds input
+  far below Haiku 5.5's 100,000-token price tier, so the lower prices always
+  apply.
+- **Sampling settings:** `temperature` and `seed` are null, because Haiku 5.5
+  rejects non-default sampling values.
+- **Thinking:** thinking is on by default and counts toward
+  `max_output_tokens`. A turn truncated at 4,096 tokens is recorded as
+  `output_limit`.
 
-**To run:**
+**To run (locally, once each, never retried until success):**
 
 1. Install the provider package: `pip install "anthropic>=1.0.0"` (Inspect's
    minimum; 1.13.0 is the latest release). Record the version.
-2. Export `ANTHROPIC_API_KEY` in the shell. FragmentGuard never reads or prints
-   its value.
+2. Export `ANTHROPIC_API_KEY`. FragmentGuard never reads or prints its value.
 3. Re-check the prices on the official page. If they changed, update both files
    and their retrieval time.
-4. Set `live_enabled` to `true` in each file you authorize.
-5. Check without a model call:
+4. Run the preflight. It calls no model, writes nothing, and exits 0 only when
+   the run is possible:
    ```bash
-   fragmentguard agent-run --backend live --model anthropic/claude-opus-5-5 \
+   fragmentguard agent-run --backend live --model anthropic/claude-haiku-5-5 \
      --limits experiments/agent_pilot/live/dev01.limits.json \
      --scenario experiments/agent_pilot/scenarios/dev01.json --preflight-only
    ```
-   This prints the package version, whether the credential variable is set
-   (never its value), the prices, the worst case and the cap. It exits 0 only
-   when the run is possible.
-6. Run each command once:
+   Repeat with `dev02`. Expect "Live generation is not enabled" until step 5.
+5. To authorize the caps, set `live_enabled` to `true` in both files. Re-run the
+   preflights, then run each episode once:
    ```bash
-   fragmentguard agent-run --backend live --model anthropic/claude-opus-5-5 \
+   fragmentguard agent-run --backend live --model anthropic/claude-haiku-5-5 \
      --limits experiments/agent_pilot/live/dev01.limits.json \
      --scenario experiments/agent_pilot/scenarios/dev01.json --output runs/agent-pilot/live-dev01
-   fragmentguard agent-run --backend live --model anthropic/claude-opus-5-5 \
+   fragmentguard agent-run --backend live --model anthropic/claude-haiku-5-5 \
      --limits experiments/agent_pilot/live/dev02.limits.json \
      --scenario experiments/agent_pilot/scenarios/dev02.json --output runs/agent-pilot/live-dev02
    ```
+6. Inspect each run; `agent-run` prints a summary and writes `inspection.json`:
+   - whether the agents completed their tasks: `agent_outcomes`, plus the
+     messages in `agent_transcripts.json`;
+   - whether recorded operations match the actual artifacts: `artifact_check`,
+     which recomputes every output hash against `raw_operations.jsonl` and the
+     ledger, and flags any destination file without a recorded publication;
+   - whether bindings agree: `binding_agreement`;
+   - what was charged: `usage` and `budget_ledger`, per request, with reserved
+     vs accounted cost and the token breakdown.
 
-The pilot itself needs a separate limits file and a separate authorization. Its
-ceiling is $83.50 under the template limits.
+   Keep failed, refused or incomplete runs as they are. A second attempt needs
+   a new output directory and stays on record next to the first.
+
+The twelve-scenario pilot is configured only after these two runs, from their
+observed behaviour and usage. It needs its own limits file and authorization.
 
 **Live procedure, once authorized:**
 

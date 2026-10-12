@@ -71,7 +71,7 @@ def live_preflight(limits_path: Path, model: str | None, episodes: int = 1) -> d
 
 def agent_run(args: argparse.Namespace) -> int:
     from ..pipeline import evaluate_streams
-    from .episode import run_episode
+    from .episode import run_episode, verify_artifacts
     from .ledger_labels import label_publication
 
     if args.preflight_only:
@@ -121,6 +121,15 @@ def agent_run(args: argparse.Namespace) -> int:
         "incomplete_reasons": manifest["incomplete_reasons"],
         "agent_outcomes": manifest["agent_outcomes"],
         "binding_agreement": manifest["normalization"].get("binding_agreement"),
+        "artifact_check": verify_artifacts(args.output),
+        "usage": {
+            "model_requests": manifest["generation"]["model_requests"],
+            "token_totals": manifest["generation"]["usage_totals"],
+            "accounted_usd": manifest["generation"]["accounted_usd"],
+            "budget_spent_usd": budget.spent_usd if budget else 0.0,
+            "cap_usd": budget.limits.max_spend_usd if budget else None,
+            "basis": manifest["generation"]["basis"],
+        },
         "budget_ledger": budget.ledger if budget else None,
     }
     if manifest["status"] == "complete":
@@ -133,6 +142,13 @@ def agent_run(args: argparse.Namespace) -> int:
     (args.output / "inspection.json").write_text(json.dumps(inspection, indent=2) + "\n", encoding="utf-8")
     print(f"agent-run ({backend.kind}): {manifest['status']} {manifest['incomplete_reasons'] or ''}")
     print(f"agent outcomes: {manifest['agent_outcomes']}")
+    check, usage = inspection["artifact_check"], inspection["usage"]
+    print(f"artifact check: {'ok' if check['ok'] else 'PROBLEMS ' + str(check['problems'])} "
+          f"({check['successful_operations_checked']} successful operations)")
+    agreement = inspection["binding_agreement"]
+    print(f"bindings agree with ledger: {agreement['agree'] if agreement else 'not checked (incomplete)'}")
+    print(f"usage: {usage['model_requests']} model requests, tokens {usage['token_totals']}, "
+          f"${usage['accounted_usd']:.6f} accounted" + (f" of ${usage['cap_usd']:.2f} cap" if usage["cap_usd"] else ""))
     if "views" in inspection:
         print(f"ledger label: {inspection['ledger_label']['verdict']}; full context: "
               f"{inspection['views']['full_context_reference']['status']}")

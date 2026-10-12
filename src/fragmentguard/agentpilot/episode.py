@@ -244,3 +244,42 @@ async def run_episode_async(
     }
     (output / "execution_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     return manifest
+
+
+def verify_artifacts(output: Path) -> dict[str, Any]:
+    """Re-check an episode directory: recorded operations vs ledger versions and actual files.
+
+    Every successful write must match its ledger version (hash, producer seq, inputs); every
+    publication's destination file and its ``output_artifacts`` copy must match the recorded
+    artifact hash; no destination file may exist without a recorded publication.
+    """
+    records = [json.loads(line) for line in (output / "raw_operations.jsonl").read_text().splitlines()]
+    ledger = json.loads((output / "resource_ledger.json").read_text(encoding="utf-8"))
+    problems: list[str] = []
+    checked = 0
+    published = set()
+    for record in records:
+        if record.get("status") != "ok":
+            continue
+        checked += 1
+        if record["operation"] == "publish":
+            published.add(record["artifact_path"])
+            relative = record["artifact_path"]
+            for path in (output / "workspace" / relative, output / "output_artifacts" / relative):
+                if not path.is_file():
+                    problems.append(f"seq {record['seq']}: missing {path.relative_to(output)}")
+                elif hashlib.sha256(path.read_bytes()).hexdigest() != record["artifact_sha256"]:
+                    problems.append(f"seq {record['seq']}: {path.relative_to(output)} does not match the recorded hash")
+            continue
+        entry = ledger["versions"].get(record["output_version"])
+        if entry is None:
+            problems.append(f"seq {record['seq']}: {record['output_version']} missing from the ledger")
+        elif (entry["sha256"], entry["produced_by_seq"], entry["inputs"]) != (
+                record["output_sha256"], record["seq"], [i["version_id"] for i in record["inputs"]]):
+            problems.append(f"seq {record['seq']}: ledger entry for {record['output_version']} "
+                            "disagrees with the record")
+    for audience_dir in sorted((output / "workspace").glob("*_outputs")):
+        for path in sorted(audience_dir.glob("*")):
+            if path.relative_to(output / "workspace").as_posix() not in published:
+                problems.append(f"unrecorded destination file {path.relative_to(output)}")
+    return {"ok": not problems, "successful_operations_checked": checked, "problems": problems}
