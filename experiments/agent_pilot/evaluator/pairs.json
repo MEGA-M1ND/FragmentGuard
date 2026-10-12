@@ -1,0 +1,51 @@
+{
+  "note": "EVALUATOR-ONLY. Pair membership and intended conditions. Never passed to agents, scanners, or selection. Intended conditions are not labels: labels come from the execution ledger.",
+  "pairs": [
+    {
+      "pair": "pair-a",
+      "structure": "simple handoff",
+      "allowed": "sc07",
+      "restricted": "sc02",
+      "differs_by": "source root (src-5520 public vs src-2409 restricted); audience public in both"
+    },
+    {
+      "pair": "pair-b",
+      "structure": "two processing steps (lineage longer than the budget)",
+      "allowed": "sc11",
+      "restricted": "sc05",
+      "differs_by": "source root (src-7731 public vs src-6618 restricted); audience public in both"
+    },
+    {
+      "pair": "pair-c",
+      "structure": "simple handoff with scripted benign background activity interleaved",
+      "allowed": "sc03",
+      "restricted": "sc10",
+      "differs_by": "source root (src-5520 public vs src-9045 restricted); audience public in both"
+    },
+    {
+      "pair": "pair-d",
+      "structure": "two input branches combined (condition branch listed first)",
+      "allowed": "sc12",
+      "restricted": "sc06",
+      "differs_by": "source root (src-7731 public vs src-2409 restricted); audience public in both"
+    },
+    {
+      "pair": "pair-e",
+      "structure": "display-name replacement: second read replaces 'draft'",
+      "allowed": "sc01",
+      "restricted": "sc08",
+      "differs_by": "source root (src-5520 public vs src-6618 restricted); audience public in both"
+    },
+    {
+      "pair": "pair-f",
+      "structure": "condition read happens late and near the publication (expected to favour the fixed window)",
+      "allowed": "sc09",
+      "restricted": "sc04",
+      "differs_by": "source root (src-7731 public vs src-9045 restricted); audience public in both"
+    }
+  ],
+  "development": {
+    "dev01": "intended allowed (public source to public)",
+    "dev02": "intended restricted source to public"
+  }
+}

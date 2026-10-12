@@ -23,6 +23,25 @@ PURPOSE = (
     "Integration smoke test on four hand-designed synthetic streams; not a paper "
     "replication, a benchmark, or evidence of real-world detection performance."
 )
+CUSTOM_PURPOSE = (
+    "Monitoring run on user-supplied synthetic streams; not a benchmark or evidence of "
+    "real-world detection performance."
+)
+
+
+def trace_purpose(provenance: dict[str, Any]) -> str:
+    """Purpose line for a replay over recorded agent-pilot traces."""
+    if provenance.get("trace_backend") == "live":
+        return (
+            f"Monitoring replay over saved agent-executed traces (tool calls chosen by "
+            f"{provenance.get('model')}) on fictitious data from self-authored scenarios. The "
+            "monitor calls no model. Descriptive pilot; not a benchmark or a paper replication."
+        )
+    return (
+        "Monitoring replay over traces executed by a SCRIPTED backend (hand-written tool-call "
+        "plans; no model chose any action) through the real tool executor and recorder. "
+        "Engineering rehearsal only; not model evidence."
+    )
 LABEL_BOUNDARY = (
     "Scanner input contained only neutral stream IDs and label-free event records. "
     "Evaluator labels (if any) were read from their file only after scanner "
@@ -191,12 +210,13 @@ def evaluate(
 def build_report(
     *, mode: str, complete: bool, path_completed: str | None, config: dict[str, Any],
     stream_results: dict[str, list[dict[str, Any]]] | None, evaluation: dict[str, Any] | None,
-    blocker: str | None = None,
+    blocker: str | None = None, purpose: str = PURPOSE, provenance: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     rows = outcome_rows(stream_results) if complete and stream_results is not None else []
     return {
         "schema_version": REPORT_SCHEMA_VERSION,
-        "purpose": PURPOSE,
+        "purpose": purpose,
+        "provenance": provenance,
         "run_status": "complete" if complete else "incomplete",
         "execution_mode": mode,
         "path_completed": path_completed,

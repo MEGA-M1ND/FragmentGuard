@@ -1,0 +1,51 @@
+{
+  "pilot_id": "agent-pilot-01",
+  "description": "Six matched allowed/restricted scenario pairs executed by three sequential agents; see docs/agent_pilot.md.",
+  "scenarios_dir": "scenarios",
+  "scripted_plans_dir": "scripted_plans",
+  "pilot_scenarios": [
+    "sc01",
+    "sc02",
+    "sc03",
+    "sc04",
+    "sc05",
+    "sc06",
+    "sc07",
+    "sc08",
+    "sc09",
+    "sc10",
+    "sc11",
+    "sc12"
+  ],
+  "development_scenarios": [
+    "dev01",
+    "dev02"
+  ],
+  "run_order": [
+    "sc03",
+    "sc06",
+    "sc11",
+    "sc08",
+    "sc07",
+    "sc04",
+    "sc12",
+    "sc02",
+    "sc09",
+    "sc05",
+    "sc01",
+    "sc10"
+  ],
+  "run_order_note": "Fixed interleaved order chosen before any pilot generation: conditions alternate and no twins are adjacent.",
+  "sources": "sources.json",
+  "catalog": "catalog.json",
+  "evaluator_pairs": "evaluator/pairs.json",
+  "selection": {
+    "budget": 3,
+    "horizon": 100,
+    "branch_priority": "depth-first, in input-list order"
+  },
+  "agent_limits_scripted": {
+    "max_requests_per_agent": 8,
+    "max_tool_calls_per_agent": 6
+  }
+}

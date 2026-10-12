@@ -24,6 +24,13 @@ from .schema import SchemaError, parse_events, parse_stream
 
 SYNTHETIC_SOURCE = "fragmentguard.synthetic"
 SOURCE_TYPE = "fragmentguard_synthetic"
+# Where a stream's records came from. The bundled fixtures are hand-written;
+# recorded traces are normalized from an application-side action recorder
+# (fragmentguard.agentpilot). Either way the monitor itself calls no model.
+SOURCE_KINDS = {
+    "synthetic_fixture": (SYNTHETIC_SOURCE, SOURCE_TYPE),
+    "agent_executed_trace": ("fragmentguard.recorded_trace", "fragmentguard_recorded_trace"),
+}
 SCANNER_NAME = "fragmentguard"
 EPOCH = datetime(2026, 10, 7, tzinfo=timezone.utc)
 MOCK_MODEL = "mockllm/model"
@@ -33,17 +40,24 @@ def event_uuid(stream_id: str, event_id: str) -> str:
     return f"{stream_id}.{event_id}"
 
 
-def to_transcript(stream: dict[str, Any]) -> Transcript:
+def _source(source_kind: str) -> tuple[str, str]:
+    if source_kind not in SOURCE_KINDS:
+        raise SchemaError(f"Unknown source kind {source_kind!r}; expected one of {sorted(SOURCE_KINDS)}")
+    return SOURCE_KINDS[source_kind]
+
+
+def to_transcript(stream: dict[str, Any], source_kind: str = "synthetic_fixture") -> Transcript:
     stream_id, events = parse_stream(stream)
+    event_source, source_type = _source(source_kind)
     return Transcript(
         transcript_id=stream_id,
-        source_type=SOURCE_TYPE,
+        source_type=source_type,
         metadata={},
         events=[
             InfoEvent(
                 uuid=event_uuid(stream_id, event.event_id),
                 timestamp=EPOCH + timedelta(seconds=event.tick),
-                source=SYNTHETIC_SOURCE,
+                source=event_source,
                 data=event.to_dict(),
             )
             for event in events
@@ -51,14 +65,17 @@ def to_transcript(stream: dict[str, Any]) -> Transcript:
     )
 
 
-def records_from_transcript(transcript: Transcript) -> list[dict[str, Any]]:
-    """Extract and validate synthetic records; reject anything else rather than skip it."""
+def records_from_transcript(
+    transcript: Transcript, source_kind: str = "synthetic_fixture"
+) -> list[dict[str, Any]]:
+    """Extract and validate records of one source kind; reject anything else rather than skip it."""
+    event_source, _ = _source(source_kind)
     if transcript.metadata:
-        raise SchemaError("Synthetic transcripts must carry no metadata (labels stay evaluator-only)")
+        raise SchemaError("Transcripts must carry no metadata (labels stay evaluator-only)")
     records = []
     for event in transcript.events:
-        if not isinstance(event, InfoEvent) or event.source != SYNTHETIC_SOURCE:
-            raise SchemaError("This scanner accepts only FragmentGuard synthetic info events")
+        if not isinstance(event, InfoEvent) or event.source != event_source:
+            raise SchemaError(f"This scanner accepts only {event_source} info events")
         if not isinstance(event.data, dict):
             raise SchemaError("Expected a synthetic event object")
         if event.uuid != event_uuid(transcript.transcript_id, str(event.data.get("event_id"))):
@@ -69,27 +86,35 @@ def records_from_transcript(transcript: Transcript) -> list[dict[str, Any]]:
 
 @scanner(name=SCANNER_NAME, events=["info"])
 def fragmentguard(
-    policy: dict[str, str], budget: int = 3, horizon: int = 100
+    policy: dict[str, str], budget: int = 3, horizon: int = 100, source_kind: str = "synthetic_fixture"
 ) -> Scanner[Transcript]:
     config = PipelineConfig(budget, horizon)
+    _source(source_kind)
 
     async def scan_transcript(transcript: Transcript) -> Result:
-        events = parse_events(records_from_transcript(transcript))
+        events = parse_events(records_from_transcript(transcript, source_kind))
         publications = evaluate_stream(events, policy, config.budget, config.horizon)
         return Result(
             value={"publications": publications},
-            explanation="Deterministic provenance checks on synthetic records; no model was called.",
-            metadata={"synthetic_fixture": True, **config.to_dict()},
+            explanation=f"Deterministic provenance checks on {source_kind} records; the monitor called no model.",
+            metadata={
+                "source_kind": source_kind,
+                "synthetic_fixture": source_kind == "synthetic_fixture",
+                "monitor_model_calls": 0,
+                **config.to_dict(),
+            },
         )
 
     return scan_transcript
 
 
-async def write_database(location: Path, streams: list[dict[str, Any]]) -> None:
+async def write_database(
+    location: Path, streams: list[dict[str, Any]], source_kind: str = "synthetic_fixture"
+) -> None:
     database = transcripts_db(str(location))
     await database.connect()
     try:
-        await database.insert([to_transcript(stream) for stream in streams])
+        await database.insert([to_transcript(stream, source_kind) for stream in streams])
     finally:
         await database.disconnect()
 
@@ -106,12 +131,14 @@ async def read_database(location: Path) -> list[Transcript]:
     return sorted(transcripts, key=lambda item: item.transcript_id)
 
 
-async def run_direct(location: Path, policy: dict[str, str], config: PipelineConfig) -> list[dict[str, Any]]:
+async def run_direct(
+    location: Path, policy: dict[str, str], config: PipelineConfig, source_kind: str = "synthetic_fixture"
+) -> list[dict[str, Any]]:
     """Read transcripts back through Scout's database API and call the decorated scanner.
 
     This skips Scout's scheduler, model setup, and recorder. No model is created.
     """
-    scan_fn = fragmentguard(policy, budget=config.budget, horizon=config.horizon)
+    scan_fn = fragmentguard(policy, budget=config.budget, horizon=config.horizon, source_kind=source_kind)
     rows = []
     for transcript in await read_database(location):
         result = await scan_fn(transcript)
@@ -121,7 +148,7 @@ async def run_direct(location: Path, policy: dict[str, str], config: PipelineCon
 
 def run_scheduled(
     transcripts: Path, scans: Path, policy: dict[str, str], config: PipelineConfig,
-    expected_transcripts: int, max_processes: int = 1,
+    expected_transcripts: int, max_processes: int = 1, source_kind: str = "synthetic_fixture",
 ) -> dict[str, Any]:
     """Run Scout's real scheduled scan and verify it before parsing recorded results.
 
@@ -131,7 +158,8 @@ def run_scheduled(
     attempt: dict[str, Any] = {"complete": False, "location": None, "errors": [], "checks": {}}
     try:
         status = scan(
-            scanners={SCANNER_NAME: fragmentguard(policy, budget=config.budget, horizon=config.horizon)},
+            scanners={SCANNER_NAME: fragmentguard(
+                policy, budget=config.budget, horizon=config.horizon, source_kind=source_kind)},
             transcripts=transcripts_from(str(transcripts)),
             scans=str(scans),
             model=MOCK_MODEL,

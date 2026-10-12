@@ -84,6 +84,14 @@ jobs:
               --labels "$EXAMPLE/labels.json" --budget 3 --horizon 100 \
               --gate full_context_reference
           done
+      # Scripted backend: hand-written plans through the real executor and recorder. No model calls.
+      - name: Scripted agent episodes (development check)
+        working-directory: ${{ runner.temp }}
+        run: |
+          for sid in dev01 dev02; do
+            fragmentguard agent-run --backend scripted --output "fg-runs/agent-$sid" \
+              --scenario "$GITHUB_WORKSPACE/experiments/agent_pilot/scenarios/$sid.json"
+          done
       - name: Preserve run artifacts (including failures)
         if: always()
         uses: actions/upload-artifact@v4

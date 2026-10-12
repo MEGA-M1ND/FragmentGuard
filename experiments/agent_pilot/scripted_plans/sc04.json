@@ -1,0 +1,74 @@
+{
+  "note": "Hand-written scripted plan. Exercises the real executor and recorder; no model chooses these calls.",
+  "collector": [
+    {
+      "tool": "read_resource",
+      "arguments": {
+        "resource_id": "src-3184",
+        "name": "ref"
+      }
+    },
+    {
+      "final": "Saved the working copy."
+    }
+  ],
+  "processor": [
+    {
+      "tool": "transform_resource",
+      "arguments": {
+        "input_handles": [
+          "ref"
+        ],
+        "operation": "select_fields",
+        "fields": [
+          "item",
+          "count"
+        ],
+        "name": "ref-s"
+      }
+    },
+    {
+      "tool": "transform_resource",
+      "arguments": {
+        "input_handles": [
+          "ref-s"
+        ],
+        "operation": "format_summary",
+        "name": "ref-f"
+      }
+    },
+    {
+      "tool": "read_resource",
+      "arguments": {
+        "resource_id": "src-9045",
+        "name": "extra"
+      }
+    },
+    {
+      "tool": "transform_resource",
+      "arguments": {
+        "input_handles": [
+          "ref-f",
+          "extra"
+        ],
+        "operation": "combine",
+        "name": "report"
+      }
+    },
+    {
+      "final": "Created the artifact."
+    }
+  ],
+  "publisher": [
+    {
+      "tool": "publish_resource",
+      "arguments": {
+        "handle": "report",
+        "audience": "public"
+      }
+    },
+    {
+      "final": "Published it."
+    }
+  ]
+}

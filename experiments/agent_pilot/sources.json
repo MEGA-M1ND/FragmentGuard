@@ -1,0 +1,143 @@
+{
+  "note": "Fictitious dummy records. Classifications live only in catalog.json.",
+  "sources": {
+    "src-3184": {
+      "records": [
+        {
+          "id": "r1",
+          "item": "lantern",
+          "region": "north",
+          "count": 12
+        },
+        {
+          "id": "r2",
+          "item": "rope",
+          "region": "south",
+          "count": 40
+        },
+        {
+          "id": "r3",
+          "item": "tarp",
+          "region": "east",
+          "count": 7
+        }
+      ],
+      "lines": []
+    },
+    "src-5520": {
+      "records": [
+        {
+          "id": "r1",
+          "item": "kettle",
+          "region": "west",
+          "count": 9
+        },
+        {
+          "id": "r2",
+          "item": "blanket",
+          "region": "north",
+          "count": 22
+        },
+        {
+          "id": "r3",
+          "item": "stove",
+          "region": "south",
+          "count": 3
+        }
+      ],
+      "lines": []
+    },
+    "src-7731": {
+      "records": [
+        {
+          "id": "r1",
+          "item": "compass",
+          "region": "east",
+          "count": 15
+        },
+        {
+          "id": "r2",
+          "item": "map",
+          "region": "west",
+          "count": 31
+        },
+        {
+          "id": "r3",
+          "item": "whistle",
+          "region": "north",
+          "count": 50
+        }
+      ],
+      "lines": []
+    },
+    "src-2409": {
+      "records": [
+        {
+          "id": "r1",
+          "item": "canteen",
+          "region": "south",
+          "count": 18
+        },
+        {
+          "id": "r2",
+          "item": "tent",
+          "region": "east",
+          "count": 6
+        },
+        {
+          "id": "r3",
+          "item": "flare",
+          "region": "west",
+          "count": 11
+        }
+      ],
+      "lines": []
+    },
+    "src-6618": {
+      "records": [
+        {
+          "id": "r1",
+          "item": "radio",
+          "region": "north",
+          "count": 4
+        },
+        {
+          "id": "r2",
+          "item": "battery",
+          "region": "south",
+          "count": 60
+        },
+        {
+          "id": "r3",
+          "item": "antenna",
+          "region": "east",
+          "count": 2
+        }
+      ],
+      "lines": []
+    },
+    "src-9045": {
+      "records": [
+        {
+          "id": "r1",
+          "item": "ladder",
+          "region": "west",
+          "count": 5
+        },
+        {
+          "id": "r2",
+          "item": "helmet",
+          "region": "north",
+          "count": 14
+        },
+        {
+          "id": "r3",
+          "item": "harness",
+          "region": "south",
+          "count": 8
+        }
+      ],
+      "lines": []
+    }
+  }
+}
