@@ -221,13 +221,13 @@ class LiveLimitTests(TempDirTest):
             LiveBackend(live_limits(), Budget(live_limits()), model=object())  # injection needs the test flag
 
     def test_budget_reserves_before_requests_and_charges_unknown_usage_in_full(self):
-        budget = Budget(live_limits(max_spend_usd=0.002))
+        budget = Budget(live_limits(max_spend_usd=0.005))
         reserved = budget.reserve(1000)
-        self.assertAlmostEqual(reserved, (1000 + 500 + 100) / 1e6)
+        self.assertAlmostEqual(reserved, ((1000 + 500) * 2 + 100) / 1e6)  # input priced at the 2x ceiling
         entry = budget.settle(reserved, None)
         self.assertEqual(entry["accounted_usd"], reserved)
         with self.assertRaises(LimitReached):
-            budget.reserve(1000)  # 0.0016 spent + 0.0016 reserved would exceed 0.002
+            budget.reserve(1000)  # 0.0031 spent + 0.0031 reserved would exceed 0.005
         self.assertEqual(budget.requests, 1)
         with self.assertRaises(LimitReached):
             Budget(live_limits()).reserve(30000)  # over max_context_bytes
@@ -282,23 +282,45 @@ class CostAccountingTests(TempDirTest):
         reserved = budget.reserve(1000)
         entry = budget.settle(reserved, {"input_tokens": 100, "output_tokens": 1000, "reasoning_tokens": 600})
         self.assertAlmostEqual(entry["accounted_usd"], 0.0204, places=10)  # not 0.0324
-        self.assertEqual(entry["tokens"], {"input_total": 100, "output_total": 1000,
-                                           "reasoning_included_in_output": 600})
+        self.assertEqual(entry["tokens"], {"input_total": 100, "cache_read": 0, "cache_write": 0,
+                                           "output_total": 1000, "reasoning_included_in_output": 600})
         self.assertAlmostEqual(budget.spent_usd, 0.0204, places=10)
 
     def test_cache_tokens_add_to_input_and_settlement_stays_within_reservation(self):
         limits = live_limits(max_output_tokens=4096, request_overhead_tokens=500, **self.RATES)
         budget = Budget(limits)
         reserved = budget.reserve(1000)
-        self.assertAlmostEqual(reserved, ((1000 + 500) * 4 + 4096 * 20) / 1e6)
-        # Worst case on the same semantics: every input token (incl. cache) at the bound and a
-        # full-length output whose reasoning is part of output_tokens.
-        worst = {"input_tokens": 1000, "input_tokens_cache_read": 300, "input_tokens_cache_write": 200,
+        self.assertAlmostEqual(reserved, ((1000 + 500) * 4 * 2 + 4096 * 20) / 1e6)
+        mixed = {"input_tokens": 1000, "input_tokens_cache_read": 300, "input_tokens_cache_write": 200,
                  "output_tokens": 4096, "reasoning_tokens": 4000}
-        entry = budget.settle(reserved, worst)
+        entry = budget.settle(reserved, mixed)
         self.assertEqual(entry["tokens"]["input_total"], 1500)
-        self.assertAlmostEqual(entry["accounted_usd"], reserved)
+        self.assertAlmostEqual(entry["accounted_usd"], ((1000 + 300) * 4 + 200 * 4 * 2 + 4096 * 20) / 1e6)
         self.assertFalse(entry["exceeded_reservation"])
+        # Worst case on the same semantics: every input token billed as a cache write at the
+        # ceiling, and a full-length output whose reasoning is part of output_tokens.
+        budget2 = Budget(limits)
+        reserved2 = budget2.reserve(1000)
+        worst = {"input_tokens": 0, "input_tokens_cache_write": 1500, "output_tokens": 4096,
+                 "reasoning_tokens": 4096}
+        entry2 = budget2.settle(reserved2, worst)
+        self.assertAlmostEqual(entry2["accounted_usd"], reserved2)
+        self.assertFalse(entry2["exceeded_reservation"])
+
+    def test_live_requests_disable_caching_and_replay_thinking_verbatim(self):
+        from inspect_ai.model import ChatMessageAssistant, ContentReasoning, ContentText
+        from inspect_ai.tool import ToolCall
+
+        backend = LiveBackend(live_limits(), Budget(live_limits()), model=object(), _allow_test_model=True)
+        config = backend._config()
+        self.assertIs(config.cache_prompt, False)
+        self.assertEqual(config.max_retries, 0)
+        original = ChatMessageAssistant(
+            content=[ContentReasoning(reasoning="", signature="sig-abc", redacted=False), ContentText(text="ok")],
+            tool_calls=[ToolCall(id="c1", function="read_resource", arguments={"resource_id": "src-5520"})])
+        replayed = LiveBackend._messages([{"role": "assistant", "content": "ok", "tool_calls": [],
+                                           "raw": original.model_dump(mode="json")}])[0]
+        self.assertEqual(replayed.model_dump(), original.model_dump())
 
     def test_usage_beyond_the_reservation_halts_further_requests(self):
         budget = Budget(live_limits(max_output_tokens=100, **self.RATES))
@@ -347,6 +369,23 @@ class CostAccountingTests(TempDirTest):
         self.assertAlmostEqual(manifest["generation"]["accounted_usd"], (200 * 4 + 50 * 20) / 1e6)
         transcripts = json.loads((self.tmp / "abort" / "agent_transcripts.json").read_text())["agents"]
         self.assertIn("recording failed", transcripts[0]["aborted"])
+
+    def test_preflight_only_checks_without_calling_a_model(self):
+        limits_path = self.tmp / "limits.json"
+        limits_path.write_text(json.dumps(live_limits(max_spend_usd=10.0, **self.RATES).to_dict()))
+        scenario = str(EXPERIMENT / "scenarios" / "dev01.json")
+        with mock.patch.object(LiveBackend, "generate", side_effect=AssertionError("no model call")), \
+                mock.patch.dict("os.environ", {"ANTHROPIC_API_KEY": "not-a-real-key"}), \
+                contextlib.redirect_stdout(io.StringIO()) as out:
+            code = cli.main(["agent-run", "--backend", "live", "--model", "anthropic/test-model",
+                             "--limits", str(limits_path), "--scenario", scenario, "--preflight-only"])
+        report = json.loads(out.getvalue().split("\nPreflight only")[0])
+        self.assertTrue(report["credential_variable_set"])
+        self.assertNotIn("not-a-real-key", out.getvalue())
+        self.assertEqual(report["credential_variable"], "ANTHROPIC_API_KEY")
+        self.assertAlmostEqual(report["pessimistic_max_usd"], 3 * 4 * report["max_request_reservation_usd"])
+        self.assertEqual(code, 0 if report["provider_package_version"] else 3)
+        self.assertEqual(list(self.tmp.iterdir()), [limits_path])  # nothing else written
 
     def test_pilot_run_reports_costs_of_an_episode_that_raised(self):
         limits_path = self.tmp / "limits.json"

@@ -256,19 +256,97 @@ Live mode needs all of the following:
   (`agent-run`, `pilot-run`) separately, so the total authorization is the sum
   across invocations.
 
-**A worked pessimistic maximum.** These are the template's limits with example
-prices of $4 / $20 per million input/output tokens. Those prices come from a
-cached model table dated 2026-10-06 and must be re-checked on the provider's
-pricing page.
+**Prompt caching is disabled, and input is priced at a ceiling.** Inspect's
+Anthropic provider caches prompts by default, and a cache write costs more than
+base input (1.25× for 5-minute writes, 2× for 1-hour writes). The backend
+therefore sends `cache_prompt=False`, and the reservation prices every input
+token at `max_input_price_multiplier` × the input rate (default 2.0, the
+highest published write multiplier). If cache writes appear anyway, settlement
+charges them at that multiple. Either way, no token mix can settle above its
+reservation.
 
-- One request costs at most (24,000 + 2,000) × $4/M + 4,096 × $20/M ≈ $0.186.
-- The pilot allows 12 episodes × 3 agents × 8 requests = 288 requests, so at
-  most ≈ $53.6. With the two development episodes it is 336 requests, ≈ $62.5.
-- This is a ceiling, not an estimate. Scripted requests here were at most 4.2 KB
-  (median 1.5 KB), and actual use should be far lower; this has not been
-  measured on a live model.
+**Thinking is replayed verbatim.** Each assistant turn is kept as the
+provider's own Inspect message, thinking or reasoning content included, and is
+sent back unchanged. Reconstructing a turn from its text and tool calls alone
+would edit the history. Some models reject that, or invalidate their thinking
+blocks.
+
+**A worked pessimistic maximum.** This uses the template's limits and Claude
+Opus 5.5's official prices: $4 per million input tokens and $20 per million
+output tokens, from
+<https://platform.claude.com/docs/en/about-claude/pricing>, retrieved
+2026-10-12T08:05:02Z, with global routing.
+
+- One request costs at most (24,000 + 2,000) × $4/M × 2 + 4,096 × $20/M =
+  $0.28992.
+- One episode is at most 3 agents × 8 requests = 24 requests, or $6.958.
+- The pilot is at most 288 requests ≈ $83.50. With the two development
+  episodes it is 336 requests ≈ $97.41.
+- These are ceilings, not estimates. Scripted requests here were at most 4.2 KB
+  (median 1.5 KB). Actual use should be far lower, but it has not been measured
+  on a live model.
 - Lowering `max_context_bytes` or `max_requests_per_agent` lowers the ceiling.
   An agent that hits a limit is stopped and recorded; it is not retried.
+- Requesting US-only inference (`inference_geo: "us"`) would add a 1.1×
+  multiplier. The backend does not send it.
+
+## Live preflight: dev01 and dev02 only (prepared, not run)
+
+Each development episode is one `agent-run` invocation with its own limits file
+and its own cap:
+
+| | dev01 | dev02 |
+| --- | --- | --- |
+| Limits file | `experiments/agent_pilot/live/dev01.limits.json` | `experiments/agent_pilot/live/dev02.limits.json` |
+| Model | `anthropic/claude-opus-5-5` | `anthropic/claude-opus-5-5` |
+| Credential variable | `ANTHROPIC_API_KEY` | `ANTHROPIC_API_KEY` |
+| Prices | $4 / $20 per MTok (official, retrieved 2026-10-12T08:05:02Z) | same |
+| Pessimistic maximum | $6.958 | $6.958 |
+| Cap (`max_spend_usd`) | $7.00 | $7.00 |
+
+**Combined maximum authorization for the two development runs: $14.00**
+($7.00 + $7.00). Each cap applies only to its own command.
+
+Both files are committed with `live_enabled: false`, so they authorize nothing.
+Model choice: `claude-opus-5-5` is the current default Claude model. Any other
+model needs its own limits files and prices.
+
+- **Sampling settings:** `temperature` and `seed` are null, because Claude
+  Opus 5.5 rejects sampling parameters.
+- **Thinking:** thinking is always on for this model and counts toward
+  `max_output_tokens`. A thinking-heavy turn that hits 4,096 tokens is recorded
+  as `output_limit`.
+
+**To run:**
+
+1. Install the provider package: `pip install "anthropic>=1.0.0"` (Inspect's
+   minimum; 1.13.0 is the latest release). Record the version.
+2. Export `ANTHROPIC_API_KEY` in the shell. FragmentGuard never reads or prints
+   its value.
+3. Re-check the prices on the official page. If they changed, update both files
+   and their retrieval time.
+4. Set `live_enabled` to `true` in each file you authorize.
+5. Check without a model call:
+   ```bash
+   fragmentguard agent-run --backend live --model anthropic/claude-opus-5-5 \
+     --limits experiments/agent_pilot/live/dev01.limits.json \
+     --scenario experiments/agent_pilot/scenarios/dev01.json --preflight-only
+   ```
+   This prints the package version, whether the credential variable is set
+   (never its value), the prices, the worst case and the cap. It exits 0 only
+   when the run is possible.
+6. Run each command once:
+   ```bash
+   fragmentguard agent-run --backend live --model anthropic/claude-opus-5-5 \
+     --limits experiments/agent_pilot/live/dev01.limits.json \
+     --scenario experiments/agent_pilot/scenarios/dev01.json --output runs/agent-pilot/live-dev01
+   fragmentguard agent-run --backend live --model anthropic/claude-opus-5-5 \
+     --limits experiments/agent_pilot/live/dev02.limits.json \
+     --scenario experiments/agent_pilot/scenarios/dev02.json --output runs/agent-pilot/live-dev02
+   ```
+
+The pilot itself needs a separate limits file and a separate authorization. Its
+ceiling is $83.50 under the template limits.
 
 **Live procedure, once authorized:**
 

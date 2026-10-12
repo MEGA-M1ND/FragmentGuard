@@ -15,5 +15,6 @@
   "temperature": null,
   "seed": null,
   "timeout_seconds": 120,
-  "notes": "TEMPLATE ONLY. Copy, fill every field, and set live_enabled to true to authorize live runs. Zero prices or a zero cap are rejected. max_output_tokens includes any thinking tokens on models that think by default."
+  "notes": "TEMPLATE ONLY. Copy, fill every field, and set live_enabled to true to authorize live runs. Zero prices or a zero cap are rejected. max_output_tokens includes any thinking tokens on models that think by default.",
+  "max_input_price_multiplier": 2.0
 }

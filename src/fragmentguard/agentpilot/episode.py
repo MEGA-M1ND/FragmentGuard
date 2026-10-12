@@ -87,7 +87,10 @@ async def _run_agent(role: str, backend: Any, workspace: Workspace, task: str, h
             if turn.error:
                 outcome = "model_error"
                 break
-            messages.append({"role": "assistant", "content": turn.text, "tool_calls": turn.tool_calls})
+            assistant = {"role": "assistant", "content": turn.text, "tool_calls": turn.tool_calls}
+            if turn.raw_message is not None:
+                assistant["raw"] = turn.raw_message
+            messages.append(assistant)
             if not turn.tool_calls:
                 if turn.stop_reason in REFUSAL_STOP_REASONS:
                     outcome = "refused"

@@ -166,3 +166,17 @@ Short factual entries. These are engineering notes, not research results.
 - No live runs had happened, so no recorded cost was affected. The committed
   scripted artifacts (`examples/agent_pilot/`, at `08410f6`) carry no
   generation cost and are kept unchanged.
+- Found while preparing the live preflight, and fixed before any live call:
+  - **Caching.** Inspect's Anthropic provider enables prompt caching by default,
+    and cache writes cost 1.25x to 2x base input, which settlement would have
+    under-charged. Requests now send `cache_prompt=False`. Reservations price
+    input at `max_input_price_multiplier` (default 2.0), and any cache write is
+    charged at that multiple.
+  - **History edits.** Assistant turns were rebuilt from text and tool calls,
+    which dropped thinking content. That is a history edit Claude Opus 5.5 can
+    reject. Turns are now replayed verbatim from the provider's message.
+- Prepared limits files for the dev01 and dev02 live runs
+  (`experiments/agent_pilot/live/`, `live_enabled: false`). Each run's ceiling
+  is $6.958 and its cap $7.00; together they need at most $14.00 of
+  authorization. Added `agent-run --preflight-only`, which checks a
+  configuration without any model call.

@@ -26,11 +26,63 @@ def _sibling(scenario: Path, name: str) -> Path:
     raise SystemExit(f"Could not find {name} next to {scenario}; pass it explicitly")
 
 
+# Credential variable read by each provider integration (names only; values are never read here).
+CREDENTIAL_VARIABLES = {"anthropic": "ANTHROPIC_API_KEY", "openai": "OPENAI_API_KEY", "google": "GOOGLE_API_KEY"}
+PROVIDER_PACKAGES = {"anthropic": "anthropic", "openai": "openai", "google": "google-genai"}
+
+
+def live_preflight(limits_path: Path, model: str | None, episodes: int = 1) -> dict[str, Any]:
+    """Check a live configuration without any model call. Raises SystemExit if it is not runnable."""
+    import importlib.metadata
+    import os
+
+    try:
+        limits = LiveLimits.load(limits_path)
+    except LiveNotAuthorized as error:
+        raise SystemExit(f"Live run blocked: {error}") from error
+    if model is not None and limits.model != model:
+        raise SystemExit("--model must equal the model named in the limits file")
+    provider = limits.model.split("/", 1)[0]
+    package = PROVIDER_PACKAGES.get(provider)
+    try:
+        package_version = importlib.metadata.version(package) if package else None
+    except importlib.metadata.PackageNotFoundError:
+        package_version = None
+    variable = CREDENTIAL_VARIABLES.get(provider)
+    budget = Budget(limits)
+    report = {
+        "model": limits.model, "provider": provider,
+        "provider_package": package, "provider_package_version": package_version,
+        "credential_variable": variable,
+        "credential_variable_set": bool(variable and os.environ.get(variable)),
+        "pricing": {"input_usd_per_million_tokens": limits.input_usd_per_million_tokens,
+                    "output_usd_per_million_tokens": limits.output_usd_per_million_tokens,
+                    "max_input_price_multiplier": limits.max_input_price_multiplier,
+                    "source": limits.pricing_source, "retrieved_utc": limits.pricing_retrieved_utc},
+        "max_request_reservation_usd": budget.reservation_usd(limits.max_context_bytes),
+        "pessimistic_max_usd": budget.pessimistic_run_max_usd(episodes),
+        "cap_usd": limits.max_spend_usd,
+        "cap_scope": "this one command invocation",
+    }
+    report["runnable"] = (report["pessimistic_max_usd"] <= limits.max_spend_usd
+                          and package_version is not None and report["credential_variable_set"])
+    return report
+
+
 def agent_run(args: argparse.Namespace) -> int:
     from ..pipeline import evaluate_streams
     from .episode import run_episode
     from .ledger_labels import label_publication
 
+    if args.preflight_only:
+        if args.backend != "live" or not args.limits:
+            raise SystemExit("--preflight-only checks a live configuration: pass --backend live and --limits")
+        report = live_preflight(args.limits, args.model)
+        print(json.dumps(report, indent=2))
+        print("Preflight only: no model was called and nothing was written.")
+        return 0 if report["runnable"] else 3
+    if args.output is None:
+        raise SystemExit("agent-run needs --output (a new directory)")
     scenario = json.loads(args.scenario.read_text(encoding="utf-8"))
     sources_path = args.sources or _sibling(args.scenario, "sources.json")
     catalog_path = args.catalog or _sibling(args.scenario, "catalog.json")
@@ -133,12 +185,15 @@ def register(commands: Any) -> None:
     run = commands.add_parser("agent-run", help="Execute one agent scenario (scripted by default)")
     run.add_argument("--backend", choices=("scripted", "live"), default="scripted")
     run.add_argument("--scenario", type=Path, required=True)
-    run.add_argument("--output", type=Path, required=True, help="New directory (must not exist)")
+    run.add_argument("--output", type=Path, default=None, help="New directory (must not exist)")
     run.add_argument("--script", type=Path, default=None, help="Scripted plan (default: ../scripted_plans/<id>.json)")
     run.add_argument("--sources", type=Path, default=None)
     run.add_argument("--catalog", type=Path, default=None)
     run.add_argument("--model", default=None, help="Live only: exact provider/model ID")
     run.add_argument("--limits", type=Path, default=None, help="Live only: limits file with live_enabled true")
+    run.add_argument("--preflight-only", action="store_true",
+                     help="Live only: validate limits, provider package, credential variable (set/unset) and the "
+                          "pessimistic maximum, then exit without calling any model")
     run.set_defaults(handler=agent_run)
 
     frz = commands.add_parser("pilot-freeze", help="Freeze the pilot before generation")

@@ -71,6 +71,10 @@ class LiveLimits:
     temperature: float | None = None
     seed: int | None = None
     timeout_seconds: int = 120
+    # Highest price multiple any input token can be billed at. Prompt caching is disabled, but
+    # reservations still price input at this multiple so no token mix can exceed them. 2.0 is the
+    # highest published cache-write multiplier (1-hour writes) at the time of writing.
+    max_input_price_multiplier: float = 2.0
     notes: str = ""
 
     @classmethod
@@ -100,6 +104,8 @@ class LiveLimits:
                 raise LiveNotAuthorized(f"{name} must be a positive integer")
         if not isinstance(self.request_overhead_tokens, int) or self.request_overhead_tokens < 0:
             raise LiveNotAuthorized("request_overhead_tokens must be a nonnegative integer")
+        if not isinstance(self.max_input_price_multiplier, (int, float)) or self.max_input_price_multiplier < 1:
+            raise LiveNotAuthorized("max_input_price_multiplier must be at least 1")
 
     def agent_limits(self) -> AgentLimits:
         return AgentLimits(self.max_requests_per_agent, self.max_tool_calls_per_agent)
@@ -121,7 +127,8 @@ class Budget:
 
     # Token semantics (Inspect AI ModelUsage), used identically by reserve() and settle():
     # - input total = input_tokens + input_tokens_cache_read + input_tokens_cache_write
-    #   (Inspect's input_tokens excludes cache tokens; cache is charged at the full input rate);
+    #   (Inspect's input_tokens excludes cache tokens). Cache reads are charged at the full input
+    #   rate and cache writes at max_input_price_multiplier x input, both at least the real price;
     # - output total = output_tokens, which already includes reasoning/thinking tokens
     #   (reasoning_tokens is a breakdown of it, never added again). Inspect sends max_tokens
     #   unchanged when it is set, and providers cap total output, reasoning included, by it.
@@ -131,7 +138,8 @@ class Budget:
         # serialized request, plus a fixed allowance for provider-side formatting. Output bound:
         # max_output_tokens, which caps the output total.
         input_tokens = request_bytes + self.limits.request_overhead_tokens
-        return (input_tokens * self.limits.input_usd_per_million_tokens
+        input_rate = self.limits.input_usd_per_million_tokens * self.limits.max_input_price_multiplier
+        return (input_tokens * input_rate
                 + self.limits.max_output_tokens * self.limits.output_usd_per_million_tokens) / 1e6
 
     def pessimistic_run_max_usd(self, episodes: int, agents_per_episode: int = 3) -> float:
@@ -160,15 +168,18 @@ class Budget:
         tokens_known = bool(usage) and usage.get("input_tokens") is not None and usage.get("output_tokens") is not None
         tokens = None
         if tokens_known:
-            input_total = (usage["input_tokens"] + (usage.get("input_tokens_cache_read") or 0)
-                           + (usage.get("input_tokens_cache_write") or 0))
+            cache_read = usage.get("input_tokens_cache_read") or 0
+            cache_write = usage.get("input_tokens_cache_write") or 0
+            input_total = usage["input_tokens"] + cache_read + cache_write
             output_total = usage["output_tokens"]  # Already includes reasoning tokens.
-            tokens = {"input_total": input_total, "output_total": output_total,
-                      "reasoning_included_in_output": usage.get("reasoning_tokens")}
-            cost = (input_total * self.limits.input_usd_per_million_tokens
+            tokens = {"input_total": input_total, "cache_read": cache_read, "cache_write": cache_write,
+                      "output_total": output_total, "reasoning_included_in_output": usage.get("reasoning_tokens")}
+            rate_in = self.limits.input_usd_per_million_tokens
+            cost = ((usage["input_tokens"] + cache_read) * rate_in
+                    + cache_write * rate_in * self.limits.max_input_price_multiplier
                     + output_total * self.limits.output_usd_per_million_tokens) / 1e6
-            basis = ("measured usage x supplied prices: input = input_tokens + cache reads + cache writes "
-                     "(cache at the full input rate); output = output_tokens, reasoning included once")
+            basis = ("measured usage x supplied prices: input_tokens and cache reads at the input rate, cache "
+                     "writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once")
         else:
             cost = reserved
             basis = "usage unavailable: charged the full reservation"
@@ -193,6 +204,7 @@ class Turn:
     cost: dict[str, Any] | None = None
     error: str | None = None
     model: str | None = None
+    raw_message: dict[str, Any] | None = None  # live only: the provider message, replayed verbatim
 
 
 class ScriptedBackend:
@@ -248,6 +260,7 @@ class LiveBackend:
         return GenerateConfig(
             max_retries=0, max_tokens=self.limits.max_output_tokens, temperature=self.limits.temperature,
             seed=self.limits.seed, timeout=self.limits.timeout_seconds,
+            cache_prompt=False,  # Inspect's Anthropic default would cache (cache writes cost more than input).
         )
 
     @staticmethod
@@ -264,6 +277,10 @@ class LiveBackend:
                 converted.append(ChatMessageSystem(content=message["content"]))
             elif role == "user":
                 converted.append(ChatMessageUser(content=message["content"]))
+            elif role == "assistant" and message.get("raw"):
+                # Replay the model's own message unchanged (thinking/reasoning content included):
+                # editing history can invalidate thinking blocks or be rejected by the provider.
+                converted.append(ChatMessageAssistant.model_validate(message["raw"]))
             elif role == "assistant":
                 calls = [ToolCall(id=c["id"], function=c["name"], arguments=c["arguments"])
                          for c in message.get("tool_calls", [])]
@@ -298,5 +315,6 @@ class LiveBackend:
                  for c in (message.tool_calls or [])]
         stop_reason = str(output.stop_reason)
         error = str(output.error) if getattr(output, "error", None) else None
-        return Turn(message.text or "", calls, stop_reason, usage, cost, error, output.model or self.model)
+        return Turn(message.text or "", calls, stop_reason, usage, cost, error, output.model or self.model,
+                    message.model_dump(mode="json"))
 
