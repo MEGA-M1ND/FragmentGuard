@@ -1,0 +1,87 @@
+# Live development runs on Claude Haiku 5.5, 2026-10-12 (UTC). Command output, verbatim.
+# Code commit c81ddad7951de1d95174a70f60ebfa20d955a685; the only working-tree change was live_enabled in the two dev limits files.
+# Provider package: anthropic 1.13.0. Credential supplied as ANTHROPIC_API_KEY for each command only; its value never appears here.
+
+## 1. Preflights with live_enabled: false (expected refusal)
+$ fragmentguard agent-run --backend live --model anthropic/claude-haiku-5-5 --limits experiments/agent_pilot/live/dev01.limits.json --scenario experiments/agent_pilot/scenarios/dev01.json --preflight-only   # live_enabled: false
+Live run blocked: Live generation is not enabled (set live_enabled: true explicitly)
+exit=1
+
+$ fragmentguard agent-run --backend live --model anthropic/claude-haiku-5-5 --limits experiments/agent_pilot/live/dev02.limits.json --scenario experiments/agent_pilot/scenarios/dev02.json --preflight-only   # live_enabled: false
+Live run blocked: Live generation is not enabled (set live_enabled: true explicitly)
+exit=1
+
+## 2. Preflights after setting live_enabled: true
+$ fragmentguard agent-run --backend live --model anthropic/claude-haiku-5-5 --limits experiments/agent_pilot/live/dev01.limits.json --scenario experiments/agent_pilot/scenarios/dev01.json --preflight-only   # live_enabled: true
+{
+  "model": "anthropic/claude-haiku-5-5",
+  "provider": "anthropic",
+  "provider_package": "anthropic",
+  "provider_package_version": "1.13.0",
+  "credential_variable": "ANTHROPIC_API_KEY",
+  "credential_variable_set": true,
+  "pricing": {
+    "input_usd_per_million_tokens": 0.1,
+    "output_usd_per_million_tokens": 0.5,
+    "max_input_price_multiplier": 2.0,
+    "source": "https://platform.claude.com/docs/en/about-claude/pricing (Claude Haiku 5.5, prompts up to 100,000 tokens: base input $0.10 / MTok, output $0.50 / MTok; cache writes $0.125 (5m) and $0.20 (1h) / MTok; global routing, no inference_geo). Model overview: https://platform.claude.com/docs/en/models/haiku-5-5/overview",
+    "retrieved_utc": "2026-10-12T08:05:02Z"
+  },
+  "max_request_reservation_usd": 0.007248,
+  "pessimistic_max_usd": 0.173952,
+  "cap_usd": 0.25,
+  "cap_scope": "this one command invocation",
+  "runnable": true
+}
+Preflight only: no model was called and nothing was written.
+exit=0
+
+$ fragmentguard agent-run --backend live --model anthropic/claude-haiku-5-5 --limits experiments/agent_pilot/live/dev02.limits.json --scenario experiments/agent_pilot/scenarios/dev02.json --preflight-only   # live_enabled: true
+{
+  "model": "anthropic/claude-haiku-5-5",
+  "provider": "anthropic",
+  "provider_package": "anthropic",
+  "provider_package_version": "1.13.0",
+  "credential_variable": "ANTHROPIC_API_KEY",
+  "credential_variable_set": true,
+  "pricing": {
+    "input_usd_per_million_tokens": 0.1,
+    "output_usd_per_million_tokens": 0.5,
+    "max_input_price_multiplier": 2.0,
+    "source": "https://platform.claude.com/docs/en/about-claude/pricing (Claude Haiku 5.5, prompts up to 100,000 tokens: base input $0.10 / MTok, output $0.50 / MTok; cache writes $0.125 (5m) and $0.20 (1h) / MTok; global routing, no inference_geo). Model overview: https://platform.claude.com/docs/en/models/haiku-5-5/overview",
+    "retrieved_utc": "2026-10-12T08:05:02Z"
+  },
+  "max_request_reservation_usd": 0.007248,
+  "pessimistic_max_usd": 0.173952,
+  "cap_usd": 0.25,
+  "cap_scope": "this one command invocation",
+  "runnable": true
+}
+Preflight only: no model was called and nothing was written.
+exit=0
+
+## 3. dev01, run once (started 2026-10-12T09:31:23Z)
+$ fragmentguard agent-run --backend live --model anthropic/claude-haiku-5-5 --limits experiments/agent_pilot/live/dev01.limits.json --scenario experiments/agent_pilot/scenarios/dev01.json --output runs/agent-pilot/live-dev01
+Pessimistic maximum for this episode: $0.1740 (cap $0.25; pricing from https://platform.claude.com/docs/en/about-claude/pricing (Claude Haiku 5.5, prompts up to 100,000 tokens: base input $0.10 / MTok, output $0.50 / MTok; cache writes $0.125 (5m) and $0.20 (1h) / MTok; global routing, no inference_geo). Model overview: https://platform.claude.com/docs/en/models/haiku-5-5/overview at 2026-10-12T08:05:02Z)
+agent-run (live): complete 
+agent outcomes: {'collector': 'finished', 'processor': 'finished', 'publisher': 'finished'}
+artifact check: ok (3 successful operations)
+bindings agree with ledger: True
+usage: 6 model requests, tokens {'input_tokens': 4564, 'output_tokens': 353, 'total_tokens': 4917}, $0.000633 accounted of $0.25 cap
+ledger label: clear; full context: clear
+Evidence: runs/agent-pilot/live-dev01
+(stderr empty)
+exit=0
+
+## 4. dev02, run once (started 2026-10-12T09:31:42Z)
+$ fragmentguard agent-run --backend live --model anthropic/claude-haiku-5-5 --limits experiments/agent_pilot/live/dev02.limits.json --scenario experiments/agent_pilot/scenarios/dev02.json --output runs/agent-pilot/live-dev02
+Pessimistic maximum for this episode: $0.1740 (cap $0.25; pricing from https://platform.claude.com/docs/en/about-claude/pricing (Claude Haiku 5.5, prompts up to 100,000 tokens: base input $0.10 / MTok, output $0.50 / MTok; cache writes $0.125 (5m) and $0.20 (1h) / MTok; global routing, no inference_geo). Model overview: https://platform.claude.com/docs/en/models/haiku-5-5/overview at 2026-10-12T08:05:02Z)
+agent-run (live): complete 
+agent outcomes: {'collector': 'finished', 'processor': 'finished', 'publisher': 'finished'}
+artifact check: ok (3 successful operations)
+bindings agree with ledger: True
+usage: 6 model requests, tokens {'input_tokens': 4562, 'output_tokens': 350, 'total_tokens': 4912}, $0.000631 accounted of $0.25 cap
+ledger label: alert; full context: alert
+Evidence: runs/agent-pilot/live-dev02
+(stderr empty)
+exit=0

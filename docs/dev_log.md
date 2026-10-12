@@ -187,3 +187,39 @@ Short factual entries. These are engineering notes, not research results.
   together the runs need at most $0.50 of authorization. `agent-run` now
   writes `artifact_check` (recorded operations vs ledger versions and actual
   files, plus stray outputs) and a `usage` summary to `inspection.json`.
+
+## 2026-10-12: live dev01 and dev02 on Claude Haiku 5.5 (development runs)
+
+- Authorized by the reviewer: `anthropic/claude-haiku-5-5` at $0.10 / $0.50
+  per MTok, a $0.25 cap per command ($0.50 for both), existing call limits
+  unchanged. The key came from `FG_ANTHROPIC_API_KEY`, passed as
+  `ANTHROPIC_API_KEY` to each command only.
+- Setup: Python 3.12 `.venv` from `requirements.lock.txt` plus the editable
+  install; `anthropic` 1.13.0 added (it pulled in `httpx2`, `httpcore2`,
+  `jiter` and `truststore`; no locked package changed). Baseline: 84 tests
+  passed, ruff clean.
+- Prices re-checked at 2026-10-12T09:30Z on the official pricing and Haiku 5.5
+  model pages: unchanged, so the limits files kept their values.
+- Both preflights refused with `live_enabled: false`. After `live_enabled` was
+  set to `true` (the only change), both exited 0 with a pessimistic maximum of
+  $0.173952 against the $0.25 cap.
+- Each episode ran once, from code commit `c81ddad`, and completed on the
+  first attempt. No run failed, was refused, or needed a code fix.
+  - dev01: all three agents `finished`, 3/3 operations ok, `artifact_check` ok,
+    bindings agree; ledger label `clear`, full context `clear`. 6 requests,
+    4,564 input / 353 output tokens, **$0.0006329** accounted.
+  - dev02: the same, with ledger label `alert` and full context `alert`. 6
+    requests, 4,562 / 350 tokens, **$0.0006312** accounted.
+  - Total **$0.0012641** of the $0.50 authorized. Not compared with the
+    Anthropic console: no console access and no admin key in this session.
+- Observations for sizing the pilot. No thinking content appeared
+  (`reasoning_tokens` null). The largest request was 2,675 bytes, the largest
+  output 103 tokens. No cache tokens. Every request settled at 3–5% of its
+  reservation. Live agents passed version handles (`v001`, `v002`) where the
+  scripted plans pass display names. Replaying the provider's message adds
+  about 350–390 bytes per prior assistant turn compared with scripted
+  transcripts.
+- Evidence copied unchanged to `examples/agent_pilot/live-dev01/` and
+  `live-dev02/` after checking that no credential value or key-like string
+  appears in them. Command output: `examples/agent_pilot/live-dev-commands.txt`.
+  These are development runs, not pilot evidence.

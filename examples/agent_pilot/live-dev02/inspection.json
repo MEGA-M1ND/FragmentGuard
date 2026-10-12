@@ -1,0 +1,186 @@
+{
+  "kind": "development inspection (not pilot evidence)",
+  "trace_backend": "live",
+  "status": "complete",
+  "incomplete_reasons": [],
+  "agent_outcomes": {
+    "collector": "finished",
+    "processor": "finished",
+    "publisher": "finished"
+  },
+  "binding_agreement": {
+    "agree": true,
+    "mismatches": [],
+    "events": 3
+  },
+  "artifact_check": {
+    "ok": true,
+    "successful_operations_checked": 3,
+    "problems": []
+  },
+  "usage": {
+    "model_requests": 6,
+    "token_totals": {
+      "input_tokens": 4562,
+      "output_tokens": 350,
+      "total_tokens": 4912
+    },
+    "accounted_usd": 0.0006312,
+    "budget_spent_usd": 0.0006312000000000001,
+    "cap_usd": 0.25,
+    "basis": "live model requests"
+  },
+  "budget_ledger": [
+    {
+      "role": "collector",
+      "reserved_usd": 0.0026311999999999998,
+      "accounted_usd": 9.580000000000001e-05,
+      "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+      "tokens": {
+        "input_total": 578,
+        "cache_read": 0,
+        "cache_write": 0,
+        "output_total": 76,
+        "reasoning_included_in_output": null
+      },
+      "exceeded_reservation": false,
+      "cumulative_usd": 9.580000000000001e-05,
+      "over_cap": false
+    },
+    {
+      "role": "collector",
+      "reserved_usd": 0.0028152,
+      "accounted_usd": 9.9e-05,
+      "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+      "tokens": {
+        "input_total": 780,
+        "cache_read": 0,
+        "cache_write": 0,
+        "output_total": 42,
+        "reasoning_included_in_output": null
+      },
+      "exceeded_reservation": false,
+      "cumulative_usd": 0.00019480000000000002,
+      "over_cap": false
+    },
+    {
+      "role": "processor",
+      "reserved_usd": 0.0028008,
+      "accounted_usd": 0.00014010000000000002,
+      "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+      "tokens": {
+        "input_total": 886,
+        "cache_read": 0,
+        "cache_write": 0,
+        "output_total": 103,
+        "reasoning_included_in_output": null
+      },
+      "exceeded_reservation": false,
+      "cumulative_usd": 0.00033490000000000006,
+      "over_cap": false
+    },
+    {
+      "role": "processor",
+      "reserved_usd": 0.0029825999999999997,
+      "accounted_usd": 0.0001245,
+      "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+      "tokens": {
+        "input_total": 1085,
+        "cache_read": 0,
+        "cache_write": 0,
+        "output_total": 32,
+        "reasoning_included_in_output": null
+      },
+      "exceeded_reservation": false,
+      "cumulative_usd": 0.00045940000000000005,
+      "over_cap": false
+    },
+    {
+      "role": "publisher",
+      "reserved_usd": 0.002623,
+      "accounted_usd": 9.3e-05,
+      "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+      "tokens": {
+        "input_total": 565,
+        "cache_read": 0,
+        "cache_write": 0,
+        "output_total": 73,
+        "reasoning_included_in_output": null
+      },
+      "exceeded_reservation": false,
+      "cumulative_usd": 0.0005524000000000001,
+      "over_cap": false
+    },
+    {
+      "role": "publisher",
+      "reserved_usd": 0.0027586,
+      "accounted_usd": 7.879999999999999e-05,
+      "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+      "tokens": {
+        "input_total": 668,
+        "cache_read": 0,
+        "cache_write": 0,
+        "output_total": 24,
+        "reasoning_included_in_output": null
+      },
+      "exceeded_reservation": false,
+      "cumulative_usd": 0.0006312000000000001,
+      "over_cap": false
+    }
+  ],
+  "ledger_label": {
+    "verdict": "alert",
+    "audience": "public",
+    "publication_seq": 3,
+    "roots": {
+      "src-2409": "restricted"
+    },
+    "evidence_trail": [
+      "pub01 (public) published v002 at seq 3",
+      "v002 (summary) = format_summary(v001) by processor at seq 2",
+      "v001 (draft) = read(src-2409) by collector at seq 1",
+      "src-2409 is a catalog root classified restricted"
+    ]
+  },
+  "views": {
+    "per_agent": {
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e003"
+      ],
+      "unresolved_inputs": [
+        {
+          "resource": "v002",
+          "bound_producer": "e002"
+        }
+      ]
+    },
+    "fixed_window": {
+      "status": "alert",
+      "evidence_ids": [
+        "e001",
+        "e002",
+        "e003"
+      ],
+      "unresolved_inputs": []
+    },
+    "correlated": {
+      "status": "alert",
+      "evidence_ids": [
+        "e001",
+        "e002",
+        "e003"
+      ],
+      "unresolved_inputs": []
+    },
+    "full_context_reference": {
+      "status": "alert",
+      "evidence_ids": [
+        "e001",
+        "e002",
+        "e003"
+      ],
+      "unresolved_inputs": []
+    }
+  }
+}

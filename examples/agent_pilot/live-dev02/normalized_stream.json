@@ -1,0 +1,44 @@
+[
+  {
+    "stream_id": "stream902",
+    "events": [
+      {
+        "event_id": "e001",
+        "tick": 1,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-2409"
+        ],
+        "outputs": [
+          "v001"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e002",
+        "tick": 2,
+        "agent_id": "processor",
+        "operation": "transform",
+        "inputs": [
+          "v001"
+        ],
+        "outputs": [
+          "v002"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e003",
+        "tick": 3,
+        "agent_id": "publisher",
+        "operation": "publish",
+        "inputs": [
+          "v002"
+        ],
+        "outputs": [],
+        "audience": "public"
+      }
+    ]
+  }
+]

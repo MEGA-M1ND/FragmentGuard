@@ -1,16 +1,25 @@
-# Agent pilot artifacts (scripted only)
+# Agent pilot artifacts
 
-**Every run here used the scripted backend.** Hand-written plans drove the real
-tool executor and recorder; no model chose any action. These runs check the
-engineering. They are not model evidence. See `docs/agent_pilot.md`.
+**All runs here except `live-dev01/` and `live-dev02/` used the scripted
+backend.** Hand-written plans drove the real tool executor and recorder; no
+model chose any action. These runs check the engineering. They are not model
+evidence. See `docs/agent_pilot.md`.
 
-They were produced on 12 October 2026 from clean code commit
+**`live-dev01/` and `live-dev02/` are the two live development episodes**, run
+once each on 12 October 2026 with `anthropic/claude-haiku-5-5` from code commit
+`c81ddad` (only `live_enabled` changed in the two dev limits files). They were
+copied unchanged from `runs/agent-pilot/`. They are development runs, not pilot
+evidence. Both completed; $0.0012641 was accounted in total.
+
+The scripted runs were produced on 12 October 2026 from clean code commit
 `08410f65a81aced5a2e8c67dbf78b65575571aa4` (package fingerprint
 `5a9dccbf9d941d907b5133a90c46ca437243564c473415bab4e061085fe1ef51`) under
 `runs/agent-pilot/`, then copied here unchanged.
 
 | Directory | What |
 | --- | --- |
+| `live-dev01/`, `live-dev02/` | Live development episodes on Claude Haiku 5.5, plus `inspection.json` |
+| `live-dev-commands.txt` | Their preflights (refused, then passing) and the two commands' output, verbatim |
 | `live-preflight.txt` | A live freeze and a live `agent-run` with the committed template: both refused (no authorization) |
 | `scripted-dev01/`, `scripted-dev02/` | The two development episodes, plus `inspection.json` |
 | `scripted-rehearsal-freeze/freeze.json` | The freeze record (SHA-256 `509c6a14…19226`) |

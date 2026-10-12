@@ -1,0 +1,68 @@
+{
+  "episode_id": "dev02",
+  "started_at_utc": "2026-10-12T09:31:46.434935+00:00",
+  "completed_at_utc": "2026-10-12T09:31:52.104066+00:00",
+  "trace_backend": "live",
+  "model": "anthropic/claude-haiku-5-5",
+  "actor_kinds": [
+    "model"
+  ],
+  "status": "complete",
+  "incomplete_reasons": [],
+  "aborted": null,
+  "agent_outcomes": {
+    "collector": "finished",
+    "processor": "finished",
+    "publisher": "finished"
+  },
+  "operations": {
+    "attempted": 3,
+    "succeeded": 3,
+    "failed": 0
+  },
+  "publications": [
+    {
+      "seq": 3,
+      "publication_id": "pub01",
+      "version_id": "v002",
+      "audience": "public",
+      "artifact_path": "public_outputs/pub01.json"
+    }
+  ],
+  "normalization": {
+    "performed": true,
+    "stream_id": "stream902",
+    "events": 3,
+    "binding_agreement": {
+      "agree": true,
+      "mismatches": [],
+      "events": 3
+    }
+  },
+  "generation": {
+    "backend_turns": 6,
+    "model_requests": 6,
+    "usage_totals": {
+      "input_tokens": 4562,
+      "output_tokens": 350,
+      "total_tokens": 4912
+    },
+    "accounted_usd": 0.0006312,
+    "basis": "live model requests"
+  },
+  "scenario_sha256": "224d27f2c65a1ab13a1946cf3f42c46fd56472c57713e194be1500e99e2985c2",
+  "fingerprints": {
+    "system_prompt_sha256": "b41650e39cb8a8aa52a10c8d260033cf4ffd1c3ddbaeae252d462513a1d44421",
+    "tool_schemas_sha256": "91874169e0ba1d62036218044e30ad162dfb66b7ecc10a63eba3bc998cee3131",
+    "role_tools_sha256": "148cc8bd2def82341e1becc837ea0174007e78c547636cc42f51b59297be2baa"
+  },
+  "agent_limits": {
+    "max_requests_per_agent": 8,
+    "max_tool_calls_per_agent": 6
+  },
+  "provenance": {
+    "command": "agent-run",
+    "trace_backend": "live"
+  },
+  "notes": "tick in normalized_stream.json is a logical counter of successful operations, not wall time."
+}
