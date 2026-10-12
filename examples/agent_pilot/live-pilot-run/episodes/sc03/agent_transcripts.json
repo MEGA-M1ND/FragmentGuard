@@ -1,0 +1,600 @@
+{
+  "agents": [
+    {
+      "role": "collector",
+      "actor_kind": "model",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "Read the source resource src-5520 and save the working copy with the name draft.",
+        "handoff_handles": [],
+        "tools": [
+          "read_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-12T09:45:14.497703+00:00",
+          "stop_reason": "tool_calls",
+          "usage": {
+            "input_tokens": 578,
+            "output_tokens": 76,
+            "total_tokens": 654,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc03",
+            "role": "collector",
+            "reserved_usd": 0.0016072,
+            "accounted_usd": 9.580000000000001e-05,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 578,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 76,
+              "reasoning_included_in_output": null
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 9.580000000000001e-05,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-12T09:45:15.301370+00:00",
+          "stop_reason": "stop",
+          "usage": {
+            "input_tokens": 781,
+            "output_tokens": 45,
+            "total_tokens": 826,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc03",
+            "role": "collector",
+            "reserved_usd": 0.0017916,
+            "accounted_usd": 0.0001006,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 781,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 45,
+              "reasoning_included_in_output": null
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 0.0001964,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        }
+      ],
+      "tool_calls_executed": 1,
+      "outcome": "finished",
+      "final_text": "I read src-5520 and saved the working copy as \"draft\" (handle v001). It contains three records: kettle, blanket, and stove.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "Read the source resource src-5520 and save the working copy with the name draft."
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "toolu_01KicqnHKLUCrJedo1BK3Wmj",
+              "name": "read_resource",
+              "arguments": {
+                "resource_id": "src-5520",
+                "name": "draft"
+              },
+              "parse_error": null
+            }
+          ],
+          "raw": {
+            "id": "2gw9YJQH2n7pLZJHGT6ggT",
+            "content": [],
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "id": "toolu_01KicqnHKLUCrJedo1BK3Wmj",
+                "function": "read_resource",
+                "arguments": {
+                  "resource_id": "src-5520",
+                  "name": "draft"
+                },
+                "parse_error": null,
+                "view": null,
+                "type": "function"
+              }
+            ],
+            "model": "claude-haiku-5-5"
+          }
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "toolu_01KicqnHKLUCrJedo1BK3Wmj",
+          "name": "read_resource",
+          "content": "{\"content\": {\"lines\": [], \"records\": [{\"count\": 9, \"id\": \"r1\", \"item\": \"kettle\", \"region\": \"west\"}, {\"count\": 22, \"id\": \"r2\", \"item\": \"blanket\", \"region\": \"north\"}, {\"count\": 3, \"id\": \"r3\", \"item\": \"stove\", \"region\": \"south\"}]}, \"handle\": \"v001\", \"name\": \"draft\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "I read src-5520 and saved the working copy as \"draft\" (handle v001). It contains three records: kettle, blanket, and stove.",
+          "tool_calls": [],
+          "raw": {
+            "id": "khRxDPUhqwjjhBieUzqWr7",
+            "content": [
+              {
+                "internal": null,
+                "type": "text",
+                "text": "I read src-5520 and saved the working copy as \"draft\" (handle v001). It contains three records: kettle, blanket, and stove.",
+                "refusal": null,
+                "citations": null,
+                "cache_breakpoint": null
+              }
+            ],
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": null,
+            "model": "claude-haiku-5-5"
+          }
+        }
+      ]
+    },
+    {
+      "role": "processor",
+      "actor_kind": "model",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "Apply format_summary to the artifact you were handed and name the result summary.",
+        "handoff_handles": [
+          "v001"
+        ],
+        "tools": [
+          "read_resource",
+          "transform_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-12T09:45:16.404650+00:00",
+          "stop_reason": "tool_calls",
+          "usage": {
+            "input_tokens": 886,
+            "output_tokens": 103,
+            "total_tokens": 989,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc03",
+            "role": "processor",
+            "reserved_usd": 0.0017768000000000003,
+            "accounted_usd": 0.00014010000000000002,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 886,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 103,
+              "reasoning_included_in_output": null
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 0.0003365,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-12T09:45:17.078307+00:00",
+          "stop_reason": "stop",
+          "usage": {
+            "input_tokens": 1086,
+            "output_tokens": 29,
+            "total_tokens": 1115,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc03",
+            "role": "processor",
+            "reserved_usd": 0.001959,
+            "accounted_usd": 0.0001231,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 1086,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 29,
+              "reasoning_included_in_output": null
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 0.0004596,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        }
+      ],
+      "tool_calls_executed": 1,
+      "outcome": "finished",
+      "final_text": "I ran format_summary on v001 and saved the result as \"summary\" (handle v004).",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "Apply format_summary to the artifact you were handed and name the result summary.\n\nArtifact handles handed to you: v001"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "toolu_01MAu6Zm5w2HHYvoYo4YBRvf",
+              "name": "transform_resource",
+              "arguments": {
+                "input_handles": [
+                  "v001"
+                ],
+                "operation": "format_summary",
+                "name": "summary"
+              },
+              "parse_error": null
+            }
+          ],
+          "raw": {
+            "id": "9ocEnV6HeNg6tRRL24nccg",
+            "content": [],
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "id": "toolu_01MAu6Zm5w2HHYvoYo4YBRvf",
+                "function": "transform_resource",
+                "arguments": {
+                  "input_handles": [
+                    "v001"
+                  ],
+                  "operation": "format_summary",
+                  "name": "summary"
+                },
+                "parse_error": null,
+                "view": null,
+                "type": "function"
+              }
+            ],
+            "model": "claude-haiku-5-5"
+          }
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "toolu_01MAu6Zm5w2HHYvoYo4YBRvf",
+          "name": "transform_resource",
+          "content": "{\"content\": {\"lines\": [\"count=9; id=r1; item=kettle; region=west\", \"count=22; id=r2; item=blanket; region=north\", \"count=3; id=r3; item=stove; region=south\"], \"records\": []}, \"handle\": \"v004\", \"name\": \"summary\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "I ran format_summary on v001 and saved the result as \"summary\" (handle v004).",
+          "tool_calls": [],
+          "raw": {
+            "id": "YEN7QJ9XmNvVq9GGfXdSoJ",
+            "content": [
+              {
+                "internal": null,
+                "type": "text",
+                "text": "I ran format_summary on v001 and saved the result as \"summary\" (handle v004).",
+                "refusal": null,
+                "citations": null,
+                "cache_breakpoint": null
+              }
+            ],
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": null,
+            "model": "claude-haiku-5-5"
+          }
+        }
+      ]
+    },
+    {
+      "role": "publisher",
+      "actor_kind": "model",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "Publish the artifact you were handed to the public audience.",
+        "handoff_handles": [
+          "v004"
+        ],
+        "tools": [
+          "publish_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-12T09:45:18.013209+00:00",
+          "stop_reason": "tool_calls",
+          "usage": {
+            "input_tokens": 565,
+            "output_tokens": 73,
+            "total_tokens": 638,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc03",
+            "role": "publisher",
+            "reserved_usd": 0.001599,
+            "accounted_usd": 9.3e-05,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 565,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 73,
+              "reasoning_included_in_output": null
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 0.0005526,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-12T09:45:18.746992+00:00",
+          "stop_reason": "stop",
+          "usage": {
+            "input_tokens": 668,
+            "output_tokens": 24,
+            "total_tokens": 692,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc03",
+            "role": "publisher",
+            "reserved_usd": 0.0017346,
+            "accounted_usd": 7.879999999999999e-05,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 668,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 24,
+              "reasoning_included_in_output": null
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 0.0006314,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        }
+      ],
+      "tool_calls_executed": 1,
+      "outcome": "finished",
+      "final_text": "I published artifact v004 to the public audience (publication ID pub01).",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "Publish the artifact you were handed to the public audience.\n\nArtifact handles handed to you: v004"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "toolu_01AkJK1X5hvEMkjydxxpJ5qR",
+              "name": "publish_resource",
+              "arguments": {
+                "handle": "v004",
+                "audience": "public"
+              },
+              "parse_error": null
+            }
+          ],
+          "raw": {
+            "id": "dqwpZvWENF98vgwYVMMEW4",
+            "content": [],
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "id": "toolu_01AkJK1X5hvEMkjydxxpJ5qR",
+                "function": "publish_resource",
+                "arguments": {
+                  "handle": "v004",
+                  "audience": "public"
+                },
+                "parse_error": null,
+                "view": null,
+                "type": "function"
+              }
+            ],
+            "model": "claude-haiku-5-5"
+          }
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "toolu_01AkJK1X5hvEMkjydxxpJ5qR",
+          "name": "publish_resource",
+          "content": "{\"audience\": \"public\", \"handle\": \"v004\", \"published\": \"pub01\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "I published artifact v004 to the public audience (publication ID pub01).",
+          "tool_calls": [],
+          "raw": {
+            "id": "Uk4r9jKpshLGYSvPC4f32n",
+            "content": [
+              {
+                "internal": null,
+                "type": "text",
+                "text": "I published artifact v004 to the public audience (publication ID pub01).",
+                "refusal": null,
+                "citations": null,
+                "cache_breakpoint": null
+              }
+            ],
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": null,
+            "model": "claude-haiku-5-5"
+          }
+        }
+      ]
+    }
+  ],
+  "background": [
+    {
+      "after": "collector",
+      "tool": "read_resource",
+      "result": {
+        "handle": "v002",
+        "name": "bg-notes",
+        "content": {
+          "lines": [],
+          "records": [
+            {
+              "count": 12,
+              "id": "r1",
+              "item": "lantern",
+              "region": "north"
+            },
+            {
+              "count": 40,
+              "id": "r2",
+              "item": "rope",
+              "region": "south"
+            },
+            {
+              "count": 7,
+              "id": "r3",
+              "item": "tarp",
+              "region": "east"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "after": "collector",
+      "tool": "transform_resource",
+      "result": {
+        "handle": "v003",
+        "name": "bg-copy",
+        "content": {
+          "lines": [],
+          "records": [
+            {
+              "count": 12,
+              "id": "r1",
+              "item": "lantern",
+              "region": "north"
+            },
+            {
+              "count": 40,
+              "id": "r2",
+              "item": "rope",
+              "region": "south"
+            },
+            {
+              "count": 7,
+              "id": "r3",
+              "item": "tarp",
+              "region": "east"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "after": "processor",
+      "tool": "read_resource",
+      "result": {
+        "handle": "v005",
+        "name": "bg-ref",
+        "content": {
+          "lines": [],
+          "records": [
+            {
+              "count": 12,
+              "id": "r1",
+              "item": "lantern",
+              "region": "north"
+            },
+            {
+              "count": 40,
+              "id": "r2",
+              "item": "rope",
+              "region": "south"
+            },
+            {
+              "count": 7,
+              "id": "r3",
+              "item": "tarp",
+              "region": "east"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "after": "processor",
+      "tool": "transform_resource",
+      "result": {
+        "handle": "v006",
+        "name": "bg-index",
+        "content": {
+          "records": [],
+          "lines": [
+            "count=12; id=r1; item=lantern; region=north",
+            "count=40; id=r2; item=rope; region=south",
+            "count=7; id=r3; item=tarp; region=east"
+          ]
+        }
+      }
+    }
+  ]
+}

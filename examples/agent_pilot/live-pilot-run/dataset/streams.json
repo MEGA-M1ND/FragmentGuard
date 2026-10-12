@@ -1,0 +1,496 @@
+[
+  {
+    "stream_id": "stream01",
+    "events": [
+      {
+        "event_id": "e001",
+        "tick": 1,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-3184"
+        ],
+        "outputs": [
+          "v001"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e002",
+        "tick": 2,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-5520"
+        ],
+        "outputs": [
+          "v002"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e003",
+        "tick": 3,
+        "agent_id": "processor",
+        "operation": "transform",
+        "inputs": [
+          "v002"
+        ],
+        "outputs": [
+          "v003"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e004",
+        "tick": 4,
+        "agent_id": "publisher",
+        "operation": "publish",
+        "inputs": [
+          "v003"
+        ],
+        "outputs": [],
+        "audience": "public"
+      }
+    ]
+  },
+  {
+    "stream_id": "stream02",
+    "events": [
+      {
+        "event_id": "e001",
+        "tick": 1,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-2409"
+        ],
+        "outputs": [
+          "v001"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e002",
+        "tick": 2,
+        "agent_id": "processor",
+        "operation": "transform",
+        "inputs": [
+          "v001"
+        ],
+        "outputs": [
+          "v002"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e003",
+        "tick": 3,
+        "agent_id": "publisher",
+        "operation": "publish",
+        "inputs": [
+          "v002"
+        ],
+        "outputs": [],
+        "audience": "public"
+      }
+    ]
+  },
+  {
+    "stream_id": "stream03",
+    "events": [
+      {
+        "event_id": "e001",
+        "tick": 1,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-5520"
+        ],
+        "outputs": [
+          "v001"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e002",
+        "tick": 2,
+        "agent_id": "background",
+        "operation": "read",
+        "inputs": [
+          "src-3184"
+        ],
+        "outputs": [
+          "v002"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e003",
+        "tick": 3,
+        "agent_id": "background",
+        "operation": "transform",
+        "inputs": [
+          "v002"
+        ],
+        "outputs": [
+          "v003"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e004",
+        "tick": 4,
+        "agent_id": "processor",
+        "operation": "transform",
+        "inputs": [
+          "v001"
+        ],
+        "outputs": [
+          "v004"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e005",
+        "tick": 5,
+        "agent_id": "background",
+        "operation": "read",
+        "inputs": [
+          "src-3184"
+        ],
+        "outputs": [
+          "v005"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e006",
+        "tick": 6,
+        "agent_id": "background",
+        "operation": "transform",
+        "inputs": [
+          "v005"
+        ],
+        "outputs": [
+          "v006"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e007",
+        "tick": 7,
+        "agent_id": "publisher",
+        "operation": "publish",
+        "inputs": [
+          "v004"
+        ],
+        "outputs": [],
+        "audience": "public"
+      }
+    ]
+  },
+  {
+    "stream_id": "stream06",
+    "events": [
+      {
+        "event_id": "e001",
+        "tick": 1,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-2409"
+        ],
+        "outputs": [
+          "v001"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e002",
+        "tick": 2,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-3184"
+        ],
+        "outputs": [
+          "v002"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e003",
+        "tick": 3,
+        "agent_id": "processor",
+        "operation": "transform",
+        "inputs": [
+          "v001",
+          "v002"
+        ],
+        "outputs": [
+          "v003"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e004",
+        "tick": 4,
+        "agent_id": "publisher",
+        "operation": "publish",
+        "inputs": [
+          "v003"
+        ],
+        "outputs": [],
+        "audience": "public"
+      }
+    ]
+  },
+  {
+    "stream_id": "stream07",
+    "events": [
+      {
+        "event_id": "e001",
+        "tick": 1,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-5520"
+        ],
+        "outputs": [
+          "v001"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e002",
+        "tick": 2,
+        "agent_id": "processor",
+        "operation": "transform",
+        "inputs": [
+          "v001"
+        ],
+        "outputs": [
+          "v002"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e003",
+        "tick": 3,
+        "agent_id": "publisher",
+        "operation": "publish",
+        "inputs": [
+          "v002"
+        ],
+        "outputs": [],
+        "audience": "public"
+      }
+    ]
+  },
+  {
+    "stream_id": "stream08",
+    "events": [
+      {
+        "event_id": "e001",
+        "tick": 1,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-3184"
+        ],
+        "outputs": [
+          "v001"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e002",
+        "tick": 2,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-6618"
+        ],
+        "outputs": [
+          "v002"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e003",
+        "tick": 3,
+        "agent_id": "processor",
+        "operation": "transform",
+        "inputs": [
+          "v002"
+        ],
+        "outputs": [
+          "v003"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e004",
+        "tick": 4,
+        "agent_id": "publisher",
+        "operation": "publish",
+        "inputs": [
+          "v003"
+        ],
+        "outputs": [],
+        "audience": "public"
+      }
+    ]
+  },
+  {
+    "stream_id": "stream10",
+    "events": [
+      {
+        "event_id": "e001",
+        "tick": 1,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-9045"
+        ],
+        "outputs": [
+          "v001"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e002",
+        "tick": 2,
+        "agent_id": "background",
+        "operation": "read",
+        "inputs": [
+          "src-3184"
+        ],
+        "outputs": [
+          "v002"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e003",
+        "tick": 3,
+        "agent_id": "background",
+        "operation": "transform",
+        "inputs": [
+          "v002"
+        ],
+        "outputs": [
+          "v003"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e004",
+        "tick": 4,
+        "agent_id": "processor",
+        "operation": "transform",
+        "inputs": [
+          "v001"
+        ],
+        "outputs": [
+          "v004"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e005",
+        "tick": 5,
+        "agent_id": "background",
+        "operation": "read",
+        "inputs": [
+          "src-3184"
+        ],
+        "outputs": [
+          "v005"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e006",
+        "tick": 6,
+        "agent_id": "background",
+        "operation": "transform",
+        "inputs": [
+          "v005"
+        ],
+        "outputs": [
+          "v006"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e007",
+        "tick": 7,
+        "agent_id": "publisher",
+        "operation": "publish",
+        "inputs": [
+          "v004"
+        ],
+        "outputs": [],
+        "audience": "public"
+      }
+    ]
+  },
+  {
+    "stream_id": "stream12",
+    "events": [
+      {
+        "event_id": "e001",
+        "tick": 1,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-7731"
+        ],
+        "outputs": [
+          "v001"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e002",
+        "tick": 2,
+        "agent_id": "collector",
+        "operation": "read",
+        "inputs": [
+          "src-3184"
+        ],
+        "outputs": [
+          "v002"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e003",
+        "tick": 3,
+        "agent_id": "processor",
+        "operation": "transform",
+        "inputs": [
+          "v001",
+          "v002"
+        ],
+        "outputs": [
+          "v003"
+        ],
+        "audience": null
+      },
+      {
+        "event_id": "e004",
+        "tick": 4,
+        "agent_id": "publisher",
+        "operation": "publish",
+        "inputs": [
+          "v003"
+        ],
+        "outputs": [],
+        "audience": "public"
+      }
+    ]
+  }
+]

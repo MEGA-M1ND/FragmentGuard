@@ -1,0 +1,136 @@
+{
+  "stream03": {
+    "episode_id": "sc03",
+    "publication_event": "e007",
+    "verdict": "clear",
+    "audience": "public",
+    "publication_seq": 7,
+    "roots": {
+      "src-5520": "public"
+    },
+    "evidence_trail": [
+      "pub01 (public) published v004 at seq 7",
+      "v004 (summary) = format_summary(v001) by processor at seq 4",
+      "v001 (draft) = read(src-5520) by collector at seq 1",
+      "src-5520 is a catalog root classified public"
+    ]
+  },
+  "stream06": {
+    "episode_id": "sc06",
+    "publication_event": "e004",
+    "verdict": "alert",
+    "audience": "public",
+    "publication_seq": 4,
+    "roots": {
+      "src-2409": "restricted",
+      "src-3184": "public"
+    },
+    "evidence_trail": [
+      "pub01 (public) published v003 at seq 4",
+      "v003 (report) = combine(v001, v002) by processor at seq 3",
+      "v001 (main) = read(src-2409) by collector at seq 1",
+      "src-2409 is a catalog root classified restricted",
+      "v002 (ref) = read(src-3184) by collector at seq 2",
+      "src-3184 is a catalog root classified public"
+    ]
+  },
+  "stream08": {
+    "episode_id": "sc08",
+    "publication_event": "e004",
+    "verdict": "alert",
+    "audience": "public",
+    "publication_seq": 4,
+    "roots": {
+      "src-6618": "restricted"
+    },
+    "evidence_trail": [
+      "pub01 (public) published v003 at seq 4",
+      "v003 (summary) = format_summary(v002) by processor at seq 3",
+      "v002 (draft) = read(src-6618) by collector at seq 2",
+      "src-6618 is a catalog root classified restricted"
+    ]
+  },
+  "stream07": {
+    "episode_id": "sc07",
+    "publication_event": "e003",
+    "verdict": "clear",
+    "audience": "public",
+    "publication_seq": 3,
+    "roots": {
+      "src-5520": "public"
+    },
+    "evidence_trail": [
+      "pub01 (public) published v002 at seq 3",
+      "v002 (summary) = format_summary(v001) by processor at seq 2",
+      "v001 (draft) = read(src-5520) by collector at seq 1",
+      "src-5520 is a catalog root classified public"
+    ]
+  },
+  "stream12": {
+    "episode_id": "sc12",
+    "publication_event": "e004",
+    "verdict": "clear",
+    "audience": "public",
+    "publication_seq": 4,
+    "roots": {
+      "src-7731": "public",
+      "src-3184": "public"
+    },
+    "evidence_trail": [
+      "pub01 (public) published v003 at seq 4",
+      "v003 (report) = combine(v001, v002) by processor at seq 3",
+      "v001 (main) = read(src-7731) by collector at seq 1",
+      "src-7731 is a catalog root classified public",
+      "v002 (ref) = read(src-3184) by collector at seq 2",
+      "src-3184 is a catalog root classified public"
+    ]
+  },
+  "stream02": {
+    "episode_id": "sc02",
+    "publication_event": "e003",
+    "verdict": "alert",
+    "audience": "public",
+    "publication_seq": 3,
+    "roots": {
+      "src-2409": "restricted"
+    },
+    "evidence_trail": [
+      "pub01 (public) published v002 at seq 3",
+      "v002 (summary) = format_summary(v001) by processor at seq 2",
+      "v001 (draft) = read(src-2409) by collector at seq 1",
+      "src-2409 is a catalog root classified restricted"
+    ]
+  },
+  "stream01": {
+    "episode_id": "sc01",
+    "publication_event": "e004",
+    "verdict": "clear",
+    "audience": "public",
+    "publication_seq": 4,
+    "roots": {
+      "src-5520": "public"
+    },
+    "evidence_trail": [
+      "pub01 (public) published v003 at seq 4",
+      "v003 (summary) = format_summary(v002) by processor at seq 3",
+      "v002 (draft) = read(src-5520) by collector at seq 2",
+      "src-5520 is a catalog root classified public"
+    ]
+  },
+  "stream10": {
+    "episode_id": "sc10",
+    "publication_event": "e007",
+    "verdict": "alert",
+    "audience": "public",
+    "publication_seq": 7,
+    "roots": {
+      "src-9045": "restricted"
+    },
+    "evidence_trail": [
+      "pub01 (public) published v004 at seq 7",
+      "v004 (summary) = format_summary(v001) by processor at seq 4",
+      "v001 (draft) = read(src-9045) by collector at seq 1",
+      "src-9045 is a catalog root classified restricted"
+    ]
+  }
+}

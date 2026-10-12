@@ -1,0 +1,64 @@
+{
+  "episode_id": "sc05",
+  "versions": {
+    "src-6618": {
+      "version_id": "src-6618",
+      "display_name": null,
+      "kind": "root",
+      "sha256": "1b87d36562803decafb81524ec8488b564936bc8f98d68d3048733c6c0390046",
+      "produced_by_seq": null,
+      "produced_by_agent": null,
+      "operation": null,
+      "inputs": []
+    },
+    "v001": {
+      "version_id": "v001",
+      "display_name": "draft",
+      "kind": "derived",
+      "sha256": "1b87d36562803decafb81524ec8488b564936bc8f98d68d3048733c6c0390046",
+      "produced_by_seq": 1,
+      "produced_by_agent": "collector",
+      "operation": "read",
+      "inputs": [
+        "src-6618"
+      ]
+    },
+    "v002": {
+      "version_id": "v002",
+      "display_name": "subset",
+      "kind": "derived",
+      "sha256": "8392f77664c707398c818ab3561c32ff909bfdd8af7afd9682b6bb7c08e8e3c2",
+      "produced_by_seq": 2,
+      "produced_by_agent": "processor",
+      "operation": "select_fields",
+      "inputs": [
+        "v001"
+      ]
+    },
+    "v003": {
+      "version_id": "v003",
+      "display_name": "summary",
+      "kind": "derived",
+      "sha256": "0cb72390959a52ab39639b91bb83a847d46d495da685a4dbf3ccf3155acca808",
+      "produced_by_seq": 3,
+      "produced_by_agent": "processor",
+      "operation": "format_summary",
+      "inputs": [
+        "v002"
+      ]
+    }
+  },
+  "display_names": {
+    "draft": [
+      "v001"
+    ],
+    "subset": [
+      "v002"
+    ],
+    "summary": [
+      "v003"
+    ]
+  },
+  "publications": [],
+  "note": "Canonical application-side version ledger; catalog classifications are not stored here."
+}

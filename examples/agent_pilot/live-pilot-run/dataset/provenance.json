@@ -1,0 +1,7 @@
+{
+  "source_kind": "agent_executed_trace",
+  "trace_backend": "live",
+  "model": "anthropic/claude-haiku-5-5",
+  "execution_dir": "runs/agent-pilot/live-pilot/run",
+  "freeze_sha256": "259f058063649a4d4049681d75c9feb0dabc8ffd1f602caa23c6163b3b89a596"
+}

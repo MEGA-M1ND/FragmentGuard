@@ -238,3 +238,47 @@ Short factual entries. These are engineering notes, not research results.
   not authorized. Expected spend is about $0.01, a projection only.
 - Added a test that the committed file is refused and that a live freeze of an
   enabled copy accepts it at that maximum.
+
+## 2026-10-12: live twelve-scenario pilot (agent-pilot-01), run once
+
+- Authorized by the reviewer: up to $1.00 for one twelve-scenario pilot on
+  `anthropic/claude-haiku-5-5`, from code `25595eb` (CI green). Selection
+  unchanged: budget 3, horizon 100, depth-first in input order. Scenario
+  instructions unchanged. Development episodes not repeated.
+- Checks before any paid request (`examples/agent_pilot/live-pilot-commands.txt`):
+  - Model access: `GET /v1/models/claude-haiku-5-5` returned 200 (no charge).
+  - Prices re-checked at 2026-10-12T09:44Z on the official pricing page:
+    $0.10 / $0.50 per MTok up to 100,000 prompt tokens, unchanged.
+  - Authorized copy of `pilot.limits.json` written under the ignored `runs/`
+    directory; `live_enabled` is the only changed key (SHA-256 `fc623835…`),
+    so the checkout stayed clean. The committed file still has
+    `live_enabled: false`.
+  - Preflight exited 0 (`anthropic` 1.13.0, key passed from
+    `FG_ANTHROPIC_API_KEY` as `ANTHROPIC_API_KEY` to each command only).
+    Twelve-episode ceiling $0.963648 against the $1.00 cap.
+- `pilot-freeze --backend live` from the clean checkout (freeze SHA-256
+  `259f0580…`), then one `pilot-run` (09:45:08–09:46:34Z). No retries.
+- **8 of 12 episodes complete; 4 incomplete** (sc04, sc05, sc09, sc11), all for
+  the same reason: `0 successful publications`. In each, the processor's
+  handoff listed every intermediate handle (two or four), and the publisher
+  asked which one to publish instead of publishing. Every agent's outcome is
+  `finished`; none hit a limit, refused, or errored. These are the two
+  multi-step pairs, B and F, so only 4 of 6 pairs are evaluable. The failures
+  are kept as recorded.
+- Artifact check ok in all 12 episodes; bindings agree with the ledger in all 8
+  complete ones (incomplete episodes are not normalized).
+- Direct and scheduled replays (`--gate none`) agree on every row; the
+  scheduled scan used 0 tokens. Full context agrees with the ledger labels on
+  8 of 8.
+- Pairs separated, of 4 evaluable: per agent 0, fixed window 2 (A, E),
+  correlated 3 (A, C, E), full context 4. No baseline was more informative than
+  correlation on any completed episode. Correlation was inconclusive on sc12
+  (pair D allowed twin: branch budget exhausted depth-first).
+- Usage: 77 requests, 68,258 input and 7,372 output tokens, no cache tokens,
+  **$0.0105118 accounted** (recomputed from tokens: identical). The four
+  incomplete episodes account for $0.0043654 of that (26 requests). Some turns
+  reported reasoning tokens (up to 368, charged once inside output). Largest
+  output 472 tokens; every request settled at or below 18% of its reservation.
+- Evidence copied unchanged to `examples/agent_pilot/live-pilot-*` and
+  `live-pilot.limits.authorized.json` after checking that no credential value
+  or key-like string appears in it.

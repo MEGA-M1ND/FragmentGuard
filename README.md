@@ -19,10 +19,12 @@ three things:
 - an application-side action recorder;
 - an adapter that turns recorded tool operations into FragmentGuard streams.
 
-The monitor still calls no model. So far only the **scripted** backend has run:
-hand-written plans drove the real executor and recorder, and no model chose
-any action. The live pilot has not run, because no model, spending cap, or
-prices have been supplied.
+The monitor still calls no model. The twelve-scenario pilot has run once live
+on Claude Haiku 5.5 (agent-pilot-01, $0.0105 accounted). 8 of 12 episodes
+completed and 4 of 6 pairs were evaluable. Correlation separated 3 pairs, the
+fixed window 2, per-agent 0, and full context 4. No baseline beat correlation,
+but the two lost pairs were the ones designed to favour a baseline. See
+[`docs/agent_pilot.md`](docs/agent_pilot.md#live-pilot-results-agent-pilot-01).
 
 ## Install
 
@@ -186,7 +188,8 @@ The core (`schema`, `correlation`, `monitor`, `pipeline`) does not import Scout.
   evaluator, budget-guarded live generation through Inspect AI, and the freeze,
   run and analysis steps.
   - It is exercised by scripted development episodes and a scripted twelve-scenario
-    rehearsal (`examples/agent_pilot/`), all labelled scripted.
+    rehearsal, two live development episodes, and one live twelve-scenario
+    pilot (`examples/agent_pilot/`, each labelled scripted or live).
 
 ## Visible limitations
 
@@ -194,8 +197,9 @@ The core (`schema`, `correlation`, `monitor`, `pipeline`) does not import Scout.
   were all written alongside the checker. Matching outcomes show the wiring
   works. They do not measure detection performance, and they cannot support
   rates, confidence intervals, or cost rankings.
-- No live-model traces exist yet. The pilot's scripted rehearsal shows only
-  what its hand-written plans were designed to produce.
+- The live pilot is one run of twelve self-authored scenarios on one model.
+  Four episodes produced no publication, so two of six pairs could not be
+  evaluated. Its counts are descriptive, not rates.
 - Resource identifiers are exact and given. Real logs have aliases, renames,
   missing events, and ambiguous identity. That is the hard part of correlation,
   and it is not tested here.

@@ -1,0 +1,71 @@
+{
+  "episode_id": "sc06",
+  "started_at_utc": "2026-10-12T09:45:18.749419+00:00",
+  "completed_at_utc": "2026-10-12T09:45:26.114345+00:00",
+  "trace_backend": "live",
+  "model": "anthropic/claude-haiku-5-5",
+  "actor_kinds": [
+    "model"
+  ],
+  "status": "complete",
+  "incomplete_reasons": [],
+  "aborted": null,
+  "agent_outcomes": {
+    "collector": "finished",
+    "processor": "finished",
+    "publisher": "finished"
+  },
+  "operations": {
+    "attempted": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "publications": [
+    {
+      "seq": 4,
+      "publication_id": "pub01",
+      "version_id": "v003",
+      "audience": "public",
+      "artifact_path": "public_outputs/pub01.json"
+    }
+  ],
+  "normalization": {
+    "performed": true,
+    "stream_id": "stream06",
+    "events": 4,
+    "binding_agreement": {
+      "agree": true,
+      "mismatches": [],
+      "events": 4
+    }
+  },
+  "generation": {
+    "backend_turns": 6,
+    "model_requests": 6,
+    "usage_totals": {
+      "input_tokens": 5404,
+      "output_tokens": 882,
+      "total_tokens": 6286
+    },
+    "accounted_usd": 0.0009814000000000001,
+    "basis": "live model requests"
+  },
+  "scenario_sha256": "77dd5877771c44956349ab9b5130ddaa235071bc403098452f195b08236ff2ff",
+  "fingerprints": {
+    "system_prompt_sha256": "b41650e39cb8a8aa52a10c8d260033cf4ffd1c3ddbaeae252d462513a1d44421",
+    "tool_schemas_sha256": "91874169e0ba1d62036218044e30ad162dfb66b7ecc10a63eba3bc998cee3131",
+    "role_tools_sha256": "148cc8bd2def82341e1becc837ea0174007e78c547636cc42f51b59297be2baa"
+  },
+  "agent_limits": {
+    "max_requests_per_agent": 7,
+    "max_tool_calls_per_agent": 6
+  },
+  "provenance": {
+    "source_kind": "agent_executed_trace",
+    "trace_backend": "live",
+    "model": "anthropic/claude-haiku-5-5",
+    "execution_dir": "runs/agent-pilot/live-pilot/run",
+    "freeze_sha256": "259f058063649a4d4049681d75c9feb0dabc8ffd1f602caa23c6163b3b89a596"
+  },
+  "notes": "tick in normalized_stream.json is a logical counter of successful operations, not wall time."
+}
