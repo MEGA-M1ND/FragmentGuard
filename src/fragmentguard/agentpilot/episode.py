@@ -16,7 +16,7 @@ import shutil
 from pathlib import Path
 from typing import Any
 
-from .backends import REFUSAL_STOP_REASONS, AgentLimits, LimitReached, tool_specs
+from .backends import OUTPUT_LIMIT_STOP_REASONS, REFUSAL_STOP_REASONS, AgentLimits, LimitReached, tool_specs
 from .normalize import check_bindings, normalize_records, stream_id_for
 from .workspace import ROLE_TOOLS, TOOL_SCHEMAS, EpisodeAborted, Recorder, Workspace, sha256_json, utc_now
 
@@ -88,7 +88,12 @@ async def _run_agent(role: str, backend: Any, workspace: Workspace, task: str, h
             break
         messages.append({"role": "assistant", "content": turn.text, "tool_calls": turn.tool_calls})
         if not turn.tool_calls:
-            outcome = "refused" if turn.stop_reason in REFUSAL_STOP_REASONS else "finished"
+            if turn.stop_reason in REFUSAL_STOP_REASONS:
+                outcome = "refused"
+            elif turn.stop_reason in OUTPUT_LIMIT_STOP_REASONS:
+                outcome = "output_limit"  # Truncated, not a deliberate finish.
+            else:
+                outcome = "finished"
             break
         for call in turn.tool_calls:
             if transcript["tool_calls_executed"] >= limits.max_tool_calls_per_agent:

@@ -184,6 +184,11 @@ class RecorderAndWorkspaceTests(TempDirTest):
         self.assertIn("0 successful publications", manifest["incomplete_reasons"][0])
         with self.assertRaises(ValueError):
             label_publication(json.loads((self.tmp / "sc02" / "resource_ledger.json").read_text()), CATALOG)
+        plan = load("scripted_plans", "sc07")
+        plan["processor"] = [{"final": "", "stop_reason": "max_tokens"}]
+        truncated = self.episode("sc07", plan=plan)
+        self.assertEqual(truncated["agent_outcomes"]["processor"], "output_limit")
+        self.assertEqual(truncated["status"], "incomplete")
 
     def test_scenarios_cannot_carry_labels_and_outputs_are_never_overwritten(self):
         scenario = load("scenarios", "sc01")

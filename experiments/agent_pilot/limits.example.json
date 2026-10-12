@@ -6,7 +6,7 @@
   "output_usd_per_million_tokens": 0,
   "pricing_source": "URL of the provider's official pricing page",
   "pricing_retrieved_utc": "YYYY-MM-DDTHH:MM:SSZ",
-  "max_output_tokens": 1024,
+  "max_output_tokens": 4096,
   "max_requests_per_agent": 8,
   "max_tool_calls_per_agent": 6,
   "max_total_requests": 336,
@@ -15,5 +15,5 @@
   "temperature": null,
   "seed": null,
   "timeout_seconds": 120,
-  "notes": "TEMPLATE ONLY. Copy, fill every field, and set live_enabled to true to authorize live runs. Zero prices or a zero cap are rejected."
+  "notes": "TEMPLATE ONLY. Copy, fill every field, and set live_enabled to true to authorize live runs. Zero prices or a zero cap are rejected. max_output_tokens includes any thinking tokens on models that think by default."
 }

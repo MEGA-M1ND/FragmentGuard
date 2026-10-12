@@ -24,6 +24,7 @@ from typing import Any
 from .workspace import TOOL_SCHEMAS, canonical
 
 REFUSAL_STOP_REASONS = ("content_filter", "refusal")
+OUTPUT_LIMIT_STOP_REASONS = ("max_tokens", "model_length")
 
 
 class LiveNotAuthorized(Exception):
