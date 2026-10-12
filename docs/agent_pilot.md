@@ -228,10 +228,30 @@ Live mode needs all of the following:
   `max_output_tokens`, at the supplied prices. The request is refused if
   accounted spend plus that reservation would exceed `max_spend_usd`, or if it
   would break the context or request limits.
-- **After every request**, actual usage is charged, with cache and reasoning
-  tokens at full input and output rates. Missing usage is charged at the full
-  reservation, never as zero. Automatic retries are disabled (`max_retries=0`),
-  and an error is recorded rather than re-asked.
+- **Reservation and settlement use the same token meanings**, those of
+  Inspect's `ModelUsage`:
+  - Input total = `input_tokens` + cache reads + cache writes. Inspect's
+    `input_tokens` excludes cache, and cache is charged at the full input rate.
+  - Output total = `output_tokens`, which already includes reasoning/thinking
+    tokens. `reasoning_tokens` is recorded as a breakdown and never charged a
+    second time.
+  - Inspect passes the configured `max_tokens` through unchanged, and the
+    provider caps total output (reasoning included) at it. So
+    `max_output_tokens` bounds the same output total that settlement charges.
+- **After every request**, actual usage is charged on those totals. Missing
+  usage is charged at the full reservation, never as zero.
+  - If a charge ever exceeds its reservation, the bound's assumptions have
+    failed, and the budget refuses all further requests.
+  - Automatic retries are disabled (`max_retries=0`), and an error is recorded
+    rather than re-asked.
+- **Partial failures keep their costs.**
+  - If an agent hits a model error, its failed request is charged at the
+    reservation.
+  - If a recording failure aborts an agent mid-task, that agent's transcript
+    and request costs are kept.
+  - If an episode raises inside `pilot-run`, its cost is reported from the
+    budget ledger. The run total is the budget's own figure, with the
+    per-episode sum kept as a cross-check.
 - **Caps are per command.** `max_spend_usd` applies to each invocation
   (`agent-run`, `pilot-run`) separately, so the total authorization is the sum
   across invocations.

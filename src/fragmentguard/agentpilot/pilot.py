@@ -171,6 +171,10 @@ def run(freeze_path: Path, output: Path, limits_path: Path | None = None,
         live = LiveBackend(limits, budget) if backend_kind == "live" else None
         results = []
         for sid in record["run_order"]:
+            spent_before = budget.spent_usd if budget else 0.0
+            requests_before = budget.requests if budget else 0
+            if budget:
+                budget.context = {"episode": sid}
             scenario = json.loads(config["scenarios"][sid].read_text(encoding="utf-8"))
             backend = live or ScriptedBackend(json.loads(config["plans"][sid].read_text(encoding="utf-8")))
             try:
@@ -178,13 +182,21 @@ def run(freeze_path: Path, output: Path, limits_path: Path | None = None,
                     scenario, sources, backend, output / "episodes" / sid, limits=agent_limits,
                     scenario_sha256=record["inputs"][config["scenarios"][sid].relative_to(config["base"]).as_posix()],
                     provenance=provenance)
+                if budget:
+                    manifest["generation"]["budget_delta_usd"] = budget.spent_usd - spent_before
                 results.append(manifest)
             except Exception as error:  # noqa: BLE001 - retained as an execution failure, never retried
+                # Costs already incurred stay in the accounting even though the transcript is lost.
                 results.append({"episode_id": sid, "status": "execution_failed",
                                 "incomplete_reasons": [f"{type(error).__name__}: {error}"],
                                 "traceback": traceback.format_exc(), "agent_outcomes": {},
-                                "generation": {"backend_turns": 0, "model_requests": 0,
-                                               "accounted_usd": 0.0}})
+                                "generation": {
+                                    "backend_turns": None,
+                                    "model_requests": budget.requests - requests_before if budget else 0,
+                                    "accounted_usd": budget.spent_usd - spent_before if budget else 0.0,
+                                    "basis": "budget ledger delta (episode transcript unavailable after failure)"
+                                    if budget else "scripted backend: no generation cost",
+                                }})
         return results
 
     manifests = asyncio.run(run_all())
@@ -222,9 +234,11 @@ def run(freeze_path: Path, output: Path, limits_path: Path | None = None,
         "complete": [m["episode_id"] for m in complete],
         "stream_ids": {m["episode_id"]: stream_id_for(m["episode_id"]) for m in manifests},
         "generation_totals": {
-            "backend_turns": sum(m["generation"]["backend_turns"] for m in manifests),
+            "backend_turns": sum(m["generation"]["backend_turns"] or 0 for m in manifests),
             "model_requests": sum(m["generation"]["model_requests"] for m in manifests),
-            "accounted_usd": sum(m["generation"].get("accounted_usd") or 0 for m in manifests),
+            # The run-level budget is authoritative; the per-episode sum is kept as a cross-check.
+            "accounted_usd": budget.spent_usd if budget else 0.0,
+            "sum_of_episode_accounted_usd": sum(m["generation"].get("accounted_usd") or 0 for m in manifests),
             "budget_ledger": budget.ledger if budget else None,
         },
     }

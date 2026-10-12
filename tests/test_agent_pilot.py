@@ -271,6 +271,115 @@ class LiveLimitTests(TempDirTest):
         self.assertFalse((self.tmp / "frz2").exists())
 
 
+class CostAccountingTests(TempDirTest):
+    """Inspect's ModelUsage: output_tokens is the total (reasoning included); input_tokens
+    excludes cache reads/writes. Reservation and settlement must use those same meanings."""
+
+    RATES = {"input_usd_per_million_tokens": 4.0, "output_usd_per_million_tokens": 20.0}
+
+    def test_reasoning_tokens_are_a_breakdown_not_an_extra_charge(self):
+        budget = Budget(live_limits(max_output_tokens=4096, **self.RATES))
+        reserved = budget.reserve(1000)
+        entry = budget.settle(reserved, {"input_tokens": 100, "output_tokens": 1000, "reasoning_tokens": 600})
+        self.assertAlmostEqual(entry["accounted_usd"], 0.0204, places=10)  # not 0.0324
+        self.assertEqual(entry["tokens"], {"input_total": 100, "output_total": 1000,
+                                           "reasoning_included_in_output": 600})
+        self.assertAlmostEqual(budget.spent_usd, 0.0204, places=10)
+
+    def test_cache_tokens_add_to_input_and_settlement_stays_within_reservation(self):
+        limits = live_limits(max_output_tokens=4096, request_overhead_tokens=500, **self.RATES)
+        budget = Budget(limits)
+        reserved = budget.reserve(1000)
+        self.assertAlmostEqual(reserved, ((1000 + 500) * 4 + 4096 * 20) / 1e6)
+        # Worst case on the same semantics: every input token (incl. cache) at the bound and a
+        # full-length output whose reasoning is part of output_tokens.
+        worst = {"input_tokens": 1000, "input_tokens_cache_read": 300, "input_tokens_cache_write": 200,
+                 "output_tokens": 4096, "reasoning_tokens": 4000}
+        entry = budget.settle(reserved, worst)
+        self.assertEqual(entry["tokens"]["input_total"], 1500)
+        self.assertAlmostEqual(entry["accounted_usd"], reserved)
+        self.assertFalse(entry["exceeded_reservation"])
+
+    def test_usage_beyond_the_reservation_halts_further_requests(self):
+        budget = Budget(live_limits(max_output_tokens=100, **self.RATES))
+        reserved = budget.reserve(1000)
+        entry = budget.settle(reserved, {"input_tokens": 5000, "output_tokens": 100})
+        self.assertTrue(entry["exceeded_reservation"])
+        with self.assertRaises(LimitReached):
+            budget.reserve(10)
+
+    def _live(self, outputs, **limit_overrides):
+        model = get_model("mockllm/model", custom_outputs=outputs, memoize=False)
+        limits = live_limits(**{**self.RATES, **limit_overrides})
+        budget = Budget(limits)
+        return LiveBackend(limits, budget, model=model, _allow_test_model=True), budget, limits
+
+    @staticmethod
+    def _call(tool, arguments, call_id):
+        output = ModelOutput.for_tool_call("mockllm/model", tool, arguments, tool_call_id=call_id)
+        output.usage = ModelUsage(input_tokens=200, output_tokens=50, total_tokens=250, reasoning_tokens=30)
+        return output
+
+    def test_model_error_after_work_keeps_incurred_costs(self):
+        first = self._call("read_resource", {"resource_id": "src-5520", "name": "draft"}, "c1")
+        backend, budget, limits = self._live([first])  # the second request raises: outputs run out
+        manifest = run_episode(load("scenarios", "dev01"), SOURCES, backend, self.tmp / "err",
+                               limits=limits.agent_limits())
+        first_cost = (200 * 4 + 50 * 20) / 1e6
+        self.assertEqual(manifest["agent_outcomes"]["collector"], "model_error")
+        # Later agents still run (the collector's read was done); each failed request is charged.
+        self.assertEqual(manifest["generation"]["model_requests"], 4)
+        self.assertAlmostEqual(budget.ledger[0]["accounted_usd"], first_cost)
+        self.assertEqual(budget.ledger[1]["basis"], "usage unavailable: charged the full reservation")
+        self.assertAlmostEqual(manifest["generation"]["accounted_usd"], budget.spent_usd)
+        self.assertGreater(manifest["generation"]["accounted_usd"], first_cost)
+        self.assertEqual(manifest["status"], "incomplete")
+
+    def test_recording_abort_mid_agent_keeps_that_agents_costs(self):
+        first = self._call("read_resource", {"resource_id": "src-5520", "name": "draft"}, "c1")
+        backend, budget, limits = self._live([first])
+        manifest = run_episode(load("scenarios", "dev01"), SOURCES, backend, self.tmp / "abort",
+                               limits=limits.agent_limits(), recorder_fail_when=lambda r: r["seq"] == 1)
+        self.assertEqual(manifest["status"], "incomplete")
+        self.assertTrue(manifest["aborted"])
+        self.assertEqual(manifest["agent_outcomes"], {"collector": "aborted"})
+        self.assertEqual(manifest["generation"]["model_requests"], 1)
+        self.assertAlmostEqual(manifest["generation"]["accounted_usd"], (200 * 4 + 50 * 20) / 1e6)
+        transcripts = json.loads((self.tmp / "abort" / "agent_transcripts.json").read_text())["agents"]
+        self.assertIn("recording failed", transcripts[0]["aborted"])
+
+    def test_pilot_run_reports_costs_of_an_episode_that_raised(self):
+        limits_path = self.tmp / "limits.json"
+        limits_path.write_text(json.dumps(live_limits(max_spend_usd=60.0, max_total_requests=1000,
+                                                      max_output_tokens=4096, **self.RATES).to_dict()))
+        pilot.freeze(EXPERIMENT / "pilot_config.json", self.tmp / "frz", "live", limits_path, require_clean=False)
+
+        class ChargingBackend:
+            kind, model = "live", "anthropic/test-model"
+
+            def __init__(self, limits, budget):
+                self.budget = budget
+
+        async def charge_then_fail(scenario, sources, backend, output, **kwargs):
+            reserved = backend.budget.reserve(1000)
+            backend.budget.settle(reserved, {"input_tokens": 100, "output_tokens": 1000, "reasoning_tokens": 600})
+            raise RuntimeError("provider connection dropped mid-episode")
+
+        with mock.patch.object(pilot, "LiveBackend", ChargingBackend), \
+                mock.patch.object(pilot, "run_episode_async", charge_then_fail):
+            summary = pilot.run(self.tmp / "frz" / "freeze.json", self.tmp / "run", limits_path,
+                                require_fingerprint=False)
+        failed = summary["episodes"]
+        self.assertEqual({e["status"] for e in failed}, {"execution_failed"})
+        for episode in failed:
+            self.assertAlmostEqual(episode["generation"]["accounted_usd"], 0.0204)
+            self.assertEqual(episode["generation"]["model_requests"], 1)
+        totals = summary["generation_totals"]
+        self.assertAlmostEqual(totals["accounted_usd"], 12 * 0.0204)
+        self.assertAlmostEqual(totals["accounted_usd"], totals["sum_of_episode_accounted_usd"])
+        self.assertEqual({entry["episode"] for entry in totals["budget_ledger"]}, set(summary["planned"]))
+
+
 class PilotPipelineTests(unittest.TestCase):
     """Freeze -> run -> label-free replays in both modes -> post-hoc analysis, on a scripted copy."""
 

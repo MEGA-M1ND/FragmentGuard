@@ -116,10 +116,20 @@ class Budget:
     spent_usd: float = 0.0
     requests: int = 0
     ledger: list[dict[str, Any]] = field(default_factory=list)
+    context: dict[str, Any] = field(default_factory=dict)  # e.g. {"episode": "sc03"}, copied into entries
+    halted: str | None = None
+
+    # Token semantics (Inspect AI ModelUsage), used identically by reserve() and settle():
+    # - input total = input_tokens + input_tokens_cache_read + input_tokens_cache_write
+    #   (Inspect's input_tokens excludes cache tokens; cache is charged at the full input rate);
+    # - output total = output_tokens, which already includes reasoning/thinking tokens
+    #   (reasoning_tokens is a breakdown of it, never added again). Inspect sends max_tokens
+    #   unchanged when it is set, and providers cap total output, reasoning included, by it.
 
     def reservation_usd(self, request_bytes: int) -> float:
-        # Pessimistic input bound: at most one token per UTF-8 byte of the serialized
-        # request, plus a fixed allowance for provider-side formatting.
+        # Pessimistic input bound on the input total: at most one token per UTF-8 byte of the
+        # serialized request, plus a fixed allowance for provider-side formatting. Output bound:
+        # max_output_tokens, which caps the output total.
         input_tokens = request_bytes + self.limits.request_overhead_tokens
         return (input_tokens * self.limits.input_usd_per_million_tokens
                 + self.limits.max_output_tokens * self.limits.output_usd_per_million_tokens) / 1e6
@@ -130,6 +140,8 @@ class Budget:
         return requests * self.reservation_usd(self.limits.max_context_bytes)
 
     def reserve(self, request_bytes: int) -> float:
+        if self.halted:
+            raise LimitReached(self.halted)
         if request_bytes > self.limits.max_context_bytes:
             raise LimitReached(f"request of {request_bytes} bytes exceeds max_context_bytes")
         if self.requests >= self.limits.max_total_requests:
@@ -143,20 +155,30 @@ class Budget:
         self.requests += 1
         return reserved
 
-    def settle(self, reserved: float, usage: dict[str, Any] | None) -> dict[str, Any]:
+    def settle(self, reserved: float, usage: dict[str, Any] | None,
+               context: dict[str, Any] | None = None) -> dict[str, Any]:
         tokens_known = bool(usage) and usage.get("input_tokens") is not None and usage.get("output_tokens") is not None
+        tokens = None
         if tokens_known:
-            input_tokens = (usage["input_tokens"] + (usage.get("input_tokens_cache_read") or 0)
-                            + (usage.get("input_tokens_cache_write") or 0))
-            output_tokens = usage["output_tokens"] + (usage.get("reasoning_tokens") or 0)
-            cost = (input_tokens * self.limits.input_usd_per_million_tokens
-                    + output_tokens * self.limits.output_usd_per_million_tokens) / 1e6
-            basis = "measured usage x supplied prices (cache and reasoning tokens charged at full rates)"
+            input_total = (usage["input_tokens"] + (usage.get("input_tokens_cache_read") or 0)
+                           + (usage.get("input_tokens_cache_write") or 0))
+            output_total = usage["output_tokens"]  # Already includes reasoning tokens.
+            tokens = {"input_total": input_total, "output_total": output_total,
+                      "reasoning_included_in_output": usage.get("reasoning_tokens")}
+            cost = (input_total * self.limits.input_usd_per_million_tokens
+                    + output_total * self.limits.output_usd_per_million_tokens) / 1e6
+            basis = ("measured usage x supplied prices: input = input_tokens + cache reads + cache writes "
+                     "(cache at the full input rate); output = output_tokens, reasoning included once")
         else:
             cost = reserved
             basis = "usage unavailable: charged the full reservation"
         self.spent_usd += cost
-        entry = {"reserved_usd": reserved, "accounted_usd": cost, "basis": basis,
+        exceeded = cost > reserved * (1 + 1e-9)
+        if exceeded:
+            self.halted = ("a request's accounted cost exceeded its pessimistic reservation, so the reservation "
+                           "assumptions no longer hold; live generation stops")
+        entry = {**self.context, **(context or {}), "reserved_usd": reserved, "accounted_usd": cost,
+                 "basis": basis, "tokens": tokens, "exceeded_reservation": exceeded,
                  "cumulative_usd": self.spent_usd, "over_cap": self.spent_usd > self.limits.max_spend_usd}
         self.ledger.append(entry)
         return entry
@@ -267,10 +289,10 @@ class LiveBackend:
                 config=self._config(), cache=False,
             )
         except Exception as error:  # noqa: BLE001 - preserved; no retry with a different request
-            cost = self.budget.settle(reserved, None)
+            cost = self.budget.settle(reserved, None, {"role": role})
             return Turn("", [], "error", None, cost, f"{type(error).__name__}: {error}", self.model)
         usage = output.usage.model_dump(mode="json") if output.usage is not None else None
-        cost = self.budget.settle(reserved, usage)
+        cost = self.budget.settle(reserved, usage, {"role": role})
         message = output.message
         calls = [{"id": c.id, "name": c.function, "arguments": c.arguments, "parse_error": c.parse_error}
                  for c in (message.tool_calls or [])]

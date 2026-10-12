@@ -71,43 +71,48 @@ async def _run_agent(role: str, backend: Any, workspace: Workspace, task: str, h
         "requests": [], "tool_calls_executed": 0,
     }
     outcome = None
-    while outcome is None:
-        if len(transcript["requests"]) >= limits.max_requests_per_agent:
-            outcome = "request_limit"
-            break
-        try:
-            turn = await backend.generate(role, messages, tools)
-        except LimitReached as stop:
-            outcome = f"stopped_before_request: {stop}"
-            break
-        transcript["requests"].append({"index": len(transcript["requests"]) + 1, "utc": utc_now(),
-                                       "stop_reason": turn.stop_reason, "usage": turn.usage, "cost": turn.cost,
-                                       "error": turn.error, "model": turn.model})
-        if turn.error:
-            outcome = "model_error"
-            break
-        messages.append({"role": "assistant", "content": turn.text, "tool_calls": turn.tool_calls})
-        if not turn.tool_calls:
-            if turn.stop_reason in REFUSAL_STOP_REASONS:
-                outcome = "refused"
-            elif turn.stop_reason in OUTPUT_LIMIT_STOP_REASONS:
-                outcome = "output_limit"  # Truncated, not a deliberate finish.
-            else:
-                outcome = "finished"
-            break
-        for call in turn.tool_calls:
-            if transcript["tool_calls_executed"] >= limits.max_tool_calls_per_agent:
-                result = {"error": "tool-call limit reached; call not executed"}
-                outcome = "tool_call_limit"
-            elif call.get("parse_error"):
-                transcript["tool_calls_executed"] += 1
-                result = workspace.reject(role, actor_kind, call["name"], call["arguments"],
-                                          f"argument parse error: {call['parse_error']}")
-            else:
-                transcript["tool_calls_executed"] += 1
-                result = workspace.execute(role, actor_kind, call["name"], call["arguments"])
-            messages.append({"role": "tool", "tool_call_id": call["id"], "name": call["name"],
-                             "content": json.dumps(result, sort_keys=True)})
+    try:
+        while outcome is None:
+            if len(transcript["requests"]) >= limits.max_requests_per_agent:
+                outcome = "request_limit"
+                break
+            try:
+                turn = await backend.generate(role, messages, tools)
+            except LimitReached as stop:
+                outcome = f"stopped_before_request: {stop}"
+                break
+            transcript["requests"].append({"index": len(transcript["requests"]) + 1, "utc": utc_now(),
+                                           "stop_reason": turn.stop_reason, "usage": turn.usage, "cost": turn.cost,
+                                           "error": turn.error, "model": turn.model})
+            if turn.error:
+                outcome = "model_error"
+                break
+            messages.append({"role": "assistant", "content": turn.text, "tool_calls": turn.tool_calls})
+            if not turn.tool_calls:
+                if turn.stop_reason in REFUSAL_STOP_REASONS:
+                    outcome = "refused"
+                elif turn.stop_reason in OUTPUT_LIMIT_STOP_REASONS:
+                    outcome = "output_limit"  # Truncated, not a deliberate finish.
+                else:
+                    outcome = "finished"
+                break
+            for call in turn.tool_calls:
+                if transcript["tool_calls_executed"] >= limits.max_tool_calls_per_agent:
+                    result = {"error": "tool-call limit reached; call not executed"}
+                    outcome = "tool_call_limit"
+                elif call.get("parse_error"):
+                    transcript["tool_calls_executed"] += 1
+                    result = workspace.reject(role, actor_kind, call["name"], call["arguments"],
+                                              f"argument parse error: {call['parse_error']}")
+                else:
+                    transcript["tool_calls_executed"] += 1
+                    result = workspace.execute(role, actor_kind, call["name"], call["arguments"])
+                messages.append({"role": "tool", "tool_call_id": call["id"], "name": call["name"],
+                                 "content": json.dumps(result, sort_keys=True)})
+    except EpisodeAborted as error:
+        # Keep this agent's transcript (and the costs of its requests) before the episode stops.
+        transcript["aborted"] = str(error)
+        outcome = "aborted"
     transcript["outcome"] = outcome
     transcript["final_text"] = next((m["content"] for m in reversed(messages) if m["role"] == "assistant"), "")
     transcript["messages"] = messages
@@ -160,6 +165,8 @@ async def run_episode_async(
             transcript = await _run_agent(role, backend, workspace, scenario["agents"][role]["instruction"],
                                           handoff, limits)
             transcripts.append(transcript)
+            if transcript.get("aborted"):
+                raise EpisodeAborted(transcript["aborted"])
             handoff = workspace.created_by(role)  # From the ledger, never from the agent's text.
             if role != "publisher":
                 run_background(role)

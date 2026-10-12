@@ -142,3 +142,27 @@ Short factual entries. These are engineering notes, not research results.
   - branch-budget exhaustion for correlation on pairs B, D and F;
   - a fixed-window win on sc04;
   - correlation wins on pair C and sc06.
+
+## 2026-10-12: cost accounting corrected before any live run
+
+- `Budget.settle()` added `reasoning_tokens` to `output_tokens`. In Inspect AI
+  0.3.277, `ModelUsage.output_tokens` is documented as total output; the
+  OpenAI and Anthropic mappings take the provider's output count, and the
+  Google mapping explicitly folds thinking into it. Reasoning was therefore
+  charged twice. For example, 100 input, 1,000 output and 600 reasoning tokens
+  at $4/$20 per million were accounted $0.0324 instead of $0.0204. Output is
+  now charged once, and `reasoning_tokens` is kept as a breakdown. Input
+  handling was already correct: Inspect's `input_tokens` excludes cache, and
+  cache reads and writes are added.
+- Two other paths under-reported costs, and both are fixed:
+  - A recording failure that aborted an agent mid-task dropped that agent's
+    transcript, and with it its request costs, from the episode manifest.
+  - An episode that raised inside `pilot-run` was reported with $0 generation
+    cost, although the budget had charged it. Its cost now comes from the
+    budget ledger delta. The run total is the budget's figure, and every
+    ledger entry names its episode and role.
+- New safeguard: if a settled charge ever exceeds its reservation, the budget
+  halts further live requests.
+- No live runs had happened, so no recorded cost was affected. The committed
+  scripted artifacts (`examples/agent_pilot/`, at `08410f6`) carry no
+  generation cost and are kept unchanged.
