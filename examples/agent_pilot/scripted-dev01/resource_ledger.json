@@ -1,0 +1,57 @@
+{
+  "episode_id": "dev01",
+  "versions": {
+    "src-5520": {
+      "version_id": "src-5520",
+      "display_name": null,
+      "kind": "root",
+      "sha256": "57b38f1396c59eab056a7b6e280e1fced67c747c2bce70fb31d75344c33801ad",
+      "produced_by_seq": null,
+      "produced_by_agent": null,
+      "operation": null,
+      "inputs": []
+    },
+    "v001": {
+      "version_id": "v001",
+      "display_name": "draft",
+      "kind": "derived",
+      "sha256": "57b38f1396c59eab056a7b6e280e1fced67c747c2bce70fb31d75344c33801ad",
+      "produced_by_seq": 1,
+      "produced_by_agent": "collector",
+      "operation": "read",
+      "inputs": [
+        "src-5520"
+      ]
+    },
+    "v002": {
+      "version_id": "v002",
+      "display_name": "summary",
+      "kind": "derived",
+      "sha256": "238d68c3f0e22557f62852ef0ef239196245de6e08b25bb2b4ec59382009cd48",
+      "produced_by_seq": 2,
+      "produced_by_agent": "processor",
+      "operation": "format_summary",
+      "inputs": [
+        "v001"
+      ]
+    }
+  },
+  "display_names": {
+    "draft": [
+      "v001"
+    ],
+    "summary": [
+      "v002"
+    ]
+  },
+  "publications": [
+    {
+      "seq": 3,
+      "publication_id": "pub01",
+      "version_id": "v002",
+      "audience": "public",
+      "artifact_path": "public_outputs/pub01.json"
+    }
+  ],
+  "note": "Canonical application-side version ledger; catalog classifications are not stored here."
+}

@@ -1,0 +1,4 @@
+Live freeze blocked: Live generation is not enabled (set live_enabled: true explicitly)
+exit=1
+Live runs need --model and --limits (see experiments/agent_pilot/limits.example.json)
+exit=1

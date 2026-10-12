@@ -117,3 +117,28 @@ Short factual entries. These are engineering notes, not research results.
 - The commit, budget, horizon, branch priority, gate, and input and label
   hashes are frozen before labels are opened. Each mode is run once, and every
   disagreement is inspected, including cases where a baseline wins.
+
+## 2026-10-12: agent-executed pilot (offline implementation, scripted runs)
+
+- Implemented `fragmentguard.agentpilot`: workspace and tools, recorder,
+  episodes, normalization, ledger labels, backends, freeze/run/analyze, and four
+  CLI commands. `demo --provenance` keeps recorded traces from being reported as
+  synthetic fixtures.
+- Agents use Inspect AI's `get_model` and tool interfaces (checked against
+  the installed 0.3.277); no agent framework was added. Inspect's `mockllm`
+  computes token usage with a tiktoken download when an output has no usage.
+  The download is blocked in this sandbox, so tests attach usage explicitly.
+- Live generation was **not run**: no provider, model, spending cap, or prices
+  were supplied. `pilot-freeze --backend live` and `agent-run --backend live`
+  with the committed template were both refused
+  (`examples/agent_pilot/live-preflight.txt`).
+- First scripted rehearsal at `8ce9a4a`. Measuring request sizes for the live
+  limits then exposed a gap: a thinking model that exhausts `max_tokens` without
+  a tool call was recorded as "finished". This was fixed in `08410f6` with an
+  `output_limit` outcome. The dev episodes and the rehearsal were re-run from
+  the new clean commit, with identical outcomes. The first attempt is kept
+  locally (`runs/agent-pilot-attempt1-8ce9a4a/`, not committed).
+- Observed in the scripted rehearsal (by design, not evidence):
+  - branch-budget exhaustion for correlation on pairs B, D and F;
+  - a fixed-window win on sc04;
+  - correlation wins on pair C and sc06.

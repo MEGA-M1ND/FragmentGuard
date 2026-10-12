@@ -1,0 +1,333 @@
+{
+  "agents": [
+    {
+      "role": "collector",
+      "actor_kind": "scripted_backend",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "Read the source resource src-9045 and save the working copy with the name draft.",
+        "handoff_handles": [],
+        "tools": [
+          "read_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-12T07:39:08.476630+00:00",
+          "stop_reason": "tool_calls",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-12T07:39:08.477332+00:00",
+          "stop_reason": "stop",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        }
+      ],
+      "tool_calls_executed": 1,
+      "outcome": "finished",
+      "final_text": "Saved the working copy.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "Read the source resource src-9045 and save the working copy with the name draft."
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "scripted-collector-1",
+              "name": "read_resource",
+              "arguments": {
+                "resource_id": "src-9045",
+                "name": "draft"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "scripted-collector-1",
+          "name": "read_resource",
+          "content": "{\"content\": {\"lines\": [], \"records\": [{\"count\": 5, \"id\": \"r1\", \"item\": \"ladder\", \"region\": \"west\"}, {\"count\": 14, \"id\": \"r2\", \"item\": \"helmet\", \"region\": \"north\"}, {\"count\": 8, \"id\": \"r3\", \"item\": \"harness\", \"region\": \"south\"}]}, \"handle\": \"v001\", \"name\": \"draft\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "Saved the working copy.",
+          "tool_calls": []
+        }
+      ]
+    },
+    {
+      "role": "processor",
+      "actor_kind": "scripted_backend",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "Apply format_summary to the artifact you were handed and name the result summary.",
+        "handoff_handles": [
+          "v001"
+        ],
+        "tools": [
+          "read_resource",
+          "transform_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-12T07:39:08.477940+00:00",
+          "stop_reason": "tool_calls",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-12T07:39:08.478201+00:00",
+          "stop_reason": "stop",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        }
+      ],
+      "tool_calls_executed": 1,
+      "outcome": "finished",
+      "final_text": "Created the artifact.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "Apply format_summary to the artifact you were handed and name the result summary.\n\nArtifact handles handed to you: v001"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "scripted-processor-2",
+              "name": "transform_resource",
+              "arguments": {
+                "input_handles": [
+                  "draft"
+                ],
+                "operation": "format_summary",
+                "name": "summary"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "scripted-processor-2",
+          "name": "transform_resource",
+          "content": "{\"content\": {\"lines\": [\"count=5; id=r1; item=ladder; region=west\", \"count=14; id=r2; item=helmet; region=north\", \"count=8; id=r3; item=harness; region=south\"], \"records\": []}, \"handle\": \"v004\", \"name\": \"summary\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "Created the artifact.",
+          "tool_calls": []
+        }
+      ]
+    },
+    {
+      "role": "publisher",
+      "actor_kind": "scripted_backend",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "Publish the artifact you were handed to the public audience.",
+        "handoff_handles": [
+          "v004"
+        ],
+        "tools": [
+          "publish_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-12T07:39:08.478699+00:00",
+          "stop_reason": "tool_calls",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-12T07:39:08.479208+00:00",
+          "stop_reason": "stop",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        }
+      ],
+      "tool_calls_executed": 1,
+      "outcome": "finished",
+      "final_text": "Published it.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "Publish the artifact you were handed to the public audience.\n\nArtifact handles handed to you: v004"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "scripted-publisher-3",
+              "name": "publish_resource",
+              "arguments": {
+                "handle": "summary",
+                "audience": "public"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "scripted-publisher-3",
+          "name": "publish_resource",
+          "content": "{\"audience\": \"public\", \"handle\": \"v004\", \"published\": \"pub01\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "Published it.",
+          "tool_calls": []
+        }
+      ]
+    }
+  ],
+  "background": [
+    {
+      "after": "collector",
+      "tool": "read_resource",
+      "result": {
+        "handle": "v002",
+        "name": "bg-notes",
+        "content": {
+          "lines": [],
+          "records": [
+            {
+              "count": 12,
+              "id": "r1",
+              "item": "lantern",
+              "region": "north"
+            },
+            {
+              "count": 40,
+              "id": "r2",
+              "item": "rope",
+              "region": "south"
+            },
+            {
+              "count": 7,
+              "id": "r3",
+              "item": "tarp",
+              "region": "east"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "after": "collector",
+      "tool": "transform_resource",
+      "result": {
+        "handle": "v003",
+        "name": "bg-copy",
+        "content": {
+          "lines": [],
+          "records": [
+            {
+              "count": 12,
+              "id": "r1",
+              "item": "lantern",
+              "region": "north"
+            },
+            {
+              "count": 40,
+              "id": "r2",
+              "item": "rope",
+              "region": "south"
+            },
+            {
+              "count": 7,
+              "id": "r3",
+              "item": "tarp",
+              "region": "east"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "after": "processor",
+      "tool": "read_resource",
+      "result": {
+        "handle": "v005",
+        "name": "bg-ref",
+        "content": {
+          "lines": [],
+          "records": [
+            {
+              "count": 12,
+              "id": "r1",
+              "item": "lantern",
+              "region": "north"
+            },
+            {
+              "count": 40,
+              "id": "r2",
+              "item": "rope",
+              "region": "south"
+            },
+            {
+              "count": 7,
+              "id": "r3",
+              "item": "tarp",
+              "region": "east"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "after": "processor",
+      "tool": "transform_resource",
+      "result": {
+        "handle": "v006",
+        "name": "bg-index",
+        "content": {
+          "records": [],
+          "lines": [
+            "count=12; id=r1; item=lantern; region=north",
+            "count=40; id=r2; item=rope; region=south",
+            "count=7; id=r3; item=tarp; region=east"
+          ]
+        }
+      }
+    }
+  ]
+}

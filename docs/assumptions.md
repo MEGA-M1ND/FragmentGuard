@@ -132,3 +132,28 @@ operations, two audiences, exact identifiers, and complete logs.
 - The stale-write regression and its controls in `tests/test_bindings.py`.
 - Any comparison *between* views (which one is more often conclusive). Nothing
   here measures that rate. Four designed cases are not a sample.
+
+## Recorded agent traces (agent pilot)
+
+These apply to `docs/agent_pilot.md` in addition to the assumptions above.
+
+17. **The application's record is the execution fact.** Tool operations are
+    recorded by the application that performed them, before the agent is told
+    they succeeded. The recorder itself is trusted; it is not authenticated
+    against tampering.
+18. **Version IDs are immutable and recorded at the source.** Every successful
+    write creates a new opaque version, so reused display names cannot confuse
+    lineage. Because the pilot's logs come from this recorder, they are
+    complete by construction, and assumption 6 holds for them in a way it would
+    not for logs collected after the fact.
+19. **Only declared dataflow counts.** Agents choose operations; the
+    application computes content, and no tool writes model-supplied text. What
+    an agent *read* in a tool result could only influence later choices of
+    operation, never content. This is why tracking declared inputs is enough
+    here, and it would not be enough for agents that can write arbitrary content.
+20. **Conservative restriction.** A transformation's output is restricted if any
+    input is, even after field selection. There is no redaction or
+    declassification exemption.
+21. **Labels share the policy, not the code.** Ledger labels apply the same toy
+    policy through separate code over the version ledger. Agreement with full
+    context is a consistency check, not independent ground truth.

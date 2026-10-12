@@ -1,0 +1,100 @@
+{
+  "run_id": "scripted-rehearsal-direct",
+  "started_at_utc": "2026-10-12T07:39:10.971813+00:00",
+  "completed_at_utc": "2026-10-12T07:39:11.156950+00:00",
+  "execution_mode": "direct",
+  "completion": {
+    "status": "complete",
+    "path_completed": "direct: Scout transcript database round trip, then direct invocation of the decorated scanner (Scout scheduler and recorder skipped; no model created)",
+    "blocker": null,
+    "scheduled_scan": "not attempted (direct mode)",
+    "evaluator_gate_methods": null,
+    "evaluator_check_all_match": null
+  },
+  "source_kind": "agent_executed_trace",
+  "trace_generation": {
+    "trace_backend": "scripted",
+    "model": null,
+    "execution_dir": "runs/agent-pilot/scripted-rehearsal-run"
+  },
+  "model_generation": {
+    "invoked": false,
+    "basis": "monitor, by design: direct mode constructs no model and the scanner makes no generate calls (not instrumented)"
+  },
+  "inputs": {
+    "streams": {
+      "source": "runs/agent-pilot/scripted-rehearsal-run/dataset/streams.json",
+      "sha256": "7991ecca6b71c0705ce5d314abee0348614d416b4abb350dfe0e8cfc00e124f8"
+    },
+    "policy": {
+      "source": "runs/agent-pilot/scripted-rehearsal-run/dataset/policy.json",
+      "sha256": "91b8f42998af348ebe5a5af47edeb8257579a8594b85d7eb24c1fae12a573189"
+    },
+    "provenance": {
+      "source": "runs/agent-pilot/scripted-rehearsal-run/dataset/provenance.json",
+      "sha256": "e4024db139e75f344457c9e136f4d18030a4f7b54390a86b2c4a4fb65b893423"
+    },
+    "labels (evaluator-only, read after scanning)": null
+  },
+  "config": {
+    "methods": [
+      "per_agent",
+      "fixed_window",
+      "correlated",
+      "full_context_reference"
+    ],
+    "budget": 3,
+    "horizon": 100,
+    "sha256": "1379a9f21ea12d1c2e54f9212eb3eeb229d6d132e2eb0bb15194a1d657749bf4",
+    "max_processes": 1
+  },
+  "source": {
+    "package_sha256": "5a9dccbf9d941d907b5133a90c46ca437243564c473415bab4e061085fe1ef51",
+    "files": {
+      "__init__.py": "8b5115c1f72d27fb8761b71066ea77eb3ea6fab60c2e39f4f0f974431b8fd26b",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "agentpilot/__init__.py": "839f7d6f217904683b5e5d218bfe87642ebe019aec988fd33f4004c381eb304c",
+      "agentpilot/backends.py": "8afa3b0dc7f248394c275ca175e5f15a85a5d544cad6c0badc52588623921819",
+      "agentpilot/commands.py": "f65e966d4cf0f518f857ac1f21dbf734ae323c00a34e07208fce388948b7f424",
+      "agentpilot/episode.py": "29a33dcc376fc4c87cdb7b4fe52f90c9d48bd576ee15609cdd33a42d8c48dcf7",
+      "agentpilot/ledger_labels.py": "a78aca8f2179a0d5b1ea6fc46c1154b4f630c2190a9fe19fe37727f28be7327a",
+      "agentpilot/normalize.py": "f69770df63f509c1f0f93a62e39ccb4cc49227abcc138e1d0e7a18f3106c7a7e",
+      "agentpilot/pilot.py": "a44ba265b55f664d459851b0be6a790f8a1f8c69e2bc99e6cc9960b03cf8277a",
+      "agentpilot/workspace.py": "7f2c14428a323328123ff22ee0a13acfeab3dfb782c335fd9ea3d478eb2e289f",
+      "cli.py": "3b1d4674a78ef451c74e17e3a620c9cf8c37e854297ec4f77581507f1fe056b0",
+      "correlation.py": "8c0a0c4821f5ad34e0e07e86c46a1e694cce2af2a24afd33fa5257a71d686b64",
+      "fixtures/ground_truth.json": "0837ca672ac64148ef1d27ef0abd15c02fb6ecdbec6fc773189c385f6f5429e2",
+      "fixtures/policy.json": "882c757afd574c7933f9a489886380c6f436e52677cc8d3bd571f2edfd0f34eb",
+      "fixtures/streams.json": "d85b3e341f078f73b5ad80b1d17c15164cb6e59bc7b90e0b7e73d709c6ac2520",
+      "monitor.py": "64e0925907a17a65433b96fea6d883deaf00c6d1787f6441d52cd44519287e1c",
+      "pipeline.py": "1e4b0d604a3115b80729d063e6918cf69ed17e9b6e9bc168b8a03d81ba0ff773",
+      "reporting.py": "a8e9767c29ea1d278de2c6afb68cd6067a7d53151cb3483f48eadcf25061fdf4",
+      "schema.py": "927a1586f8d479647e10914ff9d1b3f24fbe28d45cc04262595744877f51ac08",
+      "scout.py": "21fffb5c4fa159bc531349720a40614dde05139086c53639bd05a57fe89b4a46"
+    },
+    "git_commit": "08410f65a81aced5a2e8c67dbf78b65575571aa4",
+    "git_dirty": false
+  },
+  "environment": {
+    "python": "3.12.3",
+    "implementation": "CPython",
+    "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+    "packages": {
+      "fragmentguard": "0.1.0",
+      "inspect-ai": "0.3.277",
+      "inspect-scout": "0.5.4",
+      "pandas": "3.0.6",
+      "pyarrow": "25.0.1",
+      "duckdb": "1.5.6",
+      "pydantic": "2.13.5"
+    }
+  },
+  "artifacts": {
+    "report.json": "d662572b1c2295fe875a3b9f6c6211e9799b81bccdfd56786d28201eb9b8910b",
+    "report.md": "3df00d05900abe0c16be32e7a6a5b5a4b75d496aa673079ff4ebdbf798d65573",
+    "scanner-results.json": "63fdc6aa2a2edc1879784f786ae2310f39fffd62030af50db83c4b2eaadb7544",
+    "transcripts/_index/_manifest_20261012T073911_Ludh3dba.idx": "76198eeb82dd3c1f20e220081ec48f17561748fdf69f0d5586c771e3734cdd4a",
+    "transcripts/transcripts_20261012T073911_c9fec400.parquet": "5316c779774f6b32f18a158010362173857f9c5d61ee57f3ae35695176e0d96d"
+  },
+  "integrity_note": "Hashes establish file identity, not authenticity against a malicious logger. Scout recorder files may contain absolute paths written by Scout itself."
+}

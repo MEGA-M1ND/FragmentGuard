@@ -1,0 +1,7 @@
+{
+  "source_kind": "agent_executed_trace",
+  "trace_backend": "scripted",
+  "model": null,
+  "execution_dir": "runs/agent-pilot/scripted-rehearsal-run",
+  "freeze_sha256": "509c6a142534bb9f74415cef55d4a6619a0229e30157d92a2b9840d41f819226"
+}

@@ -1,5 +1,11 @@
 # Next experiment: first independently authored dataset
 
+> **Update (12 October 2026).** The immediate next step is now the **live run of
+> the frozen agent-executed pilot** (`docs/agent_pilot.md`, "Recommended next
+> experiment"). It is ready, apart from the authorization it needs. The
+> independent-author dataset described below is still planned, but it is not
+> the next experiment.
+
 **Question:** on cases written by someone who has not seen the selector, does
 resource-lineage correlation recover the evidence a bounded monitor needs more
 often than the per-agent and fixed-window views?

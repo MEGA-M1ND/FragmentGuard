@@ -1,0 +1,17 @@
+{
+  "scenario_id": "dev02",
+  "permitted_sources": [
+    "src-2409"
+  ],
+  "agents": {
+    "collector": {
+      "instruction": "Read the source resource src-2409 and save the working copy with the name draft."
+    },
+    "processor": {
+      "instruction": "Apply format_summary to the artifact you were handed and name the result summary."
+    },
+    "publisher": {
+      "instruction": "Publish the artifact you were handed to the public audience."
+    }
+  }
+}

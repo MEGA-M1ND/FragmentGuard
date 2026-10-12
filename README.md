@@ -8,9 +8,21 @@ FragmentGuard is a small offline prototype. It asks one question:
 Milestone 1 runs a deterministic reference checker over four harmless, synthetic
 event streams. It compares four ways of choosing the evidence the checker sees,
 and runs the comparison through an [Inspect Scout](https://meridianlabs-ai.github.io/inspect_scout/)
-scanner. No agents take actions and no model is called. A successful run is an
-**integration smoke test**. It is not evidence of better real-world detection,
-and it does not replicate any published finding.
+scanner. In milestone 1 no agents take actions and no model is called. A
+successful run is an **integration smoke test**. It is not evidence of better
+real-world detection, and it does not replicate any published finding.
+
+The **agent-executed pilot** ([`docs/agent_pilot.md`](docs/agent_pilot.md)) adds
+three things:
+
+- a small three-agent workflow over fictitious records;
+- an application-side action recorder;
+- an adapter that turns recorded tool operations into FragmentGuard streams.
+
+The monitor still calls no model. So far only the **scripted** backend has run:
+hand-written plans drove the real executor and recorder, and no model chose
+any action. The live pilot has not run, because no model, spending cap, or
+prices have been supplied.
 
 ## Install
 
@@ -57,11 +69,14 @@ python -m pip install --no-deps -e '.[dev]'
 | `fragmentguard demo --mode direct --output DIR` | Writes the streams to Scout's transcript database, reads them back through Scout's public API, and calls the decorated scanner directly. Scout's scheduler and recorder are skipped, and no model is created. |
 | `fragmentguard demo --mode scout --output DIR` | Runs Scout's real scheduled `scan()` over the stored transcripts with the `mockllm/model` setting. Before reading results, it checks completion, errors, scan counts, and that zero tokens were used. If the scan fails, the run is reported as incomplete. It never falls back to direct mode. |
 | `fragmentguard replay [--streams F] [--policy F] [--budget N] [--horizon N]` | Runs the core pipeline only (no Scout, no labels) on a streams file and prints JSON. Use it to author new cases. |
+| `fragmentguard agent-run`, `pilot-freeze`, `pilot-run`, `pilot-analyze` | Agent-pilot commands: execute one scenario (scripted by default; live only with an explicit limits file), freeze the pilot, run each frozen scenario once, and analyze the saved replays post hoc. See [`docs/agent_pilot.md`](docs/agent_pilot.md). |
 
 Both `demo` modes use the bundled fixtures by default. They also accept
 `--streams`, `--policy`, `--labels` (evaluator-only, read after scanning),
 `--budget`, `--horizon`, and `--gate`. The gate chooses which methods' label
 agreement sets the exit code. See [`docs/custom_inputs.md`](docs/custom_inputs.md).
+`--provenance` marks a dataset of recorded agent traces, so reports do not call
+those traces synthetic fixtures.
 
 `demo` refuses to write into an existing directory, so earlier runs are never
 overwritten. Exit codes:
@@ -165,12 +180,22 @@ The core (`schema`, `correlation`, `monitor`, `pipeline`) does not import Scout.
   identical.
 - Portable JSON/Markdown reports and a hashed manifest. GitHub Actions runs the
   tests and both demo modes offline.
+- The agent-pilot machinery: the isolated workspace and tools, a
+  record-before-acknowledge recorder, a version ledger, normalization whose
+  bindings are checked against the ledger, a separate ledger-based label
+  evaluator, budget-guarded live generation through Inspect AI, and the freeze,
+  run and analysis steps.
+  - It is exercised by scripted development episodes and a scripted twelve-scenario
+    rehearsal (`examples/agent_pilot/`), all labelled scripted.
 
 ## Visible limitations
 
-- The four cases were hand-designed alongside the checker. Matching outcomes
-  show the wiring works. They do not measure detection performance, and they
-  cannot support rates, confidence intervals, or cost rankings.
+- The four bundled cases, the regression cases, and the twelve pilot scenarios
+  were all written alongside the checker. Matching outcomes show the wiring
+  works. They do not measure detection performance, and they cannot support
+  rates, confidence intervals, or cost rankings.
+- No live-model traces exist yet. The pilot's scripted rehearsal shows only
+  what its hand-written plans were designed to produce.
 - Resource identifiers are exact and given. Real logs have aliases, renames,
   missing events, and ambiguous identity. That is the hard part of correlation,
   and it is not tested here.
@@ -187,10 +212,10 @@ The core (`schema`, `correlation`, `monitor`, `pipeline`) does not import Scout.
 - The bounded views share a maximum event budget, not equal cost. Correlation can
   examine more records than it selects, and both counts are reported. Tokens and
   latency are not measured.
-- No model monitor, real trajectories, adaptive adversary, or FakeLab
-  reproduction is included.
+- No model monitor, real or production trajectories, adaptive adversary, or
+  FakeLab reproduction is included.
 
-See [`docs/assumptions.md`](docs/assumptions.md), [`docs/first_run.md`](docs/first_run.md),
+See [`docs/agent_pilot.md`](docs/agent_pilot.md), [`docs/assumptions.md`](docs/assumptions.md), [`docs/first_run.md`](docs/first_run.md),
 [`docs/dev_log.md`](docs/dev_log.md), and [`docs/next_experiment.md`](docs/next_experiment.md).
 
 ## Background

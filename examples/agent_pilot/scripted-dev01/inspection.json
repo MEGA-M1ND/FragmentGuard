@@ -1,0 +1,72 @@
+{
+  "kind": "development inspection (not pilot evidence)",
+  "trace_backend": "scripted",
+  "status": "complete",
+  "incomplete_reasons": [],
+  "agent_outcomes": {
+    "collector": "finished",
+    "processor": "finished",
+    "publisher": "finished"
+  },
+  "binding_agreement": {
+    "agree": true,
+    "mismatches": [],
+    "events": 3
+  },
+  "budget_ledger": null,
+  "ledger_label": {
+    "verdict": "clear",
+    "audience": "public",
+    "publication_seq": 3,
+    "roots": {
+      "src-5520": "public"
+    },
+    "evidence_trail": [
+      "pub01 (public) published v002 at seq 3",
+      "v002 (summary) = format_summary(v001) by processor at seq 2",
+      "v001 (draft) = read(src-5520) by collector at seq 1",
+      "src-5520 is a catalog root classified public"
+    ]
+  },
+  "views": {
+    "per_agent": {
+      "status": "insufficient_evidence",
+      "evidence_ids": [
+        "e003"
+      ],
+      "unresolved_inputs": [
+        {
+          "resource": "v002",
+          "bound_producer": "e002"
+        }
+      ]
+    },
+    "fixed_window": {
+      "status": "clear",
+      "evidence_ids": [
+        "e001",
+        "e002",
+        "e003"
+      ],
+      "unresolved_inputs": []
+    },
+    "correlated": {
+      "status": "clear",
+      "evidence_ids": [
+        "e001",
+        "e002",
+        "e003"
+      ],
+      "unresolved_inputs": []
+    },
+    "full_context_reference": {
+      "status": "clear",
+      "evidence_ids": [
+        "e001",
+        "e002",
+        "e003"
+      ],
+      "unresolved_inputs": []
+    }
+  }
+}
