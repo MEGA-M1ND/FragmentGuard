@@ -1,0 +1,136 @@
+{
+  "run_id": "rehearsal-scout",
+  "started_at_utc": "2026-10-16T07:18:22.570286+00:00",
+  "completed_at_utc": "2026-10-16T07:18:24.310887+00:00",
+  "execution_mode": "scout",
+  "completion": {
+    "status": "complete",
+    "path_completed": "scout: Scout scheduled scan with the mock model setting and Scout's recorder",
+    "blocker": null,
+    "scheduled_scan": {
+      "complete": true,
+      "location": "scans/scan_id=kcQ7f54hjLURNTeRCgu82B",
+      "errors": [],
+      "checks": {
+        "status_complete": true,
+        "no_errors": true,
+        "scanner_in_summary": true,
+        "all_transcripts_scanned": true,
+        "all_results_recorded": true,
+        "zero_model_tokens": true,
+        "no_model_usage": true
+      },
+      "summary": {
+        "complete": true,
+        "scanners": {
+          "fragmentguard": {
+            "scans": 12,
+            "results": 12,
+            "errors": 0,
+            "validation": null,
+            "metrics": null,
+            "tokens": 0,
+            "model_usage": {}
+          }
+        }
+      }
+    },
+    "evaluator_gate_methods": null,
+    "evaluator_check_all_match": null
+  },
+  "source_kind": "agent_executed_trace",
+  "trace_generation": {
+    "trace_backend": "scripted",
+    "model": null,
+    "execution_dir": "/workspace/FragmentGuard/examples/agent_pilot_02/rehearsal-run"
+  },
+  "model_generation": {
+    "invoked": false,
+    "basis": "monitor, measured: Scout summary reported 0 tokens and empty model_usage"
+  },
+  "inputs": {
+    "streams": {
+      "source": "/workspace/FragmentGuard/examples/agent_pilot_02/rehearsal-run/dataset/streams.json",
+      "sha256": "7991ecca6b71c0705ce5d314abee0348614d416b4abb350dfe0e8cfc00e124f8"
+    },
+    "policy": {
+      "source": "/workspace/FragmentGuard/examples/agent_pilot_02/rehearsal-run/dataset/policy.json",
+      "sha256": "91b8f42998af348ebe5a5af47edeb8257579a8594b85d7eb24c1fae12a573189"
+    },
+    "provenance": {
+      "source": "/workspace/FragmentGuard/examples/agent_pilot_02/rehearsal-run/dataset/provenance.json",
+      "sha256": "4e69a5f1b433132fb8ca68a47b395183bb7687a1d05cbe4e960e8906a3838de9"
+    },
+    "labels (evaluator-only, read after scanning)": null
+  },
+  "config": {
+    "methods": [
+      "per_agent",
+      "fixed_window",
+      "correlated",
+      "full_context_reference"
+    ],
+    "budget": 3,
+    "horizon": 100,
+    "sha256": "1379a9f21ea12d1c2e54f9212eb3eeb229d6d132e2eb0bb15194a1d657749bf4",
+    "max_processes": 1
+  },
+  "source": {
+    "package_sha256": "6e64fa8937aaad430f62f216adcde2de9dc4b36b17c20aa383df58c00dd1f15e",
+    "files": {
+      "__init__.py": "8b5115c1f72d27fb8761b71066ea77eb3ea6fab60c2e39f4f0f974431b8fd26b",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "agentpilot/__init__.py": "839f7d6f217904683b5e5d218bfe87642ebe019aec988fd33f4004c381eb304c",
+      "agentpilot/backends.py": "1179c0627de657a4946d041a8930eaed8c972a595741f14b70379b1320a3eec9",
+      "agentpilot/commands.py": "4451bb075698cde1b459dde5538184fb8974bbc80d06ddb2411a12789430a659",
+      "agentpilot/episode.py": "df67b1f0a3f436318a2e5ee6b962267786ca2165a29a4db5b01d6d5cd02bb783",
+      "agentpilot/ledger_labels.py": "a78aca8f2179a0d5b1ea6fc46c1154b4f630c2190a9fe19fe37727f28be7327a",
+      "agentpilot/normalize.py": "f69770df63f509c1f0f93a62e39ccb4cc49227abcc138e1d0e7a18f3106c7a7e",
+      "agentpilot/pilot.py": "5261f1ee536d94454b43a0bd5a6a66875f139fd63777fc41fafa53e676e70472",
+      "agentpilot/workspace.py": "7f2c14428a323328123ff22ee0a13acfeab3dfb782c335fd9ea3d478eb2e289f",
+      "cli.py": "3b1d4674a78ef451c74e17e3a620c9cf8c37e854297ec4f77581507f1fe056b0",
+      "correlation.py": "8c0a0c4821f5ad34e0e07e86c46a1e694cce2af2a24afd33fa5257a71d686b64",
+      "experiments/__init__.py": "97eedf7f753990a30aacb6bebe3d85cfe2e4c65b47ac8ea1c6c926e74fc896b6",
+      "experiments/__main__.py": "5da1881f7591cbafe97f5a17aa9dd8ac3b24f3aebda5fc3cd2c7a2bc0e6e56c7",
+      "experiments/evaluate.py": "5c8dfe0877ecbb0a16551ca3ad46d9e27d1b4c0f98c464f3576f5174726d45d1",
+      "fixtures/ground_truth.json": "0837ca672ac64148ef1d27ef0abd15c02fb6ecdbec6fc773189c385f6f5429e2",
+      "fixtures/policy.json": "882c757afd574c7933f9a489886380c6f436e52677cc8d3bd571f2edfd0f34eb",
+      "fixtures/streams.json": "d85b3e341f078f73b5ad80b1d17c15164cb6e59bc7b90e0b7e73d709c6ac2520",
+      "monitor.py": "64e0925907a17a65433b96fea6d883deaf00c6d1787f6441d52cd44519287e1c",
+      "pipeline.py": "1e4b0d604a3115b80729d063e6918cf69ed17e9b6e9bc168b8a03d81ba0ff773",
+      "reporting.py": "a8e9767c29ea1d278de2c6afb68cd6067a7d53151cb3483f48eadcf25061fdf4",
+      "schema.py": "927a1586f8d479647e10914ff9d1b3f24fbe28d45cc04262595744877f51ac08",
+      "scout.py": "21fffb5c4fa159bc531349720a40614dde05139086c53639bd05a57fe89b4a46",
+      "streaming.py": "192bb2146fda0c5748905def9018261c310db135036e556edcc48df0ca4fcbdc"
+    },
+    "git_commit": "f8ab8326336bf0f8a665647b6e71c9309f9c0886",
+    "git_dirty": false
+  },
+  "environment": {
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "packages": {
+      "fragmentguard": "0.1.0",
+      "inspect-ai": "0.3.277",
+      "inspect-scout": "0.5.4",
+      "pandas": "3.0.6",
+      "pyarrow": "25.0.1",
+      "duckdb": "1.5.6",
+      "pydantic": "2.13.5"
+    }
+  },
+  "artifacts": {
+    "report.json": "fcdda8009cfd7c8760eff4cda4d7ba4298660256a345e7f8b2d88fdfee3ce153",
+    "report.md": "70a348bcb1ce123796f033883a7b785d3c528a4a4488ccd9c9817633c7bae25b",
+    "scanner-results.json": "eb9d4c7dae8dc46d5c9f7caa174eca79c7e96bff8b1b9f2844346e5e83ada43c",
+    "scans/scan_id=kcQ7f54hjLURNTeRCgu82B/_errors.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scans/scan_id=kcQ7f54hjLURNTeRCgu82B/_scan.json": "075e042e573558543e6ec51522a186f723c02e7adfb4e0407b19a6429bc8140e",
+    "scans/scan_id=kcQ7f54hjLURNTeRCgu82B/_summary.json": "1e56aa492cdbe3ae63d85da2b6b5c97136ac764064e5c555fc38cee37d12162c",
+    "scans/scan_id=kcQ7f54hjLURNTeRCgu82B/fragmentguard.parquet": "4359485d610a4cef6eb3ec28d3fdb9b3a7c3d05a478b146fd6eab825ee14c5a7",
+    "scheduled-attempt.json": "476113bd02093824c3dc067c220018cbd19021dcedb34bee99795a9f2308107d",
+    "transcripts/_index/_manifest_20261016T071822_aMzVTEM8.idx": "bab9717961e278dd46a53bbd60b479c2efe8b75c026e9c21037c805d02ccfee2",
+    "transcripts/transcripts_20261016T071822_91adabcc.parquet": "80b92dac9fcf0179f0e0da82d0c255886daa569214745a98b48a5ebee898b4c6"
+  },
+  "integrity_note": "Hashes establish file identity, not authenticity against a malicious logger. Scout recorder files may contain absolute paths written by Scout itself."
+}

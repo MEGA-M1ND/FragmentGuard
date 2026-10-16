@@ -1,0 +1,18 @@
+{
+  "scenario_id": "sc12",
+  "permitted_sources": [
+    "src-7731",
+    "src-3184"
+  ],
+  "agents": {
+    "collector": {
+      "instruction": "Read src-7731 and save it as main. Then read src-3184 and save it as ref."
+    },
+    "processor": {
+      "instruction": "Combine the two artifacts you were handed into one artifact named report, with main first and ref second in input_handles."
+    },
+    "publisher": {
+      "instruction": "Publish the artifact you were handed to the public audience."
+    }
+  }
+}

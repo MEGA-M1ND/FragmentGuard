@@ -1,0 +1,41 @@
+{
+  "description": "Ledger-derived expected outcomes (evaluator-only). Not human-reviewed.",
+  "expected": {
+    "stream01": {
+      "e004": "clear"
+    },
+    "stream02": {
+      "e003": "alert"
+    },
+    "stream03": {
+      "e007": "clear"
+    },
+    "stream04": {
+      "e006": "alert"
+    },
+    "stream05": {
+      "e004": "alert"
+    },
+    "stream06": {
+      "e004": "alert"
+    },
+    "stream07": {
+      "e003": "clear"
+    },
+    "stream08": {
+      "e004": "alert"
+    },
+    "stream09": {
+      "e006": "clear"
+    },
+    "stream10": {
+      "e007": "alert"
+    },
+    "stream11": {
+      "e004": "clear"
+    },
+    "stream12": {
+      "e004": "clear"
+    }
+  }
+}

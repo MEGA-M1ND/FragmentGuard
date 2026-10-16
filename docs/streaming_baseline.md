@@ -68,3 +68,29 @@ use **historical** price assumptions, not current verified prices. The official
 pricing page request was blocked by proxy HTTP 403 during this task; refresh it
 before requesting a live invocation. `ANTHROPIC_API_KEY` was unset. Never put a
 credential value into this packet or chat.
+
+Pilot 2 rehearsal: 12/12 complete, 6/6 pairs evaluable. Direct and real scheduled
+Scout replays agree. All 12 published versions match the expected target name,
+were created by the processor, resolved by display name, match actual published
+bytes, and pass file/ledger and normalization binding checks. Verification:
+
+```bash
+python experiments/agent_pilot_02/verify_rehearsal.py --execution examples/agent_pilot_02/rehearsal-run --config experiments/agent_pilot_02/pilot_config.json --output NEW_VERIFICATION.json
+python -m fragmentguard.experiments compare --config experiments/agent_pilot_02/comparison.json --output NEW_COMPARISON
+```
+
+Raw rehearsal evidence is in `examples/agent_pilot_02/`; its freeze records the
+source commit. Streaming/full-context separate all six scripted pairs; correlation
+separates three, window two, per-agent zero. On sc04, window alerts while
+correlation is uncertain (the late restricted branch loses to depth-first budget
+use). Neither separates pair F because the allowed twin is also uncertain under
+the bounded views. Both B twins exceed the lineage budget. These limitations
+remain intact. No live pilot 2 trace has been generated.
+
+The exact future command sequence is
+`experiments/agent_pilot_02/live-review-commands.sh`. It requires a separately
+authorized limits file and a fresh run root; it never enables the proposed file.
+Use the currently documented CLI flags; replay does not supply labels, comparison
+and analysis join them afterward. Refresh pricing, install the optional provider
+package, verify model availability via a no-generation endpoint if available,
+and inspect credential presence before a future authorized invocation.

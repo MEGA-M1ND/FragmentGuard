@@ -1,0 +1,7 @@
+{
+  "source_kind": "agent_executed_trace",
+  "trace_backend": "scripted",
+  "model": null,
+  "execution_dir": "/workspace/FragmentGuard/examples/agent_pilot_02/rehearsal-run",
+  "freeze_sha256": "8c798a886cb842614df0210ed6fe916c678853a059cc2d4be18c12796424dfbd"
+}

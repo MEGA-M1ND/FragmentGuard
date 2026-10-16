@@ -1,0 +1,26 @@
+{
+  "e001": {
+    "seq": 1,
+    "tool": "read_resource",
+    "operation": "read",
+    "actor_kind": "scripted_backend"
+  },
+  "e002": {
+    "seq": 2,
+    "tool": "read_resource",
+    "operation": "read",
+    "actor_kind": "scripted_backend"
+  },
+  "e003": {
+    "seq": 3,
+    "tool": "transform_resource",
+    "operation": "combine",
+    "actor_kind": "scripted_backend"
+  },
+  "e004": {
+    "seq": 4,
+    "tool": "publish_resource",
+    "operation": "publish",
+    "actor_kind": "scripted_backend"
+  }
+}

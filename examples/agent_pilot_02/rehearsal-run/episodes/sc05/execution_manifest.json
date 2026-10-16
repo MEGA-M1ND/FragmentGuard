@@ -1,0 +1,67 @@
+{
+  "episode_id": "sc05",
+  "started_at_utc": "2026-10-16T07:17:56.084305+00:00",
+  "completed_at_utc": "2026-10-16T07:17:56.088534+00:00",
+  "trace_backend": "scripted",
+  "model": null,
+  "actor_kinds": [
+    "scripted_backend"
+  ],
+  "status": "complete",
+  "incomplete_reasons": [],
+  "aborted": null,
+  "agent_outcomes": {
+    "collector": "finished",
+    "processor": "finished",
+    "publisher": "finished"
+  },
+  "operations": {
+    "attempted": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "publications": [
+    {
+      "seq": 4,
+      "publication_id": "pub01",
+      "version_id": "v003",
+      "audience": "public",
+      "artifact_path": "public_outputs/pub01.json"
+    }
+  ],
+  "normalization": {
+    "performed": true,
+    "stream_id": "stream05",
+    "events": 4,
+    "binding_agreement": {
+      "agree": true,
+      "mismatches": [],
+      "events": 4
+    }
+  },
+  "generation": {
+    "backend_turns": 7,
+    "model_requests": 0,
+    "usage_totals": null,
+    "accounted_usd": 0.0,
+    "basis": "scripted backend: no model requests, no generation cost"
+  },
+  "scenario_sha256": "3dc4cdfa0ab0fec759efe3ce5feedd22ac741009b589e201cc7b403fb7a1342d",
+  "fingerprints": {
+    "system_prompt_sha256": "b41650e39cb8a8aa52a10c8d260033cf4ffd1c3ddbaeae252d462513a1d44421",
+    "tool_schemas_sha256": "91874169e0ba1d62036218044e30ad162dfb66b7ecc10a63eba3bc998cee3131",
+    "role_tools_sha256": "148cc8bd2def82341e1becc837ea0174007e78c547636cc42f51b59297be2baa"
+  },
+  "agent_limits": {
+    "max_requests_per_agent": 8,
+    "max_tool_calls_per_agent": 6
+  },
+  "provenance": {
+    "source_kind": "agent_executed_trace",
+    "trace_backend": "scripted",
+    "model": null,
+    "execution_dir": "/workspace/FragmentGuard/examples/agent_pilot_02/rehearsal-run",
+    "freeze_sha256": "8c798a886cb842614df0210ed6fe916c678853a059cc2d4be18c12796424dfbd"
+  },
+  "notes": "tick in normalized_stream.json is a logical counter of successful operations, not wall time."
+}

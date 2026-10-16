@@ -19,7 +19,8 @@ class Pilot2Inputs(unittest.TestCase):
             original = json.loads(path.read_text())
             revised = json.loads(second["scenarios"][sid].read_text())
             if sid in changes:
-                self.assertIn(f"named {changes[sid]}, created by the processor", revised["agents"]["publisher"]["instruction"])
+                self.assertIn(f"named {changes[sid]}, created by the processor",
+                              revised["agents"]["publisher"]["instruction"])
             comparison = copy.deepcopy(revised)
             comparison["agents"]["publisher"] = original["agents"]["publisher"]
             self.assertEqual(original, comparison)

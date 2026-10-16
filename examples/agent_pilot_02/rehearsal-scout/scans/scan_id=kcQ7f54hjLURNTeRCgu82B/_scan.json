@@ -1,0 +1,60 @@
+{
+  "scan_id": "kcQ7f54hjLURNTeRCgu82B",
+  "scan_name": "tmp",
+  "timestamp": "2026-10-16T07:18:23.107234+00:00",
+  "model": {
+    "model": "mockllm/model",
+    "config": {
+      "max_connections": 25
+    },
+    "args": {}
+  },
+  "packages": {
+    "inspect_ai": "0.3.277",
+    "inspect_scout": "0.5.4"
+  },
+  "options": {
+    "max_transcripts": 25,
+    "max_processes": 1
+  },
+  "transcripts": {
+    "type": "database",
+    "location": "/workspace/FragmentGuard/examples/agent_pilot_02/rehearsal-scout/transcripts",
+    "filter": [],
+    "transcript_ids": {
+      "stream01": "transcripts_20261016T071822_91adabcc.parquet",
+      "stream02": "transcripts_20261016T071822_91adabcc.parquet",
+      "stream03": "transcripts_20261016T071822_91adabcc.parquet",
+      "stream04": "transcripts_20261016T071822_91adabcc.parquet",
+      "stream05": "transcripts_20261016T071822_91adabcc.parquet",
+      "stream06": "transcripts_20261016T071822_91adabcc.parquet",
+      "stream07": "transcripts_20261016T071822_91adabcc.parquet",
+      "stream08": "transcripts_20261016T071822_91adabcc.parquet",
+      "stream09": "transcripts_20261016T071822_91adabcc.parquet",
+      "stream10": "transcripts_20261016T071822_91adabcc.parquet",
+      "stream11": "transcripts_20261016T071822_91adabcc.parquet",
+      "stream12": "transcripts_20261016T071822_91adabcc.parquet"
+    },
+    "count": 0
+  },
+  "scanners": {
+    "fragmentguard": {
+      "name": "fragmentguard/fragmentguard",
+      "version": 0,
+      "package_version": "0.1.0",
+      "params": {
+        "policy": {
+          "src-3184": "public",
+          "src-5520": "public",
+          "src-7731": "public",
+          "src-2409": "restricted",
+          "src-6618": "restricted",
+          "src-9045": "restricted"
+        },
+        "budget": 3,
+        "horizon": 100,
+        "source_kind": "agent_executed_trace"
+      }
+    }
+  }
+}

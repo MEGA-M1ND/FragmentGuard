@@ -1,0 +1,237 @@
+{
+  "pilot-02-scripted": {
+    "counts": {
+      "correlated": {
+        "correct": 7,
+        "definitive": 7,
+        "insufficient_evidence": 5,
+        "publications": 12,
+        "verdicts": {
+          "alert": 4,
+          "clear": 3,
+          "insufficient_evidence": 5
+        },
+        "wrong_alert": 0,
+        "wrong_clear": 0
+      },
+      "fixed_window": {
+        "correct": 5,
+        "definitive": 5,
+        "insufficient_evidence": 7,
+        "publications": 12,
+        "verdicts": {
+          "alert": 3,
+          "clear": 2,
+          "insufficient_evidence": 7
+        },
+        "wrong_alert": 0,
+        "wrong_clear": 0
+      },
+      "full_context_reference": {
+        "correct": 12,
+        "definitive": 12,
+        "insufficient_evidence": 0,
+        "publications": 12,
+        "verdicts": {
+          "alert": 6,
+          "clear": 6
+        },
+        "wrong_alert": 0,
+        "wrong_clear": 0
+      },
+      "per_agent": {
+        "correct": 0,
+        "definitive": 0,
+        "insufficient_evidence": 12,
+        "publications": 12,
+        "verdicts": {
+          "insufficient_evidence": 12
+        },
+        "wrong_alert": 0,
+        "wrong_clear": 0
+      },
+      "streaming": {
+        "correct": 12,
+        "definitive": 12,
+        "insufficient_evidence": 0,
+        "publications": 12,
+        "verdicts": {
+          "alert": 6,
+          "clear": 6
+        },
+        "wrong_alert": 0,
+        "wrong_clear": 0
+      }
+    },
+    "execution_coverage": {
+      "complete": 12,
+      "incomplete": [],
+      "planned": 12
+    },
+    "labels_sha256": "600532715c92f00c39273bdb150eeef5d177ca1a91e15e3316b54e27dbc5eaa2",
+    "pair_separation": {
+      "correlated": [
+        {
+          "evaluable": true,
+          "pair": "pair-a",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-b",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-c",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-d",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-e",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-f",
+          "separated": false
+        }
+      ],
+      "fixed_window": [
+        {
+          "evaluable": true,
+          "pair": "pair-a",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-b",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-c",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-d",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-e",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-f",
+          "separated": false
+        }
+      ],
+      "full_context_reference": [
+        {
+          "evaluable": true,
+          "pair": "pair-a",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-b",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-c",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-d",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-e",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-f",
+          "separated": true
+        }
+      ],
+      "per_agent": [
+        {
+          "evaluable": true,
+          "pair": "pair-a",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-b",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-c",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-d",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-e",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-f",
+          "separated": false
+        }
+      ],
+      "streaming": [
+        {
+          "evaluable": true,
+          "pair": "pair-a",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-b",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-c",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-d",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-e",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-f",
+          "separated": true
+        }
+      ]
+    },
+    "reference_label_mismatches": [],
+    "streaming_full_mismatches": []
+  }
+}

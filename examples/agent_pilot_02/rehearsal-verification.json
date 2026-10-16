@@ -1,0 +1,260 @@
+{
+  "complete": 12,
+  "planned": 12,
+  "all_ok": true,
+  "results": [
+    {
+      "scenario_id": "sc03",
+      "target_name": "summary",
+      "version_id": "v004",
+      "display_name": "summary",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 7
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 7,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    },
+    {
+      "scenario_id": "sc06",
+      "target_name": "report",
+      "version_id": "v003",
+      "display_name": "report",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 4
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 4,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    },
+    {
+      "scenario_id": "sc11",
+      "target_name": "summary",
+      "version_id": "v003",
+      "display_name": "summary",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 4
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 4,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    },
+    {
+      "scenario_id": "sc08",
+      "target_name": "summary",
+      "version_id": "v003",
+      "display_name": "summary",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 4
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 4,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    },
+    {
+      "scenario_id": "sc07",
+      "target_name": "summary",
+      "version_id": "v002",
+      "display_name": "summary",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 3
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 3,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    },
+    {
+      "scenario_id": "sc04",
+      "target_name": "report",
+      "version_id": "v005",
+      "display_name": "report",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 6
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 6,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    },
+    {
+      "scenario_id": "sc12",
+      "target_name": "report",
+      "version_id": "v003",
+      "display_name": "report",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 4
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 4,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    },
+    {
+      "scenario_id": "sc02",
+      "target_name": "summary",
+      "version_id": "v002",
+      "display_name": "summary",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 3
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 3,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    },
+    {
+      "scenario_id": "sc09",
+      "target_name": "report",
+      "version_id": "v005",
+      "display_name": "report",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 6
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 6,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    },
+    {
+      "scenario_id": "sc05",
+      "target_name": "summary",
+      "version_id": "v003",
+      "display_name": "summary",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 4
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 4,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    },
+    {
+      "scenario_id": "sc01",
+      "target_name": "summary",
+      "version_id": "v003",
+      "display_name": "summary",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 4
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 4,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    },
+    {
+      "scenario_id": "sc10",
+      "target_name": "summary",
+      "version_id": "v004",
+      "display_name": "summary",
+      "producer": "processor",
+      "resolution": "display_name",
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 7
+      },
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 7,
+        "problems": []
+      },
+      "published_bytes_match_version": true,
+      "complete": true,
+      "ok": true
+    }
+  ],
+  "note": "Scripted wiring evidence, not live-model instruction compliance."
+}

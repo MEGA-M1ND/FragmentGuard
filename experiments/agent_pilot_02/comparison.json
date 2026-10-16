@@ -1,0 +1,13 @@
+{
+  "datasets": [
+    {
+      "name": "pilot-02-scripted",
+      "kind": "scripted",
+      "streams": "../../examples/agent_pilot_02/rehearsal-run/dataset/streams.json",
+      "policy": "../../examples/agent_pilot_02/rehearsal-run/dataset/policy.json",
+      "labels": "../../examples/agent_pilot_02/rehearsal-run/evaluator/labels.json",
+      "execution": "../../examples/agent_pilot_02/rehearsal-run",
+      "pairs": "../agent_pilot/evaluator/pairs.json"
+    }
+  ]
+}

@@ -13,8 +13,8 @@ Historical preservation inventory: `experiments/streaming_baseline/historical-sh
 Stages:
 - 0: starting state and baseline recorded.
 - 1: complete; 24/24 streaming/full-context/label agreement. Artifacts: `examples/streaming_baseline/first_comparison/results`.
-- 2: versioned publication clarification and offline rehearsal pending.
-- 3: paid generation unauthorized; prepare review packet only.
+- 2: complete; four symmetric publisher clarifications, 12/12 scripted rehearsal, target/file/binding verification and direct/Scout agreement. Evidence: `examples/agent_pilot_02/`.
+- 3: PENDING, not authorized. Proposed limits disabled; exact command packet prepared. Official pricing access blocked (proxy 403); credential unset, optional provider package absent.
 - 4: frozen-pointer missing-evidence experiment pending.
 - 5: final checks, results, and reviewable delivery pending.
 

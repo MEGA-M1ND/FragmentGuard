@@ -1,0 +1,440 @@
+{
+  "pilot_id": "agent-pilot-02",
+  "trace_backend": "scripted",
+  "completed_at_utc": "2026-10-16T07:17:56.100795+00:00",
+  "planned": [
+    "sc03",
+    "sc06",
+    "sc11",
+    "sc08",
+    "sc07",
+    "sc04",
+    "sc12",
+    "sc02",
+    "sc09",
+    "sc05",
+    "sc01",
+    "sc10"
+  ],
+  "episodes": [
+    {
+      "episode_id": "sc03",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 7,
+        "succeeded": 7,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 7,
+          "publication_id": "pub01",
+          "version_id": "v004",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc06",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc11",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc08",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc07",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 3,
+        "succeeded": 3,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 3,
+          "publication_id": "pub01",
+          "version_id": "v002",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc04",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 6,
+        "succeeded": 6,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 6,
+          "publication_id": "pub01",
+          "version_id": "v005",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 9,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc12",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc02",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 3,
+        "succeeded": 3,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 3,
+          "publication_id": "pub01",
+          "version_id": "v002",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc09",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 6,
+        "succeeded": 6,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 6,
+          "publication_id": "pub01",
+          "version_id": "v005",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 9,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc05",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc01",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc10",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 7,
+        "succeeded": 7,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 7,
+          "publication_id": "pub01",
+          "version_id": "v004",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    }
+  ],
+  "complete": [
+    "sc03",
+    "sc06",
+    "sc11",
+    "sc08",
+    "sc07",
+    "sc04",
+    "sc12",
+    "sc02",
+    "sc09",
+    "sc05",
+    "sc01",
+    "sc10"
+  ],
+  "stream_ids": {
+    "sc03": "stream03",
+    "sc06": "stream06",
+    "sc11": "stream11",
+    "sc08": "stream08",
+    "sc07": "stream07",
+    "sc04": "stream04",
+    "sc12": "stream12",
+    "sc02": "stream02",
+    "sc09": "stream09",
+    "sc05": "stream05",
+    "sc01": "stream01",
+    "sc10": "stream10"
+  },
+  "generation_totals": {
+    "backend_turns": 84,
+    "model_requests": 0,
+    "accounted_usd": 0.0,
+    "sum_of_episode_accounted_usd": 0,
+    "budget_ledger": null
+  }
+}
