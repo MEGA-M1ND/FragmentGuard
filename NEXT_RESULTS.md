@@ -28,15 +28,15 @@ publication. Its 77 requests and $0.0105118 accounted spend are historical evide
 not new work, current pricing, or a verified invoice. No failures were replaced.
 All 425 pre-existing example/fixture/pilot-input files retain their original bytes.
 
-**Pilot 2 live is pending.** Only sc04/sc09 publisher instructions now name `report`,
+**Pilot 2 live is authorized for one invocation capped at $1, but has not started.** Only sc04/sc09 publisher instructions now name `report`,
 and sc05/sc11 name `summary`; all other inputs/selection settings are preserved.
 A scripted success does not demonstrate live instruction compliance.
 The disabled proposal is one 12-episode invocation on
 `anthropic/claude-haiku-5-5`, capped at $1. The $0.963648 pessimistic ceiling uses
 historical prices; current prices could not be verified (proxy 403), and the
 credential is unset. The provider package is installed. Review
-`experiments/agent_pilot_02/review-packet.json` and its exact command sequence before
-any separate spending authorization. No live limits have been enabled.
+`experiments/agent_pilot_02/review-packet.json` and its exact command sequence for the authorized invocation. See `authorization-status.json` beside it for the
+remaining credential/pricing prerequisites. No live limits have been enabled.
 
 Validation: 102 tests, Ruff, byte compilation, dependency consistency, sdist/wheel
 builds, bundled/custom direct and scheduled Scout smoke checks, scripted dev01/dev02,
@@ -49,4 +49,4 @@ claimed; these are local cloud-machine results.
 Methodology, source commits, hashes, limitations and runnable commands:
 [docs/streaming_baseline.md](docs/streaming_baseline.md).
 Recommendation: keep sensitivity propagation as the stronger baseline; decide
-whether to authorize the clarified live pilot after pricing/access preflight.
+to complete pricing/access preflight and execute the already authorized clarified live pilot.

@@ -1,5 +1,5 @@
 {
-  "status": "PENDING: no live authorization; generation has not started",
+  "status": "AUTHORIZED one pilot 2 invocation capped at USD 1; not started; credential and current pricing verification blocked",
   "code_commit": "84e4287af04d3e2daa21800227869b4e931d7ffd",
   "code_package_sha256": "46bc893994fc5ffdb88aa854da7f18c162f3f50b7a069b0526da040af6a48984",
   "model": "anthropic/claude-haiku-5-5",
@@ -89,5 +89,6 @@
     "all_target_file_ledger_binding_checks_passed": true,
     "direct_scout_agreement": true
   },
-  "scope": "Toy explicit resource flow, exact immutable identities, complete logging for live replay. No LLM monitor, no paid generation in this task."
+  "scope": "Toy explicit resource flow, exact immutable identities, complete logging for live replay. No LLM monitor, no paid generation in this task.",
+  "authorization_status_path": "experiments/agent_pilot_02/authorization-status.json"
 }

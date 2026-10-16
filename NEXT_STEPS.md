@@ -14,7 +14,7 @@ Stages:
 - 0: starting state and baseline recorded.
 - 1: complete; 24/24 streaming/full-context/label agreement. Artifacts: `examples/streaming_baseline/first_comparison/results`.
 - 2: complete; four symmetric publisher clarifications, 12/12 scripted rehearsal, target/file/binding verification and direct/Scout agreement. Evidence: `examples/agent_pilot_02/`.
-- 3: PENDING, not authorized. Proposed limits disabled; exact command packet prepared. Official pricing access blocked (proxy 403); credential unset, optional provider package absent.
+- 3: AUTHORIZED by subsequent user confirmation for one invocation up to $1. Generation remains unstarted: official pricing is blocked (proxy 403) and credential unset. Provider package is installed; proposed limits remain disabled.
 - 4: complete; 636 unique observations, no wrong definite verdict/control mismatch; streaming equals all-visible checking. Artifacts: `examples/missing_evidence/first_analysis`.
 - 5: complete locally and pushed for review; automatic PR creation blocked by GitHub API Forbidden. Summary: `NEXT_RESULTS.md`; method: `docs/streaming_baseline.md`; paid-run packet: `experiments/agent_pilot_02/review-packet.json`.
 
@@ -41,8 +41,24 @@ gh pr create --repo MEGA-M1ND/FragmentGuard --base claude/bold-noether-ekiwpm --
 Manual stacked comparison:
 https://github.com/MEGA-M1ND/FragmentGuard/compare/claude/bold-noether-ekiwpm...experiment/streaming-and-missing-evidence?expand=1
 
-Stage 3 remains pending, not silently dropped: the brief requires a new explicit
-spending authorization. Proposed one-invocation cap $1; historical-price ceiling
+Stage 3 has now received the required separate user authorization for one invocation
+capped at $1. It remains unstarted; historical-price ceiling
 $0.963648. Current prices/access must be verified and the recomputed ceiling must
 fit any approved cap before freezing or generation. Credential value belongs in
 secure environment settings, never chat. No live limits were enabled.
+
+## Authorized integration
+
+The user subsequently requested merging all changes and authorized the proposed
+one-invocation $1 live run. Both remote `main` and the existing default branch
+`claude/bold-noether-ekiwpm` are ancestors of the tested successor. Integrate by
+ordinary fast-forward pushes, preserving all commits and leaving the default-branch
+setting unchanged. This does not claim that GitHub's unavailable PR API recorded
+a particular PR state.
+
+The required secret and network additions were saved as an environment draft:
+`ANTHROPIC_API_KEY` for `api.anthropic.com`; custom allowed domains
+`api.github.com`, `platform.claude.com`, `api.anthropic.com` (existing presets
+preserved). Review/save and publish those changes in environment settings; enter
+the credential securely there. Draft saving does not execute or publish changes.
+No duplicate spending approval is required within the approved cap/model/scope.

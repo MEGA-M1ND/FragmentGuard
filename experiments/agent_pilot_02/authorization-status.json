@@ -1,0 +1,33 @@
+{
+  "authorization": "User explicitly authorized the previously proposed one-invocation pilot 2 run capped at USD 1, and merging all changes.",
+  "user_message": "merge all changes man. yes i authorize. go do it",
+  "model": "anthropic/claude-haiku-5-5",
+  "invocations_authorized": 1,
+  "episodes": 12,
+  "max_total_spend_usd": 1.0,
+  "retries_authorized": 0,
+  "development_episodes_authorized": 0,
+  "status": "AUTHORIZED; NOT STARTED; blocked by credential and current pricing verification",
+  "credential_variable": "ANTHROPIC_API_KEY",
+  "credential_presence": "unset",
+  "current_pricing_verified": false,
+  "pricing_check_result": "Official pricing HTTPS request denied by proxy CONNECT HTTP 403",
+  "historical_price_ceiling_usd": 0.963648,
+  "current_price_ceiling_usd": null,
+  "required_before_generation": [
+    "Supply ANTHROPIC_API_KEY securely in environment settings.",
+    "Review/save and publish the saved network/secret requirements; this draft save does not apply or publish changes.",
+    "Verify official current prices and exact model availability without generation where supported.",
+    "Recompute the pessimistic ceiling and require it to fit the USD 1 cap; do not change model or increase cap.",
+    "Make and hash a fresh authorized limits copy outside tracked source, then freeze the clean reviewed code and run once."
+  ],
+  "saved_network_domains": [
+    "api.github.com",
+    "platform.claude.com",
+    "api.anthropic.com"
+  ],
+  "live_invocations_started": 0,
+  "new_live_requests": 0,
+  "new_accounted_spend_usd": 0.0,
+  "note": "Existing experiment evidence and disabled proposed limits are preserved. Authorization is already granted; no duplicate spending approval is needed within this exact scope."
+}
