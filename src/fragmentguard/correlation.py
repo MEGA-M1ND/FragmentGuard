@@ -56,7 +56,9 @@ def correlate_selection(
             producer = bindings[history[index].event_id][resource]
             if producer is None:
                 continue  # Catalog root, or never written in this workspace.
-            producer_index = position[producer]
+            producer_index = position.get(producer)
+            if producer_index is None:
+                continue  # Explicit partial observation: pointer survives, record unavailable.
             examined.add(producer_index)
             if current_tick - history[producer_index].tick <= horizon:
                 visit(producer_index)

@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-from .schema import Event, SchemaError, validate_policy
+from .schema import IDENTIFIER, Event, SchemaError, validate_policy
 
 
 @dataclass(frozen=True)
@@ -49,7 +49,8 @@ class StreamingSensitivity:
         state = Sensitivity()
         for resource in event.inputs:
             producer = producers[resource]
-            if producer is not None and (not isinstance(producer, str) or producer == event.event_id):
+            if producer is not None and (not isinstance(producer, str) or not IDENTIFIER.fullmatch(producer)
+                                         or producer == event.event_id):
                 raise SchemaError("Invalid producer reference")
             if producer in self.seen and resource not in self.seen[producer]:
                 raise SchemaError("Reference is not a producing event")

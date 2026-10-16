@@ -94,3 +94,50 @@ Use the currently documented CLI flags; replay does not supply labels, compariso
 and analysis join them afterward. Refresh pricing, install the optional provider
 package, verify model availability via a no-generation endpoint if available,
 and inspect credential presence before a future authorized invocation.
+
+## Missing-evidence contract and preregistered interventions
+
+`fragmentguard.observation` is a separate schema v1 API. Complete-input parsing
+and latest-producer binding are unchanged. Freeze a complete valid stream before
+hiding records. The mask removes event payloads AND hidden consumers' input edges.
+Only visible inputs' frozen pointers and trusted identity headers (workspace,
+event ID, tick, produced resource/version IDs) survive. No hidden input contents,
+agent, operation, ancestry or sensitivity labels are passed to any method.
+Headers permit causal/workspace/output validation even when a payload is absent;
+this is a stronger logging assumption than merely retaining raw seven-field logs.
+
+Malformed/cross-workspace/future/non-producing pointers, missing pointer metadata,
+header mismatches and catalog-root writes raise integrity errors. An earlier
+producer whose declared identity exists but whose payload is unavailable yields
+unresolved ancestry. References to old versions are legal. Catalog names never
+substitute for missing produced versions. Correlation skips absent records without
+falling back to older writes; the checker retains the unresolved pointer.
+Streaming starts from empty state for EVERY observation, and preserves restriction
+when another branch is unknown.
+
+Two separate commands freeze the intervention file/hash before any scoring:
+
+```bash
+python -m fragmentguard.experiments freeze-masks --config /workspace/FragmentGuard/experiments/missing_evidence/comparison.json --output NEW_SPEC
+python -m fragmentguard.experiments missing --spec NEW_SPEC --output NEW_RESULTS
+```
+
+For each target publication, use its causal prefix only, always retain the target,
+and enumerate all subsets of earlier payloads (at most ten earlier records; larger
+logs fail rather than silently sampling). Single non-publication and direct-producer
+omissions and the no-deletion control are identified as overlapping categories.
+Equivalent masks are deduplicated. Ticks/order/IDs remain unchanged. This includes
+the original fixtures, scripted rehearsal, eight completed live traces, and the
+existing stale-write custom regressions. New pilot 2 rehearsal traces are structurally
+the same and are not counted again as independent cases.
+
+The scoring command verifies frozen source/policy and observation hashes, writes
+raw outputs first, then loads the full unmasked histories, evaluator labels and
+pair membership for analysis. `full_context_reference` in masked rows means all
+VISIBLE records; the separate `reference` field is the unmasked verdict. Controls
+must reproduce the existing complete pipeline's statuses and evidence IDs for
+all four views, and streaming must match the unmasked full reference. Opposite
+definite verdicts are errors and make the command fail. Per-workflow, pair and
+category counts retain uncertainty separately. These are post-hoc interventions
+on existing cases under trustworthy identity/pointer metadata, not held-out data
+or evidence of safety with dishonest pointers or unlogged actions.

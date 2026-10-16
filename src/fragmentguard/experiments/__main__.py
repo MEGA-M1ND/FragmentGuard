@@ -3,47 +3,13 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
-from collections import Counter
 from pathlib import Path
 
 from .. import reporting
 from ..schema import check_catalog_roots_immutable, input_bindings, load_policy, load_streams, parse_streams
+from .common import counts, digest, read, resolved, write
 from .evaluate import METHODS, evaluate
-
-
-def read(path):
-    return json.loads(Path(path).read_text(encoding="utf-8"))
-
-
-def write(path, value):
-    Path(path).write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-
-
-def digest(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
-
-
-def resolved(spec_path):
-    spec = read(spec_path)
-    return [{**d, **{key: spec_path.parent / d[key] for key in
-                    ("streams", "policy", "labels", "execution", "pairs") if key in d}}
-            for d in spec["datasets"]]
-
-
-def counts(rows):
-    result = {}
-    for method in METHODS:
-        selected = [r for r in rows if r["method"] == method]
-        c = Counter(r["status"] for r in selected)
-        result[method] = {"publications": len(selected), "verdicts": dict(c),
-                          "correct": sum(r["status"] == r["reference"] for r in selected),
-                          "insufficient_evidence": c["insufficient_evidence"],
-                          "wrong_clear": sum(r["status"] == "clear" and r["reference"] == "alert" for r in selected),
-                          "wrong_alert": sum(r["status"] == "alert" and r["reference"] == "clear" for r in selected),
-                          "definitive": c["clear"] + c["alert"]}
-    return result
 
 
 def compare(config, output):
@@ -128,8 +94,20 @@ def main():
     comparison = sub.add_parser("compare", help="Complete-log five-method comparison; evaluator joins last")
     comparison.add_argument("--config", type=Path, required=True)
     comparison.add_argument("--output", type=Path, required=True)
+    freeze = sub.add_parser("freeze-masks", help="Freeze exact pointers and exhaustive record masks before scoring")
+    freeze.add_argument("--config", type=Path, required=True)
+    freeze.add_argument("--output", type=Path, required=True)
+    missing = sub.add_parser("missing", help="Score a frozen partial-observation specification")
+    missing.add_argument("--spec", type=Path, required=True)
+    missing.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    return compare(args.config.resolve(), args.output.resolve())
+    if args.command == "compare":
+        return compare(args.config.resolve(), args.output.resolve())
+    from .missing import freeze_masks, run_missing
+
+    if args.command == "freeze-masks":
+        return freeze_masks(args.config.resolve(), args.output.resolve())
+    return run_missing(args.spec.resolve(), args.output.resolve())
 
 
 if __name__ == "__main__":
