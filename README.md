@@ -1,5 +1,10 @@
 # FragmentGuard
 
+Next experiments: [streaming sensitivity baseline, clarified pilot 2 rehearsal,
+and missing-evidence analysis](docs/streaming_baseline.md). See
+[the short results](NEXT_RESULTS.md). Paid pilot 2 generation remains pending
+separate authorization.
+
 FragmentGuard is a small offline prototype. It asks one question:
 
 > Can inexpensive resource-based correlation recover relevant evidence across

@@ -10,6 +10,29 @@ source .venv/bin/activate
 export XDG_DATA_HOME=/workspace/.fragmentguard/data
 export XDG_CACHE_HOME=/workspace/.fragmentguard/cache
 export XDG_CONFIG_HOME=/workspace/.fragmentguard/config
+python -m pip install -c requirements.lock.txt 'anthropic==1.13.0'
+python -m pip check
+python - "$AUTHORIZED_LIMITS" <<'PY'
+import hashlib, json, sys
+from pathlib import Path
+from fragmentguard.reporting import source_fingerprint
+packet = json.loads(Path('experiments/agent_pilot_02/review-packet.json').read_text())
+if source_fingerprint()['package_sha256'] != packet['code_package_sha256']:
+    raise SystemExit('Code differs from the reviewed implementation; prepare a new review packet')
+for path, expected in packet['hashes'].items():
+    if hashlib.sha256(Path(path).read_bytes()).hexdigest() != expected:
+        raise SystemExit(f'Reviewed input changed: {path}')
+proposed = json.loads(Path('experiments/agent_pilot_02/limits.proposed.json').read_text())
+authorized = json.loads(Path(sys.argv[1]).read_text())
+allowed = {'live_enabled', 'input_usd_per_million_tokens', 'output_usd_per_million_tokens',
+           'pricing_source', 'pricing_retrieved_utc', 'notes'}
+if set(authorized) != set(proposed) or any(authorized[k] != proposed[k] for k in proposed if k not in allowed):
+    raise SystemExit('Run settings or cap changed; obtain a new review before execution')
+if authorized['live_enabled'] is not True:
+    raise SystemExit('An explicitly authorized fresh limits copy is required')
+if authorized['pricing_retrieved_utc'] == proposed['pricing_retrieved_utc']:
+    raise SystemExit('Refresh official prices and the pricing timestamp before execution')
+PY
 # Authorized copy may differ only in explicitly approved fields; record its hash.
 sha256sum "$AUTHORIZED_LIMITS"
 fragmentguard agent-run --backend live --model anthropic/claude-haiku-5-5 --limits "$AUTHORIZED_LIMITS" --scenario experiments/agent_pilot_02/scenarios/sc01.json --preflight-only

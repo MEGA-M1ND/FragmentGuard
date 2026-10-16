@@ -16,7 +16,9 @@ Stages:
 - 2: complete; four symmetric publisher clarifications, 12/12 scripted rehearsal, target/file/binding verification and direct/Scout agreement. Evidence: `examples/agent_pilot_02/`.
 - 3: PENDING, not authorized. Proposed limits disabled; exact command packet prepared. Official pricing access blocked (proxy 403); credential unset, optional provider package absent.
 - 4: complete; 636 unique observations, no wrong definite verdict/control mismatch; streaming equals all-visible checking. Artifacts: `examples/missing_evidence/first_analysis`.
-- 5: final checks, results, and reviewable delivery pending.
+- 5: local validation and result documents complete; branch/stacked-PR delivery being checked. Summary: `NEXT_RESULTS.md`; method: `docs/streaming_baseline.md`; paid-run packet: `experiments/agent_pilot_02/review-packet.json`.
 
 Methodology and commands will live in `docs/streaming_baseline.md`.
 No paid model calls are authorized by the implementation brief.
+
+Final validation: 102 tests passed after optional anthropic 1.13.0 installation, all locked versions unchanged. Direct/Scout, wheel, packaged experiment commands and exact output reproduction passed. All 425 historical file hashes preserved. This task: zero live calls, $0 accounted spend.

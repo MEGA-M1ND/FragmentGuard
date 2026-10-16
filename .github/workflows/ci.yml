@@ -92,6 +92,17 @@ jobs:
             fragmentguard agent-run --backend scripted --output "fg-runs/agent-$sid" \
               --scenario "$GITHUB_WORKSPACE/experiments/agent_pilot/scenarios/$sid.json"
           done
+      - name: Streaming comparison and frozen-pointer missing-evidence analysis
+        working-directory: ${{ runner.temp }}
+        run: |
+          python -m fragmentguard.experiments compare \
+            --config "$GITHUB_WORKSPACE/experiments/streaming_baseline/comparison.json" \
+            --output fg-runs/streaming
+          python -m fragmentguard.experiments freeze-masks \
+            --config "$GITHUB_WORKSPACE/experiments/missing_evidence/comparison.json" \
+            --output fg-runs/omission-spec
+          python -m fragmentguard.experiments missing \
+            --spec fg-runs/omission-spec --output fg-runs/omission-results
       - name: Preserve run artifacts (including failures)
         if: always()
         uses: actions/upload-artifact@v4

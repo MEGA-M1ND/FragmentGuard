@@ -1,0 +1,62 @@
+{
+  "status": "PENDING: no live authorization; generation has not started",
+  "code_commit": "84e4287af04d3e2daa21800227869b4e931d7ffd",
+  "code_package_sha256": "46bc893994fc5ffdb88aa854da7f18c162f3f50b7a069b0526da040af6a48984",
+  "model": "anthropic/claude-haiku-5-5",
+  "provider_package": "anthropic==1.13.0",
+  "provider_package_installed": true,
+  "proposed_invocations": 1,
+  "episodes": 12,
+  "development_episodes": 0,
+  "retries": 0,
+  "proposed_cap_usd": 1.0,
+  "historical_price_pessimistic_ceiling_usd": 0.963648,
+  "current_price_pessimistic_ceiling_usd": null,
+  "pricing_verified_current": false,
+  "pricing_source": "https://platform.claude.com/docs/en/about-claude/pricing",
+  "historical_price_retrieved_utc": "2026-10-12T09:30:31Z",
+  "pricing_check_utc": "2026-10-16",
+  "pricing_check_result": "Proxy CONNECT HTTP 403; current prices not verified. No TLS checks bypassed.",
+  "credential_variable": "ANTHROPIC_API_KEY",
+  "credential_variable_status": "unset",
+  "model_availability": "Not checked: requires credential; no generation permitted.",
+  "new_live_model_requests": 0,
+  "new_accounted_spend_usd": 0.0,
+  "limits_live_enabled": false,
+  "config_paths": [
+    "experiments/agent_pilot_02/pilot_config.json",
+    "experiments/agent_pilot_02/limits.proposed.json",
+    "experiments/agent_pilot_02/scenario_diff.json",
+    "experiments/agent_pilot_02/live-review-commands.sh",
+    "examples/agent_pilot_02/rehearsal-verification.json"
+  ],
+  "hashes": {
+    "experiments/agent_pilot_02/pilot_config.json": "89ff5ae7aee3db4b3418bc0fe1d677ca350b406069a65592b170bf9618bff600",
+    "experiments/agent_pilot_02/limits.proposed.json": "588964c435a4c27166ef43a6096afd73200b6670b87d48d27e83ab1cf1a32f3e",
+    "experiments/agent_pilot_02/scenario_diff.json": "1ee15d0621e7246f4e0005b9fb33a4a33c7b70221e90fb2e073693e3ff87f4a4",
+    "experiments/agent_pilot_02/live-review-commands.sh": "668c230472ba8a9df40b42375a18164489a6200c09dd5e9f76bb38362d2c140b",
+    "examples/agent_pilot_02/rehearsal-verification.json": "3a2bae55d250eb2e184d8b0f4f11070ec9af0ad7b36f94e3dc39e932596ee3de"
+  },
+  "prerequisites": [
+    "Review exact code commit, package hash and scenario/config hashes. Final delivery may add docs/CI only; verify unchanged package/input hashes before freeze.",
+    "Obtain separate explicit approval for ONE pilot-run invocation and a concrete total cap.",
+    "Refresh official provider prices/time, verify exact model availability without generation where supported, and recompute the 12-episode ceiling. It must fit the approved cap. Do not substitute models or increase the cap.",
+    "Supply credential securely in environment settings; never in chat or tracked files.",
+    "Create and hash a NEW authorized limits copy outside tracked source, differing only in approved fields; do not edit the disabled proposal or reuse pilot 1 limits.",
+    "Commit all source/scenarios, require a clean tracked checkout, then freeze and execute exactly once. Preserve all partial failures and costs."
+  ],
+  "commands_file": "experiments/agent_pilot_02/live-review-commands.sh",
+  "rehearsal": {
+    "complete": 12,
+    "planned": 12,
+    "targets": {
+      "sc04": "report",
+      "sc09": "report",
+      "sc05": "summary",
+      "sc11": "summary"
+    },
+    "all_target_file_ledger_binding_checks_passed": true,
+    "direct_scout_agreement": true
+  },
+  "scope": "Toy explicit resource flow, exact immutable identities, complete logging for live replay. No LLM monitor, no paid generation in this task."
+}

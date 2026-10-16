@@ -173,3 +173,59 @@ by workflow, pair and category; `became_uncertain` identifies each mask and miss
 reference for formerly definite public publications. There is no evidence here of
 robustness to corrupted metadata. Sensitivity state retained from before a deletion
 was deliberately excluded.
+
+## Provenance, cost and delivery
+
+| Stage | Exact source commit |
+| --- | --- |
+| Starting milestone | `4da34d538c60c8ed083b45b536d9acd48be7a339` |
+| Complete comparison | `8bcd0e0d49446dbb41780fdec7284abbee31b50f` |
+| Pilot 2 scripted freeze | `f8ab8326336bf0f8a665647b6e71c9309f9c0886` |
+| Frozen omission specification and initial scores | `103c0cc2579af5218d3968d7f9a3ed5ad6394918` |
+| Final implementation and runner revalidation | `84e4287af04d3e2daa21800227869b4e931d7ffd` |
+
+Each experiment manifest (and the rehearsal freeze) stores package/input hashes;
+the review packet pins the proposed live config, limits, scenario diff, command
+sequence and implementation package hash. Final commits may add documentation and
+CI checks without changing that implementation. Verify both the reviewed package
+and config hashes before a future freeze. Python 3.12.14, inspect-ai 0.3.277,
+inspect-scout 0.5.4, Ruff 0.16.10 and build 1.6.1 follow the original lock. The
+optional provider was subsequently installed as anthropic 1.13.0 with the lock as
+constraints; pinned dependency versions remain unchanged. No live provider model was instantiated
+or called for the new experiments. Provider/model availability remains unverified
+because the credential is unset. Current-price approval cannot be inferred from
+the historical $1/$0.963648 proposal.
+
+No timing experiment was performed. The complete comparison's shared binding pass
+processed 25 events/20 input references (fixtures), 56/60 (scripted), and 36/38
+(completed live traces). Correlation also builds a visible-history ID index at
+each publication; `records_examined` counts subsequent record dereferences, not
+that indexing work. Streaming receives the whole prefix and retains all version
+states and output-identity headers; its raw rows report cumulative writes, input
+updates, version counts and unresolved entries. Retaining diagnostic unresolved
+sets has additional storage cost. No claims of equal memory, total compute,
+model-token cost or measured speedup follow from these small operation counts.
+The omission plan reports repeated per-target prefix preprocessing separately.
+
+Historical pilot 1's twelve-scenario outcome, 77 requests and $0.0105118 accounted
+cost remain unchanged; prices are historical supplied rates, not current prices
+or an independently checked provider invoice. This task made **zero** live model
+requests and incurred **$0** accounted model spend. All new generation was scripted.
+Missing-record analysis is post hoc on tiny, self-authored cases with shared policy
+assumptions, exact identities, controlled content, scripted backgrounds and trusted
+pointer metadata. It establishes neither independent generalization nor real-world
+attack-detection rates, spontaneous collusion detection or general harmful intent.
+
+Final local validation: 102 tests passed; Ruff, compileall, pip check, sdist and wheel
+builds passed; bundled/custom direct and real Scout smoke tests and scripted dev
+checks passed. A fresh wheel-only venv ran direct/Scout and both new scoring commands
+outside the checkout. Final-source comparison outputs, omission raw/evaluated rows,
+summary and baseline-win list reproduced the saved artifacts byte-for-byte. The
+425-file pre-change inventory and earlier source fingerprints were rechecked against
+their recorded Git objects. New CI steps run both offline experiments; remote CI
+outcomes are not assumed.
+
+The initial required-check failure came from naming additive experiment provenance
+`manifest.json`, which the legacy test reserves for demo reports. New provenance is
+now `experiment-manifest.json`; the legacy test and all historical files are unchanged.
+A dedicated test verifies new raw-output hashes and the original inventory.
