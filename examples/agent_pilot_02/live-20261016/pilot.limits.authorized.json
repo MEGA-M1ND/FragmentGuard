@@ -1,0 +1,20 @@
+{
+  "live_enabled": true,
+  "model": "anthropic/claude-haiku-5-5",
+  "max_spend_usd": 1.0,
+  "input_usd_per_million_tokens": 0.1,
+  "output_usd_per_million_tokens": 0.5,
+  "pricing_source": "https://platform.claude.com/docs/en/about-claude/pricing (retrieved 2026-10-16: Haiku 5.5 standard/global, <=100,000 prompt tokens: input $0.10/MTok, output $0.50/MTok; maximum cache-write input $0.20/MTok. No batch discount or inference_geo.)",
+  "pricing_retrieved_utc": "2026-10-16T13:29:48.714859+00:00",
+  "max_output_tokens": 2048,
+  "max_requests_per_agent": 7,
+  "max_tool_calls_per_agent": 6,
+  "max_total_requests": 252,
+  "max_context_bytes": 12000,
+  "request_overhead_tokens": 2000,
+  "temperature": null,
+  "seed": null,
+  "timeout_seconds": 120,
+  "max_input_price_multiplier": 2.0,
+  "notes": "User explicitly authorized one agent-pilot-02 invocation capped at USD 1, twelve scenarios once each, no dev episodes, no retries. Current official prices verified 2026-10-16; exact model available via no-generation GET. All other proposed settings unchanged."
+}

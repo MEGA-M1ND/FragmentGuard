@@ -1,0 +1,116 @@
+{
+  "pricing_retrieved_utc": "2026-10-16T13:29:48.714859+00:00",
+  "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+  "official_html_sha256": "3b57863bbb6b2e63608b1b730f6aed1b227b6664d6aded565ad829891ea9e62c",
+  "verified_model_row": [
+    "Claude Haiku 5.5 For high-volume, latency-sensitive tasks such as classification, extraction, and routing",
+    "$0.10 / MTok for prompts up to 100,000 tokens",
+    "$0.50 / MTok",
+    "$0.125 / MTok",
+    "$0.20 / MTok",
+    "$0.01 / MTok"
+  ],
+  "input_price_usd_per_million": 0.1,
+  "output_price_usd_per_million": 0.5,
+  "max_input_price_multiplier": 2.0,
+  "max_prompt_bound_tokens": 14000,
+  "prompt_price_threshold_tokens": 100000,
+  "global_routing": true,
+  "prompt_caching": false,
+  "model_availability": {
+    "id": "claude-haiku-5-5",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "disabled": {
+            "supported": true
+          },
+          "enabled": {
+            "supported": false
+          },
+          "between_tools": {
+            "supported": false
+          }
+        }
+      }
+    },
+    "created_at": "2026-10-07T18:00:00Z",
+    "deprecated_at": null,
+    "display_name": "Claude Haiku 5.5",
+    "lifecycle": "active",
+    "line": "haiku",
+    "max_input_tokens": 1000000,
+    "max_tokens": 128000,
+    "retires_at": null,
+    "type": "model"
+  },
+  "credential_variable": "ANTHROPIC_API_KEY",
+  "credential_present": true,
+  "cap_usd": 1.0,
+  "pessimistic_12_episode_ceiling_usd": 0.9636480000000001,
+  "authorized_limits_sha256": "53245d0492a013ba3baf186a276c159aaa687a2bfe8263a4ee53e5479aa07ca3",
+  "reviewed_package_sha256": "46bc893994fc5ffdb88aa854da7f18c162f3f50b7a069b0526da040af6a48984",
+  "generation_started": false,
+  "live_requests": 0
+}

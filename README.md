@@ -2,8 +2,8 @@
 
 Next experiments: [streaming sensitivity baseline, clarified pilot 2 rehearsal,
 and missing-evidence analysis](docs/streaming_baseline.md). See
-[the short results](NEXT_RESULTS.md). One pilot 2 invocation is now authorized up to $1; generation awaits current
-pricing verification and the required credential.
+[the short results](NEXT_RESULTS.md). [Live pilot 2](examples/agent_pilot_02/live-20261016/README.md) ran once under the
+approved $1 cap: 8/12 complete, $0.0104266 accounted; no retries.
 
 FragmentGuard is a small offline prototype. It asks one question:
 

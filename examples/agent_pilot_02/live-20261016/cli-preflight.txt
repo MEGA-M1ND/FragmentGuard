@@ -1,0 +1,21 @@
+{
+  "model": "anthropic/claude-haiku-5-5",
+  "provider": "anthropic",
+  "provider_package": "anthropic",
+  "provider_package_version": "1.13.0",
+  "credential_variable": "ANTHROPIC_API_KEY",
+  "credential_variable_set": true,
+  "pricing": {
+    "input_usd_per_million_tokens": 0.1,
+    "output_usd_per_million_tokens": 0.5,
+    "max_input_price_multiplier": 2.0,
+    "source": "https://platform.claude.com/docs/en/about-claude/pricing (retrieved 2026-10-16: Haiku 5.5 standard/global, <=100,000 prompt tokens: input $0.10/MTok, output $0.50/MTok; maximum cache-write input $0.20/MTok. No batch discount or inference_geo.)",
+    "retrieved_utc": "2026-10-16T13:29:48.714859+00:00"
+  },
+  "max_request_reservation_usd": 0.003824,
+  "pessimistic_max_usd": 0.080304,
+  "cap_usd": 1.0,
+  "cap_scope": "this one command invocation",
+  "runnable": true
+}
+Preflight only: no model was called and nothing was written.

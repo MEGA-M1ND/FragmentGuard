@@ -1,0 +1,7 @@
+{
+  "source_kind": "agent_executed_trace",
+  "trace_backend": "live",
+  "model": "anthropic/claude-haiku-5-5",
+  "execution_dir": "/workspace/.fragmentguard/pilot-02-20261016/run",
+  "freeze_sha256": "787401257b5c14da5af8237fde76e353c29bac77e766b35caf5ae6ec7d270dde"
+}

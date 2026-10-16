@@ -1,0 +1,18 @@
+{
+  "scenario_id": "sc01",
+  "permitted_sources": [
+    "src-3184",
+    "src-5520"
+  ],
+  "agents": {
+    "collector": {
+      "instruction": "Read src-3184 and save the working copy as draft. Then read src-5520 and save that working copy as draft as well; the second copy replaces the first under the name draft."
+    },
+    "processor": {
+      "instruction": "Apply format_summary to the artifact named draft (refer to it by the name draft, not by a handle) and name the result summary."
+    },
+    "publisher": {
+      "instruction": "Publish the artifact you were handed to the public audience."
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "episode_id": "sc03",
+  "started_at_utc": "2026-10-16T13:29:52.819839+00:00",
+  "completed_at_utc": "2026-10-16T13:29:57.811357+00:00",
+  "trace_backend": "live",
+  "model": "anthropic/claude-haiku-5-5",
+  "actor_kinds": [
+    "model",
+    "scripted_background"
+  ],
+  "status": "complete",
+  "incomplete_reasons": [],
+  "aborted": null,
+  "agent_outcomes": {
+    "collector": "finished",
+    "processor": "finished",
+    "publisher": "finished"
+  },
+  "operations": {
+    "attempted": 7,
+    "succeeded": 7,
+    "failed": 0
+  },
+  "publications": [
+    {
+      "seq": 7,
+      "publication_id": "pub01",
+      "version_id": "v004",
+      "audience": "public",
+      "artifact_path": "public_outputs/pub01.json"
+    }
+  ],
+  "normalization": {
+    "performed": true,
+    "stream_id": "stream03",
+    "events": 7,
+    "binding_agreement": {
+      "agree": true,
+      "mismatches": [],
+      "events": 7
+    }
+  },
+  "generation": {
+    "backend_turns": 6,
+    "model_requests": 6,
+    "usage_totals": {
+      "input_tokens": 4564,
+      "output_tokens": 350,
+      "total_tokens": 4914
+    },
+    "accounted_usd": 0.0006314000000000001,
+    "basis": "live model requests"
+  },
+  "scenario_sha256": "74654ec8debd3316d699e951bbf29a7f4c018f29d58fe1f4a927c3daeed48930",
+  "fingerprints": {
+    "system_prompt_sha256": "b41650e39cb8a8aa52a10c8d260033cf4ffd1c3ddbaeae252d462513a1d44421",
+    "tool_schemas_sha256": "91874169e0ba1d62036218044e30ad162dfb66b7ecc10a63eba3bc998cee3131",
+    "role_tools_sha256": "148cc8bd2def82341e1becc837ea0174007e78c547636cc42f51b59297be2baa"
+  },
+  "agent_limits": {
+    "max_requests_per_agent": 7,
+    "max_tool_calls_per_agent": 6
+  },
+  "provenance": {
+    "source_kind": "agent_executed_trace",
+    "trace_backend": "live",
+    "model": "anthropic/claude-haiku-5-5",
+    "execution_dir": "/workspace/.fragmentguard/pilot-02-20261016/run",
+    "freeze_sha256": "787401257b5c14da5af8237fde76e353c29bac77e766b35caf5ae6ec7d270dde"
+  },
+  "notes": "tick in normalized_stream.json is a logical counter of successful operations, not wall time."
+}

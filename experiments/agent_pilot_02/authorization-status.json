@@ -7,27 +7,28 @@
   "max_total_spend_usd": 1.0,
   "retries_authorized": 0,
   "development_episodes_authorized": 0,
-  "status": "AUTHORIZED; preflight passed; ready to freeze and invoke once",
+  "status": "AUTHORIZED INVOCATION COMPLETED ONCE; 8/12 episodes complete; no retries or replacements",
   "credential_variable": "ANTHROPIC_API_KEY",
   "credential_presence": "set",
   "current_pricing_verified": true,
-  "pricing_check_result": "Official page HTTP 200; current model row verified 2026-10-16",
+  "pricing_check_result": "Official current prices verified; API model retrieval succeeded; preflight saved",
   "historical_price_ceiling_usd": 0.963648,
-  "current_price_ceiling_usd": 0.9636480000000001,
-  "required_before_generation": [
-    "Supply ANTHROPIC_API_KEY securely in environment settings.",
-    "Review/save and publish the saved network/secret requirements; this draft save does not apply or publish changes.",
-    "Verify official current prices and exact model availability without generation where supported.",
-    "Recompute the pessimistic ceiling and require it to fit the USD 1 cap; do not change model or increase cap.",
-    "Make and hash a fresh authorized limits copy outside tracked source, then freeze the clean reviewed code and run once."
-  ],
+  "current_price_ceiling_usd": 0.963648,
+  "required_before_generation": [],
   "saved_network_domains": [
     "api.github.com",
     "platform.claude.com",
     "api.anthropic.com"
   ],
-  "live_invocations_started": 0,
-  "new_live_requests": 0,
-  "new_accounted_spend_usd": 0.0,
-  "note": "Existing experiment evidence and disabled proposed limits are preserved. Authorization is already granted; no duplicate spending approval is needed within this exact scope."
+  "live_invocations_started": 1,
+  "new_live_requests": 76,
+  "new_accounted_spend_usd": 0.0104266,
+  "note": "The one-invocation authorization has been consumed. Preserve incomplete episodes and their costs. Any additional paid invocation requires new explicit authorization; do not resume or rerun this run.",
+  "evidence_path": "examples/agent_pilot_02/live-20261016",
+  "incomplete_episodes": [
+    "sc11",
+    "sc04",
+    "sc09",
+    "sc05"
+  ]
 }

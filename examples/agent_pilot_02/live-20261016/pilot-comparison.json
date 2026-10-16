@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "note": "Pilot 2 uses revised publisher instructions and new model executions; not independent replication or samples from an unchanged protocol. No inference of future costs.",
+  "pilot_1": {
+    "source": "examples/agent_pilot/live-pilot-analysis/pilot_report.json",
+    "planned": 12,
+    "completed": 8,
+    "evaluable_pairs": 4,
+    "pair_separation": {
+      "per_agent": 0,
+      "fixed_window": 2,
+      "correlated": 3,
+      "full_context_reference": 4,
+      "streaming": 4
+    },
+    "model_requests": 77,
+    "accounted_usd": 0.0105118,
+    "incomplete_episodes": [
+      "sc04",
+      "sc05",
+      "sc09",
+      "sc11"
+    ]
+  },
+  "pilot_2": {
+    "source": "examples/agent_pilot_02/live-20261016/analysis/pilot_report.json",
+    "planned": 12,
+    "completed": 8,
+    "evaluable_pairs": 4,
+    "pair_separation": {
+      "per_agent": 0,
+      "fixed_window": 2,
+      "correlated": 3,
+      "full_context_reference": 4,
+      "streaming": 4
+    },
+    "model_requests": 76,
+    "accounted_usd": 0.0104266,
+    "incomplete_episodes": [
+      "sc04",
+      "sc05",
+      "sc09",
+      "sc11"
+    ],
+    "token_totals": {
+      "input_tokens": 67586,
+      "output_tokens": 7336,
+      "total_tokens": 74922
+    }
+  },
+  "all_new_monitoring_reference_label_disagreements": [],
+  "new_baseline_wins_over_correlation": [],
+  "formerly_missing_pairs": {
+    "pair-b": "Not evaluable: both twins again failed to publish",
+    "pair-f": "Not evaluable: both twins again failed to publish"
+  }
+}

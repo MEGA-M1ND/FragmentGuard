@@ -1,0 +1,13 @@
+{
+  "datasets": [
+    {
+      "name": "pilot-02-live",
+      "kind": "live",
+      "streams": "../../examples/agent_pilot_02/live-20261016/run/dataset/streams.json",
+      "policy": "../../examples/agent_pilot_02/live-20261016/run/dataset/policy.json",
+      "labels": "../../examples/agent_pilot_02/live-20261016/run/evaluator/labels.json",
+      "execution": "../../examples/agent_pilot_02/live-20261016/run",
+      "pairs": "../agent_pilot/evaluator/pairs.json"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "episode_id": "sc12",
+  "versions": {
+    "src-3184": {
+      "version_id": "src-3184",
+      "display_name": null,
+      "kind": "root",
+      "sha256": "efca560c02704b51f7b9f7190b7fb60c002642c44b35425407d99a9bf86c005c",
+      "produced_by_seq": null,
+      "produced_by_agent": null,
+      "operation": null,
+      "inputs": []
+    },
+    "src-7731": {
+      "version_id": "src-7731",
+      "display_name": null,
+      "kind": "root",
+      "sha256": "ed0276266ffc1cd2371e4b5f28c472c525657b0b62166d22d219516a63350b61",
+      "produced_by_seq": null,
+      "produced_by_agent": null,
+      "operation": null,
+      "inputs": []
+    },
+    "v001": {
+      "version_id": "v001",
+      "display_name": "main",
+      "kind": "derived",
+      "sha256": "ed0276266ffc1cd2371e4b5f28c472c525657b0b62166d22d219516a63350b61",
+      "produced_by_seq": 1,
+      "produced_by_agent": "collector",
+      "operation": "read",
+      "inputs": [
+        "src-7731"
+      ]
+    },
+    "v002": {
+      "version_id": "v002",
+      "display_name": "ref",
+      "kind": "derived",
+      "sha256": "efca560c02704b51f7b9f7190b7fb60c002642c44b35425407d99a9bf86c005c",
+      "produced_by_seq": 2,
+      "produced_by_agent": "collector",
+      "operation": "read",
+      "inputs": [
+        "src-3184"
+      ]
+    },
+    "v003": {
+      "version_id": "v003",
+      "display_name": "report",
+      "kind": "derived",
+      "sha256": "4c13fce75373e79e4c1376efc68d27f1da1be11c7c9e89dfa2d57164b69b64c4",
+      "produced_by_seq": 3,
+      "produced_by_agent": "processor",
+      "operation": "combine",
+      "inputs": [
+        "v001",
+        "v002"
+      ]
+    }
+  },
+  "display_names": {
+    "main": [
+      "v001"
+    ],
+    "ref": [
+      "v002"
+    ],
+    "report": [
+      "v003"
+    ]
+  },
+  "publications": [
+    {
+      "seq": 4,
+      "publication_id": "pub01",
+      "version_id": "v003",
+      "audience": "public",
+      "artifact_path": "public_outputs/pub01.json"
+    }
+  ],
+  "note": "Canonical application-side version ledger; catalog classifications are not stored here."
+}

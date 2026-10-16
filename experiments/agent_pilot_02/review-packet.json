@@ -1,5 +1,5 @@
 {
-  "status": "AUTHORIZED; credential, current prices and model availability verified; ready to freeze",
+  "status": "ONE AUTHORIZED INVOCATION COMPLETED; 8/12 episodes complete; authorization consumed",
   "code_commit": "84e4287af04d3e2daa21800227869b4e931d7ffd",
   "code_package_sha256": "46bc893994fc5ffdb88aa854da7f18c162f3f50b7a069b0526da040af6a48984",
   "model": "anthropic/claude-haiku-5-5",
@@ -20,8 +20,8 @@
   "credential_variable": "ANTHROPIC_API_KEY",
   "credential_variable_status": "set",
   "model_availability": "GET models/claude-haiku-5-5 succeeded; active; no generation",
-  "new_live_model_requests": 0,
-  "new_accounted_spend_usd": 0.0,
+  "new_live_model_requests": 76,
+  "new_accounted_spend_usd": 0.0104266,
   "limits_live_enabled": false,
   "config_paths": [
     "experiments/agent_pilot_02/pilot_config.json",
@@ -90,5 +90,8 @@
     "direct_scout_agreement": true
   },
   "scope": "Toy explicit resource flow, exact immutable identities, complete logging for live replay. No LLM monitor, no paid generation in this task.",
-  "authorization_status_path": "experiments/agent_pilot_02/authorization-status.json"
+  "authorization_status_path": "experiments/agent_pilot_02/authorization-status.json",
+  "executed_limits_live_enabled": true,
+  "executed_limits_path": "examples/agent_pilot_02/live-20261016/pilot.limits.authorized.json",
+  "result_path": "examples/agent_pilot_02/live-20261016/analysis/pilot_report.json"
 }

@@ -1,0 +1,59 @@
+{
+  "episode_id": "sc04",
+  "started_at_utc": "2026-10-16T13:30:22.783645+00:00",
+  "completed_at_utc": "2026-10-16T13:30:33.479752+00:00",
+  "trace_backend": "live",
+  "model": "anthropic/claude-haiku-5-5",
+  "actor_kinds": [
+    "model"
+  ],
+  "status": "incomplete",
+  "incomplete_reasons": [
+    "0 successful publications (exactly one required)"
+  ],
+  "aborted": null,
+  "agent_outcomes": {
+    "collector": "finished",
+    "processor": "finished",
+    "publisher": "finished"
+  },
+  "operations": {
+    "attempted": 5,
+    "succeeded": 5,
+    "failed": 0
+  },
+  "publications": [],
+  "normalization": {
+    "performed": false,
+    "reason": "episode incomplete; no normalized stream is produced for evaluation"
+  },
+  "generation": {
+    "backend_turns": 7,
+    "model_requests": 7,
+    "usage_totals": {
+      "input_tokens": 8265,
+      "output_tokens": 1046,
+      "total_tokens": 9311
+    },
+    "accounted_usd": 0.0013495,
+    "basis": "live model requests"
+  },
+  "scenario_sha256": "83b3b2a0ff8a5a6ca7592039076c6fd21b6f25bed869e2589b3cd0fb7b91b548",
+  "fingerprints": {
+    "system_prompt_sha256": "b41650e39cb8a8aa52a10c8d260033cf4ffd1c3ddbaeae252d462513a1d44421",
+    "tool_schemas_sha256": "91874169e0ba1d62036218044e30ad162dfb66b7ecc10a63eba3bc998cee3131",
+    "role_tools_sha256": "148cc8bd2def82341e1becc837ea0174007e78c547636cc42f51b59297be2baa"
+  },
+  "agent_limits": {
+    "max_requests_per_agent": 7,
+    "max_tool_calls_per_agent": 6
+  },
+  "provenance": {
+    "source_kind": "agent_executed_trace",
+    "trace_backend": "live",
+    "model": "anthropic/claude-haiku-5-5",
+    "execution_dir": "/workspace/.fragmentguard/pilot-02-20261016/run",
+    "freeze_sha256": "787401257b5c14da5af8237fde76e353c29bac77e766b35caf5ae6ec7d270dde"
+  },
+  "notes": "tick in normalized_stream.json is a logical counter of successful operations, not wall time."
+}

@@ -62,7 +62,8 @@ Sources, catalog, plans and evaluator pairs are shared unchanged; selection stay
 an artifact name, resolved through the episode-local version ledger.
 
 The scripted rehearsal verifies execution and target resolution, not live model
-compliance. Paid generation is pending separate explicit authorization. The
+compliance. At offline implementation completion, paid generation awaited separate
+authorization (subsequently received and executed; see the live results below). The
 proposed limits keep `live_enabled: false`. Their $1 cap and $0.963648 ceiling
 use **historical** price assumptions, not current verified prices. The official
 pricing page request was blocked by proxy HTTP 403 during this task; refresh it
@@ -209,8 +210,8 @@ The omission plan reports repeated per-target prefix preprocessing separately.
 
 Historical pilot 1's twelve-scenario outcome, 77 requests and $0.0105118 accounted
 cost remain unchanged; prices are historical supplied rates, not current prices
-or an independently checked provider invoice. This task made **zero** live model
-requests and incurred **$0** accounted model spend. All new generation was scripted.
+or an independently checked provider invoice. The initial implementation/offline phase made **zero** live model requests and
+incurred **$0** accounted model spend. All generation in that phase was scripted.
 Missing-record analysis is post hoc on tiny, self-authored cases with shared policy
 assumptions, exact identities, controlled content, scripted backgrounds and trusted
 pointer metadata. It establishes neither independent generalization nor real-world
@@ -229,3 +230,53 @@ The initial required-check failure came from naming additive experiment provenan
 `manifest.json`, which the legacy test reserves for demo reports. New provenance is
 now `experiment-manifest.json`; the legacy test and all historical files are unchanged.
 A dedicated test verifies new raw-output hashes and the original inventory.
+
+
+## Authorized live pilot 2: actual outcome
+
+One invocation ran on 16 October 2026 from clean commit
+`f876ee4ec23e2636c31cfa55a3bd940713501e0f`, using the reviewed implementation
+package and pinned inputs. Fresh official pricing and a no-generation exact-model
+GET passed. At standard/global Haiku 5.5 prices of $0.10 input / $0.50 output per
+million tokens (max cache-write input multiplier 2), the pessimistic ceiling
+remained $0.963648 under the approved $1 cap. All other run limits stayed fixed.
+Preflight, model response, authorized limits and freeze are preserved with hashes.
+
+The run attempted all twelve scenarios once: eight complete, sc04/sc05/sc09/sc11
+incomplete because no publication occurred. All four publishers again asked which
+opaque handle matched the requested `summary` or `report`. Thus the minimal
+publication-name clarification did not solve the live handoff. Both formerly
+missing pairs B/F remain unevaluable; their absence prevents assessing the most
+important scripted correlation limitations on live traces. All completed published
+versions match the expected processor-created target and actual file hashes.
+
+Direct and real Scout replays agree; zero monitoring tokens. Streaming/full/ledger
+agree on all eight publications. Pair separation is unchanged descriptively:
+per-agent 0/4, window 2/4, correlation 3/4, full/streaming 4/4. No incorrect definite
+verdicts occurred. Correlation is uncertain on allowed sc12 because depth-first
+budget use leaves one public branch unresolved. Window has four uncertain
+publications; per-agent has eight. There are no new window wins over correlation
+on completed live traces; the earlier scripted sc04 win remains preserved. Every
+gap is listed in the saved analysis, and all five raw method rows are available.
+
+Generation totals: 76 requests; 67,586 input and 7,336 output tokens; $0.0104266
+accounted including incomplete episodes. There were 52 successful recorded tool
+operations and zero failed tool operations. No reservation exceeded its bound or
+cap; no retries, replacement runs, extra dev episodes or second invocation. Costs
+are measured usage times verified supplied prices, not independently checked bills.
+Compared with pilot 1 (77 requests, $0.0105118), these are new executions with
+revised prompts, not independent replication or more samples of an unchanged
+protocol. Neither measured cost predicts a future run's cost.
+
+Canonical evidence: `examples/agent_pilot_02/live-20261016/`, with a short README,
+per-episode verification, complete/incomplete transcripts, tool ledger and files,
+preflight, freeze, reports, five-method comparison, actual command output and a
+full artifact hash inventory. `experiments/agent_pilot_02/live-comparison.json`
+reproduces the free comparison using the preserved checkout paths. No historic
+outputs were regenerated: 542 prior tracked example/fixture artifacts and the
+original 425-file inventory were verified unchanged. All 102 tests passed after
+adding the new artifacts, along with lint and dependency consistency checks.
+
+Recommendation: test a minimal, ledger-derived structured target name/handle
+mapping offline before proposing any further generation. This invocation's
+spending authorization has been consumed; another paid run needs a new approval.

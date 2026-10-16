@@ -1,0 +1,612 @@
+{
+  "all_file_target_binding_checks_passed": true,
+  "all_542_prior_artifact_hashes_preserved": true,
+  "all_425_original_inventory_hashes_preserved": true,
+  "source_commit": "f876ee4ec23e2636c31cfa55a3bd940713501e0f",
+  "token_totals": {
+    "input_tokens": 67586,
+    "output_tokens": 7336,
+    "total_tokens": 74922
+  },
+  "all_budget_reservations_within_bounds": true,
+  "accounted_usd": 0.0104266,
+  "live_requests": 76,
+  "episodes": [
+    {
+      "episode_id": "sc03",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 7,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 7,
+        "succeeded": 7,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 6,
+        "usage_totals": {
+          "input_tokens": 4564,
+          "output_tokens": 350,
+          "total_tokens": 4914
+        },
+        "accounted_usd": 0.0006314000000000001,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.0006314
+      },
+      "publications": [
+        {
+          "seq": 7,
+          "publication_id": "pub01",
+          "version_id": "v004",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 7
+      },
+      "target_check": {
+        "expected_name": "summary",
+        "actual_name": "summary",
+        "actual_version": "v004",
+        "created_by": "processor",
+        "resolution": "handle",
+        "published_content_sha256": "238d68c3f0e22557f62852ef0ef239196245de6e08b25bb2b4ec59382009cd48",
+        "ledger_content_sha256": "238d68c3f0e22557f62852ef0ef239196245de6e08b25bb2b4ec59382009cd48",
+        "ok": true
+      }
+    },
+    {
+      "episode_id": "sc06",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 4,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 6,
+        "usage_totals": {
+          "input_tokens": 5258,
+          "output_tokens": 731,
+          "total_tokens": 5989
+        },
+        "accounted_usd": 0.0008913,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.0008912999999999999
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 4
+      },
+      "target_check": {
+        "expected_name": "report",
+        "actual_name": "report",
+        "actual_version": "v003",
+        "created_by": "processor",
+        "resolution": "handle",
+        "published_content_sha256": "23c33e0b8d166709c4208ee8b9c8af561e67dc04227e9826e4b4688d9da5346a",
+        "ledger_content_sha256": "23c33e0b8d166709c4208ee8b9c8af561e67dc04227e9826e4b4688d9da5346a",
+        "ok": true
+      }
+    },
+    {
+      "episode_id": "sc11",
+      "status": "incomplete",
+      "incomplete_reasons": [
+        "0 successful publications (exactly one required)"
+      ],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 3,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 3,
+        "succeeded": 3,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 6,
+        "usage_totals": {
+          "input_tokens": 5276,
+          "output_tokens": 634,
+          "total_tokens": 5910
+        },
+        "accounted_usd": 0.0008446,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.0008446000000000003
+      },
+      "publications": [],
+      "publisher_final_text": "I did not publish anything because the handles v002 and v003 don't show which one is the \"summary\" artifact, and only one public publication is allowed. Which handle should I publish?",
+      "interpretation": "Execution incomplete, no publication verdict assigned. Publisher asked which handle matches requested final artifact."
+    },
+    {
+      "episode_id": "sc08",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 4,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 7,
+        "usage_totals": {
+          "input_tokens": 5811,
+          "output_tokens": 510,
+          "total_tokens": 6321
+        },
+        "accounted_usd": 0.0008361,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.0008361000000000002
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 4
+      },
+      "target_check": {
+        "expected_name": "summary",
+        "actual_name": "summary",
+        "actual_version": "v003",
+        "created_by": "processor",
+        "resolution": "handle",
+        "published_content_sha256": "cf238a736a00802ec2ec5b099dd2b40d49a0cd8bf052754edc865c5b918c5543",
+        "ledger_content_sha256": "cf238a736a00802ec2ec5b099dd2b40d49a0cd8bf052754edc865c5b918c5543",
+        "ok": true
+      }
+    },
+    {
+      "episode_id": "sc07",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 3,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 3,
+        "succeeded": 3,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 6,
+        "usage_totals": {
+          "input_tokens": 4564,
+          "output_tokens": 358,
+          "total_tokens": 4922
+        },
+        "accounted_usd": 0.0006354,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.0006354000000000004
+      },
+      "publications": [
+        {
+          "seq": 3,
+          "publication_id": "pub01",
+          "version_id": "v002",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 3
+      },
+      "target_check": {
+        "expected_name": "summary",
+        "actual_name": "summary",
+        "actual_version": "v002",
+        "created_by": "processor",
+        "resolution": "handle",
+        "published_content_sha256": "238d68c3f0e22557f62852ef0ef239196245de6e08b25bb2b4ec59382009cd48",
+        "ledger_content_sha256": "238d68c3f0e22557f62852ef0ef239196245de6e08b25bb2b4ec59382009cd48",
+        "ok": true
+      }
+    },
+    {
+      "episode_id": "sc04",
+      "status": "incomplete",
+      "incomplete_reasons": [
+        "0 successful publications (exactly one required)"
+      ],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 5,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 5,
+        "succeeded": 5,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 7,
+        "usage_totals": {
+          "input_tokens": 8265,
+          "output_tokens": 1046,
+          "total_tokens": 9311
+        },
+        "accounted_usd": 0.0013495,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.0013495
+      },
+      "publications": [],
+      "publisher_final_text": "I haven't published anything. The handles you gave (v002, v003, v004, v005) don't say which one is the artifact named \"report,\" and I can only make one public publication, so I can't safely guess. Which handle is the report?",
+      "interpretation": "Execution incomplete, no publication verdict assigned. Publisher asked which handle matches requested final artifact."
+    },
+    {
+      "episode_id": "sc12",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 4,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 6,
+        "usage_totals": {
+          "input_tokens": 5295,
+          "output_tokens": 792,
+          "total_tokens": 6087
+        },
+        "accounted_usd": 0.0009255,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.0009255000000000001
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 4
+      },
+      "target_check": {
+        "expected_name": "report",
+        "actual_name": "report",
+        "actual_version": "v003",
+        "created_by": "processor",
+        "resolution": "handle",
+        "published_content_sha256": "4c13fce75373e79e4c1376efc68d27f1da1be11c7c9e89dfa2d57164b69b64c4",
+        "ledger_content_sha256": "4c13fce75373e79e4c1376efc68d27f1da1be11c7c9e89dfa2d57164b69b64c4",
+        "ok": true
+      }
+    },
+    {
+      "episode_id": "sc02",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 3,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 3,
+        "succeeded": 3,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 6,
+        "usage_totals": {
+          "input_tokens": 4562,
+          "output_tokens": 354,
+          "total_tokens": 4916
+        },
+        "accounted_usd": 0.0006332,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.0006332000000000004
+      },
+      "publications": [
+        {
+          "seq": 3,
+          "publication_id": "pub01",
+          "version_id": "v002",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 3
+      },
+      "target_check": {
+        "expected_name": "summary",
+        "actual_name": "summary",
+        "actual_version": "v002",
+        "created_by": "processor",
+        "resolution": "handle",
+        "published_content_sha256": "1831c15d6cebdf25ca37fe06025a189824faeb95dfa4e1156ea26c6861f5d0de",
+        "ledger_content_sha256": "1831c15d6cebdf25ca37fe06025a189824faeb95dfa4e1156ea26c6861f5d0de",
+        "ok": true
+      }
+    },
+    {
+      "episode_id": "sc09",
+      "status": "incomplete",
+      "incomplete_reasons": [
+        "0 successful publications (exactly one required)"
+      ],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 5,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 5,
+        "succeeded": 5,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 7,
+        "usage_totals": {
+          "input_tokens": 8344,
+          "output_tokens": 1067,
+          "total_tokens": 9411
+        },
+        "accounted_usd": 0.0013679,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.0013679
+      },
+      "publications": [],
+      "publisher_final_text": "I didn't publish anything because the handles you gave (v002\u2013v005) don't say which one is the \"report\" artifact, and only one publication is allowed. Which handle should I publish to the public audience?",
+      "interpretation": "Execution incomplete, no publication verdict assigned. Publisher asked which handle matches requested final artifact."
+    },
+    {
+      "episode_id": "sc05",
+      "status": "incomplete",
+      "incomplete_reasons": [
+        "0 successful publications (exactly one required)"
+      ],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 3,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 3,
+        "succeeded": 3,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 6,
+        "usage_totals": {
+          "input_tokens": 5280,
+          "output_tokens": 637,
+          "total_tokens": 5917
+        },
+        "accounted_usd": 0.0008465,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.0008465
+      },
+      "publications": [],
+      "publisher_final_text": "I didn't publish anything because I can't tell which handle, v002 or v003, is the \"summary\" artifact, and only one publication is allowed. Could you confirm which handle to publish publicly?",
+      "interpretation": "Execution incomplete, no publication verdict assigned. Publisher asked which handle matches requested final artifact."
+    },
+    {
+      "episode_id": "sc01",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 4,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 7,
+        "usage_totals": {
+          "input_tokens": 5803,
+          "output_tokens": 507,
+          "total_tokens": 6310
+        },
+        "accounted_usd": 0.0008338,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.0008337999999999991
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 4
+      },
+      "target_check": {
+        "expected_name": "summary",
+        "actual_name": "summary",
+        "actual_version": "v003",
+        "created_by": "processor",
+        "resolution": "handle",
+        "published_content_sha256": "238d68c3f0e22557f62852ef0ef239196245de6e08b25bb2b4ec59382009cd48",
+        "ledger_content_sha256": "238d68c3f0e22557f62852ef0ef239196245de6e08b25bb2b4ec59382009cd48",
+        "ok": true
+      }
+    },
+    {
+      "episode_id": "sc10",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "files": {
+        "ok": true,
+        "successful_operations_checked": 7,
+        "problems": []
+      },
+      "operations": {
+        "attempted": 7,
+        "succeeded": 7,
+        "failed": 0
+      },
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "generation": {
+        "backend_turns": 6,
+        "model_requests": 6,
+        "usage_totals": {
+          "input_tokens": 4564,
+          "output_tokens": 350,
+          "total_tokens": 4914
+        },
+        "accounted_usd": 0.0006314000000000001,
+        "basis": "live model requests",
+        "budget_delta_usd": 0.000631399999999999
+      },
+      "publications": [
+        {
+          "seq": 7,
+          "publication_id": "pub01",
+          "version_id": "v004",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "bindings": {
+        "agree": true,
+        "mismatches": [],
+        "events": 7
+      },
+      "target_check": {
+        "expected_name": "summary",
+        "actual_name": "summary",
+        "actual_version": "v004",
+        "created_by": "processor",
+        "resolution": "handle",
+        "published_content_sha256": "3f4d1af9e1a3e5ba64ecdf5bd911deb336a2a7d4263be5c05f43fb6c7aa04e6d",
+        "ledger_content_sha256": "3f4d1af9e1a3e5ba64ecdf5bd911deb336a2a7d4263be5c05f43fb6c7aa04e6d",
+        "ok": true
+      }
+    }
+  ]
+}

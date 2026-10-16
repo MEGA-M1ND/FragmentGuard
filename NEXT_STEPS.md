@@ -14,7 +14,7 @@ Stages:
 - 0: starting state and baseline recorded.
 - 1: complete; 24/24 streaming/full-context/label agreement. Artifacts: `examples/streaming_baseline/first_comparison/results`.
 - 2: complete; four symmetric publisher clarifications, 12/12 scripted rehearsal, target/file/binding verification and direct/Scout agreement. Evidence: `examples/agent_pilot_02/`.
-- 3: AUTHORIZED by subsequent user confirmation for one invocation up to $1. Generation remains unstarted: official pricing is blocked (proxy 403) and credential unset. Provider package is installed; proposed limits remain disabled.
+- 3: EXECUTED ONCE after pricing/access verification; 8/12 complete, 76 requests, $0.0104266 accounted, no retries. Evidence: `examples/agent_pilot_02/live-20261016`. Authorization consumed; no additional paid run permitted.
 - 4: complete; 636 unique observations, no wrong definite verdict/control mismatch; streaming equals all-visible checking. Artifacts: `examples/missing_evidence/first_analysis`.
 - 5: complete locally and pushed for review; automatic PR creation blocked by GitHub API Forbidden. Summary: `NEXT_RESULTS.md`; method: `docs/streaming_baseline.md`; paid-run packet: `experiments/agent_pilot_02/review-packet.json`.
 
@@ -62,3 +62,18 @@ The required secret and network additions were saved as an environment draft:
 preserved). Review/save and publish those changes in environment settings; enter
 the credential securely there. Draft saving does not execute or publish changes.
 No duplicate spending approval is required within the approved cap/model/scope.
+
+
+## Live stage completed
+
+After the user supplied the environment key, pricing returned HTTP 200 and the
+exact model's GET succeeded. The one authorized invocation was frozen from
+`f876ee4ec23e2636c31cfa55a3bd940713501e0f` and executed once. Result: 8/12 complete,
+4/6 pairs evaluable, no incorrect definite monitoring verdicts; streaming/full
+match 8/8. sc04/sc05/sc09/sc11 still asked which handle matched the named target.
+All failures and their costs are retained. No retries or substitute episodes.
+
+76 requests / 67,586 input / 7,336 output tokens / $0.0104266 accounted. Full
+canonical evidence is in `examples/agent_pilot_02/live-20261016`; new free-analysis
+config is `experiments/agent_pilot_02/live-comparison.json`. This supersedes the
+earlier blocked/not-started status. No further spending is authorized.

@@ -1,0 +1,362 @@
+{
+  "pilot-02-live": {
+    "counts": {
+      "correlated": {
+        "correct": 7,
+        "definitive": 7,
+        "insufficient_evidence": 1,
+        "publications": 8,
+        "verdicts": {
+          "alert": 4,
+          "clear": 3,
+          "insufficient_evidence": 1
+        },
+        "wrong_alert": 0,
+        "wrong_clear": 0
+      },
+      "fixed_window": {
+        "correct": 4,
+        "definitive": 4,
+        "insufficient_evidence": 4,
+        "publications": 8,
+        "verdicts": {
+          "alert": 2,
+          "clear": 2,
+          "insufficient_evidence": 4
+        },
+        "wrong_alert": 0,
+        "wrong_clear": 0
+      },
+      "full_context_reference": {
+        "correct": 8,
+        "definitive": 8,
+        "insufficient_evidence": 0,
+        "publications": 8,
+        "verdicts": {
+          "alert": 4,
+          "clear": 4
+        },
+        "wrong_alert": 0,
+        "wrong_clear": 0
+      },
+      "per_agent": {
+        "correct": 0,
+        "definitive": 0,
+        "insufficient_evidence": 8,
+        "publications": 8,
+        "verdicts": {
+          "insufficient_evidence": 8
+        },
+        "wrong_alert": 0,
+        "wrong_clear": 0
+      },
+      "streaming": {
+        "correct": 8,
+        "definitive": 8,
+        "insufficient_evidence": 0,
+        "publications": 8,
+        "verdicts": {
+          "alert": 4,
+          "clear": 4
+        },
+        "wrong_alert": 0,
+        "wrong_clear": 0
+      }
+    },
+    "execution_coverage": {
+      "complete": 8,
+      "incomplete": [
+        {
+          "aborted": null,
+          "agent_outcomes": {
+            "collector": "finished",
+            "processor": "finished",
+            "publisher": "finished"
+          },
+          "episode_id": "sc11",
+          "generation": {
+            "accounted_usd": 0.0008446,
+            "backend_turns": 6,
+            "basis": "live model requests",
+            "budget_delta_usd": 0.0008446000000000003,
+            "model_requests": 6,
+            "usage_totals": {
+              "input_tokens": 5276,
+              "output_tokens": 634,
+              "total_tokens": 5910
+            }
+          },
+          "incomplete_reasons": [
+            "0 successful publications (exactly one required)"
+          ],
+          "operations": {
+            "attempted": 3,
+            "failed": 0,
+            "succeeded": 3
+          },
+          "publications": [],
+          "status": "incomplete"
+        },
+        {
+          "aborted": null,
+          "agent_outcomes": {
+            "collector": "finished",
+            "processor": "finished",
+            "publisher": "finished"
+          },
+          "episode_id": "sc04",
+          "generation": {
+            "accounted_usd": 0.0013495,
+            "backend_turns": 7,
+            "basis": "live model requests",
+            "budget_delta_usd": 0.0013495,
+            "model_requests": 7,
+            "usage_totals": {
+              "input_tokens": 8265,
+              "output_tokens": 1046,
+              "total_tokens": 9311
+            }
+          },
+          "incomplete_reasons": [
+            "0 successful publications (exactly one required)"
+          ],
+          "operations": {
+            "attempted": 5,
+            "failed": 0,
+            "succeeded": 5
+          },
+          "publications": [],
+          "status": "incomplete"
+        },
+        {
+          "aborted": null,
+          "agent_outcomes": {
+            "collector": "finished",
+            "processor": "finished",
+            "publisher": "finished"
+          },
+          "episode_id": "sc09",
+          "generation": {
+            "accounted_usd": 0.0013679,
+            "backend_turns": 7,
+            "basis": "live model requests",
+            "budget_delta_usd": 0.0013679,
+            "model_requests": 7,
+            "usage_totals": {
+              "input_tokens": 8344,
+              "output_tokens": 1067,
+              "total_tokens": 9411
+            }
+          },
+          "incomplete_reasons": [
+            "0 successful publications (exactly one required)"
+          ],
+          "operations": {
+            "attempted": 5,
+            "failed": 0,
+            "succeeded": 5
+          },
+          "publications": [],
+          "status": "incomplete"
+        },
+        {
+          "aborted": null,
+          "agent_outcomes": {
+            "collector": "finished",
+            "processor": "finished",
+            "publisher": "finished"
+          },
+          "episode_id": "sc05",
+          "generation": {
+            "accounted_usd": 0.0008465,
+            "backend_turns": 6,
+            "basis": "live model requests",
+            "budget_delta_usd": 0.0008465,
+            "model_requests": 6,
+            "usage_totals": {
+              "input_tokens": 5280,
+              "output_tokens": 637,
+              "total_tokens": 5917
+            }
+          },
+          "incomplete_reasons": [
+            "0 successful publications (exactly one required)"
+          ],
+          "operations": {
+            "attempted": 3,
+            "failed": 0,
+            "succeeded": 3
+          },
+          "publications": [],
+          "status": "incomplete"
+        }
+      ],
+      "planned": 12
+    },
+    "labels_sha256": "9736cf9b3d07959f3e6770d8ca5fa1dddba2d8b7bdca1f51d97b74cbae5f60b2",
+    "pair_separation": {
+      "correlated": [
+        {
+          "evaluable": true,
+          "pair": "pair-a",
+          "separated": true
+        },
+        {
+          "evaluable": false,
+          "pair": "pair-b",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-c",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-d",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-e",
+          "separated": true
+        },
+        {
+          "evaluable": false,
+          "pair": "pair-f",
+          "separated": false
+        }
+      ],
+      "fixed_window": [
+        {
+          "evaluable": true,
+          "pair": "pair-a",
+          "separated": true
+        },
+        {
+          "evaluable": false,
+          "pair": "pair-b",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-c",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-d",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-e",
+          "separated": true
+        },
+        {
+          "evaluable": false,
+          "pair": "pair-f",
+          "separated": false
+        }
+      ],
+      "full_context_reference": [
+        {
+          "evaluable": true,
+          "pair": "pair-a",
+          "separated": true
+        },
+        {
+          "evaluable": false,
+          "pair": "pair-b",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-c",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-d",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-e",
+          "separated": true
+        },
+        {
+          "evaluable": false,
+          "pair": "pair-f",
+          "separated": false
+        }
+      ],
+      "per_agent": [
+        {
+          "evaluable": true,
+          "pair": "pair-a",
+          "separated": false
+        },
+        {
+          "evaluable": false,
+          "pair": "pair-b",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-c",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-d",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-e",
+          "separated": false
+        },
+        {
+          "evaluable": false,
+          "pair": "pair-f",
+          "separated": false
+        }
+      ],
+      "streaming": [
+        {
+          "evaluable": true,
+          "pair": "pair-a",
+          "separated": true
+        },
+        {
+          "evaluable": false,
+          "pair": "pair-b",
+          "separated": false
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-c",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-d",
+          "separated": true
+        },
+        {
+          "evaluable": true,
+          "pair": "pair-e",
+          "separated": true
+        },
+        {
+          "evaluable": false,
+          "pair": "pair-f",
+          "separated": false
+        }
+      ]
+    },
+    "reference_label_mismatches": [],
+    "streaming_full_mismatches": []
+  }
+}

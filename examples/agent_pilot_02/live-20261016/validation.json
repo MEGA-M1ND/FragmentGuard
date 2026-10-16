@@ -1,0 +1,27 @@
+{
+  "source_commit": "f876ee4ec23e2636c31cfa55a3bd940713501e0f",
+  "checks": {
+    "unit_tests": {
+      "command": "python -m unittest discover -s tests -v",
+      "executed": 102,
+      "result": "passed"
+    },
+    "ruff": "passed",
+    "pip_check": "passed",
+    "all_completed_artifact_target_file_ledger_binding_checks": "passed",
+    "direct_real_scout_agreement": "passed",
+    "scout_zero_tokens_and_no_model_usage": "passed",
+    "streaming_full_context_label_agreement": "8/8",
+    "preserved_path_runner_reproduces_raw_method_output_bytes": "passed",
+    "all_542_previous_example_artifacts_unchanged": true,
+    "all_425_original_inventory_files_unchanged": true,
+    "all_budget_reservations_within_bounds": true,
+    "git_diff_check": "passed"
+  },
+  "paid_invocations": 1,
+  "paid_model_requests": 76,
+  "accounted_spend_usd": 0.0104266,
+  "retries": 0,
+  "extra_dev_episodes": 0,
+  "note": "No source code changed during the live run. Prior build/wheel checks remain recorded in experiments/streaming_baseline/final-validation.json; not claimed rerun here."
+}

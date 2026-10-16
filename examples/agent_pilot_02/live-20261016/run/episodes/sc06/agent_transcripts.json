@@ -1,0 +1,541 @@
+{
+  "agents": [
+    {
+      "role": "collector",
+      "actor_kind": "model",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "Read src-2409 and save it as main. Then read src-3184 and save it as ref.",
+        "handoff_handles": [],
+        "tools": [
+          "read_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-16T13:29:59.067088+00:00",
+          "stop_reason": "tool_calls",
+          "usage": {
+            "input_tokens": 583,
+            "output_tokens": 225,
+            "total_tokens": 808,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 76,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc06",
+            "role": "collector",
+            "reserved_usd": 0.0016058000000000001,
+            "accounted_usd": 0.0001708,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 583,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 225,
+              "reasoning_included_in_output": 76
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 0.0008022,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-16T13:29:59.797615+00:00",
+          "stop_reason": "stop",
+          "usage": {
+            "input_tokens": 1108,
+            "output_tokens": 37,
+            "total_tokens": 1145,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc06",
+            "role": "collector",
+            "reserved_usd": 0.0021831999999999997,
+            "accounted_usd": 0.0001293,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 1108,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 37,
+              "reasoning_included_in_output": null
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 0.0009315,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        }
+      ],
+      "tool_calls_executed": 2,
+      "outcome": "finished",
+      "final_text": "I saved src-2409 as \"main\" (handle v001) and src-3184 as \"ref\" (handle v002).",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "Read src-2409 and save it as main. Then read src-3184 and save it as ref."
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "toolu_01JmC2VzSUpFqYzD5uH2Rr3F",
+              "name": "read_resource",
+              "arguments": {
+                "resource_id": "src-2409",
+                "name": "main"
+              },
+              "parse_error": null
+            },
+            {
+              "id": "toolu_01DGTV6LyX5uoxd9pSAwBGs4",
+              "name": "read_resource",
+              "arguments": {
+                "resource_id": "src-3184",
+                "name": "ref"
+              },
+              "parse_error": null
+            }
+          ],
+          "raw": {
+            "id": "Q9X8sYZ7N5TiqA6Kt4JuFL",
+            "content": [
+              {
+                "internal": null,
+                "type": "reasoning",
+                "reasoning": "CAQSxgYKEAgSGAI4AUIIdGhpbmtpbmcSDCH/xlfEwd8QuwJEsRoMblL94sVirsfiJZz8IjDGyJy2HcuDBtLXb9VrCXIaP8VyHP4/bFm3LsASjC0tICsb5ykIXDGFxuVuaZYbZXkq4wUla//IAC/D09e1/90HsmvgSqmP8muAs4++uXkGnDMvkdk7HOfqK4DPt0U0Q9dAVN3YGtmhFE5CPsmnp1dAUlrU1393TJ2VV4pUCb0IiMDWcl51HI12VnxYZ4lTMtO4gbzAOhWP2iqAexHseXHj0rHtuhJGConCPaYOqQx21jaSMIrFl1sJr9ZQ7Yn9b8LDgUv0cmatR/lyuIFqF6PvuNvR6eqqJfJlEFr4IErGRAwf39A22tpiIhz8stPn1EwfTxXJEBtc0jKr9xZ4u25vmCb1VQb87b9WAuNFLnKa7/m6nU3rh9pzFiKnMZFG+kJMcyeHR+pWh37fo6Ys+jGowuAz7KBpRDxr5DOtsyHxxhEzai9F8cFMcli+ic5A1z5tFmXXqeVVajub0WQ862u2H8un/WkSo9Q/xr05XkhjK5AX4ToCdCzAWKELCbGjLnom0ukFg8PtW0xhvK2BFS0fjlEzXRERLkuluRdDFk6V9OvXKbHS7Pti3d3FcdLwtrGheV+FQnlJUBLzc0dT5gvXq2PA88WQcHCCRKX7yqr5W6qgNJLry7lF3/3qS5LzbghF2OTDZjy4MEyxSX5qe/tToxyF88AHGJctKDdrwPafZJPiXC6b35iROEQl2IuihkPRfxCz+rXsR6yJx1jUHLeqqOjFCMO29+6M7c9G8+xOjVFUEYM63VT/6EK/JacDRbjUHkoeec5+SzchhfjuUWY9dG6shfvKFxNK7oNS2wbbGJ4RUcOmcBVst13uPPmYOju8amt35Q6KOk4gG25hv012dXrUCq2+HirYR208hcdCvn3r4sxW6obx5VOdGgzW0DBTMfuJQZ2HEohfSFY2ewG1Yw5mf7EmkjVuqUtytueX6tGd0zndrCrM9H8O9Llas35zL++ulyRSlvEkc0GUdqi1qDOJ0X5oZ04hUcEQD2vpdEjHOQnfVDVkQbjzZGh38NAM8wEyokQinIfI3rR37dtVf17owrj0GAE=",
+                "summary": "",
+                "signature": null,
+                "redacted": true
+              }
+            ],
+            "source": "generate",
+            "metadata": {
+              "redacted_reasoning_tokens": 76
+            },
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "id": "toolu_01JmC2VzSUpFqYzD5uH2Rr3F",
+                "function": "read_resource",
+                "arguments": {
+                  "resource_id": "src-2409",
+                  "name": "main"
+                },
+                "parse_error": null,
+                "view": null,
+                "type": "function"
+              },
+              {
+                "id": "toolu_01DGTV6LyX5uoxd9pSAwBGs4",
+                "function": "read_resource",
+                "arguments": {
+                  "resource_id": "src-3184",
+                  "name": "ref"
+                },
+                "parse_error": null,
+                "view": null,
+                "type": "function"
+              }
+            ],
+            "model": "claude-haiku-5-5"
+          }
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "toolu_01JmC2VzSUpFqYzD5uH2Rr3F",
+          "name": "read_resource",
+          "content": "{\"content\": {\"lines\": [], \"records\": [{\"count\": 18, \"id\": \"r1\", \"item\": \"canteen\", \"region\": \"south\"}, {\"count\": 6, \"id\": \"r2\", \"item\": \"tent\", \"region\": \"east\"}, {\"count\": 11, \"id\": \"r3\", \"item\": \"flare\", \"region\": \"west\"}]}, \"handle\": \"v001\", \"name\": \"main\"}"
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "toolu_01DGTV6LyX5uoxd9pSAwBGs4",
+          "name": "read_resource",
+          "content": "{\"content\": {\"lines\": [], \"records\": [{\"count\": 12, \"id\": \"r1\", \"item\": \"lantern\", \"region\": \"north\"}, {\"count\": 40, \"id\": \"r2\", \"item\": \"rope\", \"region\": \"south\"}, {\"count\": 7, \"id\": \"r3\", \"item\": \"tarp\", \"region\": \"east\"}]}, \"handle\": \"v002\", \"name\": \"ref\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "I saved src-2409 as \"main\" (handle v001) and src-3184 as \"ref\" (handle v002).",
+          "tool_calls": [],
+          "raw": {
+            "id": "274UvkJZnXY3KkeX2irTJY",
+            "content": [
+              {
+                "internal": null,
+                "type": "text",
+                "text": "I saved src-2409 as \"main\" (handle v001) and src-3184 as \"ref\" (handle v002).",
+                "refusal": null,
+                "citations": null,
+                "cache_breakpoint": null
+              }
+            ],
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": null,
+            "model": "claude-haiku-5-5"
+          }
+        }
+      ]
+    },
+    {
+      "role": "processor",
+      "actor_kind": "model",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "Combine the two artifacts you were handed into one artifact named report, with main first and ref second in input_handles.",
+        "handoff_handles": [
+          "v001",
+          "v002"
+        ],
+        "tools": [
+          "read_resource",
+          "transform_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-16T13:30:02.239946+00:00",
+          "stop_reason": "tool_calls",
+          "usage": {
+            "input_tokens": 900,
+            "output_tokens": 320,
+            "total_tokens": 1220,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 215,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc06",
+            "role": "processor",
+            "reserved_usd": 0.0017862,
+            "accounted_usd": 0.00025,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 900,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 320,
+              "reasoning_included_in_output": 215
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 0.0011815,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-16T13:30:03.238377+00:00",
+          "stop_reason": "stop",
+          "usage": {
+            "input_tokens": 1434,
+            "output_tokens": 46,
+            "total_tokens": 1480,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc06",
+            "role": "processor",
+            "reserved_usd": 0.002386,
+            "accounted_usd": 0.0001664,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 1434,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 46,
+              "reasoning_included_in_output": null
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 0.0013479,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        }
+      ],
+      "tool_calls_executed": 1,
+      "outcome": "finished",
+      "final_text": "I combined v001 (main) and v002 (ref) into a new artifact named \"report\" (handle v003), with v001 first and v002 second.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "Combine the two artifacts you were handed into one artifact named report, with main first and ref second in input_handles.\n\nArtifact handles handed to you: v001, v002"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "toolu_01PaabjAKMsck78zM7C4N5Qu",
+              "name": "transform_resource",
+              "arguments": {
+                "input_handles": [
+                  "v001",
+                  "v002"
+                ],
+                "operation": "combine",
+                "name": "report"
+              },
+              "parse_error": null
+            }
+          ],
+          "raw": {
+            "id": "FPbx7hd5FVA6Mevc3ft9uU",
+            "content": [
+              {
+                "internal": null,
+                "type": "reasoning",
+                "reasoning": "CAQSzAkKEAgSGAI4AUIIdGhpbmtpbmcSDMT+SL4lHetCAnvqjRoM/r83JVNX8pVAhJsEIjCixLbem6rGcZiQmZSziVZ5sU8Vv1aHMzbsMz4DIytFFFuTZ+Fy0OBaM/OX3cqXPToq6Qj6xGm47+P//LDKKAYsA6npAtWr2yTLm6hmeQLTbc+o1kE97pTbg9BYxfn2YZbpzdWeFK52a3NirWTbanRlFEK995NvXYF3t0RdN6SQGPi2+uJZy9ejnf4AuaDVwt5RQk7kvFxjGXSkPjzvyJqvCHDU8vDGXRxWiBX2uHaiAGMSeBEULTMODKt5kU8wWP8XeOGRgp/m+S2jVffSYmBc7WHINZWw9WwKcgPm56yQlGCqRZlKd/mWq9Dgx1T/feq8sqCD9B1cq7BjGebwE3toozJwBAwqxexlL6FTEiI8WFLGnwyG+P7X4X/hAW1ZRx5YCTSJmz2uQuMU3SCramcOjGlZIAmWpgpnM0QRFQczpuY8ALMp7XBwQMB1cxzUaafyeLquxSA9veCTlWAdNzXf3CUhqjHXAsTw2YpOsK6+S8wFyG7I2AmwNrlJz7elyaC6mfEzplCx9d+/h0YY0zMpDwm33owiuU+OVi3eCJnmnN0pk8qF92OwqWJATCCptfx8DlKaL+dv0YuPB30WySSbQiowoQLW57jacx6vjY55UWxJafbk7gEwvILetjAu1aRJv44kpnbiJYX3JvB1jYKvhjxaDNd1pkMS86QCBDKdxr/tg2Z4umYvsi6gQYcqnfPavmzgqRSHlSSgOYtlb/E8pgKXxIW90aCPa9dCPow52qe8ZTdckU4PTTc+TzzbzQVymIoBSptTxwNUs7CZJGNzUo1U4R/Ffpao2OvvJk+CBDYilgtrYjW6QUEMWve8D5inbjozXawXNhrFYMB5KT0d3deLrXrIRpY9hqmyps3Cwa8pd/Hzc7+XhsvaZxb0vc7llUDUqPGByq0wRoNnq5/dhbp7OlAEhyGaRvvjJ1Ox/Kf4iPqW/I3rnJ+fep6Bxt41EnXmcV//LllaQUDf95Z1i2hVFHr9178Kc0e5oKkc103JI2JW5Rw/KWZ7FsF0eMl/5jlO05kSabAtdWCQaGpY4+fJreH0CpqgRz6Ntj/eBT7PEucxUgDK8w82Xdb1txzeDjNq+UowS2aykG+Qj1Nm6anZkWsDk5/X9xibv65Oo4OwjKJoMqqvipqBP3PrAAX+kLoeOUTVlAcRuFh0VNoqcOcuUWKhlIjxlF8RTgFhR7cHrM+8Ctv4sVUqg0glQw5OGdmmwrsmPMq1ONIGiU49og9LxUPXs/r5Y2OTDBm9D4dFgPCdMqcRGe3CKHivuj7f7DPZeW4ikDqHZDlOwugMZpHSgFEhsnycI0aV0EpZL/IiWdBvVMo5ZjDmyYtXIsZMk2sRsQAMJ4/61ITK2vqVOCok4nCSxtu4tjHLvcBoYOlf/rTQmwlsaROZw4IZnQgCYvGQG/kXmssORHXF6GO6sNGI9PUpSSpe72qOmHeD7OKgBiFzeVXdgIZRvkdFv2rnH0GrvtujcUIahrZBgJ23XHgdYvuFu0yDg3BFfjMX3UyPrJVCqRafAnnUXo3c841oGg5TFZDcL9n1TqXB9UIpFvA07MHT6vYKiR/xGAE=",
+                "summary": "",
+                "signature": null,
+                "redacted": true
+              }
+            ],
+            "source": "generate",
+            "metadata": {
+              "redacted_reasoning_tokens": 215
+            },
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "id": "toolu_01PaabjAKMsck78zM7C4N5Qu",
+                "function": "transform_resource",
+                "arguments": {
+                  "input_handles": [
+                    "v001",
+                    "v002"
+                  ],
+                  "operation": "combine",
+                  "name": "report"
+                },
+                "parse_error": null,
+                "view": null,
+                "type": "function"
+              }
+            ],
+            "model": "claude-haiku-5-5"
+          }
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "toolu_01PaabjAKMsck78zM7C4N5Qu",
+          "name": "transform_resource",
+          "content": "{\"content\": {\"lines\": [], \"records\": [{\"count\": 18, \"id\": \"r1\", \"item\": \"canteen\", \"region\": \"south\"}, {\"count\": 6, \"id\": \"r2\", \"item\": \"tent\", \"region\": \"east\"}, {\"count\": 11, \"id\": \"r3\", \"item\": \"flare\", \"region\": \"west\"}, {\"count\": 12, \"id\": \"r1\", \"item\": \"lantern\", \"region\": \"north\"}, {\"count\": 40, \"id\": \"r2\", \"item\": \"rope\", \"region\": \"south\"}, {\"count\": 7, \"id\": \"r3\", \"item\": \"tarp\", \"region\": \"east\"}]}, \"handle\": \"v003\", \"name\": \"report\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "I combined v001 (main) and v002 (ref) into a new artifact named \"report\" (handle v003), with v001 first and v002 second.",
+          "tool_calls": [],
+          "raw": {
+            "id": "PofPr5kcCzHttuLEAGn4o2",
+            "content": [
+              {
+                "internal": null,
+                "type": "text",
+                "text": "I combined v001 (main) and v002 (ref) into a new artifact named \"report\" (handle v003), with v001 first and v002 second.",
+                "refusal": null,
+                "citations": null,
+                "cache_breakpoint": null
+              }
+            ],
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": null,
+            "model": "claude-haiku-5-5"
+          }
+        }
+      ]
+    },
+    {
+      "role": "publisher",
+      "actor_kind": "model",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "Publish the artifact you were handed to the public audience.",
+        "handoff_handles": [
+          "v003"
+        ],
+        "tools": [
+          "publish_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-16T13:30:04.034261+00:00",
+          "stop_reason": "tool_calls",
+          "usage": {
+            "input_tokens": 565,
+            "output_tokens": 73,
+            "total_tokens": 638,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc06",
+            "role": "publisher",
+            "reserved_usd": 0.001599,
+            "accounted_usd": 9.3e-05,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 565,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 73,
+              "reasoning_included_in_output": null
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 0.0014409,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-16T13:30:04.806592+00:00",
+          "stop_reason": "stop",
+          "usage": {
+            "input_tokens": 668,
+            "output_tokens": 30,
+            "total_tokens": 698,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          },
+          "cost": {
+            "episode": "sc06",
+            "role": "publisher",
+            "reserved_usd": 0.0017346,
+            "accounted_usd": 8.18e-05,
+            "basis": "measured usage x supplied prices: input_tokens and cache reads at the input rate, cache writes at max_input_price_multiplier x input; output = output_tokens, reasoning included once",
+            "tokens": {
+              "input_total": 668,
+              "cache_read": 0,
+              "cache_write": 0,
+              "output_total": 30,
+              "reasoning_included_in_output": null
+            },
+            "exceeded_reservation": false,
+            "cumulative_usd": 0.0015226999999999999,
+            "over_cap": false
+          },
+          "error": null,
+          "model": "claude-haiku-5-5"
+        }
+      ],
+      "tool_calls_executed": 1,
+      "outcome": "finished",
+      "final_text": "I published artifact v003 to the public audience, and it was assigned publication ID pub01.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "Publish the artifact you were handed to the public audience.\n\nArtifact handles handed to you: v003"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "toolu_013tBwYd3kz7VHM6oGwHo5YY",
+              "name": "publish_resource",
+              "arguments": {
+                "handle": "v003",
+                "audience": "public"
+              },
+              "parse_error": null
+            }
+          ],
+          "raw": {
+            "id": "AZL7ZL6cukSzNHjsdrHTFc",
+            "content": [],
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "id": "toolu_013tBwYd3kz7VHM6oGwHo5YY",
+                "function": "publish_resource",
+                "arguments": {
+                  "handle": "v003",
+                  "audience": "public"
+                },
+                "parse_error": null,
+                "view": null,
+                "type": "function"
+              }
+            ],
+            "model": "claude-haiku-5-5"
+          }
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "toolu_013tBwYd3kz7VHM6oGwHo5YY",
+          "name": "publish_resource",
+          "content": "{\"audience\": \"public\", \"handle\": \"v003\", \"published\": \"pub01\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "I published artifact v003 to the public audience, and it was assigned publication ID pub01.",
+          "tool_calls": [],
+          "raw": {
+            "id": "8YY6f5yXfoP983LiwJKmyX",
+            "content": [
+              {
+                "internal": null,
+                "type": "text",
+                "text": "I published artifact v003 to the public audience, and it was assigned publication ID pub01.",
+                "refusal": null,
+                "citations": null,
+                "cache_breakpoint": null
+              }
+            ],
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": null,
+            "model": "claude-haiku-5-5"
+          }
+        }
+      ]
+    }
+  ],
+  "background": []
+}

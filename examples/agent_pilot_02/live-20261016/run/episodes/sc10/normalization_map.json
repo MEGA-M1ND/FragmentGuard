@@ -1,0 +1,44 @@
+{
+  "e001": {
+    "seq": 1,
+    "tool": "read_resource",
+    "operation": "read",
+    "actor_kind": "model"
+  },
+  "e002": {
+    "seq": 2,
+    "tool": "read_resource",
+    "operation": "read",
+    "actor_kind": "scripted_background"
+  },
+  "e003": {
+    "seq": 3,
+    "tool": "transform_resource",
+    "operation": "copy",
+    "actor_kind": "scripted_background"
+  },
+  "e004": {
+    "seq": 4,
+    "tool": "transform_resource",
+    "operation": "format_summary",
+    "actor_kind": "model"
+  },
+  "e005": {
+    "seq": 5,
+    "tool": "read_resource",
+    "operation": "read",
+    "actor_kind": "scripted_background"
+  },
+  "e006": {
+    "seq": 6,
+    "tool": "transform_resource",
+    "operation": "format_summary",
+    "actor_kind": "scripted_background"
+  },
+  "e007": {
+    "seq": 7,
+    "tool": "publish_resource",
+    "operation": "publish",
+    "actor_kind": "model"
+  }
+}
