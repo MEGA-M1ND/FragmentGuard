@@ -1,0 +1,17 @@
+{
+  "scenario_id": "sc11",
+  "permitted_sources": [
+    "src-7731"
+  ],
+  "agents": {
+    "collector": {
+      "instruction": "Read the source resource src-7731 and save the working copy with the name draft."
+    },
+    "processor": {
+      "instruction": "From the artifact you were handed, keep only the fields item and count using select_fields and name the result subset. Then apply format_summary to subset and name the result summary."
+    },
+    "publisher": {
+      "instruction": "Publish the artifact named summary, created by the processor in this episode, to the public audience."
+    }
+  }
+}

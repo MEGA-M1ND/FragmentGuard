@@ -49,3 +49,22 @@ The live execution coverage remains 8/12; sc04/sc05/sc09/sc11 had no publication
 This toy policy is implementable with simple forward sensitivity propagation.
 Correlation adds bounded evidence retrieval/explanations, not a demonstrated
 verdict advantage over the streaming baseline under complete, exact logs.
+
+## Pilot 2 publication clarification
+
+`experiments/agent_pilot_02/scenario_diff.json` records hashes and field-level
+changes. sc05/sc11 (pair B) now request `summary`; sc04/sc09 (pair F) request
+`report`, in both cases explicitly created by this episode's processor.
+Processor instructions and the existing plans independently identify these names.
+All other fields, lineage, ordering, backgrounds and scenario bytes are preserved.
+Sources, catalog, plans and evaluator pairs are shared unchanged; selection stays
+3/100/depth-first. No executor change is needed: `publish_resource.handle` accepts
+an artifact name, resolved through the episode-local version ledger.
+
+The scripted rehearsal verifies execution and target resolution, not live model
+compliance. Paid generation is pending separate explicit authorization. The
+proposed limits keep `live_enabled: false`. Their $1 cap and $0.963648 ceiling
+use **historical** price assumptions, not current verified prices. The official
+pricing page request was blocked by proxy HTTP 403 during this task; refresh it
+before requesting a live invocation. `ANTHROPIC_API_KEY` was unset. Never put a
+credential value into this packet or chat.

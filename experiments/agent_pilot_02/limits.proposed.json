@@ -1,0 +1,20 @@
+{
+  "live_enabled": false,
+  "model": "anthropic/claude-haiku-5-5",
+  "max_spend_usd": 1.0,
+  "input_usd_per_million_tokens": 0.1,
+  "output_usd_per_million_tokens": 0.5,
+  "pricing_source": "https://platform.claude.com/docs/en/about-claude/pricing (Claude Haiku 5.5, prompts up to 100,000 tokens: base input $0.10 / MTok, output $0.50 / MTok; cache writes $0.125 (5m) and $0.20 (1h) / MTok; global routing, no inference_geo). Model overview: https://platform.claude.com/docs/en/models/haiku-5-5/overview",
+  "pricing_retrieved_utc": "2026-10-12T09:30:31Z",
+  "max_output_tokens": 2048,
+  "max_requests_per_agent": 7,
+  "max_tool_calls_per_agent": 6,
+  "max_total_requests": 252,
+  "max_context_bytes": 12000,
+  "request_overhead_tokens": 2000,
+  "temperature": null,
+  "seed": null,
+  "timeout_seconds": 120,
+  "max_input_price_multiplier": 2.0,
+  "notes": "PROPOSED pilot 2, NOT AUTHORIZED. One invocation of 12 scenarios, no dev episodes or retries. $1 proposed cap, historical-price ceiling $0.963648. Price fields are historical assumptions (2026-10-12), MUST refresh official prices and recheck ceiling before any future paid run. Preserve exact model; do not substitute. Twelve-scenario live pilot (one pilot-run invocation). PROPOSED, NOT AUTHORIZED: max_spend_usd 1.00 is a proposed cap; set live_enabled to true only after it is authorized. Sized from live dev01/dev02 (Haiku 5.5, 2026-10-12): largest request 2,675 bytes, largest output 103 tokens, 1 tool call and 2 requests per agent, no thinking. The longest scripted pilot plan (sc04/sc09 processor: 4 tool calls, 5 requests, 4,164 bytes scripted) projects to about 5.8 KB live. Limits: 6 tool calls and 7 requests per agent (6 calls plus a final reply), 12,000 context bytes (about 2x that projection), 2,048 output tokens (about 20x the observed maximum, room for some adaptive thinking), 252 total requests (12 x 3 x 7). Pessimistic maximum $0.963648 for 12 episodes. Temperature and seed are null (Haiku 5.5 rejects non-default sampling values); prompt caching is disabled by the backend."
+}

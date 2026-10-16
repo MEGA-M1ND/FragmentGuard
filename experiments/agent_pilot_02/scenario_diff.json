@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "changes": [
+    {
+      "scenario_id": "dev01",
+      "target_name": null,
+      "changed_fields": [],
+      "before_sha256": "d14336783e3c6882cd477d114f60b8a15c28a3488e4694a46e535ee7e4b4fb14",
+      "after_sha256": "d14336783e3c6882cd477d114f60b8a15c28a3488e4694a46e535ee7e4b4fb14",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact you were handed to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "dev02",
+      "target_name": null,
+      "changed_fields": [],
+      "before_sha256": "eeb34a89b8f59bf8d05220500b75c0c21a3fa6bf7dc2442280c00bf90b81ec3b",
+      "after_sha256": "eeb34a89b8f59bf8d05220500b75c0c21a3fa6bf7dc2442280c00bf90b81ec3b",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact you were handed to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc01",
+      "target_name": null,
+      "changed_fields": [],
+      "before_sha256": "ba7df0adc96234fd68bfbb9daa9940d668ba4a65e9b870c6e2129dbe5816fdef",
+      "after_sha256": "ba7df0adc96234fd68bfbb9daa9940d668ba4a65e9b870c6e2129dbe5816fdef",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact you were handed to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc02",
+      "target_name": null,
+      "changed_fields": [],
+      "before_sha256": "f95e8cc9ea6df99af3a8a17a882ec5f4ec0ee56baa363156ff9400571b4de53a",
+      "after_sha256": "f95e8cc9ea6df99af3a8a17a882ec5f4ec0ee56baa363156ff9400571b4de53a",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact you were handed to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc03",
+      "target_name": null,
+      "changed_fields": [],
+      "before_sha256": "74654ec8debd3316d699e951bbf29a7f4c018f29d58fe1f4a927c3daeed48930",
+      "after_sha256": "74654ec8debd3316d699e951bbf29a7f4c018f29d58fe1f4a927c3daeed48930",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact you were handed to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc04",
+      "target_name": "report",
+      "changed_fields": [
+        "agents.publisher.instruction"
+      ],
+      "before_sha256": "7dccfba948ef443c85f916a6ac0ea3fdb6590b41e76bbd4231f5c308a3fab110",
+      "after_sha256": "83b3b2a0ff8a5a6ca7592039076c6fd21b6f25bed869e2589b3cd0fb7b91b548",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact named report, created by the processor in this episode, to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc05",
+      "target_name": "summary",
+      "changed_fields": [
+        "agents.publisher.instruction"
+      ],
+      "before_sha256": "db09a5228cea0ff127c997c35d9594571489978a8401c517608eb42ac9b10150",
+      "after_sha256": "3dc4cdfa0ab0fec759efe3ce5feedd22ac741009b589e201cc7b403fb7a1342d",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact named summary, created by the processor in this episode, to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc06",
+      "target_name": null,
+      "changed_fields": [],
+      "before_sha256": "77dd5877771c44956349ab9b5130ddaa235071bc403098452f195b08236ff2ff",
+      "after_sha256": "77dd5877771c44956349ab9b5130ddaa235071bc403098452f195b08236ff2ff",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact you were handed to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc07",
+      "target_name": null,
+      "changed_fields": [],
+      "before_sha256": "ba51d698b1a7e8f2c21ad82ac722fe5c1e9454a256b1b1f6c7352328d2ad0864",
+      "after_sha256": "ba51d698b1a7e8f2c21ad82ac722fe5c1e9454a256b1b1f6c7352328d2ad0864",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact you were handed to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc08",
+      "target_name": null,
+      "changed_fields": [],
+      "before_sha256": "d5b6fec1c91f84ca3d24b3a76535339592dcbdb34cdd472fc38287b45a905071",
+      "after_sha256": "d5b6fec1c91f84ca3d24b3a76535339592dcbdb34cdd472fc38287b45a905071",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact you were handed to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc09",
+      "target_name": "report",
+      "changed_fields": [
+        "agents.publisher.instruction"
+      ],
+      "before_sha256": "16e6510a5313f7af47ca9ceec337e8a3108e3950cbaa8c4f3370b9bc7d5bf3c6",
+      "after_sha256": "aa75057e1b41d2f06353e54ea702bc5ef0778633216ba46342582a7c2cc316c9",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact named report, created by the processor in this episode, to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc10",
+      "target_name": null,
+      "changed_fields": [],
+      "before_sha256": "6b6562f48576abbce6a8e9e5a02667c56cb46f658c5e394c815e9950b5b1d257",
+      "after_sha256": "6b6562f48576abbce6a8e9e5a02667c56cb46f658c5e394c815e9950b5b1d257",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact you were handed to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc11",
+      "target_name": "summary",
+      "changed_fields": [
+        "agents.publisher.instruction"
+      ],
+      "before_sha256": "1d0795eabe418e88551cdeab0632dcc8a6fa01d2dbedb2a741dd5b38e7253ec7",
+      "after_sha256": "5f0f4edd40014337e008302bbc30b6b7659f8bda55c445aec59d3641470ea6f7",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact named summary, created by the processor in this episode, to the public audience.",
+      "all_other_fields_equal": true
+    },
+    {
+      "scenario_id": "sc12",
+      "target_name": null,
+      "changed_fields": [],
+      "before_sha256": "e834125df0907c9fd22e8d353e5f3815b3f0f9e83f21f63a146c84860296cda3",
+      "after_sha256": "e834125df0907c9fd22e8d353e5f3815b3f0f9e83f21f63a146c84860296cda3",
+      "before_instruction": "Publish the artifact you were handed to the public audience.",
+      "after_instruction": "Publish the artifact you were handed to the public audience.",
+      "all_other_fields_equal": true
+    }
+  ],
+  "selection_unchanged": true,
+  "shared_inputs": "Sources, catalog, scripted plans and evaluator pairs reference the original unchanged files.",
+  "run_order_unchanged": true
+}
