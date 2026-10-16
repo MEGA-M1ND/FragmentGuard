@@ -74,11 +74,12 @@ def compare(config, output):
         summaries[spec["name"]] = summary
     write(output / "evaluated.json", evaluated)
     write(output / "summary.json", summaries)
-    write(output / "manifest.json", {"schema_version": 1, "source": reporting.source_fingerprint(),
+    write(output / "experiment-manifest.json", {"schema_version": 1, "source": reporting.source_fingerprint(),
                                      "packages": reporting.package_versions(), "config_sha256": digest(config),
                                      "datasets": metadata, "settings": {"budget": 3, "horizon": 100,
                                      "priority": "depth-first input order"},
                                      "outputs_sha256": digest(output / "outputs.json"),
+                                     "artifacts": reporting.artifact_hashes(output, ("experiment-manifest.json",)),
                                      "note": "One shared complete-log binding pass per stream, before scoring. "
                                      "Streaming sees every arriving event and retains all version states; "
                                      "bounded checker views have different information/memory costs. "

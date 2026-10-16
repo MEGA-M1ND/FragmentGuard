@@ -141,3 +141,35 @@ definite verdicts are errors and make the command fail. Per-workflow, pair and
 category counts retain uncertainty separately. These are post-hoc interventions
 on existing cases under trustworthy identity/pointer metadata, not held-out data
 or evidence of safety with dishonest pointers or unlogged actions.
+
+## Missing-evidence observations
+
+Source `103c0cc` produced the frozen specification and initial scores. New
+experiment manifests use `experiment-manifest.json` to avoid confusing the
+historical demo-manifest schema; prior manifest contents and hashes are retained.
+The specification hash was saved before scoring. An additive post-hoc
+`baseline_wins.json` enumerates every fixed-window or streaming definite verdict
+where correlation is uncertain, including IDs, masks and unresolved pointers.
+
+There were **636 unique observations** of 29 target publications (3,180 method
+outputs), with 29 no-deletion controls. All controls reproduce the original four
+views; streaming matches the unmasked full reference. No wrong clear, wrong alert,
+reference/label disagreement or control violation occurred. Streaming matched the
+all-visible checker in all 636 observations. Definite/uncertain counts:
+
+| Dataset | Observations | Per-agent | Window | Correlation | All-visible / streaming |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Original synthetic fixtures | 160 | 32 / 128 | 36 / 124 | 64 / 96 | 64 / 96 |
+| Original scripted rehearsal | 248 | 0 / 248 | 17 / 231 | 44 / 204 | 52 / 196 |
+| Eight completed live pilot 1 traces | 168 | 0 / 168 | 9 / 159 | 40 / 128 | 41 / 127 |
+| Stale-write regression inputs | 60 | 0 / 60 | 26 / 34 | 24 / 36 | 27 / 33 |
+
+These counts include no-deletion controls and overlapping intervention categories;
+observations are interventions on the same traces, not independent trials. The
+32 per-agent definite results in the fixture dataset include internal publications,
+which are allowed even with unresolved ancestry. Streaming/all-visible retain 184
+definite verdicts, while 452 become uncertain. The machine-readable summary groups
+by workflow, pair and category; `became_uncertain` identifies each mask and missing
+reference for formerly definite public publications. There is no evidence here of
+robustness to corrupted metadata. Sensitivity state retained from before a deletion
+was deliberately excluded.

@@ -1,0 +1,61 @@
+{
+  "accounted_usd": 0,
+  "labels_sha256": {
+    "fixtures": "0837ca672ac64148ef1d27ef0abd15c02fb6ecdbec6fc773189c385f6f5429e2",
+    "live-pilot-01": "9736cf9b3d07959f3e6770d8ca5fa1dddba2d8b7bdca1f51d97b74cbae5f60b2",
+    "scripted": "600532715c92f00c39273bdb150eeef5d177ca1a91e15e3316b54e27dbc5eaa2",
+    "stale-write-regressions": "37c0ce7398467238209e111f7c6019b6fc24a90a840acd1f59ec0c2f578607d3"
+  },
+  "observations_sha256": "366d6107ae71e54500eb874629ac4092624c3fe1253a09a700573db5012e319f",
+  "outputs_sha256": "b929b6fa1f5fcbe285ff5e2be44b4d02316aff7413adec162093ab6303eaa1db",
+  "packages": {
+    "duckdb": "1.5.6",
+    "fragmentguard": "0.1.0",
+    "inspect-ai": "0.3.277",
+    "inspect-scout": "0.5.4",
+    "pandas": "3.0.6",
+    "pyarrow": "25.0.1",
+    "pydantic": "2.13.5"
+  },
+  "paid_requests": 0,
+  "pairs_sha256": {
+    "live-pilot-01": "4b8e1bb7e5ffe1a328005ff72793c78c0ba5c61d83d2b520469beb062cd39d16",
+    "scripted": "4b8e1bb7e5ffe1a328005ff72793c78c0ba5c61d83d2b520469beb062cd39d16"
+  },
+  "plan_sha256": "a62456d65a6c089a8c5c860fe745dfdf43b08b73fc74c3dc6cafbfa3db6fbc1e",
+  "schema_version": 1,
+  "source": {
+    "files": {
+      "__init__.py": "8b5115c1f72d27fb8761b71066ea77eb3ea6fab60c2e39f4f0f974431b8fd26b",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "agentpilot/__init__.py": "839f7d6f217904683b5e5d218bfe87642ebe019aec988fd33f4004c381eb304c",
+      "agentpilot/backends.py": "1179c0627de657a4946d041a8930eaed8c972a595741f14b70379b1320a3eec9",
+      "agentpilot/commands.py": "4451bb075698cde1b459dde5538184fb8974bbc80d06ddb2411a12789430a659",
+      "agentpilot/episode.py": "df67b1f0a3f436318a2e5ee6b962267786ca2165a29a4db5b01d6d5cd02bb783",
+      "agentpilot/ledger_labels.py": "a78aca8f2179a0d5b1ea6fc46c1154b4f630c2190a9fe19fe37727f28be7327a",
+      "agentpilot/normalize.py": "f69770df63f509c1f0f93a62e39ccb4cc49227abcc138e1d0e7a18f3106c7a7e",
+      "agentpilot/pilot.py": "5261f1ee536d94454b43a0bd5a6a66875f139fd63777fc41fafa53e676e70472",
+      "agentpilot/workspace.py": "7f2c14428a323328123ff22ee0a13acfeab3dfb782c335fd9ea3d478eb2e289f",
+      "cli.py": "3b1d4674a78ef451c74e17e3a620c9cf8c37e854297ec4f77581507f1fe056b0",
+      "correlation.py": "9e010fdeb47487642fa64d9e3ae691f3258bd93922488a5c7cff66d2eb703323",
+      "experiments/__init__.py": "97eedf7f753990a30aacb6bebe3d85cfe2e4c65b47ac8ea1c6c926e74fc896b6",
+      "experiments/__main__.py": "700f2fc9c876bc8a283355ee9cc452f2bb92cc14c8cd07a8108223e1b4620d1d",
+      "experiments/common.py": "ac0b221edc4e53c0cafb30840feafad8b5715f48b2ead5b6ab6e69f36eb3b681",
+      "experiments/evaluate.py": "5c8dfe0877ecbb0a16551ca3ad46d9e27d1b4c0f98c464f3576f5174726d45d1",
+      "experiments/missing.py": "e3c49ef54412086c9c4a79ed1128761ebb269c4400306cdec8d6abc57ffa0460",
+      "fixtures/ground_truth.json": "0837ca672ac64148ef1d27ef0abd15c02fb6ecdbec6fc773189c385f6f5429e2",
+      "fixtures/policy.json": "882c757afd574c7933f9a489886380c6f436e52677cc8d3bd571f2edfd0f34eb",
+      "fixtures/streams.json": "d85b3e341f078f73b5ad80b1d17c15164cb6e59bc7b90e0b7e73d709c6ac2520",
+      "monitor.py": "64e0925907a17a65433b96fea6d883deaf00c6d1787f6441d52cd44519287e1c",
+      "observation.py": "2075dfc04eacd0523d6ccc230e75bdf03aa68abdf87f892ff64224d92b096894",
+      "pipeline.py": "1e4b0d604a3115b80729d063e6918cf69ed17e9b6e9bc168b8a03d81ba0ff773",
+      "reporting.py": "a8e9767c29ea1d278de2c6afb68cd6067a7d53151cb3483f48eadcf25061fdf4",
+      "schema.py": "927a1586f8d479647e10914ff9d1b3f24fbe28d45cc04262595744877f51ac08",
+      "scout.py": "21fffb5c4fa159bc531349720a40614dde05139086c53639bd05a57fe89b4a46",
+      "streaming.py": "2223e89a2926fccc179d747e55fe71cbe406a6ce1f49ce660e9076706e822948"
+    },
+    "git_commit": "103c0cc2579af5218d3968d7f9a3ed5ad6394918",
+    "git_dirty": false,
+    "package_sha256": "e25723f2e464b033ee1aae4a670d98bb9d8511c304078e2daddf17e7e52f7c76"
+  }
+}

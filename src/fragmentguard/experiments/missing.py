@@ -161,6 +161,21 @@ def run_missing(spec: Path, output: Path) -> int:
             by_pair[name][pair] = counts([r for r in selected if r["pair"] == pair])
         for category in sorted({c for r in selected for c in r["categories"]}):
             by_category[name][category] = counts([r for r in selected if category in r["categories"]])
+    keyed = defaultdict(dict)
+    for row in rows:
+        keyed[row["observation_id"]][row["method"]] = row
+    wins = []
+    for observation, methods in keyed.items():
+        correlated = methods["correlated"]
+        for baseline in ("fixed_window", "streaming"):
+            better = methods[baseline]
+            if (better["status"] == better["reference"] and better["status"] in ("alert", "clear")
+                    and correlated["status"] == "insufficient_evidence"):
+                wins.append({"observation_id": observation, "baseline": baseline,
+                             **{k: better[k] for k in ("dataset", "stream_id", "publication_id", "hidden_ids",
+                                                      "categories", "reference", "evidence_ids")},
+                             "correlated_unresolved": correlated["unresolved_inputs"]})
+    write(output / "baseline_wins.json", wins)
     write(output / "summary.json", {
         "unique_observations": plan["unique_observations"], "method_outputs": len(rows),
         "by_dataset": by_dataset, "by_workflow": by_workflow, "by_pair": by_pair, "by_category": by_category,
@@ -173,11 +188,12 @@ def run_missing(spec: Path, output: Path) -> int:
         "full_context_reference means ALL VISIBLE records in these rows; reference is the unmasked verdict. "
         "All methods share the same visible payloads/pointers. Category memberships overlap.",
     })
-    write(output / "manifest.json", {
+    write(output / "experiment-manifest.json", {
         "schema_version": 1, "source": reporting.source_fingerprint(), "packages": reporting.package_versions(),
         "plan_sha256": digest(spec / "plan.json"), "observations_sha256": plan["observations_sha256"],
         "outputs_sha256": digest(output / "outputs.jsonl"), "labels_sha256": label_hashes,
         "pairs_sha256": pairs_hashes, "paid_requests": 0, "accounted_usd": 0,
+        "artifacts": reporting.artifact_hashes(output, ("experiment-manifest.json",)),
     })
     print(f"{plan['unique_observations']} observations, {len(violations)} soundness/control violations, "
           f"{len(label_mismatches)} reference/label mismatches")
