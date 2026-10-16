@@ -12,7 +12,7 @@ Historical preservation inventory: `experiments/streaming_baseline/historical-sh
 
 Stages:
 - 0: starting state and baseline recorded.
-- 1: streaming baseline and complete-trace experiment in progress.
+- 1: complete; 24/24 streaming/full-context/label agreement. Artifacts: `examples/streaming_baseline/first_comparison/results`.
 - 2: versioned publication clarification and offline rehearsal pending.
 - 3: paid generation unauthorized; prepare review packet only.
 - 4: frozen-pointer missing-evidence experiment pending.

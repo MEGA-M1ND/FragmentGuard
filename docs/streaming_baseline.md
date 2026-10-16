@@ -36,3 +36,16 @@ of three is not three total records read or equal memory/compute/token cost.
 Raw rows include checker event counts, selection records examined, cumulative
 streaming input updates, state writes, retained versions and unresolved entries.
 These are operation/storage counts, not timing measurements. No speedup is claimed.
+
+## Stage 1 observations
+
+At source `8bcd0e0` (see manifest for the full commit and package hash), streaming
+matched full context and evaluator labels on all 24 publications: four synthetic,
+twelve scripted and eight completed historical live episodes. There were zero
+mismatches. Correct verdict counts for per-agent/window/correlation/full/streaming
+were respectively 1/1/4/4/4 (fixtures), 0/5/7/12/12 (scripted), and 0/4/7/8/8 (live).
+The live execution coverage remains 8/12; sc04/sc05/sc09/sc11 had no publication.
+
+This toy policy is implementable with simple forward sensitivity propagation.
+Correlation adds bounded evidence retrieval/explanations, not a demonstrated
+verdict advantage over the streaming baseline under complete, exact logs.
