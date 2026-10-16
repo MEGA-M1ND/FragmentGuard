@@ -1,0 +1,29 @@
+{
+  "datasets": [
+    {
+      "name": "fixtures",
+      "kind": "synthetic",
+      "streams": "../../src/fragmentguard/fixtures/streams.json",
+      "policy": "../../src/fragmentguard/fixtures/policy.json",
+      "labels": "../../src/fragmentguard/fixtures/ground_truth.json"
+    },
+    {
+      "name": "scripted",
+      "kind": "scripted",
+      "streams": "../../examples/agent_pilot/scripted-rehearsal-run/dataset/streams.json",
+      "policy": "../../examples/agent_pilot/scripted-rehearsal-run/dataset/policy.json",
+      "labels": "../../examples/agent_pilot/scripted-rehearsal-run/evaluator/labels.json",
+      "execution": "../../examples/agent_pilot/scripted-rehearsal-run",
+      "pairs": "../agent_pilot/evaluator/pairs.json"
+    },
+    {
+      "name": "live-pilot-01",
+      "kind": "live",
+      "streams": "../../examples/agent_pilot/live-pilot-run/dataset/streams.json",
+      "policy": "../../examples/agent_pilot/live-pilot-run/dataset/policy.json",
+      "labels": "../../examples/agent_pilot/live-pilot-run/evaluator/labels.json",
+      "execution": "../../examples/agent_pilot/live-pilot-run",
+      "pairs": "../agent_pilot/evaluator/pairs.json"
+    }
+  ]
+}
