@@ -2,8 +2,11 @@
 
 Next experiments: [streaming sensitivity baseline, clarified pilot 2 rehearsal,
 and missing-evidence analysis](docs/streaming_baseline.md). See
-[the short results](NEXT_RESULTS.md). [Live pilot 2](examples/agent_pilot_02/live-20261016/README.md) ran once under the
-approved $1 cap: 8/12 complete, $0.0104266 accounted; no retries.
+[the short results](NEXT_RESULTS.md). An [offline handoff revision](docs/handoff_metadata.md)
+now exposes ledger-derived names and immutable handles; the
+[missing-evidence review](docs/missing_evidence_review.md) clarifies the observation
+assumptions. [Live pilot 2](examples/agent_pilot_02/live-20261016/README.md) ran once
+under the approved $1 cap: 8/12 complete, $0.0104266 accounted; no retries.
 
 FragmentGuard is a small offline prototype. It asks one question:
 

@@ -1,0 +1,882 @@
+[
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact you were handed to the public audience.\n\nArtifact handles handed to you: v004\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v004\", \"name\": \"summary\"}], \"latest_by_name\": {\"summary\": \"v004\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "summary",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v004",
+          "name": "summary"
+        }
+      ],
+      "latest_by_name": {
+        "summary": "v004"
+      },
+      "version": 1
+    },
+    "plan_sha256": "cc3a038f58d6bf81865a77a9a03074f2f5ddf6010d3d819ca2f5495a1c8d3357",
+    "scenario_id": "sc03",
+    "scenario_sha256": "74654ec8debd3316d699e951bbf29a7f4c018f29d58fe1f4a927c3daeed48930"
+  },
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact you were handed to the public audience.\n\nArtifact handles handed to you: v003\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v003\", \"name\": \"report\"}], \"latest_by_name\": {\"report\": \"v003\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "report",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v003",
+          "name": "report"
+        }
+      ],
+      "latest_by_name": {
+        "report": "v003"
+      },
+      "version": 1
+    },
+    "plan_sha256": "b4ff36139d28f9af77902f9d12300212929aca88b9b86b22b0634ed9f13ea982",
+    "scenario_id": "sc06",
+    "scenario_sha256": "77dd5877771c44956349ab9b5130ddaa235071bc403098452f195b08236ff2ff"
+  },
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact named summary, created by the processor in this episode, to the public audience.\n\nArtifact handles handed to you: v002, v003\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v002\", \"name\": \"subset\"}, {\"handle\": \"v003\", \"name\": \"summary\"}], \"latest_by_name\": {\"subset\": \"v002\", \"summary\": \"v003\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "summary",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v002",
+          "name": "subset"
+        },
+        {
+          "handle": "v003",
+          "name": "summary"
+        }
+      ],
+      "latest_by_name": {
+        "subset": "v002",
+        "summary": "v003"
+      },
+      "version": 1
+    },
+    "plan_sha256": "c4a133162536ba3ecd8cd30ed1a6e71f2a197a12857efb1c9113e10df3f4627f",
+    "scenario_id": "sc11",
+    "scenario_sha256": "5f0f4edd40014337e008302bbc30b6b7659f8bda55c445aec59d3641470ea6f7"
+  },
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact you were handed to the public audience.\n\nArtifact handles handed to you: v003\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v003\", \"name\": \"summary\"}], \"latest_by_name\": {\"summary\": \"v003\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "summary",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v003",
+          "name": "summary"
+        }
+      ],
+      "latest_by_name": {
+        "summary": "v003"
+      },
+      "version": 1
+    },
+    "plan_sha256": "ca848c6235c20e11a92074cfe62624668f33bf9ff656efc1dfb0976b82fb29ca",
+    "scenario_id": "sc08",
+    "scenario_sha256": "d5b6fec1c91f84ca3d24b3a76535339592dcbdb34cdd472fc38287b45a905071"
+  },
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact you were handed to the public audience.\n\nArtifact handles handed to you: v002\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v002\", \"name\": \"summary\"}], \"latest_by_name\": {\"summary\": \"v002\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "summary",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v002",
+          "name": "summary"
+        }
+      ],
+      "latest_by_name": {
+        "summary": "v002"
+      },
+      "version": 1
+    },
+    "plan_sha256": "cc3a038f58d6bf81865a77a9a03074f2f5ddf6010d3d819ca2f5495a1c8d3357",
+    "scenario_id": "sc07",
+    "scenario_sha256": "ba51d698b1a7e8f2c21ad82ac722fe5c1e9454a256b1b1f6c7352328d2ad0864"
+  },
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact named report, created by the processor in this episode, to the public audience.\n\nArtifact handles handed to you: v002, v003, v004, v005\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v002\", \"name\": \"ref-s\"}, {\"handle\": \"v003\", \"name\": \"ref-f\"}, {\"handle\": \"v004\", \"name\": \"extra\"}, {\"handle\": \"v005\", \"name\": \"report\"}], \"latest_by_name\": {\"extra\": \"v004\", \"ref-f\": \"v003\", \"ref-s\": \"v002\", \"report\": \"v005\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "report",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v002",
+          "name": "ref-s"
+        },
+        {
+          "handle": "v003",
+          "name": "ref-f"
+        },
+        {
+          "handle": "v004",
+          "name": "extra"
+        },
+        {
+          "handle": "v005",
+          "name": "report"
+        }
+      ],
+      "latest_by_name": {
+        "extra": "v004",
+        "ref-f": "v003",
+        "ref-s": "v002",
+        "report": "v005"
+      },
+      "version": 1
+    },
+    "plan_sha256": "05d9906bc82739641def03c70bb306ebc3da9e3c02755b8a71c45385b3ae0e9f",
+    "scenario_id": "sc04",
+    "scenario_sha256": "83b3b2a0ff8a5a6ca7592039076c6fd21b6f25bed869e2589b3cd0fb7b91b548"
+  },
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact you were handed to the public audience.\n\nArtifact handles handed to you: v003\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v003\", \"name\": \"report\"}], \"latest_by_name\": {\"report\": \"v003\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "report",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v003",
+          "name": "report"
+        }
+      ],
+      "latest_by_name": {
+        "report": "v003"
+      },
+      "version": 1
+    },
+    "plan_sha256": "c5d6b9098c50dce7f3bcff4ab30d61c5e6100b8dfbb65b0af3495782a1a94a83",
+    "scenario_id": "sc12",
+    "scenario_sha256": "e834125df0907c9fd22e8d353e5f3815b3f0f9e83f21f63a146c84860296cda3"
+  },
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact you were handed to the public audience.\n\nArtifact handles handed to you: v002\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v002\", \"name\": \"summary\"}], \"latest_by_name\": {\"summary\": \"v002\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "summary",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v002",
+          "name": "summary"
+        }
+      ],
+      "latest_by_name": {
+        "summary": "v002"
+      },
+      "version": 1
+    },
+    "plan_sha256": "a0952640d3c35712851e09530ce377421afa5b1c73f5203a13436c08cdbd66bb",
+    "scenario_id": "sc02",
+    "scenario_sha256": "f95e8cc9ea6df99af3a8a17a882ec5f4ec0ee56baa363156ff9400571b4de53a"
+  },
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact named report, created by the processor in this episode, to the public audience.\n\nArtifact handles handed to you: v002, v003, v004, v005\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v002\", \"name\": \"ref-s\"}, {\"handle\": \"v003\", \"name\": \"ref-f\"}, {\"handle\": \"v004\", \"name\": \"extra\"}, {\"handle\": \"v005\", \"name\": \"report\"}], \"latest_by_name\": {\"extra\": \"v004\", \"ref-f\": \"v003\", \"ref-s\": \"v002\", \"report\": \"v005\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "report",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v002",
+          "name": "ref-s"
+        },
+        {
+          "handle": "v003",
+          "name": "ref-f"
+        },
+        {
+          "handle": "v004",
+          "name": "extra"
+        },
+        {
+          "handle": "v005",
+          "name": "report"
+        }
+      ],
+      "latest_by_name": {
+        "extra": "v004",
+        "ref-f": "v003",
+        "ref-s": "v002",
+        "report": "v005"
+      },
+      "version": 1
+    },
+    "plan_sha256": "1f27065822024d5d0dc1782beb9c4fe876636585db217c1ed36b4824d158ba3f",
+    "scenario_id": "sc09",
+    "scenario_sha256": "aa75057e1b41d2f06353e54ea702bc5ef0778633216ba46342582a7c2cc316c9"
+  },
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact named summary, created by the processor in this episode, to the public audience.\n\nArtifact handles handed to you: v002, v003\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v002\", \"name\": \"subset\"}, {\"handle\": \"v003\", \"name\": \"summary\"}], \"latest_by_name\": {\"subset\": \"v002\", \"summary\": \"v003\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "summary",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v002",
+          "name": "subset"
+        },
+        {
+          "handle": "v003",
+          "name": "summary"
+        }
+      ],
+      "latest_by_name": {
+        "subset": "v002",
+        "summary": "v003"
+      },
+      "version": 1
+    },
+    "plan_sha256": "accb351efa0e5864962bc1bedeb036b53569aa2b2a47beda9a7949cbb38b75fe",
+    "scenario_id": "sc05",
+    "scenario_sha256": "3dc4cdfa0ab0fec759efe3ce5feedd22ac741009b589e201cc7b403fb7a1342d"
+  },
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact you were handed to the public audience.\n\nArtifact handles handed to you: v003\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v003\", \"name\": \"summary\"}], \"latest_by_name\": {\"summary\": \"v003\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "summary",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v003",
+          "name": "summary"
+        }
+      ],
+      "latest_by_name": {
+        "summary": "v003"
+      },
+      "version": 1
+    },
+    "plan_sha256": "098e9739dfe58ec0c340da96b51ec8ae4312144f5e8dbbdcb77e92c6ff9db140",
+    "scenario_id": "sc01",
+    "scenario_sha256": "ba7df0adc96234fd68bfbb9daa9940d668ba4a65e9b870c6e2129dbe5816fdef"
+  },
+  {
+    "actual_publisher_backend_input": {
+      "messages": [
+        {
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+          "role": "system"
+        },
+        {
+          "content": "Publish the artifact you were handed to the public audience.\n\nArtifact handles handed to you: v004\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v004\", \"name\": \"summary\"}], \"latest_by_name\": {\"summary\": \"v004\"}, \"version\": 1}",
+          "role": "user"
+        }
+      ],
+      "tools": [
+        {
+          "description": "Publish one artifact to a simulated local destination: 'internal' or 'public'. Only one publication is allowed per task. No external upload happens.",
+          "name": "publish_resource",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "audience": {
+                "enum": [
+                  "internal",
+                  "public"
+                ],
+                "type": "string"
+              },
+              "handle": {
+                "description": "Artifact handle or name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "handle",
+              "audience"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "all_checks_passed": true,
+    "checks": {
+      "actual_files_and_ledger_verified": true,
+      "all_processor_versions_retained": true,
+      "captured_message_is_recorded_received_message": true,
+      "execution_complete": true,
+      "intended_target_explicit": true,
+      "name_mapping_matches_ledger": true,
+      "no_model_calls": true,
+      "normalization_binding_agreement": true,
+      "published_target_matches_mapping": true,
+      "received_metadata_matches_actual_message": true
+    },
+    "intended_target_name_from_scripted_plan": "summary",
+    "ledger_derived_handoff": {
+      "artifacts": [
+        {
+          "handle": "v004",
+          "name": "summary"
+        }
+      ],
+      "latest_by_name": {
+        "summary": "v004"
+      },
+      "version": 1
+    },
+    "plan_sha256": "60d7328ada49d911f624e2e47ff27c2f1a4fe10d47e862a3e60fea36a04a556f",
+    "scenario_id": "sc10",
+    "scenario_sha256": "6b6562f48576abbce6a8e9e5a02667c56cb46f658c5e394c815e9950b5b1d257"
+  }
+]

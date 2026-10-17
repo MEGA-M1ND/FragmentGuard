@@ -1,0 +1,61 @@
+{
+  "source": {
+    "package_sha256": "c7d38c9d733c640d3e310b3601f974327a12fc803caa34aceda743e2d15cd9a4",
+    "files": {
+      "__init__.py": "8b5115c1f72d27fb8761b71066ea77eb3ea6fab60c2e39f4f0f974431b8fd26b",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "agentpilot/__init__.py": "839f7d6f217904683b5e5d218bfe87642ebe019aec988fd33f4004c381eb304c",
+      "agentpilot/backends.py": "1179c0627de657a4946d041a8930eaed8c972a595741f14b70379b1320a3eec9",
+      "agentpilot/commands.py": "4451bb075698cde1b459dde5538184fb8974bbc80d06ddb2411a12789430a659",
+      "agentpilot/episode.py": "fa8fb4a44e3c8dd05befcc1676a721aa89efb5d3361237356fbfe5ac7dd9011d",
+      "agentpilot/ledger_labels.py": "a78aca8f2179a0d5b1ea6fc46c1154b4f630c2190a9fe19fe37727f28be7327a",
+      "agentpilot/normalize.py": "f69770df63f509c1f0f93a62e39ccb4cc49227abcc138e1d0e7a18f3106c7a7e",
+      "agentpilot/pilot.py": "5261f1ee536d94454b43a0bd5a6a66875f139fd63777fc41fafa53e676e70472",
+      "agentpilot/workspace.py": "c824096be898e91e9283977dfe6cd728b128e28162b26db2463b7a8984aa5975",
+      "cli.py": "3b1d4674a78ef451c74e17e3a620c9cf8c37e854297ec4f77581507f1fe056b0",
+      "correlation.py": "9e010fdeb47487642fa64d9e3ae691f3258bd93922488a5c7cff66d2eb703323",
+      "experiments/__init__.py": "97eedf7f753990a30aacb6bebe3d85cfe2e4c65b47ac8ea1c6c926e74fc896b6",
+      "experiments/__main__.py": "6aed857f213d76efef8d40a451cee89336266273e488efd9df05b660207f6a0d",
+      "experiments/common.py": "ac0b221edc4e53c0cafb30840feafad8b5715f48b2ead5b6ab6e69f36eb3b681",
+      "experiments/evaluate.py": "5c8dfe0877ecbb0a16551ca3ad46d9e27d1b4c0f98c464f3576f5174726d45d1",
+      "experiments/handoff.py": "8f664377716a981da3c138c93980ff444d43fe10f7ee1cd5764a588b71c27855",
+      "experiments/missing.py": "64fd9adba7257b822d5b5f1141b5d369024a4ccf81fa6d06aced7eba5a1d8cff",
+      "fixtures/ground_truth.json": "0837ca672ac64148ef1d27ef0abd15c02fb6ecdbec6fc773189c385f6f5429e2",
+      "fixtures/policy.json": "882c757afd574c7933f9a489886380c6f436e52677cc8d3bd571f2edfd0f34eb",
+      "fixtures/streams.json": "d85b3e341f078f73b5ad80b1d17c15164cb6e59bc7b90e0b7e73d709c6ac2520",
+      "monitor.py": "64e0925907a17a65433b96fea6d883deaf00c6d1787f6441d52cd44519287e1c",
+      "observation.py": "2075dfc04eacd0523d6ccc230e75bdf03aa68abdf87f892ff64224d92b096894",
+      "pipeline.py": "1e4b0d604a3115b80729d063e6918cf69ed17e9b6e9bc168b8a03d81ba0ff773",
+      "reporting.py": "a8e9767c29ea1d278de2c6afb68cd6067a7d53151cb3483f48eadcf25061fdf4",
+      "schema.py": "927a1586f8d479647e10914ff9d1b3f24fbe28d45cc04262595744877f51ac08",
+      "scout.py": "21fffb5c4fa159bc531349720a40614dde05139086c53639bd05a57fe89b4a46",
+      "streaming.py": "2223e89a2926fccc179d747e55fe71cbe406a6ce1f49ce660e9076706e822948"
+    },
+    "git_commit": "204ee1ae26a3de0b5e8858a986314cd5b6aaaae4",
+    "git_dirty": false
+  },
+  "unit_tests": {
+    "executed": 107,
+    "passed": 107,
+    "command": "python -m unittest discover -s tests -v"
+  },
+  "checks_passed": [
+    "Ruff",
+    "Byte compilation",
+    "Dependency consistency",
+    "sdist and wheel build",
+    "Clean-wheel handoff runner matches saved publisher-input bytes",
+    "Clean-wheel bundled direct and real scheduled Scout demos",
+    "CI YAML parses and includes offline handoff check",
+    "All 740 previous artifact/input hashes unchanged",
+    "All frozen masks match reconstructed complete-prefix pointers and intended deletions",
+    "All four original missing-evidence score files reproduce byte-for-byte"
+  ],
+  "new_model_requests": 0,
+  "new_accounted_spend_usd": 0,
+  "limitations": [
+    "Offline input availability is verified; no live compliance claim",
+    "Partial-observation conclusions require trustworthy producer pointers and identity headers",
+    "Original masks are interventions on existing cases, not independent samples"
+  ]
+}

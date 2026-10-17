@@ -28,7 +28,8 @@ to favor the fixed window. Completed publication targets and bytes match the led
 Pilot 2 had no incorrect definite monitoring verdicts; streaming matched full
 context on 8/8, correlation on 7/8 with sc12 uncertain. Direct/scheduled replays
 agree with zero monitoring tokens. The original scripted sc04 window win and all
-six masked window wins remain visible in the earlier evidence. Missing-record
+six window wins (three controls, three with deletions) remain visible in the earlier
+evidence. Missing-record
 behavior remains conservative under trusted pointers, not proof of safety with
 dishonest or unlogged execution. Masks are interventions, not independent workflows.
 
@@ -50,3 +51,22 @@ Recommendation: keep propagation as the stronger baseline. Before another paid
 run, rehearse a minimal structured target name-to-handle handoff derived from the
 ledger. The current paid authorization has been consumed; any additional
 invocation requires new explicit authorization.
+
+
+## Offline follow-up: 17 October 2026
+
+The executor now sends a versioned ledger-derived name/handle mapping while
+retaining intermediates and replacement versions. Tests inspect the actual backend
+input and resolve the intended target from it. All twelve captured publisher inputs
+pass; replacement names, background alias overwrite and missing targets are covered.
+This establishes input availability, not live compliance; pilot 2 is unchanged.
+
+The independent missing-evidence review reproduced all scores and verified every
+frozen mask/pointer. Of the 607 actual masked observations, correlation retained
+152 definite verdicts, the window 74, and streaming/all-visible checking 155;
+there were no wrong definite verdicts. Streaming still matched all-visible checking
+throughout. Honest identity headers and producer pointers remain prerequisites.
+
+See [handoff checks](docs/handoff_metadata.md) and
+[the missing-evidence review](docs/missing_evidence_review.md). This follow-up made
+zero model calls and incurred $0 model spend. No repeat paid run was started.

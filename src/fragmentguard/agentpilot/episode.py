@@ -2,7 +2,7 @@
 
 Collector, processor, and publisher run in sequence, each in a fresh context.
 Each receives only a fixed system prompt, its own task instruction, and the
-artifact handles the application's ledger says the previous agent created. No
+artifact handles and names the application's ledger says the previous agent created. No
 agent's free-form text is forwarded, so a data dependency can only enter
 through a tool input the recorder observed.
 """
@@ -28,6 +28,14 @@ SYSTEM_PROMPT = (
     "records. Use only the tools provided. Complete your task exactly as instructed, using the "
     "handles or names you are given, then reply with one short sentence saying what you did."
 )
+HANDOFF_INSTRUCTION = (
+    "Artifact metadata from the committed ledger follows as JSON. "
+    "All handed artifacts, including intermediates and replaced versions, are listed. "
+    "latest_by_name maps each name to its latest version within this handoff only. "
+    "For a requested artifact name, use its mapped immutable handle in tool calls; "
+    "workspace display-name aliases may have been replaced by other activity."
+)
+HANDOFF_MARKER = "\n\n" + HANDOFF_INSTRUCTION + "\n"
 
 
 class ScenarioError(ValueError):
@@ -55,18 +63,26 @@ def validate_scenario(scenario: Any) -> dict[str, Any]:
 def episode_fingerprints() -> dict[str, str]:
     return {"system_prompt_sha256": hashlib.sha256(SYSTEM_PROMPT.encode()).hexdigest(),
             "tool_schemas_sha256": sha256_json(TOOL_SCHEMAS),
-            "role_tools_sha256": sha256_json(ROLE_TOOLS)}
+            "role_tools_sha256": sha256_json(ROLE_TOOLS),
+            "handoff_contract_sha256": sha256_json({"version": 1, "instruction": HANDOFF_INSTRUCTION,
+                                                   "fields": ["version", "artifacts", "latest_by_name"],
+                                                   "artifact_fields": ["handle", "name"]})}
 
 
 async def _run_agent(role: str, backend: Any, workspace: Workspace, task: str, handoff: list[str],
                      limits: AgentLimits) -> dict[str, Any]:
     actor_kind = "model" if backend.kind == "live" else "scripted_backend"
     tools = tool_specs(ROLE_TOOLS[role])
-    user = task if not handoff else f"{task}\n\nArtifact handles handed to you: {', '.join(handoff)}"
+    metadata = workspace.handoff_metadata(handoff)
+    user = task if not handoff else (
+        f"{task}\n\nArtifact handles handed to you: {', '.join(handoff)}"
+        + HANDOFF_MARKER + json.dumps(metadata, sort_keys=True)
+    )
     messages: list[dict[str, Any]] = [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": user}]
     transcript: dict[str, Any] = {
         "role": role, "actor_kind": actor_kind,
         "received": {"system": SYSTEM_PROMPT, "task": task, "handoff_handles": list(handoff),
+                     "handoff_metadata": metadata, "user_message": user,
                      "tools": list(ROLE_TOOLS[role])},
         "requests": [], "tool_calls_executed": 0,
     }

@@ -95,6 +95,9 @@ jobs:
       - name: Streaming comparison and frozen-pointer missing-evidence analysis
         working-directory: ${{ runner.temp }}
         run: |
+          python -m fragmentguard.experiments.handoff \
+            --config "$GITHUB_WORKSPACE/experiments/agent_pilot_02/pilot_config.json" \
+            --output fg-runs/handoff-inputs
           python -m fragmentguard.experiments compare \
             --config "$GITHUB_WORKSPACE/experiments/streaming_baseline/comparison.json" \
             --output fg-runs/streaming
