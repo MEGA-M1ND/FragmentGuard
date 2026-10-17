@@ -1,0 +1,32 @@
+{
+  "pilot_id": "handoff-check-01",
+  "description": "Four formerly incomplete workflows, using the versioned ledger handoff. Diagnostic execution check, not an unchanged pilot replication.",
+  "scenarios_dir": "../agent_pilot_02/scenarios",
+  "scripted_plans_dir": "../agent_pilot/scripted_plans",
+  "pilot_scenarios": [
+    "sc11",
+    "sc04",
+    "sc09",
+    "sc05"
+  ],
+  "development_scenarios": [],
+  "run_order": [
+    "sc11",
+    "sc04",
+    "sc09",
+    "sc05"
+  ],
+  "run_order_note": "Original frozen order filtered to the four failures; no extra episodes or retries.",
+  "sources": "../agent_pilot/sources.json",
+  "catalog": "../agent_pilot/catalog.json",
+  "evaluator_pairs": "evaluator_pairs.json",
+  "selection": {
+    "budget": 3,
+    "horizon": 100,
+    "branch_priority": "depth-first, in input-list order"
+  },
+  "agent_limits_scripted": {
+    "max_requests_per_agent": 8,
+    "max_tool_calls_per_agent": 6
+  }
+}

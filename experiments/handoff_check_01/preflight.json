@@ -1,0 +1,35 @@
+{
+  "model": "anthropic/claude-haiku-5-5",
+  "credential_variable": "ANTHROPIC_API_KEY",
+  "credential_present": true,
+  "model_availability": "Exact-model GET succeeded; active; no generation",
+  "prices_verified_at": "2026-10-17T17:06:43.557950+00:00",
+  "pricing_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+  "official_page_sha256": "eb553df87f24cf7de7057e6c3bd7976701255143eec0ceb0ca203b522c151454",
+  "verified_model_row": [
+    "Claude Haiku 5.5 For high-volume, latency-sensitive tasks such as classification, extraction, and routing",
+    "$0.10 / MTok for prompts up to 100,000 tokens",
+    "$0.50 / MTok",
+    "$0.125 / MTok",
+    "$0.20 / MTok",
+    "$0.01 / MTok"
+  ],
+  "proposed_one_invocation_cap_usd": 0.35,
+  "pessimistic_max_usd": 0.321216,
+  "requests_max": 84,
+  "run_order": [
+    "sc11",
+    "sc04",
+    "sc09",
+    "sc05"
+  ],
+  "handoff_contract": {
+    "system_prompt_sha256": "b41650e39cb8a8aa52a10c8d260033cf4ffd1c3ddbaeae252d462513a1d44421",
+    "tool_schemas_sha256": "91874169e0ba1d62036218044e30ad162dfb66b7ecc10a63eba3bc998cee3131",
+    "role_tools_sha256": "148cc8bd2def82341e1becc837ea0174007e78c547636cc42f51b59297be2baa",
+    "handoff_contract_sha256": "42e6a438febed561f96835a020cc02c3c7a6d16e526d625f7463d8307c94d463"
+  },
+  "status": "Prepared; no paid invocation started; fresh capped authorization required",
+  "model_requests": 0,
+  "accounted_usd": 0
+}

@@ -1,0 +1,20 @@
+{
+  "live_enabled": false,
+  "model": "anthropic/claude-haiku-5-5",
+  "max_spend_usd": 0.35,
+  "input_usd_per_million_tokens": 0.1,
+  "output_usd_per_million_tokens": 0.5,
+  "pricing_source": "https://platform.claude.com/docs/en/about-claude/pricing (Haiku 5.5 standard/global <=100,000 prompt tokens: input $0.10/MTok, output $0.50/MTok; maximum cache-write input $0.20/MTok; no batch or inference_geo)",
+  "pricing_retrieved_utc": "2026-10-17T17:06:43.557950+00:00",
+  "max_output_tokens": 2048,
+  "max_requests_per_agent": 7,
+  "max_tool_calls_per_agent": 6,
+  "max_total_requests": 84,
+  "max_context_bytes": 12000,
+  "request_overhead_tokens": 2000,
+  "temperature": null,
+  "seed": null,
+  "timeout_seconds": 120,
+  "max_input_price_multiplier": 2.0,
+  "notes": "NEW PROPOSAL, NOT AUTHORIZED: one invocation, exactly sc11/sc04/sc09/sc05 once each, no retries or dev episodes. USD 0.35 cap. Price-verified ceiling USD 0.321216 with 84 requests, 12,000 context bytes + 2,000 overhead tokens, 2,048 output tokens. Versioned ledger mapping changes the executor protocol; old pilot 2 authority/limits must not be reused."
+}

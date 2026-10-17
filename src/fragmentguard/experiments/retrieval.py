@@ -172,6 +172,7 @@ def run(config: Path, output: Path):
                                    "note": "Masked/control and complete sets overlap; not independent samples. "
                                    "Oracle is post-hoc only. No timings, human review or token measurements."})
     write(output / "experiment-manifest.json", {"source": reporting.source_fingerprint(),
+          "outputs_sha256": digest(output / "outputs.jsonl"),
           "packages": reporting.package_versions(), "artifacts": reporting.artifact_hashes(
               output, ("experiment-manifest.json",)), "model_requests": 0, "accounted_usd": 0})
     print(f"{len(examples)} observations, {len(rows)} evidence rows, {len(violations)} correctness violations")
