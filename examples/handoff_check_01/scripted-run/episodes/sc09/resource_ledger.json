@@ -1,0 +1,113 @@
+{
+  "episode_id": "sc09",
+  "versions": {
+    "src-3184": {
+      "version_id": "src-3184",
+      "display_name": null,
+      "kind": "root",
+      "sha256": "efca560c02704b51f7b9f7190b7fb60c002642c44b35425407d99a9bf86c005c",
+      "produced_by_seq": null,
+      "produced_by_agent": null,
+      "operation": null,
+      "inputs": []
+    },
+    "src-7731": {
+      "version_id": "src-7731",
+      "display_name": null,
+      "kind": "root",
+      "sha256": "ed0276266ffc1cd2371e4b5f28c472c525657b0b62166d22d219516a63350b61",
+      "produced_by_seq": null,
+      "produced_by_agent": null,
+      "operation": null,
+      "inputs": []
+    },
+    "v001": {
+      "version_id": "v001",
+      "display_name": "ref",
+      "kind": "derived",
+      "sha256": "efca560c02704b51f7b9f7190b7fb60c002642c44b35425407d99a9bf86c005c",
+      "produced_by_seq": 1,
+      "produced_by_agent": "collector",
+      "operation": "read",
+      "inputs": [
+        "src-3184"
+      ]
+    },
+    "v002": {
+      "version_id": "v002",
+      "display_name": "ref-s",
+      "kind": "derived",
+      "sha256": "51e6db711d5f2b7cd903d3772d97c456dc67080fdcc2eaed80a7989c411418b2",
+      "produced_by_seq": 2,
+      "produced_by_agent": "processor",
+      "operation": "select_fields",
+      "inputs": [
+        "v001"
+      ]
+    },
+    "v003": {
+      "version_id": "v003",
+      "display_name": "ref-f",
+      "kind": "derived",
+      "sha256": "1f102814c95bff644f1747b61bdbed42cfa48c0ae867d0ff0cae8e44634ade0e",
+      "produced_by_seq": 3,
+      "produced_by_agent": "processor",
+      "operation": "format_summary",
+      "inputs": [
+        "v002"
+      ]
+    },
+    "v004": {
+      "version_id": "v004",
+      "display_name": "extra",
+      "kind": "derived",
+      "sha256": "ed0276266ffc1cd2371e4b5f28c472c525657b0b62166d22d219516a63350b61",
+      "produced_by_seq": 4,
+      "produced_by_agent": "processor",
+      "operation": "read",
+      "inputs": [
+        "src-7731"
+      ]
+    },
+    "v005": {
+      "version_id": "v005",
+      "display_name": "report",
+      "kind": "derived",
+      "sha256": "be44691f3779ed5322c550c3682ea595f235f83f9bb242b9c2be31edd7e00e73",
+      "produced_by_seq": 5,
+      "produced_by_agent": "processor",
+      "operation": "combine",
+      "inputs": [
+        "v003",
+        "v004"
+      ]
+    }
+  },
+  "display_names": {
+    "ref": [
+      "v001"
+    ],
+    "ref-s": [
+      "v002"
+    ],
+    "ref-f": [
+      "v003"
+    ],
+    "extra": [
+      "v004"
+    ],
+    "report": [
+      "v005"
+    ]
+  },
+  "publications": [
+    {
+      "seq": 6,
+      "publication_id": "pub01",
+      "version_id": "v005",
+      "audience": "public",
+      "artifact_path": "public_outputs/pub01.json"
+    }
+  ],
+  "note": "Canonical application-side version ledger; catalog classifications are not stored here."
+}

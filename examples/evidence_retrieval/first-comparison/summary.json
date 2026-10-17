@@ -1,0 +1,2034 @@
+{
+  "available_support_missed": [
+    {
+      "budget": 3,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 641,
+      "dataset": "scripted",
+      "evaluator_label": "alert",
+      "evidence": {
+        "events_reviewed": 3,
+        "evidence_ids": [
+          "e003",
+          "e005",
+          "e006"
+        ],
+        "explanation": "Public publication e006 of v005: ancestry not established for v002 (its producer e002 is not in the selected evidence); v004 (its producer e004 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e002",
+            "resource": "v002"
+          },
+          {
+            "bound_producer": "e004",
+            "resource": "v004"
+          }
+        ]
+      },
+      "group": "complete",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 3,
+      "observation_id": "complete/scripted/stream04/e006",
+      "publication_id": "e006",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 6,
+        "archive_payload_canonical_bytes": 776,
+        "binding_edges": 7,
+        "binding_preprocessing_events": 6
+      },
+      "stream_id": "stream04",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 5,
+        "query_history_index_entries": 6
+      }
+    },
+    {
+      "budget": 4,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 793,
+      "dataset": "scripted",
+      "evaluator_label": "alert",
+      "evidence": {
+        "events_reviewed": 4,
+        "evidence_ids": [
+          "e002",
+          "e003",
+          "e005",
+          "e006"
+        ],
+        "explanation": "Public publication e006 of v005: ancestry not established for v001 (its producer e001 is not in the selected evidence); v004 (its producer e004 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e001",
+            "resource": "v001"
+          },
+          {
+            "bound_producer": "e004",
+            "resource": "v004"
+          }
+        ]
+      },
+      "group": "complete",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 3,
+      "observation_id": "complete/scripted/stream04/e006",
+      "publication_id": "e006",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 6,
+        "archive_payload_canonical_bytes": 776,
+        "binding_edges": 7,
+        "binding_preprocessing_events": 6
+      },
+      "stream_id": "stream04",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 6,
+        "query_history_index_entries": 6
+      }
+    },
+    {
+      "budget": 2,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 415,
+      "dataset": "stale-write-regressions",
+      "evaluator_label": "alert",
+      "evidence": {
+        "events_reviewed": 2,
+        "evidence_ids": [
+          "e02",
+          "e04"
+        ],
+        "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e01 is not in the selected evidence); scratch (its producer e03 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e01",
+            "resource": "scratch"
+          },
+          {
+            "bound_producer": "e03",
+            "resource": "scratch"
+          }
+        ]
+      },
+      "group": "complete",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 2,
+      "observation_id": "complete/stale-write-regressions/stream11/e04",
+      "publication_id": "e04",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 4,
+        "archive_payload_canonical_bytes": 515,
+        "binding_edges": 5,
+        "binding_preprocessing_events": 4
+      },
+      "stream_id": "stream11",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 4,
+        "query_history_index_entries": 4
+      }
+    },
+    {
+      "budget": 3,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 569,
+      "dataset": "stale-write-regressions",
+      "evaluator_label": "alert",
+      "evidence": {
+        "events_reviewed": 3,
+        "evidence_ids": [
+          "e01",
+          "e02",
+          "e04"
+        ],
+        "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e03",
+            "resource": "scratch"
+          }
+        ]
+      },
+      "group": "complete",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 2,
+      "observation_id": "complete/stale-write-regressions/stream11/e04",
+      "publication_id": "e04",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 4,
+        "archive_payload_canonical_bytes": 515,
+        "binding_edges": 5,
+        "binding_preprocessing_events": 4
+      },
+      "stream_id": "stream11",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 4,
+        "query_history_index_entries": 4
+      }
+    },
+    {
+      "budget": 2,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 415,
+      "dataset": "stale-write-regressions",
+      "evaluator_label": "alert",
+      "evidence": {
+        "events_reviewed": 2,
+        "evidence_ids": [
+          "e02",
+          "e04"
+        ],
+        "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e01 is not in the selected evidence); scratch (its producer e03 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e01",
+            "resource": "scratch"
+          },
+          {
+            "bound_producer": "e03",
+            "resource": "scratch"
+          }
+        ]
+      },
+      "group": "complete",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 2,
+      "observation_id": "complete/stale-write-regressions/stream14/e04",
+      "publication_id": "e04",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 4,
+        "archive_payload_canonical_bytes": 515,
+        "binding_edges": 5,
+        "binding_preprocessing_events": 4
+      },
+      "stream_id": "stream14",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 4,
+        "query_history_index_entries": 4
+      }
+    },
+    {
+      "budget": 3,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 569,
+      "dataset": "stale-write-regressions",
+      "evaluator_label": "alert",
+      "evidence": {
+        "events_reviewed": 3,
+        "evidence_ids": [
+          "e01",
+          "e02",
+          "e04"
+        ],
+        "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e03",
+            "resource": "scratch"
+          }
+        ]
+      },
+      "group": "complete",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 2,
+      "observation_id": "complete/stale-write-regressions/stream14/e04",
+      "publication_id": "e04",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 4,
+        "archive_payload_canonical_bytes": 515,
+        "binding_edges": 5,
+        "binding_preprocessing_events": 4
+      },
+      "stream_id": "stream14",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 4,
+        "query_history_index_entries": 4
+      }
+    },
+    {
+      "budget": 3,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 641,
+      "dataset": "scripted",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 3,
+        "evidence_ids": [
+          "e003",
+          "e005",
+          "e006"
+        ],
+        "explanation": "Public publication e006 of v005: ancestry not established for v002 (its producer e002 is not in the selected evidence); v004 (its producer e004 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e002",
+            "resource": "v002"
+          },
+          {
+            "bound_producer": "e004",
+            "resource": "v004"
+          }
+        ]
+      },
+      "group": "masked_control",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 3,
+      "observation_id": "masked/obs00236",
+      "publication_id": "e006",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 6,
+        "archive_payload_canonical_bytes": 776,
+        "binding_edges": 7,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream04",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 5,
+        "query_history_index_entries": 6
+      }
+    },
+    {
+      "budget": 4,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 793,
+      "dataset": "scripted",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 4,
+        "evidence_ids": [
+          "e002",
+          "e003",
+          "e005",
+          "e006"
+        ],
+        "explanation": "Public publication e006 of v005: ancestry not established for v001 (its producer e001 is not in the selected evidence); v004 (its producer e004 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e001",
+            "resource": "v001"
+          },
+          {
+            "bound_producer": "e004",
+            "resource": "v004"
+          }
+        ]
+      },
+      "group": "masked_control",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 3,
+      "observation_id": "masked/obs00236",
+      "publication_id": "e006",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 6,
+        "archive_payload_canonical_bytes": 776,
+        "binding_edges": 7,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream04",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 6,
+        "query_history_index_entries": 6
+      }
+    },
+    {
+      "budget": 3,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 641,
+      "dataset": "scripted",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 3,
+        "evidence_ids": [
+          "e003",
+          "e005",
+          "e006"
+        ],
+        "explanation": "Public publication e006 of v005: ancestry not established for v002 (its producer e002 is not in the selected evidence); v004 (its producer e004 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e002",
+            "resource": "v002"
+          },
+          {
+            "bound_producer": "e004",
+            "resource": "v004"
+          }
+        ]
+      },
+      "group": "masked",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 3,
+      "observation_id": "masked/obs00237",
+      "publication_id": "e006",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 5,
+        "archive_payload_canonical_bytes": 648,
+        "binding_edges": 6,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream04",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 5,
+        "query_history_index_entries": 5
+      }
+    },
+    {
+      "budget": 4,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 793,
+      "dataset": "scripted",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 4,
+        "evidence_ids": [
+          "e002",
+          "e003",
+          "e005",
+          "e006"
+        ],
+        "explanation": "Public publication e006 of v005: ancestry not established for v001 (its producer e001 is not in the selected evidence); v004 (its producer e004 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e001",
+            "resource": "v001"
+          },
+          {
+            "bound_producer": "e004",
+            "resource": "v004"
+          }
+        ]
+      },
+      "group": "masked",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 3,
+      "observation_id": "masked/obs00237",
+      "publication_id": "e006",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 5,
+        "archive_payload_canonical_bytes": 648,
+        "binding_edges": 6,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream04",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 5,
+        "query_history_index_entries": 5
+      }
+    },
+    {
+      "budget": 3,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 641,
+      "dataset": "scripted",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 3,
+        "evidence_ids": [
+          "e003",
+          "e005",
+          "e006"
+        ],
+        "explanation": "Public publication e006 of v005: ancestry not established for v002 (its producer e002 is not in the selected evidence); v004 (its producer e004 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e002",
+            "resource": "v002"
+          },
+          {
+            "bound_producer": "e004",
+            "resource": "v004"
+          }
+        ]
+      },
+      "group": "masked",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 3,
+      "observation_id": "masked/obs00238",
+      "publication_id": "e006",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 5,
+        "archive_payload_canonical_bytes": 647,
+        "binding_edges": 6,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream04",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 4,
+        "query_history_index_entries": 5
+      }
+    },
+    {
+      "budget": 3,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 641,
+      "dataset": "scripted",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 3,
+        "evidence_ids": [
+          "e003",
+          "e005",
+          "e006"
+        ],
+        "explanation": "Public publication e006 of v005: ancestry not established for v002 (its producer e002 is not in the selected evidence); v004 (its producer e004 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e002",
+            "resource": "v002"
+          },
+          {
+            "bound_producer": "e004",
+            "resource": "v004"
+          }
+        ]
+      },
+      "group": "masked",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 3,
+      "observation_id": "masked/obs00242",
+      "publication_id": "e006",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 4,
+        "archive_payload_canonical_bytes": 519,
+        "binding_edges": 5,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream04",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 4,
+        "query_history_index_entries": 4
+      }
+    },
+    {
+      "budget": 2,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 415,
+      "dataset": "stale-write-regressions",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 2,
+        "evidence_ids": [
+          "e02",
+          "e04"
+        ],
+        "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e01 is not in the selected evidence); scratch (its producer e03 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e01",
+            "resource": "scratch"
+          },
+          {
+            "bound_producer": "e03",
+            "resource": "scratch"
+          }
+        ]
+      },
+      "group": "masked_control",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 2,
+      "observation_id": "masked/obs00576",
+      "publication_id": "e04",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 4,
+        "archive_payload_canonical_bytes": 515,
+        "binding_edges": 5,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream11",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 4,
+        "query_history_index_entries": 4
+      }
+    },
+    {
+      "budget": 3,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 569,
+      "dataset": "stale-write-regressions",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 3,
+        "evidence_ids": [
+          "e01",
+          "e02",
+          "e04"
+        ],
+        "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e03",
+            "resource": "scratch"
+          }
+        ]
+      },
+      "group": "masked_control",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 2,
+      "observation_id": "masked/obs00576",
+      "publication_id": "e04",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 4,
+        "archive_payload_canonical_bytes": 515,
+        "binding_edges": 5,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream11",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 4,
+        "query_history_index_entries": 4
+      }
+    },
+    {
+      "budget": 2,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 415,
+      "dataset": "stale-write-regressions",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 2,
+        "evidence_ids": [
+          "e02",
+          "e04"
+        ],
+        "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e01 is not in the selected evidence); scratch (its producer e03 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e01",
+            "resource": "scratch"
+          },
+          {
+            "bound_producer": "e03",
+            "resource": "scratch"
+          }
+        ]
+      },
+      "group": "masked",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 2,
+      "observation_id": "masked/obs00577",
+      "publication_id": "e04",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 3,
+        "archive_payload_canonical_bytes": 389,
+        "binding_edges": 4,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream11",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 3,
+        "query_history_index_entries": 3
+      }
+    },
+    {
+      "budget": 2,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 415,
+      "dataset": "stale-write-regressions",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 2,
+        "evidence_ids": [
+          "e02",
+          "e04"
+        ],
+        "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e01 is not in the selected evidence); scratch (its producer e03 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e01",
+            "resource": "scratch"
+          },
+          {
+            "bound_producer": "e03",
+            "resource": "scratch"
+          }
+        ]
+      },
+      "group": "masked_control",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 2,
+      "observation_id": "masked/obs00596",
+      "publication_id": "e04",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 4,
+        "archive_payload_canonical_bytes": 515,
+        "binding_edges": 5,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream14",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 4,
+        "query_history_index_entries": 4
+      }
+    },
+    {
+      "budget": 3,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 569,
+      "dataset": "stale-write-regressions",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 3,
+        "evidence_ids": [
+          "e01",
+          "e02",
+          "e04"
+        ],
+        "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e03 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e03",
+            "resource": "scratch"
+          }
+        ]
+      },
+      "group": "masked_control",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 2,
+      "observation_id": "masked/obs00596",
+      "publication_id": "e04",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 4,
+        "archive_payload_canonical_bytes": 515,
+        "binding_edges": 5,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream14",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 4,
+        "query_history_index_entries": 4
+      }
+    },
+    {
+      "budget": 2,
+      "cached_streaming_verdict": null,
+      "checker_context_canonical_bytes": 415,
+      "dataset": "stale-write-regressions",
+      "evaluator_label": null,
+      "evidence": {
+        "events_reviewed": 2,
+        "evidence_ids": [
+          "e02",
+          "e04"
+        ],
+        "explanation": "Public publication e04 of scratch, snapshot: ancestry not established for scratch (its producer e01 is not in the selected evidence); scratch (its producer e03 is not in the selected evidence).",
+        "status": "insufficient_evidence",
+        "unresolved_inputs": [
+          {
+            "bound_producer": "e01",
+            "resource": "scratch"
+          },
+          {
+            "bound_producer": "e03",
+            "resource": "scratch"
+          }
+        ]
+      },
+      "group": "masked",
+      "horizon": 100,
+      "method": "correlated",
+      "minimum_support_events": 2,
+      "observation_id": "masked/obs00597",
+      "publication_id": "e04",
+      "shared_storage_and_preprocessing": {
+        "archive_events": 3,
+        "archive_payload_canonical_bytes": 389,
+        "binding_edges": 4,
+        "binding_preprocessing_events": 0
+      },
+      "stream_id": "stream14",
+      "sufficient_support": false,
+      "visible_full_reference": "alert",
+      "work": {
+        "additional_state": null,
+        "payload_records_examined": 3,
+        "query_history_index_entries": 3
+      }
+    }
+  ],
+  "cached_streaming_matches_visible_full": true,
+  "counts": {
+    "complete/fixtures": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 944,
+          "insufficient_evidence": 3,
+          "observations": 4,
+          "payload_records_examined": 8,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 944,
+          "insufficient_evidence": 3,
+          "observations": 4,
+          "payload_records_examined": 4,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 1541,
+          "insufficient_evidence": 3,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 1541,
+          "insufficient_evidence": 3,
+          "observations": 4,
+          "payload_records_examined": 8,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "complete/live-pilot-01": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2528,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 16,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2528,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 8,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 3786,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 3786,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 16,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 5010,
+          "insufficient_evidence": 1,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 7,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 5010,
+          "insufficient_evidence": 1,
+          "observations": 8,
+          "payload_records_examined": 24,
+          "sufficient_support": 7,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "complete/pilot-02-live": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2528,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 16,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2528,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 8,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 3786,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 3786,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 16,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 5010,
+          "insufficient_evidence": 1,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 7,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 5010,
+          "insufficient_evidence": 1,
+          "observations": 8,
+          "payload_records_examined": 24,
+          "sufficient_support": 7,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "complete/scripted": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 3792,
+          "insufficient_evidence": 12,
+          "observations": 12,
+          "payload_records_examined": 24,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 3792,
+          "insufficient_evidence": 12,
+          "observations": 12,
+          "payload_records_examined": 12,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 5700,
+          "insufficient_evidence": 12,
+          "observations": 12,
+          "payload_records_examined": 40,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 5700,
+          "insufficient_evidence": 12,
+          "observations": 12,
+          "payload_records_examined": 24,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 7532,
+          "insufficient_evidence": 5,
+          "observations": 12,
+          "payload_records_examined": 44,
+          "sufficient_support": 7,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 7533,
+          "insufficient_evidence": 4,
+          "observations": 12,
+          "payload_records_examined": 36,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 8448,
+          "insufficient_evidence": 2,
+          "observations": 12,
+          "payload_records_examined": 46,
+          "sufficient_support": 10,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 8449,
+          "insufficient_evidence": 1,
+          "observations": 12,
+          "payload_records_examined": 42,
+          "sufficient_support": 11,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 9060,
+          "insufficient_evidence": 0,
+          "observations": 12,
+          "payload_records_examined": 46,
+          "sufficient_support": 12,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 9060,
+          "insufficient_evidence": 0,
+          "observations": 12,
+          "payload_records_examined": 46,
+          "sufficient_support": 12,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "complete/stale-write-regressions": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 1264,
+          "insufficient_evidence": 5,
+          "observations": 5,
+          "payload_records_examined": 13,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 1264,
+          "insufficient_evidence": 5,
+          "observations": 5,
+          "payload_records_examined": 5,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2025,
+          "insufficient_evidence": 3,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 2,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2051,
+          "insufficient_evidence": 1,
+          "observations": 5,
+          "payload_records_examined": 10,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2487,
+          "insufficient_evidence": 3,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 2,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2507,
+          "insufficient_evidence": 1,
+          "observations": 5,
+          "payload_records_examined": 13,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2969,
+          "insufficient_evidence": 0,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 5,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2969,
+          "insufficient_evidence": 0,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 5,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2969,
+          "insufficient_evidence": 0,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 5,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2969,
+          "insufficient_evidence": 0,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 5,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "masked/fixtures": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 36752,
+          "insufficient_evidence": 125,
+          "observations": 156,
+          "payload_records_examined": 232,
+          "sufficient_support": 31,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 36752,
+          "insufficient_evidence": 125,
+          "observations": 156,
+          "payload_records_examined": 156,
+          "sufficient_support": 31,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 48251,
+          "insufficient_evidence": 125,
+          "observations": 156,
+          "payload_records_examined": 268,
+          "sufficient_support": 31,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 48251,
+          "insufficient_evidence": 125,
+          "observations": 156,
+          "payload_records_examined": 232,
+          "sufficient_support": 31,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 54118,
+          "insufficient_evidence": 96,
+          "observations": 156,
+          "payload_records_examined": 268,
+          "sufficient_support": 60,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 54118,
+          "insufficient_evidence": 96,
+          "observations": 156,
+          "payload_records_examined": 268,
+          "sufficient_support": 60,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 54118,
+          "insufficient_evidence": 96,
+          "observations": 156,
+          "payload_records_examined": 268,
+          "sufficient_support": 60,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 54118,
+          "insufficient_evidence": 96,
+          "observations": 156,
+          "payload_records_examined": 268,
+          "sufficient_support": 60,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 54118,
+          "insufficient_evidence": 96,
+          "observations": 156,
+          "payload_records_examined": 268,
+          "sufficient_support": 60,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 54118,
+          "insufficient_evidence": 96,
+          "observations": 156,
+          "payload_records_examined": 268,
+          "sufficient_support": 60,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "masked/live-pilot-01": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 50560,
+          "insufficient_evidence": 160,
+          "observations": 160,
+          "payload_records_examined": 236,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 50560,
+          "insufficient_evidence": 160,
+          "observations": 160,
+          "payload_records_examined": 160,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 62238,
+          "insufficient_evidence": 160,
+          "observations": 160,
+          "payload_records_examined": 272,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 62238,
+          "insufficient_evidence": 160,
+          "observations": 160,
+          "payload_records_examined": 236,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 67746,
+          "insufficient_evidence": 127,
+          "observations": 160,
+          "payload_records_examined": 272,
+          "sufficient_support": 33,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 67746,
+          "insufficient_evidence": 127,
+          "observations": 160,
+          "payload_records_examined": 272,
+          "sufficient_support": 33,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 67746,
+          "insufficient_evidence": 127,
+          "observations": 160,
+          "payload_records_examined": 272,
+          "sufficient_support": 33,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 67746,
+          "insufficient_evidence": 127,
+          "observations": 160,
+          "payload_records_examined": 272,
+          "sufficient_support": 33,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 67746,
+          "insufficient_evidence": 127,
+          "observations": 160,
+          "payload_records_examined": 272,
+          "sufficient_support": 33,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 67746,
+          "insufficient_evidence": 127,
+          "observations": 160,
+          "payload_records_examined": 272,
+          "sufficient_support": 33,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "masked/scripted": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 74576,
+          "insufficient_evidence": 236,
+          "observations": 236,
+          "payload_records_examined": 348,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 74576,
+          "insufficient_evidence": 236,
+          "observations": 236,
+          "payload_records_examined": 236,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 92356,
+          "insufficient_evidence": 236,
+          "observations": 236,
+          "payload_records_examined": 414,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 92356,
+          "insufficient_evidence": 236,
+          "observations": 236,
+          "payload_records_examined": 348,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 101520,
+          "insufficient_evidence": 199,
+          "observations": 236,
+          "payload_records_examined": 420,
+          "sufficient_support": 37,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 101523,
+          "insufficient_evidence": 196,
+          "observations": 236,
+          "payload_records_examined": 408,
+          "sufficient_support": 40,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 103044,
+          "insufficient_evidence": 197,
+          "observations": 236,
+          "payload_records_examined": 422,
+          "sufficient_support": 39,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 103045,
+          "insufficient_evidence": 196,
+          "observations": 236,
+          "payload_records_examined": 418,
+          "sufficient_support": 40,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 103656,
+          "insufficient_evidence": 196,
+          "observations": 236,
+          "payload_records_examined": 422,
+          "sufficient_support": 40,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 103656,
+          "insufficient_evidence": 196,
+          "observations": 236,
+          "payload_records_examined": 422,
+          "sufficient_support": 40,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "masked/stale-write-regressions": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 13568,
+          "insufficient_evidence": 55,
+          "observations": 55,
+          "payload_records_examined": 89,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 13568,
+          "insufficient_evidence": 55,
+          "observations": 55,
+          "payload_records_examined": 55,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 18355,
+          "insufficient_evidence": 35,
+          "observations": 55,
+          "payload_records_examined": 92,
+          "sufficient_support": 20,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 18381,
+          "insufficient_evidence": 33,
+          "observations": 55,
+          "payload_records_examined": 86,
+          "sufficient_support": 22,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 19299,
+          "insufficient_evidence": 33,
+          "observations": 55,
+          "payload_records_examined": 92,
+          "sufficient_support": 22,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 19299,
+          "insufficient_evidence": 33,
+          "observations": 55,
+          "payload_records_examined": 92,
+          "sufficient_support": 22,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 19299,
+          "insufficient_evidence": 33,
+          "observations": 55,
+          "payload_records_examined": 92,
+          "sufficient_support": 22,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 19299,
+          "insufficient_evidence": 33,
+          "observations": 55,
+          "payload_records_examined": 92,
+          "sufficient_support": 22,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 19299,
+          "insufficient_evidence": 33,
+          "observations": 55,
+          "payload_records_examined": 92,
+          "sufficient_support": 22,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 19299,
+          "insufficient_evidence": 33,
+          "observations": 55,
+          "payload_records_examined": 92,
+          "sufficient_support": 22,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "masked_control/fixtures": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 944,
+          "insufficient_evidence": 3,
+          "observations": 4,
+          "payload_records_examined": 8,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 944,
+          "insufficient_evidence": 3,
+          "observations": 4,
+          "payload_records_examined": 4,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 1541,
+          "insufficient_evidence": 3,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 1541,
+          "insufficient_evidence": 3,
+          "observations": 4,
+          "payload_records_examined": 8,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2186,
+          "insufficient_evidence": 0,
+          "observations": 4,
+          "payload_records_examined": 12,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "masked_control/live-pilot-01": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2528,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 16,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2528,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 8,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 3786,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 3786,
+          "insufficient_evidence": 8,
+          "observations": 8,
+          "payload_records_examined": 16,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 5010,
+          "insufficient_evidence": 1,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 7,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 5010,
+          "insufficient_evidence": 1,
+          "observations": 8,
+          "payload_records_examined": 24,
+          "sufficient_support": 7,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 5316,
+          "insufficient_evidence": 0,
+          "observations": 8,
+          "payload_records_examined": 26,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "masked_control/scripted": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 3792,
+          "insufficient_evidence": 12,
+          "observations": 12,
+          "payload_records_examined": 24,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 3792,
+          "insufficient_evidence": 12,
+          "observations": 12,
+          "payload_records_examined": 12,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 5700,
+          "insufficient_evidence": 12,
+          "observations": 12,
+          "payload_records_examined": 40,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 5700,
+          "insufficient_evidence": 12,
+          "observations": 12,
+          "payload_records_examined": 24,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 7532,
+          "insufficient_evidence": 5,
+          "observations": 12,
+          "payload_records_examined": 44,
+          "sufficient_support": 7,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 7533,
+          "insufficient_evidence": 4,
+          "observations": 12,
+          "payload_records_examined": 36,
+          "sufficient_support": 8,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 8448,
+          "insufficient_evidence": 2,
+          "observations": 12,
+          "payload_records_examined": 46,
+          "sufficient_support": 10,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 8449,
+          "insufficient_evidence": 1,
+          "observations": 12,
+          "payload_records_examined": 42,
+          "sufficient_support": 11,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 9060,
+          "insufficient_evidence": 0,
+          "observations": 12,
+          "payload_records_examined": 46,
+          "sufficient_support": 12,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 9060,
+          "insufficient_evidence": 0,
+          "observations": 12,
+          "payload_records_examined": 46,
+          "sufficient_support": 12,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "masked_control/stale-write-regressions": {
+      "1": {
+        "correlated": {
+          "checker_context_canonical_bytes": 1264,
+          "insufficient_evidence": 5,
+          "observations": 5,
+          "payload_records_examined": 13,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 1264,
+          "insufficient_evidence": 5,
+          "observations": 5,
+          "payload_records_examined": 5,
+          "sufficient_support": 0,
+          "wrong_definite": 0
+        }
+      },
+      "2": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2025,
+          "insufficient_evidence": 3,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 2,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2051,
+          "insufficient_evidence": 1,
+          "observations": 5,
+          "payload_records_examined": 10,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        }
+      },
+      "3": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2487,
+          "insufficient_evidence": 3,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 2,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2507,
+          "insufficient_evidence": 1,
+          "observations": 5,
+          "payload_records_examined": 13,
+          "sufficient_support": 4,
+          "wrong_definite": 0
+        }
+      },
+      "4": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2969,
+          "insufficient_evidence": 0,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 5,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2969,
+          "insufficient_evidence": 0,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 5,
+          "wrong_definite": 0
+        }
+      },
+      "8": {
+        "correlated": {
+          "checker_context_canonical_bytes": 2969,
+          "insufficient_evidence": 0,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 5,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "checker_context_canonical_bytes": 2969,
+          "insufficient_evidence": 0,
+          "observations": 5,
+          "payload_records_examined": 16,
+          "sufficient_support": 5,
+          "wrong_definite": 0
+        }
+      }
+    }
+  },
+  "method_rows": 6730,
+  "note": "Masked/control and complete sets overlap; not independent samples. Oracle is post-hoc only. No timings, human review or token measurements.",
+  "unique_observations": 673,
+  "violations": []
+}

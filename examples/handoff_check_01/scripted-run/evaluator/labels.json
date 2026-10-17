@@ -1,0 +1,17 @@
+{
+  "description": "Ledger-derived expected outcomes (evaluator-only). Not human-reviewed.",
+  "expected": {
+    "stream04": {
+      "e006": "alert"
+    },
+    "stream05": {
+      "e004": "alert"
+    },
+    "stream09": {
+      "e006": "clear"
+    },
+    "stream11": {
+      "e004": "clear"
+    }
+  }
+}

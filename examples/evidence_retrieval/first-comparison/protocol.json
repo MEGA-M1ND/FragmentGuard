@@ -1,0 +1,110 @@
+{
+  "config_sha256": "cc360052a465dbec0c56a60b3dd5bc033d1786ce1bfaf9e3ca5cb01248fa3edb",
+  "input_hashes": {
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../examples/agent_pilot/live-pilot-run/dataset/policy.json": "91b8f42998af348ebe5a5af47edeb8257579a8594b85d7eb24c1fae12a573189",
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../examples/agent_pilot/live-pilot-run/dataset/streams.json": "55e6506184cf4e7c35a0ad5e4c35918f44c45021808d8c3618d6541b337a445b",
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../examples/agent_pilot/scripted-rehearsal-run/dataset/policy.json": "91b8f42998af348ebe5a5af47edeb8257579a8594b85d7eb24c1fae12a573189",
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../examples/agent_pilot/scripted-rehearsal-run/dataset/streams.json": "7991ecca6b71c0705ce5d314abee0348614d416b4abb350dfe0e8cfc00e124f8",
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../examples/agent_pilot_02/live-20261016/run/dataset/policy.json": "91b8f42998af348ebe5a5af47edeb8257579a8594b85d7eb24c1fae12a573189",
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../examples/agent_pilot_02/live-20261016/run/dataset/streams.json": "55e6506184cf4e7c35a0ad5e4c35918f44c45021808d8c3618d6541b337a445b",
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../examples/custom_inputs/policy.json": "882c757afd574c7933f9a489886380c6f436e52677cc8d3bd571f2edfd0f34eb",
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../examples/custom_inputs/streams.json": "d9c9c6decd6a709ba8fa81d93cecae5e23d467b74571c51ecb08e2b5f4f70186",
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../examples/missing_evidence/first_analysis/specification/observations.jsonl": "366d6107ae71e54500eb874629ac4092624c3fe1253a09a700573db5012e319f",
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../examples/missing_evidence/first_analysis/specification/plan.json": "a62456d65a6c089a8c5c860fe745dfdf43b08b73fc74c3dc6cafbfa3db6fbc1e",
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../src/fragmentguard/fixtures/policy.json": "882c757afd574c7933f9a489886380c6f436e52677cc8d3bd571f2edfd0f34eb",
+    "/workspace/FragmentGuard/experiments/evidence_retrieval/../../src/fragmentguard/fixtures/streams.json": "d85b3e341f078f73b5ad80b1d17c15164cb6e59bc7b90e0b7e73d709c6ac2520"
+  },
+  "method": "Known-restricted-parent-first stable DFS versus input-order DFS. Checker budgets do not equate memory, tokens or total compute.",
+  "protocol": {
+    "budgets": [
+      1,
+      2,
+      3,
+      4,
+      8
+    ],
+    "datasets": [
+      {
+        "kind": "synthetic",
+        "labels": "../../src/fragmentguard/fixtures/ground_truth.json",
+        "name": "fixtures",
+        "policy": "../../src/fragmentguard/fixtures/policy.json",
+        "streams": "../../src/fragmentguard/fixtures/streams.json"
+      },
+      {
+        "execution": "../../examples/agent_pilot/scripted-rehearsal-run",
+        "kind": "scripted",
+        "labels": "../../examples/agent_pilot/scripted-rehearsal-run/evaluator/labels.json",
+        "name": "scripted",
+        "pairs": "../agent_pilot/evaluator/pairs.json",
+        "policy": "../../examples/agent_pilot/scripted-rehearsal-run/dataset/policy.json",
+        "streams": "../../examples/agent_pilot/scripted-rehearsal-run/dataset/streams.json"
+      },
+      {
+        "execution": "../../examples/agent_pilot/live-pilot-run",
+        "kind": "live",
+        "labels": "../../examples/agent_pilot/live-pilot-run/evaluator/labels.json",
+        "name": "live-pilot-01",
+        "pairs": "../agent_pilot/evaluator/pairs.json",
+        "policy": "../../examples/agent_pilot/live-pilot-run/dataset/policy.json",
+        "streams": "../../examples/agent_pilot/live-pilot-run/dataset/streams.json"
+      },
+      {
+        "execution": "../../examples/agent_pilot_02/live-20261016/run",
+        "kind": "live",
+        "labels": "../../examples/agent_pilot_02/live-20261016/run/evaluator/labels.json",
+        "name": "pilot-02-live",
+        "pairs": "../agent_pilot/evaluator/pairs.json",
+        "policy": "../../examples/agent_pilot_02/live-20261016/run/dataset/policy.json",
+        "streams": "../../examples/agent_pilot_02/live-20261016/run/dataset/streams.json"
+      },
+      {
+        "kind": "synthetic_regression",
+        "labels": "../../examples/custom_inputs/labels.json",
+        "name": "stale-write-regressions",
+        "policy": "../../examples/custom_inputs/policy.json",
+        "streams": "../../examples/custom_inputs/streams.json"
+      }
+    ],
+    "horizon": 100,
+    "masked_specification": "../../examples/missing_evidence/first_analysis/specification",
+    "note": "Freeze before scoring. Same archive, policy and pointer metadata. Streaming state reset for each masked observation. Oracle/labels post-hoc only. Prior data are reused cases, not new independent samples."
+  },
+  "source": {
+    "files": {
+      "__init__.py": "8b5115c1f72d27fb8761b71066ea77eb3ea6fab60c2e39f4f0f974431b8fd26b",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "agentpilot/__init__.py": "839f7d6f217904683b5e5d218bfe87642ebe019aec988fd33f4004c381eb304c",
+      "agentpilot/backends.py": "1179c0627de657a4946d041a8930eaed8c972a595741f14b70379b1320a3eec9",
+      "agentpilot/commands.py": "4451bb075698cde1b459dde5538184fb8974bbc80d06ddb2411a12789430a659",
+      "agentpilot/episode.py": "fa8fb4a44e3c8dd05befcc1676a721aa89efb5d3361237356fbfe5ac7dd9011d",
+      "agentpilot/ledger_labels.py": "a78aca8f2179a0d5b1ea6fc46c1154b4f630c2190a9fe19fe37727f28be7327a",
+      "agentpilot/normalize.py": "f69770df63f509c1f0f93a62e39ccb4cc49227abcc138e1d0e7a18f3106c7a7e",
+      "agentpilot/pilot.py": "b6e717640c3309ce89cb6c843aada6c46469a689e6179cb4220f605f0b2418f4",
+      "agentpilot/workspace.py": "c824096be898e91e9283977dfe6cd728b128e28162b26db2463b7a8984aa5975",
+      "cli.py": "3b1d4674a78ef451c74e17e3a620c9cf8c37e854297ec4f77581507f1fe056b0",
+      "correlation.py": "9e010fdeb47487642fa64d9e3ae691f3258bd93922488a5c7cff66d2eb703323",
+      "experiments/__init__.py": "97eedf7f753990a30aacb6bebe3d85cfe2e4c65b47ac8ea1c6c926e74fc896b6",
+      "experiments/__main__.py": "6aed857f213d76efef8d40a451cee89336266273e488efd9df05b660207f6a0d",
+      "experiments/common.py": "ac0b221edc4e53c0cafb30840feafad8b5715f48b2ead5b6ab6e69f36eb3b681",
+      "experiments/evaluate.py": "5c8dfe0877ecbb0a16551ca3ad46d9e27d1b4c0f98c464f3576f5174726d45d1",
+      "experiments/handoff.py": "8f664377716a981da3c138c93980ff444d43fe10f7ee1cd5764a588b71c27855",
+      "experiments/missing.py": "64fd9adba7257b822d5b5f1141b5d369024a4ccf81fa6d06aced7eba5a1d8cff",
+      "experiments/retrieval.py": "47eacaa3194c87b94eaf1c8c4661a49d8b58ab4210d81172c3913c6386a0265f",
+      "fixtures/ground_truth.json": "0837ca672ac64148ef1d27ef0abd15c02fb6ecdbec6fc773189c385f6f5429e2",
+      "fixtures/policy.json": "882c757afd574c7933f9a489886380c6f436e52677cc8d3bd571f2edfd0f34eb",
+      "fixtures/streams.json": "d85b3e341f078f73b5ad80b1d17c15164cb6e59bc7b90e0b7e73d709c6ac2520",
+      "monitor.py": "64e0925907a17a65433b96fea6d883deaf00c6d1787f6441d52cd44519287e1c",
+      "observation.py": "2075dfc04eacd0523d6ccc230e75bdf03aa68abdf87f892ff64224d92b096894",
+      "pipeline.py": "1e4b0d604a3115b80729d063e6918cf69ed17e9b6e9bc168b8a03d81ba0ff773",
+      "provenance.py": "bbcb8371113f46db6fdb42f48a6556bd8bec7051e5554fb88741f281013360d0",
+      "reporting.py": "a8e9767c29ea1d278de2c6afb68cd6067a7d53151cb3483f48eadcf25061fdf4",
+      "schema.py": "927a1586f8d479647e10914ff9d1b3f24fbe28d45cc04262595744877f51ac08",
+      "scout.py": "21fffb5c4fa159bc531349720a40614dde05139086c53639bd05a57fe89b4a46",
+      "streaming.py": "2223e89a2926fccc179d747e55fe71cbe406a6ce1f49ce660e9076706e822948"
+    },
+    "git_commit": "a678a301492d4581ce310de390a55c4e484d2fbc",
+    "git_dirty": false,
+    "package_sha256": "77b661e11074c0f76ef0e36f61c0d1f7b900364cb6a355220c658cb5bd46137c"
+  }
+}

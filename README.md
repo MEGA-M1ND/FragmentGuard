@@ -1,5 +1,8 @@
 # FragmentGuard
 
+Latest offline work: [evidence retrieval versus streaming provenance](docs/evidence_retrieval.md)
+and a [prepared four-case handoff check](experiments/handoff_check_01/README.md).
+
 Next experiments: [streaming sensitivity baseline, clarified pilot 2 rehearsal,
 and missing-evidence analysis](docs/streaming_baseline.md). See
 [the short results](NEXT_RESULTS.md). An [offline handoff revision](docs/handoff_metadata.md)

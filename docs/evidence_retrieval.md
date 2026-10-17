@@ -71,3 +71,51 @@ The protocol and input hashes are saved before scoring. The output has raw and
 evaluator-joined rows, counts by source/group/budget, every correctness violation,
 every missed available proof and an artifact manifest. Any wrong definite verdict,
 cached/full-visible disagreement or complete-case label mismatch fails the run.
+
+## Observed results
+
+Canonical artifacts: `examples/evidence_retrieval/first-comparison/`. The final
+runner reproduced the initial raw/evaluated rows and summary byte-for-byte;
+its portable policy resolution requires the frozen policy hashes rather than
+assuming the old machine's absolute paths. There were 673 separately tagged
+observations and 6,730 evidence rows, with zero correctness violations. Streaming's
+cached verdict matched the full-visible checker throughout.
+
+| Checker budget | Complete: correlation / streaming+provenance | Masked only: correlation / streaming+provenance |
+| --- | ---: | ---: |
+| 1 | 1 / 1 of 37 | 31 / 31 of 607 |
+| 2 | 3 / 5 of 37 | 51 / 53 of 607 |
+| 3 | 27 / 30 of 37 | 152 / 155 of 607 |
+| 4 | 35 / 36 of 37 | 154 / 155 of 607 |
+| 8 | 37 / 37 of 37 | 155 / 155 of 607 |
+
+Cells count sufficient raw evidence for a definite visible-reference verdict,
+not attack accuracy. At budget 3 the additional complete-case proofs were scripted
+sc04 and regression publications stream11/e04 and stream14/e04. Their known
+restricted branch was shorter than the first public branch. The stronger baseline
+used its cached restriction state to retrieve that proof within three records.
+The masked observations add three analogous gains; no-deletion controls duplicate
+complete cases and are reported separately in JSON. The post-hoc oracle found 18
+missed available proofs across the original correlation budget rows and none for
+the stronger baseline on these cases; this is not a general optimality result.
+
+At budget 3 over the 37 complete publications, correlation dereferenced 124 payload
+records versus 109 for streaming+provenance, and produced 22,225 versus 22,246
+canonical checker-context bytes in total. The baseline additionally retained a
+median 300 (maximum 484) canonical state bytes per prefix. Both used the common
+archive, median 518 (maximum 901) canonical payload bytes, and shared bindings.
+These declared encodings and partial operation counts do not establish an overall
+speed, RAM, token or dollar advantage. State is built afresh per experimental
+prefix, including repeated source prefixes; no amortized service cost is measured.
+
+Conclusion: these cases establish no supporting-evidence advantage for the original
+correlation selector over streaming sensitivity with provenance. The stronger
+baseline supplies at least as many proofs here but pays for online state and
+retained pointers. Bounded evidence remains a useful output requirement; an
+information-cost advantage for correlation has not been demonstrated.
+
+The reference cache copies parent references and identity headers that a production
+implementation could share with its archive. Its serialized state size is not a
+minimum memory requirement for propagation. The stronger baseline is itself a
+provenance-retrieval system: this compares two concrete implementations/priorities,
+not all possible correlation techniques.

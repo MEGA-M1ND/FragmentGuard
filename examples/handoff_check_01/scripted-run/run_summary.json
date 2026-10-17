@@ -1,0 +1,160 @@
+{
+  "pilot_id": "handoff-check-01",
+  "trace_backend": "scripted",
+  "completed_at_utc": "2026-10-17T17:07:58.661121+00:00",
+  "planned": [
+    "sc11",
+    "sc04",
+    "sc09",
+    "sc05"
+  ],
+  "episodes": [
+    {
+      "episode_id": "sc11",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc04",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 6,
+        "succeeded": 6,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 6,
+          "publication_id": "pub01",
+          "version_id": "v005",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 9,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc09",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 6,
+        "succeeded": 6,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 6,
+          "publication_id": "pub01",
+          "version_id": "v005",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 9,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    },
+    {
+      "episode_id": "sc05",
+      "status": "complete",
+      "incomplete_reasons": [],
+      "agent_outcomes": {
+        "collector": "finished",
+        "processor": "finished",
+        "publisher": "finished"
+      },
+      "operations": {
+        "attempted": 4,
+        "succeeded": 4,
+        "failed": 0
+      },
+      "publications": [
+        {
+          "seq": 4,
+          "publication_id": "pub01",
+          "version_id": "v003",
+          "audience": "public",
+          "artifact_path": "public_outputs/pub01.json"
+        }
+      ],
+      "generation": {
+        "backend_turns": 7,
+        "model_requests": 0,
+        "usage_totals": null,
+        "accounted_usd": 0.0,
+        "basis": "scripted backend: no model requests, no generation cost"
+      },
+      "aborted": null
+    }
+  ],
+  "complete": [
+    "sc11",
+    "sc04",
+    "sc09",
+    "sc05"
+  ],
+  "stream_ids": {
+    "sc11": "stream11",
+    "sc04": "stream04",
+    "sc09": "stream09",
+    "sc05": "stream05"
+  },
+  "generation_totals": {
+    "backend_turns": 32,
+    "model_requests": 0,
+    "accounted_usd": 0.0,
+    "sum_of_episode_accounted_usd": 0,
+    "budget_ledger": null
+  }
+}

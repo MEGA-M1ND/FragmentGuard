@@ -1,0 +1,52 @@
+{
+  "scan_id": "3WiVpqPynVzz2KYyN33Y6i",
+  "scan_name": "tmp",
+  "timestamp": "2026-10-17T17:09:13.817061+00:00",
+  "model": {
+    "model": "mockllm/model",
+    "config": {
+      "max_connections": 25
+    },
+    "args": {}
+  },
+  "packages": {
+    "inspect_ai": "0.3.277",
+    "inspect_scout": "0.5.4"
+  },
+  "options": {
+    "max_transcripts": 25,
+    "max_processes": 1
+  },
+  "transcripts": {
+    "type": "database",
+    "location": "/workspace/FragmentGuard/examples/handoff_check_01/scripted-scout/transcripts",
+    "filter": [],
+    "transcript_ids": {
+      "stream04": "transcripts_20261017T170913_45b4a45b.parquet",
+      "stream05": "transcripts_20261017T170913_45b4a45b.parquet",
+      "stream09": "transcripts_20261017T170913_45b4a45b.parquet",
+      "stream11": "transcripts_20261017T170913_45b4a45b.parquet"
+    },
+    "count": 0
+  },
+  "scanners": {
+    "fragmentguard": {
+      "name": "fragmentguard/fragmentguard",
+      "version": 0,
+      "package_version": "0.1.0",
+      "params": {
+        "policy": {
+          "src-3184": "public",
+          "src-5520": "public",
+          "src-7731": "public",
+          "src-2409": "restricted",
+          "src-6618": "restricted",
+          "src-9045": "restricted"
+        },
+        "budget": 3,
+        "horizon": 100,
+        "source_kind": "agent_executed_trace"
+      }
+    }
+  }
+}
