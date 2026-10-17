@@ -91,9 +91,13 @@ class RetrievalTests(unittest.TestCase):
             write(root / "streams.json", [{"stream_id": "stream01", "events": [e.to_dict() for e in events]}])
             write(root / "policy.json", POLICY)
             (root / "masked").mkdir()
-            (root / "masked/observations.jsonl").write_text("")
-            write(root / "masked/plan.json", {"datasets": [], "observations_sha256":
-                                              digest(root / "masked/observations.jsonl")})
+            observation = {"observation_id": "obs0", "dataset": "test", "publication_id": "e04",
+                           "hidden_ids": [], "observation": freeze_complete(
+                               {"stream_id": "stream01", "events": [e.to_dict() for e in events]}, POLICY)}
+            (root / "masked/observations.jsonl").write_text(json.dumps(observation) + "\n")
+            write(root / "masked/plan.json", {"datasets": [{"name": "test", "policy": "/old-host/policy.json",
+                  "policy_sha256": digest(root / "policy.json")}],
+                  "observations_sha256": digest(root / "masked/observations.jsonl")})
             config = {"budgets": [3], "horizon": 100, "masked_specification": "masked",
                       "datasets": [{"name": "test", "streams": "streams.json", "policy": "policy.json",
                                     "labels": "labels.json"}]}
@@ -105,5 +109,6 @@ class RetrievalTests(unittest.TestCase):
             with contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(run(root / "config.json", root / "results"), 0)
             summary = json.loads((root / "results/summary.json").read_text())
+            self.assertEqual(summary["unique_observations"], 2)
             self.assertFalse(summary["violations"])
             self.assertTrue(summary["cached_streaming_matches_visible_full"])

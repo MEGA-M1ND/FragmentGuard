@@ -98,6 +98,9 @@ jobs:
           python -m fragmentguard.experiments.handoff \
             --config "$GITHUB_WORKSPACE/experiments/agent_pilot_02/pilot_config.json" \
             --output fg-runs/handoff-inputs
+          python -m fragmentguard.experiments.retrieval \
+            --config "$GITHUB_WORKSPACE/experiments/evidence_retrieval/protocol.json" \
+            --output fg-runs/evidence-retrieval
           python -m fragmentguard.experiments compare \
             --config "$GITHUB_WORKSPACE/experiments/streaming_baseline/comparison.json" \
             --output fg-runs/streaming

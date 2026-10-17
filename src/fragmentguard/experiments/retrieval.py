@@ -41,7 +41,15 @@ def observations(config):
     plan = read(masked / "plan.json")
     if digest(masked / "observations.jsonl") != plan["observations_sha256"]:
         raise ValueError("Frozen masked observations changed")
-    policy_by_name = {d["name"]: load_policy(Path(d["policy"])) for d in plan["datasets"]}
+    # Historical plans contain the original machine's absolute paths. Resolve
+    # policy files through this run's config and require the frozen content hash.
+    configured = {d["name"]: d["policy"] for d in resolved(config)}
+    policy_by_name = {}
+    for dataset in plan["datasets"]:
+        path = configured[dataset["name"]]
+        if digest(path) != dataset["policy_sha256"]:
+            raise ValueError("Masked policy differs from its frozen hash")
+        policy_by_name[dataset["name"]] = load_policy(path)
     with (masked / "observations.jsonl").open() as handle:
         for line in handle:
             row = json.loads(line)
@@ -77,6 +85,7 @@ def run(config: Path, output: Path):
     input_hashes = {str(dataset[key]): digest(dataset[key]) for dataset in datasets for key in ("streams", "policy")}
     masked = config.parent / protocol["masked_specification"]
     input_hashes[str(masked / "observations.jsonl")] = digest(masked / "observations.jsonl")
+    input_hashes[str(masked / "plan.json")] = digest(masked / "plan.json")
     write(output / "protocol.json", {"source": reporting.source_fingerprint(), "config_sha256": digest(config),
                                     "protocol": protocol, "input_hashes": input_hashes,
                                     "method": "Known-restricted-parent-first stable DFS versus input-order DFS. "
@@ -173,6 +182,7 @@ def run(config: Path, output: Path):
                                    "Oracle is post-hoc only. No timings, human review or token measurements."})
     write(output / "experiment-manifest.json", {"source": reporting.source_fingerprint(),
           "outputs_sha256": digest(output / "outputs.jsonl"),
+          "evaluator_input_hashes": {str(d["labels"]): digest(d["labels"]) for d in datasets},
           "packages": reporting.package_versions(), "artifacts": reporting.artifact_hashes(
               output, ("experiment-manifest.json",)), "model_requests": 0, "accounted_usd": 0})
     print(f"{len(examples)} observations, {len(rows)} evidence rows, {len(violations)} correctness violations")
