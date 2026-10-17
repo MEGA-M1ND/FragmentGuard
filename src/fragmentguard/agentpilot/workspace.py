@@ -383,6 +383,24 @@ class Workspace:
     def created_by(self, agent_id: str) -> list[str]:
         return [v.version_id for v in self.versions.values() if v.produced_by_agent == agent_id]
 
+    def handoff_metadata(self, handles: list[str]) -> dict[str, Any]:
+        """Describe committed handed versions without content, ancestry or labels.
+
+        ``latest_by_name`` is scoped to this handoff, not the workspace's mutable
+        name aliases. All intermediates and superseded versions remain listed;
+        consumers use the immutable handle to avoid later/background replacement.
+        """
+        versions = [self.versions[handle] for handle in handles]
+        if len(set(handles)) != len(handles) or any(v.kind != "derived" for v in versions):
+            raise ValueError("Handoffs require distinct committed artifact versions")
+        versions.sort(key=lambda version: version.produced_by_seq)
+        latest = {v.display_name: v.version_id for v in versions if v.display_name is not None}
+        return {
+            "version": 1,
+            "artifacts": [{"handle": v.version_id, "name": v.display_name} for v in versions],
+            "latest_by_name": latest,
+        }
+
     def ledger(self) -> dict[str, Any]:
         return {
             "episode_id": self.episode_id,
