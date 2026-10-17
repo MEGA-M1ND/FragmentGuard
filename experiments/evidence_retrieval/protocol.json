@@ -1,0 +1,55 @@
+{
+  "datasets": [
+    {
+      "name": "fixtures",
+      "kind": "synthetic",
+      "streams": "../../src/fragmentguard/fixtures/streams.json",
+      "policy": "../../src/fragmentguard/fixtures/policy.json",
+      "labels": "../../src/fragmentguard/fixtures/ground_truth.json"
+    },
+    {
+      "name": "scripted",
+      "kind": "scripted",
+      "streams": "../../examples/agent_pilot/scripted-rehearsal-run/dataset/streams.json",
+      "policy": "../../examples/agent_pilot/scripted-rehearsal-run/dataset/policy.json",
+      "labels": "../../examples/agent_pilot/scripted-rehearsal-run/evaluator/labels.json",
+      "execution": "../../examples/agent_pilot/scripted-rehearsal-run",
+      "pairs": "../agent_pilot/evaluator/pairs.json"
+    },
+    {
+      "name": "live-pilot-01",
+      "kind": "live",
+      "streams": "../../examples/agent_pilot/live-pilot-run/dataset/streams.json",
+      "policy": "../../examples/agent_pilot/live-pilot-run/dataset/policy.json",
+      "labels": "../../examples/agent_pilot/live-pilot-run/evaluator/labels.json",
+      "execution": "../../examples/agent_pilot/live-pilot-run",
+      "pairs": "../agent_pilot/evaluator/pairs.json"
+    },
+    {
+      "name": "pilot-02-live",
+      "kind": "live",
+      "streams": "../../examples/agent_pilot_02/live-20261016/run/dataset/streams.json",
+      "policy": "../../examples/agent_pilot_02/live-20261016/run/dataset/policy.json",
+      "labels": "../../examples/agent_pilot_02/live-20261016/run/evaluator/labels.json",
+      "execution": "../../examples/agent_pilot_02/live-20261016/run",
+      "pairs": "../agent_pilot/evaluator/pairs.json"
+    },
+    {
+      "name": "stale-write-regressions",
+      "kind": "synthetic_regression",
+      "streams": "../../examples/custom_inputs/streams.json",
+      "policy": "../../examples/custom_inputs/policy.json",
+      "labels": "../../examples/custom_inputs/labels.json"
+    }
+  ],
+  "budgets": [
+    1,
+    2,
+    3,
+    4,
+    8
+  ],
+  "horizon": 100,
+  "masked_specification": "../../examples/missing_evidence/first_analysis/specification",
+  "note": "Freeze before scoring. Same archive, policy and pointer metadata. Streaming state reset for each masked observation. Oracle/labels post-hoc only. Prior data are reused cases, not new independent samples."
+}
