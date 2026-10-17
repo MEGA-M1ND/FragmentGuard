@@ -1,0 +1,303 @@
+{
+  "observations": 636,
+  "publications": 29,
+  "method_rows": 3180,
+  "controls": 29,
+  "all_masks_exhaustive_and_unique": true,
+  "all_observation_payloads_and_pointers_match_frozen_complete_prefixes": true,
+  "all_four_preserved_score_files_exactly_reproduced": true,
+  "streaming_all_visible_disagreements": 0,
+  "counts": {
+    "all": {
+      "per_agent": {
+        "observations": 636,
+        "definite": 32,
+        "uncertain": 604,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "fixed_window": {
+        "observations": 636,
+        "definite": 88,
+        "uncertain": 548,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "correlated": {
+        "observations": 636,
+        "definite": 172,
+        "uncertain": 464,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "full_context_reference": {
+        "observations": 636,
+        "definite": 184,
+        "uncertain": 452,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "streaming": {
+        "observations": 636,
+        "definite": 184,
+        "uncertain": 452,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      }
+    },
+    "control": {
+      "per_agent": {
+        "observations": 29,
+        "definite": 1,
+        "uncertain": 28,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "fixed_window": {
+        "observations": 29,
+        "definite": 14,
+        "uncertain": 15,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "correlated": {
+        "observations": 29,
+        "definite": 20,
+        "uncertain": 9,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "full_context_reference": {
+        "observations": 29,
+        "definite": 29,
+        "uncertain": 0,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "streaming": {
+        "observations": 29,
+        "definite": 29,
+        "uncertain": 0,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      }
+    },
+    "masked_only": {
+      "per_agent": {
+        "observations": 607,
+        "definite": 31,
+        "uncertain": 576,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "fixed_window": {
+        "observations": 607,
+        "definite": 74,
+        "uncertain": 533,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "correlated": {
+        "observations": 607,
+        "definite": 152,
+        "uncertain": 455,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "full_context_reference": {
+        "observations": 607,
+        "definite": 155,
+        "uncertain": 452,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      },
+      "streaming": {
+        "observations": 607,
+        "definite": 155,
+        "uncertain": 452,
+        "wrong_clear": 0,
+        "wrong_alert": 0
+      }
+    }
+  },
+  "window_wins": [
+    {
+      "baseline": "fixed_window",
+      "categories": [
+        "control",
+        "exhaustive"
+      ],
+      "correlated_unresolved": [
+        {
+          "bound_producer": "e002",
+          "resource": "v002"
+        },
+        {
+          "bound_producer": "e004",
+          "resource": "v004"
+        }
+      ],
+      "dataset": "scripted",
+      "evidence_ids": [
+        "e004",
+        "e005",
+        "e006"
+      ],
+      "hidden_ids": [],
+      "observation_id": "obs00236",
+      "publication_id": "e006",
+      "reference": "alert",
+      "stream_id": "stream04"
+    },
+    {
+      "baseline": "fixed_window",
+      "categories": [
+        "exhaustive",
+        "single_nonpublication"
+      ],
+      "correlated_unresolved": [
+        {
+          "bound_producer": "e002",
+          "resource": "v002"
+        },
+        {
+          "bound_producer": "e004",
+          "resource": "v004"
+        }
+      ],
+      "dataset": "scripted",
+      "evidence_ids": [
+        "e004",
+        "e005",
+        "e006"
+      ],
+      "hidden_ids": [
+        "e001"
+      ],
+      "observation_id": "obs00237",
+      "publication_id": "e006",
+      "reference": "alert",
+      "stream_id": "stream04"
+    },
+    {
+      "baseline": "fixed_window",
+      "categories": [
+        "exhaustive",
+        "single_nonpublication"
+      ],
+      "correlated_unresolved": [
+        {
+          "bound_producer": "e002",
+          "resource": "v002"
+        },
+        {
+          "bound_producer": "e004",
+          "resource": "v004"
+        }
+      ],
+      "dataset": "scripted",
+      "evidence_ids": [
+        "e004",
+        "e005",
+        "e006"
+      ],
+      "hidden_ids": [
+        "e002"
+      ],
+      "observation_id": "obs00238",
+      "publication_id": "e006",
+      "reference": "alert",
+      "stream_id": "stream04"
+    },
+    {
+      "baseline": "fixed_window",
+      "categories": [
+        "exhaustive"
+      ],
+      "correlated_unresolved": [
+        {
+          "bound_producer": "e002",
+          "resource": "v002"
+        },
+        {
+          "bound_producer": "e004",
+          "resource": "v004"
+        }
+      ],
+      "dataset": "scripted",
+      "evidence_ids": [
+        "e004",
+        "e005",
+        "e006"
+      ],
+      "hidden_ids": [
+        "e001",
+        "e002"
+      ],
+      "observation_id": "obs00242",
+      "publication_id": "e006",
+      "reference": "alert",
+      "stream_id": "stream04"
+    },
+    {
+      "baseline": "fixed_window",
+      "categories": [
+        "control",
+        "exhaustive"
+      ],
+      "correlated_unresolved": [
+        {
+          "bound_producer": "e03",
+          "resource": "scratch"
+        }
+      ],
+      "dataset": "stale-write-regressions",
+      "evidence_ids": [
+        "e02",
+        "e03",
+        "e04"
+      ],
+      "hidden_ids": [],
+      "observation_id": "obs00576",
+      "publication_id": "e04",
+      "reference": "alert",
+      "stream_id": "stream11"
+    },
+    {
+      "baseline": "fixed_window",
+      "categories": [
+        "control",
+        "exhaustive"
+      ],
+      "correlated_unresolved": [
+        {
+          "bound_producer": "e03",
+          "resource": "scratch"
+        }
+      ],
+      "dataset": "stale-write-regressions",
+      "evidence_ids": [
+        "e02",
+        "e03",
+        "e04"
+      ],
+      "hidden_ids": [],
+      "observation_id": "obs00596",
+      "publication_id": "e04",
+      "reference": "alert",
+      "stream_id": "stream14"
+    }
+  ],
+  "note": "Review of existing observations only. No new workflows, independent samples or model calls.",
+  "review_base_commit": "20eb2cfcd834f3f53b2c4d6a71a1c7fbe6b34be9",
+  "source_specification": "examples/missing_evidence/first_analysis/specification",
+  "source_results": "examples/missing_evidence/first_analysis/results",
+  "input_hashes": {
+    "examples/missing_evidence/first_analysis/specification/plan.json": "a62456d65a6c089a8c5c860fe745dfdf43b08b73fc74c3dc6cafbfa3db6fbc1e",
+    "examples/missing_evidence/first_analysis/specification/observations.jsonl": "366d6107ae71e54500eb874629ac4092624c3fe1253a09a700573db5012e319f",
+    "examples/missing_evidence/first_analysis/results/outputs.jsonl": "b929b6fa1f5fcbe285ff5e2be44b4d02316aff7413adec162093ab6303eaa1db",
+    "examples/missing_evidence/first_analysis/results/evaluated.jsonl": "a867b99bbc683b80c8cecd9599a78319363d471f6f34b0f85abf614ff7045872"
+  },
+  "paid_model_requests": 0,
+  "accounted_usd": 0
+}

@@ -59,3 +59,14 @@ with the execution ledger. It checks files and normalized bindings too. Its
 scripted completion alone is not the evidence: the delivered input is captured
 and checked explicitly. Catalog/evaluator files are never opened. These checks
 establish input availability and correct handle resolution, not live compliance.
+
+Observed offline outcome: 12/12 captured publisher inputs passed every ledger,
+intended-target, artifact and binding check. Snapshots:
+`examples/handoff_metadata/offline-check-20261017/publisher-inputs.json`.
+These include `summary -> v003` for sc05/sc11 and `report -> v005` for sc04/sc09,
+without hiding any intermediate processor versions. The targeted input tests also
+pass the replacement-name, background overwrite, unnamed-version and absent-target
+cases. No live model was called.
+
+The independent [missing-evidence review](missing_evidence_review.md) separates
+no-deletion controls from actual masking and preserves every previous result.
