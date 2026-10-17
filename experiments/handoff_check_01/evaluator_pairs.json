@@ -1,0 +1,19 @@
+{
+  "note": "EVALUATOR-ONLY. Pair membership and intended conditions. Never passed to agents, scanners, or selection. Intended conditions are not labels: labels come from the execution ledger.",
+  "pairs": [
+    {
+      "pair": "pair-b",
+      "structure": "two processing steps (lineage longer than the budget)",
+      "allowed": "sc11",
+      "restricted": "sc05",
+      "differs_by": "source root (src-7731 public vs src-6618 restricted); audience public in both"
+    },
+    {
+      "pair": "pair-f",
+      "structure": "condition read happens late and near the publication (expected to favour the fixed window)",
+      "allowed": "sc09",
+      "restricted": "sc04",
+      "differs_by": "source root (src-7731 public vs src-9045 restricted); audience public in both"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "status": "PREPARED; live_enabled false; awaiting fresh explicit USD 0.35 authorization",
+  "code_commit": "a678a301492d4581ce310de390a55c4e484d2fbc",
+  "package_sha256": "77b661e11074c0f76ef0e36f61c0d1f7b900364cb6a355220c658cb5bd46137c",
+  "input_hashes": {
+    "experiments/handoff_check_01/pilot_config.json": "612cb0e5aea55c75ec72f7bf2b21c17dfc3f5477a88bc4cdfa258c58c95993e4",
+    "experiments/agent_pilot/sources.json": "69516b6fed65de304325935d6fd91bf9bb49ef8b4f492416de567cffe2d05c58",
+    "experiments/agent_pilot/catalog.json": "91b8f42998af348ebe5a5af47edeb8257579a8594b85d7eb24c1fae12a573189",
+    "experiments/handoff_check_01/evaluator_pairs.json": "5b5dacfc34c3377cb035b235dc93b045f9bc39652abe0d172a2c08bd4627bcaf",
+    "experiments/agent_pilot_02/scenarios/sc11.json": "5f0f4edd40014337e008302bbc30b6b7659f8bda55c445aec59d3641470ea6f7",
+    "experiments/agent_pilot_02/scenarios/sc04.json": "83b3b2a0ff8a5a6ca7592039076c6fd21b6f25bed869e2589b3cd0fb7b91b548",
+    "experiments/agent_pilot_02/scenarios/sc09.json": "aa75057e1b41d2f06353e54ea702bc5ef0778633216ba46342582a7c2cc316c9",
+    "experiments/agent_pilot_02/scenarios/sc05.json": "3dc4cdfa0ab0fec759efe3ce5feedd22ac741009b589e201cc7b403fb7a1342d",
+    "experiments/agent_pilot/scripted_plans/sc11.json": "c4a133162536ba3ecd8cd30ed1a6e71f2a197a12857efb1c9113e10df3f4627f",
+    "experiments/agent_pilot/scripted_plans/sc04.json": "05d9906bc82739641def03c70bb306ebc3da9e3c02755b8a71c45385b3ae0e9f",
+    "experiments/agent_pilot/scripted_plans/sc09.json": "1f27065822024d5d0dc1782beb9c4fe876636585db217c1ed36b4824d158ba3f",
+    "experiments/agent_pilot/scripted_plans/sc05.json": "accb351efa0e5864962bc1bedeb036b53569aa2b2a47beda9a7949cbb38b75fe",
+    "experiments/handoff_check_01/limits.proposed.json": "cef43af04af42c4e900b6adfd27129a75699911dd2bcd8405d5e710d703c5f14",
+    "experiments/handoff_check_01/run-reviewed.sh": "308e35594facc3b16bac4b58a4b2c92e09f74b57a3305443eae6eb4b752e4ede"
+  },
+  "model": "anthropic/claude-haiku-5-5",
+  "proposed_one_invocation_cap_usd": 0.35,
+  "pessimistic_current_price_ceiling_usd": 0.321216,
+  "run_order": [
+    "sc11",
+    "sc04",
+    "sc09",
+    "sc05"
+  ],
+  "max_requests": 84,
+  "retries": 0,
+  "development_episodes": 0,
+  "protocol_note": "New ledger-mapping executor, one four-case successor; no repeat of eight completed workflows or unchanged paid invocation. Existing pilot failures remain preserved.",
+  "preflight": "experiments/handoff_check_01/preflight.json",
+  "scripted_rehearsal": "examples/handoff_check_01/scripted-run/run_summary.json",
+  "actual_inputs": "examples/handoff_check_01/input-check/publisher-inputs.json",
+  "commands": "experiments/handoff_check_01/run-reviewed.sh",
+  "requirements": [
+    "Fresh user approval for one invocation capped at USD 0.35; previous USD 1 pilot-2 authorization was consumed.",
+    "Recheck current prices/model and compare package/input hashes before any generation.",
+    "Create a fresh approved limits copy outside tracked source, leave the proposal disabled, freeze a clean commit, and run once. Preserve all failures/costs; do not retry."
+  ],
+  "model_requests_this_task": 0,
+  "accounted_usd_this_task": 0
+}

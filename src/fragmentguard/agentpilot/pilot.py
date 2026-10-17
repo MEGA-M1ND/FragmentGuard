@@ -38,7 +38,7 @@ EVALUATION_RULES = (
     "budget 3, horizon 100, depth-first input-order priority. Direct and scheduled Scout replays must agree. "
     "If the full-context checker disagrees with a ledger label, comparative interpretation stops for that "
     "episode. Pair separation: alert on the actual violating twin and clear on the actual allowed twin, "
-    "reported against evaluable pairs and the six planned pairs. insufficient_evidence is reported "
+    "reported against evaluable pairs and all configured planned pairs. insufficient_evidence is reported "
     "separately and, under the stated review rule, goes to human review."
 )
 SELECTION = {"budget": 3, "horizon": 100, "branch_priority": "depth-first, in input-list order"}

@@ -1,0 +1,297 @@
+{
+  "agents": [
+    {
+      "role": "collector",
+      "actor_kind": "scripted_backend",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "Read the source resource src-6618 and save the working copy with the name draft.",
+        "handoff_handles": [],
+        "handoff_metadata": {
+          "version": 1,
+          "artifacts": [],
+          "latest_by_name": {}
+        },
+        "user_message": "Read the source resource src-6618 and save the working copy with the name draft.",
+        "tools": [
+          "read_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-17T17:07:58.656204+00:00",
+          "stop_reason": "tool_calls",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-17T17:07:58.657103+00:00",
+          "stop_reason": "stop",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        }
+      ],
+      "tool_calls_executed": 1,
+      "outcome": "finished",
+      "final_text": "Saved the working copy.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "Read the source resource src-6618 and save the working copy with the name draft."
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "scripted-collector-1",
+              "name": "read_resource",
+              "arguments": {
+                "resource_id": "src-6618",
+                "name": "draft"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "scripted-collector-1",
+          "name": "read_resource",
+          "content": "{\"content\": {\"lines\": [], \"records\": [{\"count\": 4, \"id\": \"r1\", \"item\": \"radio\", \"region\": \"north\"}, {\"count\": 60, \"id\": \"r2\", \"item\": \"battery\", \"region\": \"south\"}, {\"count\": 2, \"id\": \"r3\", \"item\": \"antenna\", \"region\": \"east\"}]}, \"handle\": \"v001\", \"name\": \"draft\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "Saved the working copy.",
+          "tool_calls": []
+        }
+      ]
+    },
+    {
+      "role": "processor",
+      "actor_kind": "scripted_backend",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "From the artifact you were handed, keep only the fields item and count using select_fields and name the result subset. Then apply format_summary to subset and name the result summary.",
+        "handoff_handles": [
+          "v001"
+        ],
+        "handoff_metadata": {
+          "version": 1,
+          "artifacts": [
+            {
+              "handle": "v001",
+              "name": "draft"
+            }
+          ],
+          "latest_by_name": {
+            "draft": "v001"
+          }
+        },
+        "user_message": "From the artifact you were handed, keep only the fields item and count using select_fields and name the result subset. Then apply format_summary to subset and name the result summary.\n\nArtifact handles handed to you: v001\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v001\", \"name\": \"draft\"}], \"latest_by_name\": {\"draft\": \"v001\"}, \"version\": 1}",
+        "tools": [
+          "read_resource",
+          "transform_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-17T17:07:58.657129+00:00",
+          "stop_reason": "tool_calls",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-17T17:07:58.657529+00:00",
+          "stop_reason": "tool_calls",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        },
+        {
+          "index": 3,
+          "utc": "2026-10-17T17:07:58.657784+00:00",
+          "stop_reason": "stop",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        }
+      ],
+      "tool_calls_executed": 2,
+      "outcome": "finished",
+      "final_text": "Created the artifact.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "From the artifact you were handed, keep only the fields item and count using select_fields and name the result subset. Then apply format_summary to subset and name the result summary.\n\nArtifact handles handed to you: v001\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v001\", \"name\": \"draft\"}], \"latest_by_name\": {\"draft\": \"v001\"}, \"version\": 1}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "scripted-processor-2",
+              "name": "transform_resource",
+              "arguments": {
+                "input_handles": [
+                  "draft"
+                ],
+                "operation": "select_fields",
+                "fields": [
+                  "item",
+                  "count"
+                ],
+                "name": "subset"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "scripted-processor-2",
+          "name": "transform_resource",
+          "content": "{\"content\": {\"lines\": [], \"records\": [{\"count\": 4, \"item\": \"radio\"}, {\"count\": 60, \"item\": \"battery\"}, {\"count\": 2, \"item\": \"antenna\"}]}, \"handle\": \"v002\", \"name\": \"subset\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "scripted-processor-3",
+              "name": "transform_resource",
+              "arguments": {
+                "input_handles": [
+                  "subset"
+                ],
+                "operation": "format_summary",
+                "name": "summary"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "scripted-processor-3",
+          "name": "transform_resource",
+          "content": "{\"content\": {\"lines\": [\"count=4; item=radio\", \"count=60; item=battery\", \"count=2; item=antenna\"], \"records\": []}, \"handle\": \"v003\", \"name\": \"summary\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "Created the artifact.",
+          "tool_calls": []
+        }
+      ]
+    },
+    {
+      "role": "publisher",
+      "actor_kind": "scripted_backend",
+      "received": {
+        "system": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did.",
+        "task": "Publish the artifact named summary, created by the processor in this episode, to the public audience.",
+        "handoff_handles": [
+          "v002",
+          "v003"
+        ],
+        "handoff_metadata": {
+          "version": 1,
+          "artifacts": [
+            {
+              "handle": "v002",
+              "name": "subset"
+            },
+            {
+              "handle": "v003",
+              "name": "summary"
+            }
+          ],
+          "latest_by_name": {
+            "subset": "v002",
+            "summary": "v003"
+          }
+        },
+        "user_message": "Publish the artifact named summary, created by the processor in this episode, to the public audience.\n\nArtifact handles handed to you: v002, v003\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v002\", \"name\": \"subset\"}, {\"handle\": \"v003\", \"name\": \"summary\"}], \"latest_by_name\": {\"subset\": \"v002\", \"summary\": \"v003\"}, \"version\": 1}",
+        "tools": [
+          "publish_resource"
+        ]
+      },
+      "requests": [
+        {
+          "index": 1,
+          "utc": "2026-10-17T17:07:58.657806+00:00",
+          "stop_reason": "tool_calls",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        },
+        {
+          "index": 2,
+          "utc": "2026-10-17T17:07:58.658237+00:00",
+          "stop_reason": "stop",
+          "usage": null,
+          "cost": null,
+          "error": null,
+          "model": null
+        }
+      ],
+      "tool_calls_executed": 1,
+      "outcome": "finished",
+      "final_text": "Published it.",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are one step in a small data-handling workflow running in a sandbox with fictitious records. Use only the tools provided. Complete your task exactly as instructed, using the handles or names you are given, then reply with one short sentence saying what you did."
+        },
+        {
+          "role": "user",
+          "content": "Publish the artifact named summary, created by the processor in this episode, to the public audience.\n\nArtifact handles handed to you: v002, v003\n\nArtifact metadata from the committed ledger follows as JSON. All handed artifacts, including intermediates and replaced versions, are listed. latest_by_name maps each name to its latest version within this handoff only. For a requested artifact name, use its mapped immutable handle in tool calls; workspace display-name aliases may have been replaced by other activity.\n{\"artifacts\": [{\"handle\": \"v002\", \"name\": \"subset\"}, {\"handle\": \"v003\", \"name\": \"summary\"}], \"latest_by_name\": {\"subset\": \"v002\", \"summary\": \"v003\"}, \"version\": 1}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "scripted-publisher-4",
+              "name": "publish_resource",
+              "arguments": {
+                "handle": "summary",
+                "audience": "public"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "scripted-publisher-4",
+          "name": "publish_resource",
+          "content": "{\"audience\": \"public\", \"handle\": \"v003\", \"published\": \"pub01\"}"
+        },
+        {
+          "role": "assistant",
+          "content": "Published it.",
+          "tool_calls": []
+        }
+      ]
+    }
+  ],
+  "background": []
+}

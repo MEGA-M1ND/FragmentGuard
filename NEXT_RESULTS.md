@@ -70,3 +70,23 @@ throughout. Honest identity headers and producer pointers remain prerequisites.
 See [handoff checks](docs/handoff_metadata.md) and
 [the missing-evidence review](docs/missing_evidence_review.md). This follow-up made
 zero model calls and incurred $0 model spend. No repeat paid run was started.
+
+
+## Evidence retrieval and four-case preparation
+
+PR #4 passed lint/test/smoke/package CI and was merged. The new offline retrieval
+comparison uses the same visible archive, pointers and checker context budgets.
+At three records, correlation supplied sufficient evidence for 27/37 complete
+publications; streaming plus provenance supplied 30/37. Among the 607 actual
+masked observations, counts were 152 versus 155. No wrong definite verdicts
+occurred. Additional retained state and online work are reported; neither equal
+cost nor a speedup is claimed. There is no demonstrated evidence-retrieval
+advantage for original correlation over this stronger baseline on these cases.
+See [the full cost/proof comparison](docs/evidence_retrieval.md).
+
+A four-case successor check (sc11/sc04/sc09/sc05) is prepared with the new handoff.
+Its offline rehearsal and actual-input checks pass 4/4, and direct/Scout agree.
+The proposed one-invocation cap is $0.35, current-price ceiling $0.321216, no extra
+episodes or retries. The [review packet](experiments/handoff_check_01/review-packet.json)
+pins exact code and inputs; live limits remain disabled pending fresh capped
+approval. This preparation used no generation and leaves pilot 2 unchanged.

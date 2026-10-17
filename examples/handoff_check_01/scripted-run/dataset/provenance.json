@@ -1,0 +1,7 @@
+{
+  "source_kind": "agent_executed_trace",
+  "trace_backend": "scripted",
+  "model": null,
+  "execution_dir": "examples/handoff_check_01/scripted-run",
+  "freeze_sha256": "cccf7f58ce36523d66ed02e5ab109b77568ee210919a04c5641f4eaab815c020"
+}
