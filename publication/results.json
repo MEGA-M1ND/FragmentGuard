@@ -1,0 +1,246 @@
+{
+  "complete_cached_verdict_matches": 37,
+  "complete_publications": 37,
+  "complete_publications_by_source": {
+    "fixtures": 4,
+    "live-pilot-01": 8,
+    "pilot-02-live": 8,
+    "scripted": 12,
+    "stale-write-regressions": 5
+  },
+  "completed_experiment_status": "Final; four-case live successor not run and excluded from results",
+  "development_episode_accounted_usd": "0.0012641",
+  "experimental_evidence_base_commit": "aed2a1c969267e1f70dfeac8255daa9f4443ed13",
+  "interpretation": "Descriptive counts on self-authored cases, not independent trials or attack accuracy.",
+  "new_model_calls_for_publication": 0,
+  "pilots": [
+    {
+      "accounted_usd": "0.0105118",
+      "attempted": 12,
+      "completed": 8,
+      "id": "pilot_1",
+      "incomplete": [
+        "sc11",
+        "sc04",
+        "sc09",
+        "sc05"
+      ],
+      "model_requests": 77
+    },
+    {
+      "accounted_usd": "0.0104266",
+      "attempted": 12,
+      "completed": 8,
+      "id": "pilot_2",
+      "incomplete": [
+        "sc11",
+        "sc04",
+        "sc09",
+        "sc05"
+      ],
+      "model_requests": 76
+    }
+  ],
+  "raw_evidence_support_by_budget": {
+    "1": {
+      "complete": {
+        "correlated": {
+          "observations": 37,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 37,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        }
+      },
+      "masked": {
+        "correlated": {
+          "observations": 607,
+          "sufficient_support": 31,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 607,
+          "sufficient_support": 31,
+          "wrong_definite": 0
+        }
+      },
+      "masked_control": {
+        "correlated": {
+          "observations": 29,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 29,
+          "sufficient_support": 1,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "2": {
+      "complete": {
+        "correlated": {
+          "observations": 37,
+          "sufficient_support": 3,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 37,
+          "sufficient_support": 5,
+          "wrong_definite": 0
+        }
+      },
+      "masked": {
+        "correlated": {
+          "observations": 607,
+          "sufficient_support": 51,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 607,
+          "sufficient_support": 53,
+          "wrong_definite": 0
+        }
+      },
+      "masked_control": {
+        "correlated": {
+          "observations": 29,
+          "sufficient_support": 3,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 29,
+          "sufficient_support": 5,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "3": {
+      "complete": {
+        "correlated": {
+          "observations": 37,
+          "sufficient_support": 27,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 37,
+          "sufficient_support": 30,
+          "wrong_definite": 0
+        }
+      },
+      "masked": {
+        "correlated": {
+          "observations": 607,
+          "sufficient_support": 152,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 607,
+          "sufficient_support": 155,
+          "wrong_definite": 0
+        }
+      },
+      "masked_control": {
+        "correlated": {
+          "observations": 29,
+          "sufficient_support": 20,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 29,
+          "sufficient_support": 23,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "4": {
+      "complete": {
+        "correlated": {
+          "observations": 37,
+          "sufficient_support": 35,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 37,
+          "sufficient_support": 36,
+          "wrong_definite": 0
+        }
+      },
+      "masked": {
+        "correlated": {
+          "observations": 607,
+          "sufficient_support": 154,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 607,
+          "sufficient_support": 155,
+          "wrong_definite": 0
+        }
+      },
+      "masked_control": {
+        "correlated": {
+          "observations": 29,
+          "sufficient_support": 27,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 29,
+          "sufficient_support": 28,
+          "wrong_definite": 0
+        }
+      }
+    },
+    "8": {
+      "complete": {
+        "correlated": {
+          "observations": 37,
+          "sufficient_support": 37,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 37,
+          "sufficient_support": 37,
+          "wrong_definite": 0
+        }
+      },
+      "masked": {
+        "correlated": {
+          "observations": 607,
+          "sufficient_support": 155,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 607,
+          "sufficient_support": 155,
+          "wrong_definite": 0
+        }
+      },
+      "masked_control": {
+        "correlated": {
+          "observations": 29,
+          "sufficient_support": 29,
+          "wrong_definite": 0
+        },
+        "streaming_provenance": {
+          "observations": 29,
+          "sufficient_support": 29,
+          "wrong_definite": 0
+        }
+      }
+    }
+  },
+  "report_date": "2026-10-28",
+  "source_files": [
+    "examples/evidence_retrieval/first-comparison/evaluated.jsonl",
+    "examples/evidence_retrieval/first-comparison/summary.json",
+    "examples/missing_evidence/first_analysis/results/summary.json",
+    "examples/agent_pilot/live-pilot-analysis/pilot_report.json",
+    "examples/agent_pilot_02/live-20261016/analysis/pilot_report.json"
+  ],
+  "total_accounted_usd_including_development": "0.0222025",
+  "two_pilot_accounted_usd": "0.0209384"
+}

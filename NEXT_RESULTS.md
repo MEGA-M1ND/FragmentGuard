@@ -1,3 +1,5 @@
+> **Project complete — 28 October 2026.** Read the [final report](docs/final_report.md) and [submission summary](publication/submission.md). The content below is historical project development; the prepared four-case live successor was not run and is outside the final study. No further experiment or feedback collection is required for publication.
+
 # FragmentGuard: next experiment results
 
 Streaming sensitivity propagation handles the current complete-log toy policy:
