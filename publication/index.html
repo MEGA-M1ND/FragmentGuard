@@ -42,27 +42,27 @@ footer { font-size:12px; color:var(--muted); border-top:1px solid var(--rule); m
 }
 </style></head>
 <body><main><div class="masthead">FragmentGuard · Final project report</div>
-<nav aria-label="Project resources"><a href="https://github.com/MEGA-M1ND/FragmentGuard">Code and evidence</a><a href="https://raw.githubusercontent.com/MEGA-M1ND/FragmentGuard/final-project-report-2026-10-28/publication/FragmentGuard-final-report.pdf">Download PDF</a><a href="https://github.com/MEGA-M1ND/FragmentGuard/blob/main/publication/submission.md">Submission summary</a></nav>
+<nav aria-label="Project resources"><a href="https://github.com/MEGA-M1ND/FragmentGuard">Code and evidence</a><a href="https://raw.githubusercontent.com/MEGA-M1ND/FragmentGuard/final-project-report-2026-10-28-v2/publication/FragmentGuard-final-report.pdf">Download PDF</a><a href="https://github.com/MEGA-M1ND/FragmentGuard/blob/main/publication/submission.md">Submission summary</a></nav>
 <h1 id="fragmentguard-when-a-simple-baseline-was-enough">FragmentGuard:
 when a simple baseline was enough</h1>
 <p><em>A project on resource provenance and oversight of multi-agent AI
 workflows. Final report · 28 October 2026.</em></p>
 <h2 id="the-result-in-one-paragraph">The result in one paragraph</h2>
-<p>FragmentGuard began with a question: <strong>can following resources
-between agents recover safety-relevant evidence that a monitor watching
-one agent or a recent-event window misses?</strong> In a small,
-controlled prototype, it could. But a stronger baseline changed the
-interpretation. With complete, exact provenance and a simple
-information-flow policy, forward sensitivity tracking matched
-full-context verdicts on all <strong>37 publications</strong> in the
-final complete-trace comparison. When asked to retrieve the original
-records supporting those verdicts, streaming tracking with stored
-provenance supplied sufficient evidence for <strong>30/37
-publications</strong> within a three-record budget, compared with
-<strong>27/37</strong> for the original correlation selector. These are
+<p>A summary may look harmless to the agent publishing it even when
+another agent produced it from confidential material. <strong>Can
+following that history improve oversight—and does it outperform simply
+remembering which artifacts are sensitive?</strong> FragmentGuard tested
+both approaches in a controlled three-agent workflow. With complete,
+exact provenance (the recorded history of how artifacts were produced),
+simple sensitivity tracking matched full-context decisions on all
+<strong>37 publications</strong>. When required to return original
+records supporting a decision, tracking with stored provenance supplied
+sufficient evidence for <strong>30/37 publications</strong> within a
+three-record budget, compared with <strong>27/37</strong> for the
+original correlation selector. The initial advantage over recent-event
+monitoring disappeared against the stronger baseline. These are
 descriptive results on self-authored cases, not real-world detection
-rates. The project found no advantage for its original selector over the
-stronger baseline under these assumptions.</p>
+rates.</p>
 <h2 id="why-this-matters-for-advanced-ai-safety">Why this matters for
 advanced AI safety</h2>
 <p>Advanced AI agents may delegate work, use tools and pass artifacts
@@ -75,13 +75,22 @@ must an oversight system retain or retrieve to assess a downstream
 action?</strong> Resource provenance provides one possible organizing
 structure. If an output was derived from a restricted input, the
 dependency should survive handoffs and transformations.</p>
-<p>The project's theory of change is modest: reliable provenance and
-appropriate baselines can help developers distinguish a monitoring
-improvement from a consequence of giving one method more information. An
-inexpensive state-based policy check could be preferable to a more
-elaborate monitor for explicit information-flow rules. If raw
-explanations are needed for audit, evidence retrieval becomes a separate
-requirement.</p>
+<p>The project's theory of change is concrete: delegation spreads
+relevant history across agents; a recorder preserves dependencies;
+persistent state or evidence retrieval makes those dependencies
+available when a downstream action is assessed. A system could use that
+assessment to request review before an external publication. This study
+evaluates the assessment step; it does not measure whether intervention
+prevents harm.</p>
+<p>The evaluation gap addressed here is the comparison with
+<strong>persistent memory of the same provenance</strong>. A monitor can
+appear better simply because a weaker baseline forgets relevant history.
+Testing that explanation helps oversight researchers decide whether to
+invest in a more elaborate selector, a simpler policy check, or better
+recording. The baseline uses familiar information-flow or “taint”
+tracking: sensitivity propagates from inputs to outputs. The
+contribution is the auditable comparison and its limits, rather than a
+new propagation algorithm.</p>
 <p>This is relevant to AI control and oversight, but it does not test
 deceptive planning, spontaneous collusion or general harmful intent. The
 motivating paper, <em>Multi-Agent AI Control: Distributed Attacks Hamper
@@ -228,6 +237,19 @@ agreed on <strong>8/8</strong>. The same agreement extended to all
 monotone sensitivity policy make the decision amenable to ordinary
 propagation. The original correlation-versus-window comparison alone
 would have overstated what correlation added.</p>
+<p><strong>Why the baseline works.</strong> For each transformation, the
+rule is <code>restricted(output) = any restricted(input)</code>. Catalog
+labels initialize the roots. If the input flags correctly summarize
+their ancestors, applying this rule makes the output flag correct too.
+Repeating that argument along a complete, correctly ordered dependency
+graph gives the same restriction decision as walking the whole ancestry
+at publication. Missing inputs also propagate an unresolved state; a
+public publication is clear only when no restriction or unresolved input
+remains. Thus agreement is expected under this policy. The 37-case
+result checks implementation behavior; it is not statistical evidence
+that the method generalizes to richer policies. Redaction, permission
+changes or context-dependent rules would require a different
+argument.</p>
 <p>Pair separation tells the same limited story. A method separates a
 pair only if it alerts on the actual violating twin and clears the
 actual allowed twin. Both live pilots had four evaluable pairs out of
@@ -385,13 +407,26 @@ or production logging. Baselines have different information and storage
 costs. A zero-error result on these interventions is not a deployment
 safety guarantee. No independent replication or external review is
 claimed.</p>
-<p>The most useful continuation would define a realistic recorder
-contract: which resource identities, producer pointers and payloads
-remain available in an actual agent system? Under that contract, a study
-could test externally authored workflows, explanation utility and
-measured storage/latency alongside verdict quality. Any live validation
-of the handoff revision would be a new protocol check, not a repair of
-the recorded pilots.</p>
+<p>The next research decision is whether the recorder assumptions
+survive a realistic agent system. Two concrete follow-ups would answer
+that:</p>
+<ul>
+<li><strong>Challenge the metadata, not just the payloads.</strong>
+Introduce missing or incorrect producer references and unrecorded
+writes, keeping a separate execution ledger for evaluation. Measure
+incorrect clear decisions and abstentions using the same visible
+information for each method. This would locate the boundary where the
+present safety argument fails.</li>
+<li><strong>Test whether retrieved explanations justify their
+cost.</strong> Use externally authored workflows and compare equal
+evidence budgets while measuring online work, retained storage and
+latency. Ask whether the returned records are sufficient to reconstruct
+the policy decision. An advantage would require better support or lower
+measured resource use under a declared recorder contract.</li>
+</ul>
+<p>These are future experiments, not requirements for the completed
+project. Any live validation of the handoff revision would be a new
+protocol check, not a repair of the recorded pilots.</p>
 <p>The completed contribution is an auditable prototype and a
 baseline-driven lesson: <strong>before claiming an advantage for a
 multi-agent oversight method, compare it with persistent state that has

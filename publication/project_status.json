@@ -12,5 +12,7 @@
   },
   "new_paid_model_calls_for_finalization": 0,
   "note": "This final status supersedes historical planning notes and pending review packets. It does not enable a live run.",
-  "publication_tag": "final-project-report-2026-10-28"
+  "publication_tag": "final-project-report-2026-10-28-v2",
+  "previous_publication_tag": "final-project-report-2026-10-28",
+  "presentation_revision": 2
 }

@@ -18,7 +18,7 @@
     "pdf_layout_visually_inspected": true,
     "html_figures_and_styles_inlined": true,
     "publication_model_calls": 0,
-    "local_markdown_links_checked": 41
+    "local_markdown_links_checked": 26
   },
   "rendering": {
     "python": "3.12.14",
@@ -26,5 +26,18 @@
     "reportlab": "4.4.9",
     "pandoc": "pandoc 3.1.11.1"
   },
-  "scope": "Final publication only; four-case live successor not run. No additional science or feedback round claimed."
+  "scope": "Final publication only; four-case live successor not run. No additional science or feedback round claimed.",
+  "presentation_revision": 2,
+  "presentation_revision_checks": {
+    "source_tests_inputs_evidence_dependencies_byte_preserved": 873,
+    "extracted_results_unchanged": true,
+    "local_markdown_link_scope": [
+      "README.md",
+      "docs/final_report.md",
+      "publication/*.md"
+    ],
+    "submission_words": 451,
+    "presentation_script_words": 211,
+    "validation_note": "Scientific validation above was completed for the original publication; this revision rechecks source/evidence preservation, extracted facts, lint, links, PDF and HTML."
+  }
 }

@@ -4,7 +4,7 @@
 
 ## The result in one paragraph
 
-FragmentGuard began with a question: **can following resources between agents recover safety-relevant evidence that a monitor watching one agent or a recent-event window misses?** In a small, controlled prototype, it could. But a stronger baseline changed the interpretation. With complete, exact provenance and a simple information-flow policy, forward sensitivity tracking matched full-context verdicts on all **37 publications** in the final complete-trace comparison. When asked to retrieve the original records supporting those verdicts, streaming tracking with stored provenance supplied sufficient evidence for **30/37 publications** within a three-record budget, compared with **27/37** for the original correlation selector. These are descriptive results on self-authored cases, not real-world detection rates. The project found no advantage for its original selector over the stronger baseline under these assumptions.
+A summary may look harmless to the agent publishing it even when another agent produced it from confidential material. **Can following that history improve oversight—and does it outperform simply remembering which artifacts are sensitive?** FragmentGuard tested both approaches in a controlled three-agent workflow. With complete, exact provenance (the recorded history of how artifacts were produced), simple sensitivity tracking matched full-context decisions on all **37 publications**. When required to return original records supporting a decision, tracking with stored provenance supplied sufficient evidence for **30/37 publications** within a three-record budget, compared with **27/37** for the original correlation selector. The initial advantage over recent-event monitoring disappeared against the stronger baseline. These are descriptive results on self-authored cases, not real-world detection rates.
 
 ## Why this matters for advanced AI safety
 
@@ -12,7 +12,9 @@ Advanced AI agents may delegate work, use tools and pass artifacts through long 
 
 That motivates a practical oversight question: **which history must an oversight system retain or retrieve to assess a downstream action?** Resource provenance provides one possible organizing structure. If an output was derived from a restricted input, the dependency should survive handoffs and transformations.
 
-The project's theory of change is modest: reliable provenance and appropriate baselines can help developers distinguish a monitoring improvement from a consequence of giving one method more information. An inexpensive state-based policy check could be preferable to a more elaborate monitor for explicit information-flow rules. If raw explanations are needed for audit, evidence retrieval becomes a separate requirement.
+The project's theory of change is concrete: delegation spreads relevant history across agents; a recorder preserves dependencies; persistent state or evidence retrieval makes those dependencies available when a downstream action is assessed. A system could use that assessment to request review before an external publication. This study evaluates the assessment step; it does not measure whether intervention prevents harm.
+
+The evaluation gap addressed here is the comparison with **persistent memory of the same provenance**. A monitor can appear better simply because a weaker baseline forgets relevant history. Testing that explanation helps oversight researchers decide whether to invest in a more elaborate selector, a simpler policy check, or better recording. The baseline uses familiar information-flow or “taint” tracking: sensitivity propagates from inputs to outputs. The contribution is the auditable comparison and its limits, rather than a new propagation algorithm.
 
 This is relevant to AI control and oversight, but it does not test deceptive planning, spontaneous collusion or general harmful intent. The motivating paper, *Multi-Agent AI Control: Distributed Attacks Hamper Per-Instance Monitors*, concerns a broader problem [1]. FragmentGuard does **not** reproduce its attacks or run FakeLab. Instead, it isolates a much simpler mechanism: whether an explicit resource dependency remains visible across agents.
 
@@ -71,6 +73,8 @@ A separate evaluation path derives expected publication labels from the executio
 In live pilot 2, correlation resolved **7/8 completed publications**, while the recent-event window resolved **4/8**. Forward sensitivity tracking and full context agreed on **8/8**. The same agreement extended to all **37 complete publications** in the final comparison.
 
 This is the main result: complete, exact resource information and a monotone sensitivity policy make the decision amenable to ordinary propagation. The original correlation-versus-window comparison alone would have overstated what correlation added.
+
+**Why the baseline works.** For each transformation, the rule is `restricted(output) = any restricted(input)`. Catalog labels initialize the roots. If the input flags correctly summarize their ancestors, applying this rule makes the output flag correct too. Repeating that argument along a complete, correctly ordered dependency graph gives the same restriction decision as walking the whole ancestry at publication. Missing inputs also propagate an unresolved state; a public publication is clear only when no restriction or unresolved input remains. Thus agreement is expected under this policy. The 37-case result checks implementation behavior; it is not statistical evidence that the method generalizes to richer policies. Redaction, permission changes or context-dependent rules would require a different argument.
 
 Pair separation tells the same limited story. A method separates a pair only if it alerts on the actual violating twin and clears the actual allowed twin. Both live pilots had four evaluable pairs out of six; correlation separated three, the window two, per-agent zero, and full context and streaming four. These counts describe the evaluable pairs, not general attack-detection accuracy.
 
@@ -133,7 +137,12 @@ The output directory must be new. This command replays saved records; it does no
 
 The study uses one model, tiny self-authored cases and controlled application-computed content. It assumes exact version identity, a trusted catalog and restriction-preserving transformations. It measures neither general intent nor declassification, sophisticated adversaries or production logging. Baselines have different information and storage costs. A zero-error result on these interventions is not a deployment safety guarantee. No independent replication or external review is claimed.
 
-The most useful continuation would define a realistic recorder contract: which resource identities, producer pointers and payloads remain available in an actual agent system? Under that contract, a study could test externally authored workflows, explanation utility and measured storage/latency alongside verdict quality. Any live validation of the handoff revision would be a new protocol check, not a repair of the recorded pilots.
+The next research decision is whether the recorder assumptions survive a realistic agent system. Two concrete follow-ups would answer that:
+
+- **Challenge the metadata, not just the payloads.** Introduce missing or incorrect producer references and unrecorded writes, keeping a separate execution ledger for evaluation. Measure incorrect clear decisions and abstentions using the same visible information for each method. This would locate the boundary where the present safety argument fails.
+- **Test whether retrieved explanations justify their cost.** Use externally authored workflows and compare equal evidence budgets while measuring online work, retained storage and latency. Ask whether the returned records are sufficient to reconstruct the policy decision. An advantage would require better support or lower measured resource use under a declared recorder contract.
+
+These are future experiments, not requirements for the completed project. Any live validation of the handoff revision would be a new protocol check, not a repair of the recorded pilots.
 
 The completed contribution is an auditable prototype and a baseline-driven lesson: **before claiming an advantage for a multi-agent oversight method, compare it with persistent state that has access to the same provenance. Here, simple propagation was enough for verdicts, and the original selector showed no supporting-evidence advantage over propagation with provenance.**
 

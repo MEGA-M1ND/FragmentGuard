@@ -6,6 +6,7 @@ This is the completed project presentation, not an additional experiment.
 - `FragmentGuard-final-report.pdf`: shareable report.
 - `index.html`: self-contained HTML report with inline figures and styles.
 - `submission.md`: ready-to-paste submission summary.
+- `presentation-notes.md`: a 90-second walkthrough, figure guide and reviewer questions.
 - `results.json`: facts extracted from committed evidence by `../scripts/publication_facts.py`.
 - `figures/`: standalone SVG and PNG figures.
 - `project_status.json`: closed scope; the proposed four-case live successor is unrun.
@@ -25,9 +26,14 @@ PDF metadata can differ across builds; the published asset checksums identify th
 release files, while the scientific artifact hashes remain authoritative for data.
 
 The evidence base is commit `aed2a1c969267e1f70dfeac8255daa9f4443ed13`.
-Historical source/data manifests are unchanged. The `final-project-report-2026-10-28` tag is a
+Historical source/data manifests are unchanged. The `final-project-report-2026-10-28-v2` tag is a
 publication snapshot, not a claim that this experimental software is production-ready.
 
 The report bundle is `FragmentGuard-report-bundle.zip`. From the repository root,
 verify its download and the report files with `sha256sum -c publication/SHA256SUMS`.
 Release downloads use versioned repository files, with no separate hosting dependency.
+
+Presentation revision 2 adds an accessible opening, explains why the sensitivity
+baseline is sufficient under this policy, clarifies the oversight intervention
+that a future system could support, and specifies measurable future experiments.
+The original `final-project-report-2026-10-28` snapshot remains available.

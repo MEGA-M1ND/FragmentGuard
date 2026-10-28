@@ -1,4 +1,4 @@
-# FragmentGuard — final project report
+# FragmentGuard — final project report, presentation revision 2
 
 A completed research prototype on resource provenance and oversight of multi-agent AI workflows.
 
@@ -6,11 +6,13 @@ A completed research prototype on resource provenance and oversight of multi-age
 
 The report explains the connection to advanced AI safety, the stronger baselines, missing-record assumptions, and the four incomplete workflows in each live pilot. All failures and original evidence remain preserved. The proposed four-case live successor was not run and is excluded; no new experiment or feedback round is required for this completed project.
 
-Included assets:
+This revision improves the opening, explains why the baseline agreement is expected, connects the monitoring result to a possible oversight intervention, and adds measurable next questions. It also includes a 90-second walkthrough and answers to likely reviewer questions. The original publication snapshot remains available.
+
+Included files:
 
 - A six-page, searchable PDF with linked references.
 - A self-contained HTML report with inline figures.
-- The editable report and a ready-to-paste submission summary.
+- The editable report, a ready-to-paste submission summary and presentation notes.
 - Extracted results, a report bundle and SHA-256 checksums.
 
 Validation: 113 tests passed; lint and dependency checks passed; the retrieval results reproduce byte-for-byte; all 829 pre-existing artifacts and experiment inputs are unchanged. Final publication made zero model calls.
@@ -19,11 +21,12 @@ Counts describe overlapping, self-authored cases, not attack-detection accuracy.
 
 ## Read or download
 
-- [Read the final report](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28/docs/final_report.md)
-- [Open the PDF](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28/publication/FragmentGuard-final-report.pdf)
-- [Download the PDF](https://raw.githubusercontent.com/MEGA-M1ND/FragmentGuard/final-project-report-2026-10-28/publication/FragmentGuard-final-report.pdf)
-- [Download the complete report bundle](https://raw.githubusercontent.com/MEGA-M1ND/FragmentGuard/final-project-report-2026-10-28/publication/FragmentGuard-report-bundle.zip)
-- [Copy the submission summary](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28/publication/submission.md)
-- [File checksums](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28/publication/SHA256SUMS)
+- [Read the final report](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28-v2/docs/final_report.md)
+- [Open the PDF](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28-v2/publication/FragmentGuard-final-report.pdf)
+- [Download the PDF](https://raw.githubusercontent.com/MEGA-M1ND/FragmentGuard/final-project-report-2026-10-28-v2/publication/FragmentGuard-final-report.pdf)
+- [Download the complete report bundle](https://raw.githubusercontent.com/MEGA-M1ND/FragmentGuard/final-project-report-2026-10-28-v2/publication/FragmentGuard-report-bundle.zip)
+- [Copy the submission summary](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28-v2/publication/submission.md)
+- [Presentation notes](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28-v2/publication/presentation-notes.md)
+- [File checksums](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28-v2/publication/SHA256SUMS)
 
 The downloads are versioned repository files. Source code and the full raw evidence are also available in the automatically generated source archive below.

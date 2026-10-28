@@ -1,24 +1,27 @@
 {
   "evidence_base_commit": "aed2a1c969267e1f70dfeac8255daa9f4443ed13",
   "files": {
+    "README.md": "19ff804d8ae8b13ce3d6915a0e2ca3166e1b8e29b4cf5ba838893af73dd651ae",
     "docs/development.md": "77004635ce52430d4e4564f69b2f3575a6e1d3dd80fb8f7339462d0357d291a0",
-    "docs/final_report.md": "85e6d86d9db69ecc7df03504f3a522b3f0c367f39ac4191b06e5ec2b265460de",
-    "publication/FragmentGuard-final-report.pdf": "fd79c6717996746231b6088f2faaaa4aea292743eefe03467665f630d3e5e78c",
-    "publication/README.md": "45ef49106fd6d2bb3ffc08696a06af1ec388bf5a07ca1d771d2c3a3a053442ac",
+    "docs/final_report.md": "171bb493f8897854a69601bf3f1fd83d5cc75c48540c40c42db2a31222e15255",
+    "publication/FragmentGuard-final-report.pdf": "fa822b3ad79770343514e6b611195da1d9a14ca1037e178953e6bba9aa71e497",
+    "publication/README.md": "7d71205434a5528ef59a44a3e8a32319a6679d19a08e63618042b4e76a832170",
     "publication/figures/support.png": "79c528c9cce1a3da2b33bb6f6f1364a453f0e5bb16823447d33116016ed1e846",
     "publication/figures/support.svg": "176ac8b6294fc48f39a199e3e9fda8f06819cbd36ad6ea79e030a88cb91a51e0",
     "publication/figures/workflow.png": "517f380d19f526affa65aa49cf927d769a1bdcc0cad5c6dced5cc84024e88ace",
     "publication/figures/workflow.svg": "ddfe5d3af1751e3265ef23503307b7463157ea08693ed1e9600611bacde39415",
-    "publication/index.html": "f42e74f90193ce79901dd2d3caa90562efac458c09b949d7c16ba1098ecea984",
-    "publication/project_status.json": "061ff48db546a969bbc59dc5664c7f1dfb9dceb83f0482a1d0a59b21b5484641",
-    "publication/release-notes.md": "c36b0b73acf8c376ae524721e87bb3a700a9c5bf275199d30d339b6b9998997b",
+    "publication/index.html": "c8a138f608b091042ad53bbe75475654e1e46a35772356bf4a7783db62d36ffd",
+    "publication/presentation-notes.md": "1ce8ca1de5b7dc946142f99afafcfc620b4376a33374f76e7014eda962a37d50",
+    "publication/project_status.json": "031786864ae574ee789894f6a6eef7307a87eab86c0012511c25caf6bb81ffaa",
+    "publication/release-notes.md": "357308187cef7ce899d4daee2b1a47f562d2770d8068db3321a27638a7a9e6b7",
     "publication/results.json": "b69fb309f72934171204f121fc317260048e32850a3bee95ac940eecb9f6a5e8",
     "publication/style.css": "d2927c88fbe817a484e37235f089ce4d653bebe1cae9cad2996f03efe2f1a709",
-    "publication/submission.md": "3d09b601998f7e31f9cecd82cfa72dca80a3a3688e36c359d63c7f530db84577",
-    "publication/template.html": "4db2d31301a286e7fb42112633a61d17401104801f10b0e2041adb5067b0f6b9",
-    "publication/validation.json": "89d30cbde0ad8716ae380a8c5e0e74488fb99bde5e3a95e108d57be997bb7938",
+    "publication/submission.md": "0656d65704dcca2834664dd2cea5ae4f07ee79d02b68c66ebd6d9c68c832282c",
+    "publication/template.html": "23e25e54d8218abf5b3ab9eee0505cf1e83a29e50b755e49a0f1e467de5a1203",
+    "publication/validation.json": "73c7c1c1202b9227c04f67ef205c5efb3d4a17f9677a548f67c07d3aec0ed1db",
     "scripts/build_publication.py": "5eb20f1767f905efce163e4f02b916beae37de99f85b2d6fe0a4f3606fc06329",
     "scripts/publication_facts.py": "906417f52d72ce70d0fce057296fe47cb11fcf3c148775026af23f496122c945",
     "scripts/publication_pdf.py": "fa639286a71510e08816e82f13e6e58f59a03b8db8f62a059376805f4574d0ab"
-  }
+  },
+  "presentation_revision": 2
 }

@@ -4,7 +4,7 @@
 
 **Completed research prototype · Final report: 28 October 2026**
 
-[Read the final report](docs/final_report.md) · [Download the PDF](https://raw.githubusercontent.com/MEGA-M1ND/FragmentGuard/final-project-report-2026-10-28/publication/FragmentGuard-final-report.pdf) · [Submission summary](publication/submission.md) · [Code and reproduction](docs/development.md)
+[Read the final report](docs/final_report.md) · [Download the PDF](https://raw.githubusercontent.com/MEGA-M1ND/FragmentGuard/final-project-report-2026-10-28-v2/publication/FragmentGuard-final-report.pdf) · [Submission summary](publication/submission.md) · [90-second walkthrough](publication/presentation-notes.md) · [Code and reproduction](docs/development.md)
 
 Can following resources across AI agents recover safety-relevant evidence that a
 monitor watching one agent misses? FragmentGuard explores that question with
@@ -39,6 +39,12 @@ context. Provenance can make those dependencies available for oversight. This
 project shows why such methods should be compared with persistent sensitivity
 state, and why a correct cached verdict and a bounded raw explanation are separate
 requirements.
+
+The baseline uses familiar information-flow tracking: an output inherits its
+inputs' sensitivity. Under exact provenance and this policy, its agreement with
+full context is expected. The contribution is an auditable comparison that changed
+the interpretation of the original result. A practical next test would challenge
+the recorder's producer metadata and measure incorrect clear decisions and uncertainty.
 
 The prototype does not measure deception, spontaneous collusion, general harmful
 intent or real-world attack detection. It does not reproduce FakeLab. The
@@ -89,6 +95,7 @@ they do not generate agents or enable a live run. See the
 
 - [Final report](docs/final_report.md): question, safety relevance, methods, results and limits.
 - [Submission summary](publication/submission.md): a concise, ready-to-paste project description.
+- [Presentation notes](publication/presentation-notes.md): a 90-second walkthrough, figure guide and reviewer questions.
 - [Extracted final facts](publication/results.json) and [final publication validation](publication/validation.json).
 - [Retrieval evidence](examples/evidence_retrieval/first-comparison/) and [methodology](docs/evidence_retrieval.md).
 - [Pilot 2 evidence](examples/agent_pilot_02/live-20261016/) and [missing-evidence review](docs/missing_evidence_review.md).
