@@ -11,5 +11,6 @@
     "reason": "Optional extension closed out of the final project scope; historical proposal retained for audit."
   },
   "new_paid_model_calls_for_finalization": 0,
-  "note": "This final status supersedes historical planning notes and pending review packets. It does not enable a live run."
+  "note": "This final status supersedes historical planning notes and pending review packets. It does not enable a live run.",
+  "publication_tag": "final-project-report-2026-10-28"
 }

@@ -16,3 +16,14 @@ Included assets:
 Validation: 113 tests passed; lint and dependency checks passed; the retrieval results reproduce byte-for-byte; all 829 pre-existing artifacts and experiment inputs are unchanged. Final publication made zero model calls.
 
 Counts describe overlapping, self-authored cases, not attack-detection accuracy. The missing-record study assumes trustworthy producer metadata. Accounted costs use historical supplied rates, not independently verified invoices. This is a publication snapshot of experimental software, not a production-readiness claim.
+
+## Read or download
+
+- [Read the final report](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28/docs/final_report.md)
+- [Open the PDF](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28/publication/FragmentGuard-final-report.pdf)
+- [Download the PDF](https://raw.githubusercontent.com/MEGA-M1ND/FragmentGuard/final-project-report-2026-10-28/publication/FragmentGuard-final-report.pdf)
+- [Download the complete report bundle](https://raw.githubusercontent.com/MEGA-M1ND/FragmentGuard/final-project-report-2026-10-28/publication/FragmentGuard-report-bundle.zip)
+- [Copy the submission summary](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28/publication/submission.md)
+- [File checksums](https://github.com/MEGA-M1ND/FragmentGuard/blob/final-project-report-2026-10-28/publication/SHA256SUMS)
+
+The downloads are versioned repository files. Source code and the full raw evidence are also available in the automatically generated source archive below.

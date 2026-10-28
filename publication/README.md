@@ -25,5 +25,9 @@ PDF metadata can differ across builds; the published asset checksums identify th
 release files, while the scientific artifact hashes remain authoritative for data.
 
 The evidence base is commit `aed2a1c969267e1f70dfeac8255daa9f4443ed13`.
-Historical source/data manifests are unchanged. The project-report tag is a
+Historical source/data manifests are unchanged. The `final-project-report-2026-10-28` tag is a
 publication snapshot, not a claim that this experimental software is production-ready.
+
+The report bundle is `FragmentGuard-report-bundle.zip`. From the repository root,
+verify its download and the report files with `sha256sum -c publication/SHA256SUMS`.
+Release downloads use versioned repository files, with no separate hosting dependency.

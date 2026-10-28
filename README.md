@@ -4,7 +4,7 @@
 
 **Completed research prototype · Final report: 28 October 2026**
 
-[Read the final report](docs/final_report.md) · [Download the PDF](https://github.com/MEGA-M1ND/FragmentGuard/releases/download/project-report-2026-10-28/FragmentGuard-final-report.pdf) · [Submission summary](publication/submission.md) · [Code and reproduction](docs/development.md)
+[Read the final report](docs/final_report.md) · [Download the PDF](https://raw.githubusercontent.com/MEGA-M1ND/FragmentGuard/final-project-report-2026-10-28/publication/FragmentGuard-final-report.pdf) · [Submission summary](publication/submission.md) · [Code and reproduction](docs/development.md)
 
 Can following resources across AI agents recover safety-relevant evidence that a
 monitor watching one agent misses? FragmentGuard explores that question with
