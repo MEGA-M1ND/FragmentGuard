@@ -1,3 +1,5 @@
+> **Project complete — 28 October 2026.** Read the [final report](docs/final_report.md) and [submission summary](publication/submission.md). The content below is historical project development; the prepared four-case live successor was not run and is outside the final study. No further experiment or feedback collection is required for publication.
+
 # Next experiments progress
 
 Starting commit: `4da34d538c60c8ed083b45b536d9acd48be7a339`.

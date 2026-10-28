@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "date": "2026-10-28",
+  "evidence_base_commit": "aed2a1c969267e1f70dfeac8255daa9f4443ed13",
+  "checks": {
+    "existing_unit_suite": {
+      "executed": 113,
+      "passed": 113
+    },
+    "ruff_src_tests_scripts": "passed",
+    "dependency_consistency": "passed",
+    "retrieval_raw_evaluated_and_summary_exact_reproduction": true,
+    "preexisting_artifacts_and_inputs_unchanged": 829,
+    "extracted_facts_match_source_artifacts": true,
+    "pdf_pages": 6,
+    "pdf_searchable_and_required_costs_present": true,
+    "pdf_clickable_links": 7,
+    "pdf_layout_visually_inspected": true,
+    "html_figures_and_styles_inlined": true,
+    "publication_model_calls": 0,
+    "local_markdown_links_checked": 41
+  },
+  "rendering": {
+    "python": "3.12.14",
+    "matplotlib": "3.10.8",
+    "reportlab": "4.4.9",
+    "pandoc": "pandoc 3.1.11.1"
+  },
+  "scope": "Final publication only; four-case live successor not run. No additional science or feedback round claimed."
+}

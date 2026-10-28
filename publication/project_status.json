@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "publication_date": "2026-10-28",
+  "final_report": "docs/final_report.md",
+  "submission_summary": "publication/submission.md",
+  "evidence_base_commit": "aed2a1c969267e1f70dfeac8255daa9f4443ed13",
+  "scope": "Existing recorded experiments only; no further experiments or feedback round required.",
+  "four_case_live_successor": {
+    "status": "not_run",
+    "included_in_findings": false,
+    "reason": "Optional extension closed out of the final project scope; historical proposal retained for audit."
+  },
+  "new_paid_model_calls_for_finalization": 0,
+  "note": "This final status supersedes historical planning notes and pending review packets. It does not enable a live run."
+}
