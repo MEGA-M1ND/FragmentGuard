@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-29",
+  "status": "passed",
+  "evidence_base_commit": "aed2a1c969267e1f70dfeac8255daa9f4443ed13",
+  "presentation_source_commit": "14d79bc3fd7c5d97175aba115681943d903e2f86",
+  "markdown_words": 7694,
+  "pdf_pages": 23,
+  "pdf_outline_entries": 16,
+  "pdf_links": 46,
+  "pdf_searchable": true,
+  "pdf_text_within_page_margins": true,
+  "docx_tables": 12,
+  "docx_embedded_figures": 2,
+  "docx_zip_integrity": "passed",
+  "docx_external_image_dependencies": 0,
+  "numeric_retrieval_tables_match_saved_facts": true,
+  "cost_arithmetic_matches_saved_facts": true,
+  "preexisting_tracked_files_unchanged": true,
+  "new_experimental_model_calls": 0,
+  "validation_scope": "Document structure, exact numeric table/cost checks, local image links, PDF layout and navigability. Google Docs upload/import and sharing were not performed."
+}
